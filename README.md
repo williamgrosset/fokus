@@ -1,4 +1,5 @@
 # fokus
+![alt-text](https://github.com/williamgrosset/fokus/blob/master/fokus_title.png "fokus")
 Google chrome extension to help you focus on the things that really matter.
 
 ## F.A.Q.
