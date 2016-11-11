@@ -9,13 +9,18 @@
         "default_popup": "html/popup.html",
         "default_title": "Click here!"
     },
+    "background": {
+        "scripts": ["js/listener.js"]
+    },
     "icons": {
-        "16": "icon16.png",
-        "48": "icon48.png",
-        "128": "icon128.png"
+        "16": "png/fokus_logo_16.png",
+        "48": "png/fokus_logo_48.png",
+        "128": "png/fokus_logo_128.png"
     },
     "permissions": [
-        "activeTab",
-        "https://ajax.googleapis.com/"
+        "tabs",
+        "webRequest",
+        "webRequestBlocking", 
+        "*://www.facebook.com/*"
     ]
 }
