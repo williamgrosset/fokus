@@ -1,3 +1,3 @@
 chrome.tabs.onUpdated.addListener(
-        alert("test123")
+    console.log("test");
 );

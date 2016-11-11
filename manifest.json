@@ -20,7 +20,8 @@
     "permissions": [
         "tabs",
         "webRequest",
-        "webRequestBlocking", 
-        "*://www.facebook.com/*"
+        "webRequestBlocking",
+        "*://www.facebook.com/*",
+        "*://www.twitch.tv/*"
     ]
 }

@@ -5,7 +5,10 @@ chrome.webRequest.onBeforeRequest.addListener(
         return {cancel: true};
     },
     {
-        urls: ["*://www.facebook.com/*"]
+        urls: [
+            "*://www.facebook.com/*",
+            "*://www.twitch.tv/*"
+        ]
     },
         ["blocking"]
 );
