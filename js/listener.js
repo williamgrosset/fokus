@@ -1,4 +1,5 @@
 console.log("test123");
+var disabled = false;
 
 chrome.webRequest.onBeforeRequest.addListener(
     function() {
