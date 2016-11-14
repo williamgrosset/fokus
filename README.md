@@ -5,7 +5,7 @@
 
 ## F.A.Q.
 ### Why am I making this?
-Lately, I have started to notice that I subconciously and instinctively go to websites that I do not actually want to be on. Whether it is Facebook, Twitch, LinkedIn, or any other domain. When I am working, I want to be completely focused on the things that matter in the present moment. We are all guilty of this, but we can fix it.
+Lately, I have started to notice that I subconciously and instinctively go to websites that I do not actually want to be on. Whether it is Facebook, Twitch, Reddit, or any other domain - when I am working, I want to be completely focused on the things that matter in the present moment. We are all guilty of this, but we can fix it.
 
 ### "This problem has already been solved."
 Yes, but not in the design I think it should be.
