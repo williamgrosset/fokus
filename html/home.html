@@ -1,12 +1,41 @@
 <html>
     <head>
+        <meta charset="utf-8">
         <title>fokus</title>
-        <style>
-        </style>
-        <h1>fokus home page incoming...</h1>
-        <script src="">
-        </script>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="/css/style.css"> <!-- CSS -->
+        <link rel="stylesheet" href=""> <!-- CSS -->
     </head>
     <body>
+        <div class="background-overlay"></div> <!-- fade in -->
+        <ul id="background" class="background"></ul>
+        <div class="widgets">
+            <div id="full"></div>
+            <div id="top-left"></div>
+            <div id="top-right"></div>
+            <div class='front'>
+                <div id="center-above">
+                    <h1>Stay focused.</h1>
+                </div>
+                <div id="center">
+                    <h2>Take a short break with some meditation.</h2>
+                </div>
+                <h1 id='clock'>120</h1><h3>seconds</h3>
+                <div id="center-below">
+                    <button class='button'>Begin</button><button class='button'>Reset</button>
+                </div>
+                <div id="bottom">
+                    <h4>@insertquotehere</h4>
+                </div>
+            </div>
+            <div id="bottom-right">
+                <img src=/png/fokus_question_32.png alt="About">
+            </div>
+            <div id="bottom-left">
+                <a href="http://github.com/williamgrosset/fokus"><img src=/png/fokus_github_32.png alt="Open Source"></a>
+            </div>
+        </div>
+        <script src=""></script>
     </body>
 </html>

@@ -1,0 +1,52 @@
+div.front {
+    text-align: center;
+    white-space: nowrap;
+}
+
+#center-above {
+    font-size: 300%;
+}
+
+#center {
+    font-size: 180%;
+}
+
+#clock {
+    font-size: 1500%;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #000;
+    background-color: #fff;
+    border-color: #444;
+    border-style: solid;
+    border-radius: 15px;
+    box-shadow: 0 8px #444;
+}
+
+.button:hover {background-color: #e6e6e6}
+
+.button:active {
+    background-color: #e6e6e6;
+    box-shadow: 0 5px #222;
+    transform: translateY(4px);
+}
+
+#bottom-right {
+    position: fixed;
+    bottom: 3;
+    right: 3;
+}
+
+#bottom-left {
+    position:fixed;
+    bottom: 3;
+    left: 3;
+}
