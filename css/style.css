@@ -4,15 +4,21 @@ div.front {
 }
 
 #center-above {
-    font-size: 300%;
+    padding-top: 50px;
+    font-size: 280%;
 }
 
 #center {
-    font-size: 180%;
+    font-size: 165%;
 }
 
 #clock {
     font-size: 1500%;
+    display: inline;
+}
+
+#seconds {
+    display: inline;
 }
 
 .button {
