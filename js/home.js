@@ -5,11 +5,24 @@ $("#reset").hide();
 $("#stopwatch").bind("click", startCounter);
 
 /*
-$("#center").typed({
-        strings: ["Stay ^1000 fokused."],
-        contentType: 'html' // or 'text'
-});
+* onload tag not allowed with chrome extensions
 */
+document.addEventListener('DOMContentLoaded', function() {
+      typeHeader();
+});
+
+/*
+* typed.js: wwww.mattboldt.com
+*/
+function typeHeader() {
+    $("#center-above").typed({
+        strings: ["Stay ^1000 fokused.", "Stay focused."],
+        contentType: "html",
+        showCursor: false,
+        typeSpeed: 80,
+        backSpeed: 80,
+    });
+}
 
 function startCounter() {
     stopwatchOn = true;
