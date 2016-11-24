@@ -5,17 +5,20 @@ document.addEventListener('DOMContentLoaded', function() {
       quoteReader();
 });
 
-/*
-* startCounter():
-* <description here>
-*/
+// https://www.sitepoint.com/jquery-read-text-file/
+// typed.js: wwww.mattboldt.com
 function quoteReader() {
     console.log("We in here reading quotes and stuff...");
-    var reader = new FileReader();
-    reader.readAsText("/quotes/short-and-shuffled-quotes.txt");
-    var fileContent = reader.result;
-    var fileContentLines = fileContent.split("\n");
-    var randomLineIndex = Math.floor(Math.random() * fileContentLines.length);
-    var randomLine = fileContentLines[randomLineIndex];
-    $("#bottom-quote").html(randomLine);
+    jQuery.get("https://raw.githubusercontent.com/williamgrosset/fokus/master/quotes/short-and-shuffled-quotes.txt", function(data) {    
+        var fileContentLines = data.split("\n");
+        var randomLineIndex = Math.floor(Math.random() * fileContentLines.length);
+        var randomLine = fileContentLines[randomLineIndex];
+        $("#bottom-quote").delay(200000);
+        setTimeout(function() {$("#bottom-quote").typed({
+            strings: [randomLine],
+            contentType: "html",
+            showCursor: false,
+            typeSpeed: 0
+        });}, 3000);
+    });
 }

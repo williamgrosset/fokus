@@ -24,7 +24,6 @@
         "tabs",
         "webRequest",
         "webRequestBlocking",
-        "*://www.facebook.com/*",
-        "*://www.twitch.tv/*"
+        "*://*/*"
     ]
 }
