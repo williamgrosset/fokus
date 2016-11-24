@@ -2,7 +2,7 @@
 * Global Variables (will be encapsulated eventually)
 */
 var stopwatchOn = false;
-var seconds = 10;
+var seconds = 120;
 var timer;
 $("#stopwatchStop").hide();
 $("#stopwatchReset").hide();
@@ -24,14 +24,13 @@ document.addEventListener('DOMContentLoaded', function() {
 */
 function typeHeader() {
     $("#center-above").typed({
-        strings: ["Stay ^1000 fokused.", "Stay focused."],
+        strings: ["Stay fokused.", "Stay focused."],
         contentType: "html",
         showCursor: false,
-        typeSpeed: 70,
-        backSpeed: 40,
+        typeSpeed: 100,
+        backSpeed: 100,
     });
 }
-
 
 /*
 * startCounter():
