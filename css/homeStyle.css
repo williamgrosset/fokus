@@ -8,27 +8,27 @@ div.front {
 #center-above {
     padding-top: 80px;
     font-size: 600%;
-    animation: fadeIn 4s;
+    animation: fadeIn 2s;
 }
 
 #center {
     font-size: 270%;
-    animation: fadeIn 4s;
+    animation: fadeIn 2s;
 }
 
 #clock {
     font-size: 1500%;
     display: inline;
-    animation: fadeIn 4s;
+    animation: fadeIn 2s;
 }
     
 #center-below {
-    animation: fadeIn 4s;
+    animation: fadeIn 2s;
 }
 
 #seconds {
     display: inline;
-    animation: fadeIn 4s;
+    animation: fadeIn 2s;
     padding-bottom:
 }
 
@@ -58,19 +58,19 @@ div.front {
 
 #bottom {
     padding-top: 80px;
-    animation: fadeIn 4s;
+    animation: fadeIn 2s;
 }
 
 #bottom-right {
     position: fixed;
     bottom: 3;
     right: 3;
-    animation: fadeIn 4s;
+    animation: fadeIn 2s;
 }
 
 #bottom-left {
     position:fixed;
     bottom: 3;
     left: 3;
-    animation: fadeIn 4s;
+    animation: fadeIn 2s;
 }
