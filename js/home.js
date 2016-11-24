@@ -24,11 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
 */
 function typeHeader() {
     $("#center-above").typed({
-        strings: ["Stay fokused.", "Stay focused."],
+        strings: ["Stay fokuse", "Stay focused."],
         contentType: "html",
         showCursor: false,
-        typeSpeed: 100,
-        backSpeed: 100,
+        typeSpeed: 90,
+        backSpeed: 90,
     });
 }
 

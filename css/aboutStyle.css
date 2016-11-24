@@ -1,0 +1,31 @@
+div.front {
+    text-align: center;
+    white-space: nowrap;
+}
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+#center-above {
+    padding-top: 80px;
+    font-size: 600%;
+    animation: fadeIn 4s;
+}
+
+#bottom {
+    padding-top: 80px;
+    animation: fadeIn 4s;
+}
+
+#bottom-right {
+    position: fixed;
+    bottom: 3;
+    right: 3;
+    animation: fadeIn 4s;
+}
+
+#bottom-left {
+    position:fixed;
+    bottom: 3;
+    left: 3;
+    animation: fadeIn 4s;
+}
