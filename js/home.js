@@ -2,7 +2,7 @@
 * Global Variables (will be encapsulated eventually)
 */
 var stopwatchOn = false;
-var seconds = 120;
+var seconds = 3;
 var timer;
 $("#stopwatchStop").hide();
 $("#stopwatchReset").hide();
@@ -82,6 +82,7 @@ function countDown() {
     seconds--;
     $("#clock").html(seconds);
     if (seconds == 0) {
+        document.getElementById("audio").play();
         resetCounter();
     }
 }
