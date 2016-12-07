@@ -15,6 +15,11 @@
         "persistence": false
     },
 
+    "content_scripts": [{
+        "matches": ["<all_urls>"],
+        "js": ["js/newpopup.js"]
+    }],
+
     "icons": {
         "16": "png/fokus_logo_16.png",
         "48": "png/fokus_logo_48.png",
