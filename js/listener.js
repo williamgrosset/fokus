@@ -1,5 +1,4 @@
 var disabled = false;
-
 chrome.webRequest.onBeforeRequest.addListener(
     function() {
         return {cancel: true};
