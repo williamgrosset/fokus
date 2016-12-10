@@ -9,7 +9,7 @@
         "default_title": "Click here!"
     },
     "background": {
-        "scripts": ["js/listener.js"],
+        "scripts": ["js/background/listener.js"],
         "persistence": false
     },
     "icons": {
