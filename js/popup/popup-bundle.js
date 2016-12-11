@@ -11,8 +11,7 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//<img src={'https://github.com/williamgrosset/fokus/blob/master/png/fokus_logo_48.png?raw=true'}/>,
-_reactDom2.default.render(_react2.default.createElement('img', { src: 'https://github.com/williamgrosset/fokus/blob/master/png/fokus_logo_48.png?raw=true' }), document.getElementById('header'));
+_reactDom2.default.render(_react2.default.createElement('img', { src: 'https://github.com/williamgrosset/fokus/blob/master/png/fokus_title_128.png?raw=true' }), document.getElementById('header'));
 
 },{"react":178,"react-dom":27}],2:[function(require,module,exports){
 (function (process){
