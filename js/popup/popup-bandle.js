@@ -29,7 +29,6 @@ var HeaderLink = function (_React$Component) {
         value: function fokusTab() {
             var win = window.open("/html/home.html");
             win.focus();
-            return null;
         }
     }, {
         key: 'render',

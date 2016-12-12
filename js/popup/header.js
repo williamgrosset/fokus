@@ -4,7 +4,6 @@ class HeaderLink extends React.Component {
     fokusTab() {
         var win = window.open("/html/home.html");
         win.focus()
-        return null;
     }
 
     render() {
