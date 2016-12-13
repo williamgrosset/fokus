@@ -3,7 +3,12 @@ import React from 'react';
 class Toggle extends React.Component {
     fokusTab() {
         var win = window.open("/html/home.html");
-        win.focus()
+        win.focus();
+    }
+
+    aboutTab() {
+        var win = window.open("/html/about.html");
+        win.focus();
     }
 
     // props to use (boolean enable)
@@ -18,8 +23,8 @@ class Toggle extends React.Component {
 
     render() {
         return (
-            <div className='toggle-button'>
-                <p onClick={this.fokusTab}>Enable</p><p onClick={this.fokusTab}>Disable</p>
+            <div>
+                <p className='toggle-button' onClick={this.fokusTab}>Enable</p><div className="divider"/><p className='toggle-button' onClick={this.aboutTab}>Disable</p>
             </div>
         );
     }

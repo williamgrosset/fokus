@@ -5,7 +5,7 @@
 
 ## F.A.Q.
 ### Why am I making this?
-Lately, I have started to notice that I subconciously go to websites that I do not actually want to be on. As individuals, we seek stimulus, so we happen to jump on board with anything to distract our mind. Whether it is Facebook, Twitch, Reddit, or any other domain - when I am working, I want to be completely focused on the things that currently important. We are all guilty of this, but we can fix it. Also, this allows me to spread something that is important to me, which is individuals being more mindful through the use of meditation.
+Lately, I have started to notice that I subconciously go to websites that I do not actually want to be on. Individuals seek stimulus, so we happen to jump on board with anything to distract our mind. Whether it is Facebook, Twitch, Reddit, or any other domain - when I am working, I want to be completely focused on the things that currently important. We are all guilty of this, but we can fix it. Also, this allows me to spread something that is important to me, which is individuals being more mindful through the use of meditation.
 
 ### "This problem has already been solved."
 Not exactly. Most extensions are a bit overkill with their design and functionality. I want to build something that I can use everyday!

@@ -1,6 +1,6 @@
 import React from 'react';
 
-class HeaderLink extends React.Component {
+class Headers extends React.Component {
     fokusTab() {
         var win = window.open("/html/home.html");
         win.focus()
@@ -15,4 +15,4 @@ class HeaderLink extends React.Component {
     }
 }
 
-module.exports = HeaderLink;
+module.exports = Headers;

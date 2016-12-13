@@ -3,8 +3,39 @@
     cursor: pointer;
 }
 
+#toggle {
+    text-align: center;
+    font-family: 'Lato', serif;
+    font-size: 14px;
+    color: #A1A1A1;
+}
+
 /*
 .Fokus-link {
     padding: 0cm 20cm 0cm 2cm;
 }
 */
+
+.divider{
+    width:80px;
+    height:auto;
+    display:inline-block;
+}
+
+p.domains-title {
+    text-align: center;
+    font-family: 'Lato', serif;
+    font-size: 14px;
+    color: #000000;
+}
+
+p.toggle-button {
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.toggle-button:hover {
+    color: #000000;
+}
+
