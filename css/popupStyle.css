@@ -10,6 +10,12 @@
     color: #A1A1A1;
 }
 
+#domain-container {
+    font-family: 'Lato', serif;
+    height: 180px;
+    overflow: auto;
+}
+
 /*
 .Fokus-link {
     padding: 0cm 20cm 0cm 2cm;
@@ -29,13 +35,22 @@ p.domains-title {
     color: #000000;
 }
 
-p.toggle-button {
+p.toggle-button1 {
     text-align: center;
     display: inline-block;
     cursor: pointer;
 }
 
-.toggle-button:hover {
+p.toggle-button2 {
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.toggle-button1:hover {
     color: #000000;
 }
 
+.toggle-button2:hover {
+    color: #000000;
+}
