@@ -1,26 +1,33 @@
 #header {
     padding: 0cm 2cm 0cm 2cm;
+    border-bottom: 1px solid;
+    padding-bottom: 8px;
+}
+
+.fokus-link {
     cursor: pointer;
 }
 
 #toggle {
     text-align: center;
     font-family: 'Lato', serif;
-    font-size: 14px;
+    font-size: 15px;
     color: #A1A1A1;
+    border-top: 1px solid;
+}
+
+input[type=text] {
+    border: none;
+    border-bottom: 1px solid;
+    font-size: 15px;
 }
 
 #domain-container {
     font-family: 'Lato', serif;
     height: 180px;
     overflow: auto;
+    font-size: 15px;
 }
-
-/*
-.Fokus-link {
-    padding: 0cm 20cm 0cm 2cm;
-}
-*/
 
 .divider{
     width:80px;
@@ -31,7 +38,7 @@
 p.domains-title {
     text-align: center;
     font-family: 'Lato', serif;
-    font-size: 14px;
+    font-size: 15px;
     color: #000000;
 }
 
