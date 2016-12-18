@@ -26,6 +26,15 @@ var DomainContainer = function (_React$Component) {
 
     _createClass(DomainContainer, [{
         key: "fokusTab",
+
+        /*
+        constructor(props) {
+            super(props);
+            this.state = {value: 'initial'};
+             this.submit = this.submit.bind(this);
+        }
+        */
+
         value: function fokusTab() {
             var win = window.open("/html/home.html");
             win.focus();
@@ -126,19 +135,37 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var DomainNew = function (_React$Component) {
     _inherits(DomainNew, _React$Component);
 
-    function DomainNew() {
+    function DomainNew(props) {
         _classCallCheck(this, DomainNew);
 
-        return _possibleConstructorReturn(this, (DomainNew.__proto__ || Object.getPrototypeOf(DomainNew)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (DomainNew.__proto__ || Object.getPrototypeOf(DomainNew)).call(this, props));
+
+        _this.state = { value: '' };
+
+        _this.handleChange = _this.handleChange.bind(_this);
+        _this.handleSubmit = _this.handleSubmit.bind(_this);
+        return _this;
     }
 
     _createClass(DomainNew, [{
+        key: 'handleChange',
+        value: function handleChange(e) {
+            this.setState({ value: e.target.value });
+        }
+    }, {
+        key: 'handleSubmit',
+        value: function handleSubmit(e) {
+            console.log('we submitted something :)');
+            console.log(this.state.value);
+            e.preventDefault();
+        }
+    }, {
         key: 'render',
         value: function render() {
             return _react2.default.createElement(
-                'div',
-                null,
-                _react2.default.createElement('input', { type: 'text', placeholder: 'www.facebook.com' })
+                'form',
+                { onSubmit: this.handleSubmit },
+                _react2.default.createElement('input', { type: 'text', value: this.state.value, placeholder: 'www.facebook.com', onChange: this.handleChange })
             );
         }
     }]);

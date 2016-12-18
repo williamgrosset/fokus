@@ -1,6 +1,15 @@
 import React from 'react';
 
 class DomainContainer extends React.Component {
+    /*
+    constructor(props) {
+        super(props);
+        this.state = {value: 'initial'};
+
+        this.submit = this.submit.bind(this);
+    }
+    */
+
     fokusTab() {
         var win = window.open("/html/home.html");
         win.focus();
