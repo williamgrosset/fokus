@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import DomainItem from './domain-item.js';
 
 class DomainNew extends React.Component {
     constructor(props) {
@@ -14,9 +16,12 @@ class DomainNew extends React.Component {
     }
 
     handleSubmit(e) {
+        var domainItem = <DomainItem name={this.state.value} />;
         console.log('we submitted something :)');
         console.log(this.state.value);
         e.preventDefault();
+        this.setState({value: ''});
+        ReactDOM.render(domainItem, document.getElementById('domain-container'));
     }
 
     render() {
