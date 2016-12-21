@@ -9,7 +9,7 @@ class DomainItem extends React.Component {
     render() {
         return (
             <div>
-                <li>{this.props.name}</li>
+                <li>{this.props.domain}</li><button>Delete</button>
             </div>
         );
     }
