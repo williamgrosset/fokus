@@ -6,6 +6,10 @@ class DomainItem extends React.Component {
         this.state = {};
     }
 
+    deleteDomain() {
+        console.log('hey, we clicked delete');
+    }
+
     render() {
         return (
             <div>

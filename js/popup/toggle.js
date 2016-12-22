@@ -35,10 +35,9 @@ class Toggle extends React.Component {
     if (enable) {
         // set button to enable
         // active blocking domains
-    } 
+    }
         // set button to disable
         // disable blocking domains
-
 
     render() {
         return (
