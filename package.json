@@ -27,5 +27,6 @@
   "bugs": {
     "url": "https://github.com/williamgrosset/fokus/issues"
   },
-  "homepage": "https://github.com/williamgrosset/fokus#readme"
+  "homepage": "https://github.com/williamgrosset/fokus#readme",
+  "dependencies": {}
 }

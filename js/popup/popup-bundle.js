@@ -33,9 +33,13 @@ var DomainContainer = function (_React$Component) {
     _createClass(DomainContainer, [{
         key: 'renderContainer',
         value: function renderContainer() {
-            return this.props.container.map(function (domain, index) {
-                return _react2.default.createElement(_domainItem2.default, _extends({ key: index }, domain));
+            var extra = this.props; // passing down too many things
+            //console.log(extra);
+            var test = this.props.container.map(function (domain) {
+                return _react2.default.createElement(_domainItem2.default, _extends({}, domain, { key: domain.id }, extra));
             });
+            console.log(test);
+            return test;
         }
 
         // if we did not use '()', the function would never be called
@@ -81,14 +85,16 @@ var DomainItem = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (DomainItem.__proto__ || Object.getPrototypeOf(DomainItem)).call(this, props));
 
-        _this.state = {};
+        _this.handleClick = _this.handleClick.bind(_this);
         return _this;
     }
 
     _createClass(DomainItem, [{
-        key: 'deleteDomain',
-        value: function deleteDomain() {
-            console.log('hey, we clicked delete');
+        key: 'handleClick',
+        value: function handleClick(e) {
+            e.preventDefault();
+            console.log('handleClick id: ' + this.props.id);
+            this.props.removeDomain(this.props.id);
         }
     }, {
         key: 'render',
@@ -101,11 +107,7 @@ var DomainItem = function (_React$Component) {
                     null,
                     this.props.domain
                 ),
-                _react2.default.createElement(
-                    'button',
-                    null,
-                    'Delete'
-                )
+                _react2.default.createElement('input', { type: 'image', src: '../../png/garbage_can_16.png', onClick: this.handleClick })
             );
         }
     }]);
@@ -207,6 +209,14 @@ var _domainContainer = require('./domain-container.js');
 
 var _domainContainer2 = _interopRequireDefault(_domainContainer);
 
+var _domainItem = require('./domain-item.js');
+
+var _domainItem2 = _interopRequireDefault(_domainItem);
+
+var _shortid = require('shortid');
+
+var _shortid2 = _interopRequireDefault(_shortid);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -216,6 +226,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var container = [{
+    id: 0,
     domain: 'reddit.com'
 }];
 
@@ -230,7 +241,10 @@ var Domains = function (_React$Component) {
         _this.state = {
             container: container
         };
+
         _this.addDomain = _this.addDomain.bind(_this);
+        _this.removeDomain = _this.removeDomain.bind(_this);
+        _this.getIndex = _this.getIndex.bind(_this);
         return _this;
     }
 
@@ -247,9 +261,39 @@ var Domains = function (_React$Component) {
         key: 'addDomain',
         value: function addDomain(domain) {
             this.state.container.push({
+                id: _shortid2.default.generate(),
                 domain: domain
             });
             this.setState({ container: this.state.container });
+        }
+
+        /*
+        * getIndex(value, prop):
+        */
+
+    }, {
+        key: 'getIndex',
+        value: function getIndex(value, prop) {
+            for (var i = 0; i < this.state.container.length; i++) {
+                if (this.state.container[i][prop] === value) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        /*
+        * removeDomain(e):
+        */
+
+    }, {
+        key: 'removeDomain',
+        value: function removeDomain(id) {
+            var index = this.getIndex(id, 'id');
+            console.log('removeDomain index: ' + index);
+            this.setState({ container: this.state.container.filter(function (_, ind) {
+                    return ind !== index;
+                }) });
         }
     }, {
         key: 'render',
@@ -263,7 +307,7 @@ var Domains = function (_React$Component) {
                     'Blocked Domains'
                 ),
                 _react2.default.createElement(_domainNew2.default, { addDomain: this.addDomain }),
-                _react2.default.createElement(_domainContainer2.default, { container: this.state.container })
+                _react2.default.createElement(_domainContainer2.default, { container: this.state.container, removeDomain: this.removeDomain })
             );
         }
     }]);
@@ -273,7 +317,7 @@ var Domains = function (_React$Component) {
 
 module.exports = Domains;
 
-},{"./domain-container.js":1,"./domain-new.js":3,"react":185}],5:[function(require,module,exports){
+},{"./domain-container.js":1,"./domain-item.js":2,"./domain-new.js":3,"react":185,"shortid":186}],5:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -31121,4 +31165,319 @@ module.exports = traverseAllChildren;
 
 module.exports = require('./lib/React');
 
-},{"./lib/React":163}]},{},[6]);
+},{"./lib/React":163}],186:[function(require,module,exports){
+'use strict';
+module.exports = require('./lib/index');
+
+},{"./lib/index":190}],187:[function(require,module,exports){
+'use strict';
+
+var randomFromSeed = require('./random/random-from-seed');
+
+var ORIGINAL = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-';
+var alphabet;
+var previousSeed;
+
+var shuffled;
+
+function reset() {
+    shuffled = false;
+}
+
+function setCharacters(_alphabet_) {
+    if (!_alphabet_) {
+        if (alphabet !== ORIGINAL) {
+            alphabet = ORIGINAL;
+            reset();
+        }
+        return;
+    }
+
+    if (_alphabet_ === alphabet) {
+        return;
+    }
+
+    if (_alphabet_.length !== ORIGINAL.length) {
+        throw new Error('Custom alphabet for shortid must be ' + ORIGINAL.length + ' unique characters. You submitted ' + _alphabet_.length + ' characters: ' + _alphabet_);
+    }
+
+    var unique = _alphabet_.split('').filter(function(item, ind, arr){
+       return ind !== arr.lastIndexOf(item);
+    });
+
+    if (unique.length) {
+        throw new Error('Custom alphabet for shortid must be ' + ORIGINAL.length + ' unique characters. These characters were not unique: ' + unique.join(', '));
+    }
+
+    alphabet = _alphabet_;
+    reset();
+}
+
+function characters(_alphabet_) {
+    setCharacters(_alphabet_);
+    return alphabet;
+}
+
+function setSeed(seed) {
+    randomFromSeed.seed(seed);
+    if (previousSeed !== seed) {
+        reset();
+        previousSeed = seed;
+    }
+}
+
+function shuffle() {
+    if (!alphabet) {
+        setCharacters(ORIGINAL);
+    }
+
+    var sourceArray = alphabet.split('');
+    var targetArray = [];
+    var r = randomFromSeed.nextValue();
+    var characterIndex;
+
+    while (sourceArray.length > 0) {
+        r = randomFromSeed.nextValue();
+        characterIndex = Math.floor(r * sourceArray.length);
+        targetArray.push(sourceArray.splice(characterIndex, 1)[0]);
+    }
+    return targetArray.join('');
+}
+
+function getShuffled() {
+    if (shuffled) {
+        return shuffled;
+    }
+    shuffled = shuffle();
+    return shuffled;
+}
+
+/**
+ * lookup shuffled letter
+ * @param index
+ * @returns {string}
+ */
+function lookup(index) {
+    var alphabetShuffled = getShuffled();
+    return alphabetShuffled[index];
+}
+
+module.exports = {
+    characters: characters,
+    seed: setSeed,
+    lookup: lookup,
+    shuffled: getShuffled
+};
+
+},{"./random/random-from-seed":193}],188:[function(require,module,exports){
+'use strict';
+var alphabet = require('./alphabet');
+
+/**
+ * Decode the id to get the version and worker
+ * Mainly for debugging and testing.
+ * @param id - the shortid-generated id.
+ */
+function decode(id) {
+    var characters = alphabet.shuffled();
+    return {
+        version: characters.indexOf(id.substr(0, 1)) & 0x0f,
+        worker: characters.indexOf(id.substr(1, 1)) & 0x0f
+    };
+}
+
+module.exports = decode;
+
+},{"./alphabet":187}],189:[function(require,module,exports){
+'use strict';
+
+var randomByte = require('./random/random-byte');
+
+function encode(lookup, number) {
+    var loopCounter = 0;
+    var done;
+
+    var str = '';
+
+    while (!done) {
+        str = str + lookup( ( (number >> (4 * loopCounter)) & 0x0f ) | randomByte() );
+        done = number < (Math.pow(16, loopCounter + 1 ) );
+        loopCounter++;
+    }
+    return str;
+}
+
+module.exports = encode;
+
+},{"./random/random-byte":192}],190:[function(require,module,exports){
+'use strict';
+
+var alphabet = require('./alphabet');
+var encode = require('./encode');
+var decode = require('./decode');
+var isValid = require('./is-valid');
+
+// Ignore all milliseconds before a certain time to reduce the size of the date entropy without sacrificing uniqueness.
+// This number should be updated every year or so to keep the generated id short.
+// To regenerate `new Date() - 0` and bump the version. Always bump the version!
+var REDUCE_TIME = 1459707606518;
+
+// don't change unless we change the algos or REDUCE_TIME
+// must be an integer and less than 16
+var version = 6;
+
+// if you are using cluster or multiple servers use this to make each instance
+// has a unique value for worker
+// Note: I don't know if this is automatically set when using third
+// party cluster solutions such as pm2.
+var clusterWorkerId = require('./util/cluster-worker-id') || 0;
+
+// Counter is used when shortid is called multiple times in one second.
+var counter;
+
+// Remember the last time shortid was called in case counter is needed.
+var previousSeconds;
+
+/**
+ * Generate unique id
+ * Returns string id
+ */
+function generate() {
+
+    var str = '';
+
+    var seconds = Math.floor((Date.now() - REDUCE_TIME) * 0.001);
+
+    if (seconds === previousSeconds) {
+        counter++;
+    } else {
+        counter = 0;
+        previousSeconds = seconds;
+    }
+
+    str = str + encode(alphabet.lookup, version);
+    str = str + encode(alphabet.lookup, clusterWorkerId);
+    if (counter > 0) {
+        str = str + encode(alphabet.lookup, counter);
+    }
+    str = str + encode(alphabet.lookup, seconds);
+
+    return str;
+}
+
+
+/**
+ * Set the seed.
+ * Highly recommended if you don't want people to try to figure out your id schema.
+ * exposed as shortid.seed(int)
+ * @param seed Integer value to seed the random alphabet.  ALWAYS USE THE SAME SEED or you might get overlaps.
+ */
+function seed(seedValue) {
+    alphabet.seed(seedValue);
+    return module.exports;
+}
+
+/**
+ * Set the cluster worker or machine id
+ * exposed as shortid.worker(int)
+ * @param workerId worker must be positive integer.  Number less than 16 is recommended.
+ * returns shortid module so it can be chained.
+ */
+function worker(workerId) {
+    clusterWorkerId = workerId;
+    return module.exports;
+}
+
+/**
+ *
+ * sets new characters to use in the alphabet
+ * returns the shuffled alphabet
+ */
+function characters(newCharacters) {
+    if (newCharacters !== undefined) {
+        alphabet.characters(newCharacters);
+    }
+
+    return alphabet.shuffled();
+}
+
+
+// Export all other functions as properties of the generate function
+module.exports = generate;
+module.exports.generate = generate;
+module.exports.seed = seed;
+module.exports.worker = worker;
+module.exports.characters = characters;
+module.exports.decode = decode;
+module.exports.isValid = isValid;
+
+},{"./alphabet":187,"./decode":188,"./encode":189,"./is-valid":191,"./util/cluster-worker-id":194}],191:[function(require,module,exports){
+'use strict';
+var alphabet = require('./alphabet');
+
+function isShortId(id) {
+    if (!id || typeof id !== 'string' || id.length < 6 ) {
+        return false;
+    }
+
+    var characters = alphabet.characters();
+    var len = id.length;
+    for(var i = 0; i < len;i++) {
+        if (characters.indexOf(id[i]) === -1) {
+            return false;
+        }
+    }
+    return true;
+}
+
+module.exports = isShortId;
+
+},{"./alphabet":187}],192:[function(require,module,exports){
+'use strict';
+
+var crypto = typeof window === 'object' && (window.crypto || window.msCrypto); // IE 11 uses window.msCrypto
+
+function randomByte() {
+    if (!crypto || !crypto.getRandomValues) {
+        return Math.floor(Math.random() * 256) & 0x30;
+    }
+    var dest = new Uint8Array(1);
+    crypto.getRandomValues(dest);
+    return dest[0] & 0x30;
+}
+
+module.exports = randomByte;
+
+},{}],193:[function(require,module,exports){
+'use strict';
+
+// Found this seed-based random generator somewhere
+// Based on The Central Randomizer 1.3 (C) 1997 by Paul Houle (houle@msc.cornell.edu)
+
+var seed = 1;
+
+/**
+ * return a random number based on a seed
+ * @param seed
+ * @returns {number}
+ */
+function getNextValue() {
+    seed = (seed * 9301 + 49297) % 233280;
+    return seed/(233280.0);
+}
+
+function setSeed(_seed_) {
+    seed = _seed_;
+}
+
+module.exports = {
+    nextValue: getNextValue,
+    seed: setSeed
+};
+
+},{}],194:[function(require,module,exports){
+'use strict';
+
+module.exports = 0;
+
+},{}]},{},[6]);

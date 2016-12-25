@@ -3,7 +3,11 @@ import DomainItem from './domain-item.js'
 
 class DomainContainer extends React.Component {
     renderContainer() {
-        return this.props.container.map((domain, index) => <DomainItem key={index} {...domain} />);
+        const extra = this.props; // passing down too many things
+        //console.log(extra);
+        const test = this.props.container.map((domain) => <DomainItem {...domain} key={domain.id} {...extra} /> );
+        console.log(test);
+        return test;
     }
 
     // if we did not use '()', the function would never be called
