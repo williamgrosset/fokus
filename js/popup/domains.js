@@ -4,14 +4,14 @@ import DomainContainer from './domain-container.js';
 import DomainItem from './domain-item.js';
 import shortid from 'shortid';
 
-const container = [{
-    id: 0,
-    domain: 'reddit.com'
-}];
-
 class Domains extends React.Component {
     constructor(props) {
         super(props);
+
+        const container = [{
+            id: 0,
+            domain: 'reddit.com'
+        }];
 
         this.state = {
             container
@@ -44,7 +44,7 @@ class Domains extends React.Component {
     */
     storeDomain(domain) {
         chrome.runtime.sendMessage({
-            greeting: "hello"
+            domain
         });
         // add to chrome storage
     }
@@ -66,6 +66,10 @@ class Domains extends React.Component {
     */
     removeDomain(id) {
         var index = this.getIndex(id, 'id');
+        if (index == -1) {
+            console.log('removeDomain: could not find index :(');
+            return;
+        }
         console.log('removeDomain index: ' + index);
         this.setState({ container: this.state.container.filter((_, ind) => ind !== index) });
     }

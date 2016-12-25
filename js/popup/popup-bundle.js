@@ -225,11 +225,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var container = [{
-    id: 0,
-    domain: 'reddit.com'
-}];
-
 var Domains = function (_React$Component) {
     _inherits(Domains, _React$Component);
 
@@ -237,6 +232,11 @@ var Domains = function (_React$Component) {
         _classCallCheck(this, Domains);
 
         var _this = _possibleConstructorReturn(this, (Domains.__proto__ || Object.getPrototypeOf(Domains)).call(this, props));
+
+        var container = [{
+            id: 0,
+            domain: 'reddit.com'
+        }];
 
         _this.state = {
             container: container
@@ -277,7 +277,7 @@ var Domains = function (_React$Component) {
         key: 'storeDomain',
         value: function storeDomain(domain) {
             chrome.runtime.sendMessage({
-                greeting: "hello"
+                domain: domain
             });
             // add to chrome storage
         }
@@ -305,6 +305,10 @@ var Domains = function (_React$Component) {
         key: 'removeDomain',
         value: function removeDomain(id) {
             var index = this.getIndex(id, 'id');
+            if (index == -1) {
+                console.log('removeDomain: could not find index :(');
+                return;
+            }
             console.log('removeDomain index: ' + index);
             this.setState({ container: this.state.container.filter(function (_, ind) {
                     return ind !== index;
