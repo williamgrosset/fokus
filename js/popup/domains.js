@@ -18,6 +18,7 @@ class Domains extends React.Component {
         };
 
         this.addDomain = this.addDomain.bind(this);
+        this.storeDomain = this.storeDomain.bind(this);
         this.removeDomain = this.removeDomain.bind(this);
         this.getIndex = this.getIndex.bind(this);
     }
@@ -30,11 +31,22 @@ class Domains extends React.Component {
     * an object for each unique domain.
     */
     addDomain(domain) {
+        this.storeDomain(domain);
         this.state.container.push({
             id: shortid.generate(),
             domain
         });
         this.setState({ container: this.state.container });
+    }
+
+    /*
+    * storeDomain(domain):
+    */
+    storeDomain(domain) {
+        chrome.runtime.sendMessage({
+            greeting: "hello"
+        });
+        // add to chrome storage
     }
 
     /*

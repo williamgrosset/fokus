@@ -104,10 +104,10 @@ var DomainItem = function (_React$Component) {
                 null,
                 _react2.default.createElement(
                     'li',
-                    null,
+                    { id: 'domain-element' },
                     this.props.domain
                 ),
-                _react2.default.createElement('input', { type: 'image', src: '../../png/garbage_can_16.png', onClick: this.handleClick })
+                _react2.default.createElement('input', { id: 'domain-delete', type: 'image', src: '../../png/garbage_can_16.png', onClick: this.handleClick })
             );
         }
     }]);
@@ -182,7 +182,7 @@ var DomainNew = function (_React$Component) {
             return _react2.default.createElement(
                 'form',
                 { onSubmit: this.handleSubmit },
-                _react2.default.createElement('input', { type: 'text', value: this.state.value, placeholder: 'www.facebook.com', onChange: this.handleChange })
+                _react2.default.createElement('input', { type: 'text', value: this.state.value, placeholder: 'e.g. www.facebook.com', onChange: this.handleChange })
             );
         }
     }]);
@@ -243,6 +243,7 @@ var Domains = function (_React$Component) {
         };
 
         _this.addDomain = _this.addDomain.bind(_this);
+        _this.storeDomain = _this.storeDomain.bind(_this);
         _this.removeDomain = _this.removeDomain.bind(_this);
         _this.getIndex = _this.getIndex.bind(_this);
         return _this;
@@ -260,11 +261,25 @@ var Domains = function (_React$Component) {
     _createClass(Domains, [{
         key: 'addDomain',
         value: function addDomain(domain) {
+            this.storeDomain(domain);
             this.state.container.push({
                 id: _shortid2.default.generate(),
                 domain: domain
             });
             this.setState({ container: this.state.container });
+        }
+
+        /*
+        * storeDomain(domain):
+        */
+
+    }, {
+        key: 'storeDomain',
+        value: function storeDomain(domain) {
+            chrome.runtime.sendMessage({
+                greeting: "hello"
+            });
+            // add to chrome storage
         }
 
         /*

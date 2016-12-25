@@ -15,7 +15,7 @@ class DomainItem extends React.Component {
     render() {
         return (
             <div>
-                <li>{this.props.domain}</li><input type='image' src='../../png/garbage_can_16.png' onClick={this.handleClick} />
+                <li id='domain-element'>{this.props.domain}</li><input id='domain-delete' type='image' src='../../png/garbage_can_16.png' onClick={this.handleClick} />
             </div>
         );
     }
