@@ -9,7 +9,7 @@ class Headers extends React.Component {
     render() {
         return (
             <div className='fokus-link'>
-                <img src={'https://github.com/williamgrosset/fokus/blob/master/png/fokus_title_128.png?raw=true'} onClick={this.fokusTab}/>
+                <img src='../../png/fokus_title_128.png' onClick={this.fokusTab}/>
             </div>
         );
     }

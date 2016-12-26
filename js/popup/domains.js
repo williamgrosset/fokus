@@ -9,7 +9,7 @@ class Domains extends React.Component {
         super(props);
 
         const container = [{
-            id: 0,
+            id: shortid.generate(),
             domain: 'reddit.com'
         }];
 
@@ -18,6 +18,7 @@ class Domains extends React.Component {
         };
 
         this.addDomain = this.addDomain.bind(this);
+        this.validDomain = this.validDomain.bind(this);
         this.storeDomain = this.storeDomain.bind(this);
         this.removeDomain = this.removeDomain.bind(this);
         this.getIndex = this.getIndex.bind(this);
@@ -31,7 +32,9 @@ class Domains extends React.Component {
     * an object for each unique domain.
     */
     addDomain(domain) {
-        this.storeDomain(domain);
+        var validDomain = this.validDomain(domain);
+        console.log(validDomain);
+        this.storeDomain(validDomain);
         this.state.container.push({
             id: shortid.generate(),
             domain
@@ -40,11 +43,22 @@ class Domains extends React.Component {
     }
 
     /*
-    * storeDomain(domain):
+    * validDomain(domain):
     */
-    storeDomain(domain) {
+    validDomain(domain) {
+        var prefix = "*://*.";
+        var suffix = "/*";
+        var validDomain = prefix.concat(domain);
+        validDomain = validDomain.concat(suffix);
+        return validDomain;
+    }
+
+    /*
+    * storeDomain(validDomain):
+    */
+    storeDomain(validDomain) {
         chrome.runtime.sendMessage({
-            domain
+            validDomain
         });
         // add to chrome storage
     }

@@ -18,9 +18,10 @@
         "128": "png/fokus_logo_128.png"
     },
     "permissions": [
+        "storage",
         "tabs",
         "webRequest",
         "webRequestBlocking",
-        "*://*/*"
+        "<all_urls>"
     ]
 }

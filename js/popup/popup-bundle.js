@@ -182,7 +182,7 @@ var DomainNew = function (_React$Component) {
             return _react2.default.createElement(
                 'form',
                 { onSubmit: this.handleSubmit },
-                _react2.default.createElement('input', { type: 'text', value: this.state.value, placeholder: 'e.g. www.facebook.com', onChange: this.handleChange })
+                _react2.default.createElement('input', { type: 'text', value: this.state.value, placeholder: 'e.g. facebook.com', onChange: this.handleChange })
             );
         }
     }]);
@@ -234,7 +234,7 @@ var Domains = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (Domains.__proto__ || Object.getPrototypeOf(Domains)).call(this, props));
 
         var container = [{
-            id: 0,
+            id: _shortid2.default.generate(),
             domain: 'reddit.com'
         }];
 
@@ -243,6 +243,7 @@ var Domains = function (_React$Component) {
         };
 
         _this.addDomain = _this.addDomain.bind(_this);
+        _this.validDomain = _this.validDomain.bind(_this);
         _this.storeDomain = _this.storeDomain.bind(_this);
         _this.removeDomain = _this.removeDomain.bind(_this);
         _this.getIndex = _this.getIndex.bind(_this);
@@ -261,7 +262,9 @@ var Domains = function (_React$Component) {
     _createClass(Domains, [{
         key: 'addDomain',
         value: function addDomain(domain) {
-            this.storeDomain(domain);
+            var validDomain = this.validDomain(domain);
+            console.log(validDomain);
+            this.storeDomain(validDomain);
             this.state.container.push({
                 id: _shortid2.default.generate(),
                 domain: domain
@@ -270,14 +273,28 @@ var Domains = function (_React$Component) {
         }
 
         /*
-        * storeDomain(domain):
+        * validDomain(domain):
+        */
+
+    }, {
+        key: 'validDomain',
+        value: function validDomain(domain) {
+            var prefix = "*://*.";
+            var suffix = "/*";
+            var validDomain = prefix.concat(domain);
+            validDomain = validDomain.concat(suffix);
+            return validDomain;
+        }
+
+        /*
+        * storeDomain(validDomain):
         */
 
     }, {
         key: 'storeDomain',
-        value: function storeDomain(domain) {
+        value: function storeDomain(validDomain) {
             chrome.runtime.sendMessage({
-                domain: domain
+                validDomain: validDomain
             });
             // add to chrome storage
         }
@@ -374,7 +391,7 @@ var Headers = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'fokus-link' },
-                _react2.default.createElement('img', { src: 'https://github.com/williamgrosset/fokus/blob/master/png/fokus_title_128.png?raw=true', onClick: this.fokusTab })
+                _react2.default.createElement('img', { src: '../../png/fokus_title_128.png', onClick: this.fokusTab })
             );
         }
     }]);

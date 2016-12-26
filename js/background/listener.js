@@ -1,10 +1,12 @@
 var disabled = false;
+var array = [
+    "*://www.reddit.com/*",
+];
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        console.log(request.domain);
-        var array = [];
-        array.push(request.domain);
+        console.log(request.validDomain);
+        array.push(request.validDomain);
         updateFilters(array);
     }
 );
@@ -24,10 +26,7 @@ chrome.webRequest.onBeforeRequest.addListener(
         return {cancel: true};
     },
     {
-        urls: [
-            "*://www.facebook.com/*",
-            "*://www.twitch.tv/*",
-        ]
+        urls: array
     },
     ["blocking"]
 );
