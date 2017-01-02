@@ -71,7 +71,8 @@ class Domains extends React.Component {
         chrome.runtime.sendMessage({
             validDomain
         });
-        localStorage.setItem('container', JSON.stringify(container));
+        var empty = [];
+        localStorage.setItem('container', JSON.stringify(empty));
     }
 
     /*

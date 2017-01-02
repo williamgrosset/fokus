@@ -29,12 +29,20 @@ class DomainContainer extends React.Component {
     }*/
 
     render() {
-        const extra = this.props; 
-        return (
-            <ul id='domain-container'>
-                {this.state.container.map((domain) => <DomainItem {...domain} key={domain.id} {...extra} /> )}
-            </ul>
-        );
+        const extra = this.props;
+        if (this.state.container.length != 0) {
+            return (
+                <ul id='domain-container'>
+                    {this.state.container.map((domain) => <DomainItem {...domain} key={domain.id} {...extra} /> )}
+                </ul>
+            );
+        } else {
+            return (
+                <ul id='domain-container'>
+                    <p>You currently have no domains blocked :(</p>
+                </ul>
+            );
+        }
     }
     
     /*

@@ -12,7 +12,6 @@
     text-align: center;
     font-family: 'Lato', serif;
     font-size: 15px;
-    color: #A1A1A1;
     border-top: 1px solid;
 }
 
@@ -53,12 +52,14 @@ p.toggle-button1 {
     text-align: center;
     display: inline-block;
     cursor: pointer;
+    color: #A1A1A1;
 }
 
 p.toggle-button2 {
     text-align: center;
     display: inline-block;
     cursor: pointer;
+    color: #A1A1A1;
 }
 
 .toggle-button1:hover {

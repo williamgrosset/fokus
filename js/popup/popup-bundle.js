@@ -61,13 +61,25 @@ var DomainContainer = function (_React$Component) {
         key: 'render',
         value: function render() {
             var extra = this.props;
-            return _react2.default.createElement(
-                'ul',
-                { id: 'domain-container' },
-                this.state.container.map(function (domain) {
-                    return _react2.default.createElement(_domainItem2.default, _extends({}, domain, { key: domain.id }, extra));
-                })
-            );
+            if (this.state.container.length != 0) {
+                return _react2.default.createElement(
+                    'ul',
+                    { id: 'domain-container' },
+                    this.state.container.map(function (domain) {
+                        return _react2.default.createElement(_domainItem2.default, _extends({}, domain, { key: domain.id }, extra));
+                    })
+                );
+            } else {
+                return _react2.default.createElement(
+                    'ul',
+                    { id: 'domain-container' },
+                    _react2.default.createElement(
+                        'p',
+                        null,
+                        'You currently have no domains blocked :('
+                    )
+                );
+            }
         }
 
         /*
@@ -333,7 +345,8 @@ var Domains = function (_React$Component) {
             chrome.runtime.sendMessage({
                 validDomain: validDomain
             });
-            localStorage.setItem('container', JSON.stringify(container));
+            var empty = [];
+            localStorage.setItem('container', JSON.stringify(empty));
         }
 
         /*
