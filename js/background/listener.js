@@ -5,7 +5,7 @@ var array = [
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        console.log(request.validDomain);
+        console.log('listiner.js: ' + request.validDomain);
         array.push(request.validDomain);
         updateFilters(array);
     }
@@ -20,13 +20,3 @@ function updateFilters(urls) {
     chrome.webRequest.onBeforeRequest.addListener(blockRequest, {urls: urls}, ['blocking']);
     console.log('Added domain to blocker: ' + urls);
 }
-
-chrome.webRequest.onBeforeRequest.addListener(
-    function() {
-        return {cancel: true};
-    },
-    {
-        urls: array
-    },
-    ["blocking"]
-);

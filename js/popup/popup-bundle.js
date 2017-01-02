@@ -24,35 +24,61 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var DomainContainer = function (_React$Component) {
     _inherits(DomainContainer, _React$Component);
 
-    function DomainContainer() {
+    function DomainContainer(props) {
         _classCallCheck(this, DomainContainer);
 
-        return _possibleConstructorReturn(this, (DomainContainer.__proto__ || Object.getPrototypeOf(DomainContainer)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (DomainContainer.__proto__ || Object.getPrototypeOf(DomainContainer)).call(this, props));
+
+        _this.state = {
+            container: _this.props.container
+        };
+        //console.log('DomainContainer constructor: ');
+        //console.log(this.state.container);
+        return _this;
     }
 
     _createClass(DomainContainer, [{
         key: 'renderContainer',
         value: function renderContainer() {
             var extra = this.props; // passing down too many things
-            //console.log(extra);
             var test = this.props.container.map(function (domain) {
                 return _react2.default.createElement(_domainItem2.default, _extends({}, domain, { key: domain.id }, extra));
             });
-            console.log(test);
+            console.log('renderContainer: ' + test);
             return test;
         }
 
-        // if we did not use '()', the function would never be called
+        /*
+        getStorage(callback) {
+            chrome.storage.local.get('container', function (result) {
+                console.log(result.container);
+                thing = result.container;
+                callback(thing);
+            }.bind(this));
+        }*/
 
     }, {
         key: 'render',
         value: function render() {
+            var extra = this.props;
             return _react2.default.createElement(
                 'ul',
                 { id: 'domain-container' },
-                this.renderContainer()
+                this.state.container.map(function (domain) {
+                    return _react2.default.createElement(_domainItem2.default, _extends({}, domain, { key: domain.id }, extra));
+                })
             );
         }
+
+        /*
+        render() {
+            return (
+                <ul id='domain-container'>
+                    {this.renderContainer()}
+                </ul>
+            );
+        }*/
+
     }]);
 
     return DomainContainer;
@@ -233,14 +259,14 @@ var Domains = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Domains.__proto__ || Object.getPrototypeOf(Domains)).call(this, props));
 
-        var container = [{
-            id: _shortid2.default.generate(),
-            domain: 'reddit.com'
-        }];
+        var container = JSON.parse(localStorage.getItem('container')) || [];
 
         _this.state = {
             container: container
         };
+
+        console.log('Domains: ');
+        console.log(container);
 
         _this.addDomain = _this.addDomain.bind(_this);
         _this.validDomain = _this.validDomain.bind(_this);
@@ -250,6 +276,7 @@ var Domains = function (_React$Component) {
         return _this;
     }
 
+    // Using cookies, show example way to add a valid domain
     /*
     * addDomain(domain):
     * This method is passed down to the child component (DomainNew)
@@ -262,18 +289,24 @@ var Domains = function (_React$Component) {
     _createClass(Domains, [{
         key: 'addDomain',
         value: function addDomain(domain) {
+            console.log('addDomain (before adding) current container: ');
+            console.log(this.state.container);
             var validDomain = this.validDomain(domain);
-            console.log(validDomain);
-            this.storeDomain(validDomain);
+            var idValue = _shortid2.default.generate();
             this.state.container.push({
-                id: _shortid2.default.generate(),
+                id: idValue,
                 domain: domain
             });
+            console.log('addDomain current container: ' + this.state.container);
             this.setState({ container: this.state.container });
+            this.storeDomain(idValue, validDomain, this.state.container);
         }
 
         /*
         * validDomain(domain):
+        * TODO:
+        * - Add pattern matching for showing invalid input
+        * - Add prefix and suffix for else case (DONE)
         */
 
     }, {
@@ -281,22 +314,26 @@ var Domains = function (_React$Component) {
         value: function validDomain(domain) {
             var prefix = "*://*.";
             var suffix = "/*";
-            var validDomain = prefix.concat(domain);
-            validDomain = validDomain.concat(suffix);
+            var validDomain = prefix.concat(domain).concat(suffix);
             return validDomain;
         }
 
         /*
         * storeDomain(validDomain):
+        * TODO: Needs storing:
+        * - background page array
+        * - chrome.storage.local
+        * - viusally on UI (DONE)
         */
 
     }, {
         key: 'storeDomain',
-        value: function storeDomain(validDomain) {
+        value: function storeDomain(idValue, validDomain, container) {
+            // send only a single message, dont keep a long connection
             chrome.runtime.sendMessage({
                 validDomain: validDomain
             });
-            // add to chrome storage
+            localStorage.setItem('container', JSON.stringify(container));
         }
 
         /*
@@ -316,6 +353,10 @@ var Domains = function (_React$Component) {
 
         /*
         * removeDomain(e):
+        * TODO: Needs deleting from: 
+        * - background page array
+        * - chrome.storage.local
+        * - visually on UI (DONE)
         */
 
     }, {
