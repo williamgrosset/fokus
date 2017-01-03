@@ -8,8 +8,9 @@ class Domains extends React.Component {
     constructor(props) {
         super(props);
  
+        var container = []; //used for testing
         var container = JSON.parse(localStorage.getItem('container')) || [];
-        
+
         this.state = {
             container
         };
@@ -25,6 +26,7 @@ class Domains extends React.Component {
     }
 
     // Using cookies, show example way to add a valid domain
+    
     /*
     * addDomain(domain):
     * This method is passed down to the child component (DomainNew)
@@ -71,8 +73,8 @@ class Domains extends React.Component {
         chrome.runtime.sendMessage({
             validDomain
         });
-        var empty = [];
-        localStorage.setItem('container', JSON.stringify(empty));
+        var empty = []; // used for testing
+        localStorage.setItem('container', JSON.stringify(container));
     }
 
     /*
@@ -100,8 +102,9 @@ class Domains extends React.Component {
             console.log('removeDomain: could not find index :(');
             return;
         }
-        console.log('removeDomain index: ' + index);
-        this.setState({ container: this.state.container.filter((_, ind) => ind !== index) });
+        var newContainer = this.state.container.filter((_, ind) => ind !== index);
+        localStorage.setItem('container', JSON.stringify(newContainer));
+        this.setState({ container: newContainer });
     }
 
     render() {

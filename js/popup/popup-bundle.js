@@ -61,11 +61,11 @@ var DomainContainer = function (_React$Component) {
         key: 'render',
         value: function render() {
             var extra = this.props;
-            if (this.state.container.length != 0) {
+            if (this.props.container.length != 0) {
                 return _react2.default.createElement(
                     'ul',
                     { id: 'domain-container' },
-                    this.state.container.map(function (domain) {
+                    this.props.container.map(function (domain) {
                         return _react2.default.createElement(_domainItem2.default, _extends({}, domain, { key: domain.id }, extra));
                     })
                 );
@@ -271,6 +271,7 @@ var Domains = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Domains.__proto__ || Object.getPrototypeOf(Domains)).call(this, props));
 
+        var container = []; //used for testing
         var container = JSON.parse(localStorage.getItem('container')) || [];
 
         _this.state = {
@@ -289,6 +290,7 @@ var Domains = function (_React$Component) {
     }
 
     // Using cookies, show example way to add a valid domain
+
     /*
     * addDomain(domain):
     * This method is passed down to the child component (DomainNew)
@@ -345,8 +347,8 @@ var Domains = function (_React$Component) {
             chrome.runtime.sendMessage({
                 validDomain: validDomain
             });
-            var empty = [];
-            localStorage.setItem('container', JSON.stringify(empty));
+            var empty = []; // used for testing
+            localStorage.setItem('container', JSON.stringify(container));
         }
 
         /*
@@ -380,10 +382,11 @@ var Domains = function (_React$Component) {
                 console.log('removeDomain: could not find index :(');
                 return;
             }
-            console.log('removeDomain index: ' + index);
-            this.setState({ container: this.state.container.filter(function (_, ind) {
-                    return ind !== index;
-                }) });
+            var newContainer = this.state.container.filter(function (_, ind) {
+                return ind !== index;
+            });
+            localStorage.setItem('container', JSON.stringify(newContainer));
+            this.setState({ container: newContainer });
         }
     }, {
         key: 'render',
