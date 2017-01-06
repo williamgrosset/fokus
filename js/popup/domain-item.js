@@ -8,7 +8,6 @@ class DomainItem extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-        console.log('handleClick id: ' + this.props.id);
         this.props.removeDomain(this.props.id);
     }
 

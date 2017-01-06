@@ -81,16 +81,6 @@ var DomainContainer = function (_React$Component) {
                 );
             }
         }
-
-        /*
-        render() {
-            return (
-                <ul id='domain-container'>
-                    {this.renderContainer()}
-                </ul>
-            );
-        }*/
-
     }]);
 
     return DomainContainer;
@@ -131,7 +121,6 @@ var DomainItem = function (_React$Component) {
         key: 'handleClick',
         value: function handleClick(e) {
             e.preventDefault();
-            console.log('handleClick id: ' + this.props.id);
             this.props.removeDomain(this.props.id);
         }
     }, {
@@ -343,7 +332,6 @@ var Domains = function (_React$Component) {
     }, {
         key: 'storeDomain',
         value: function storeDomain(idValue, validDomain, container) {
-            // send only a single message, dont keep a long connection
             chrome.runtime.sendMessage({
                 validDomain: validDomain
             });
@@ -378,15 +366,26 @@ var Domains = function (_React$Component) {
         key: 'removeDomain',
         value: function removeDomain(id) {
             var index = this.getIndex(id, 'id');
+            console.log('index: ' + index);
             if (index == -1) {
                 console.log('removeDomain: could not find index :(');
                 return;
             }
+            chrome.runtime.sendMessage({
+                index: index
+            });
             var newContainer = this.state.container.filter(function (_, ind) {
                 return ind !== index;
             });
-            localStorage.setItem('container', JSON.stringify(newContainer));
+            this.state.container = newContainer;
+            console.log('newContainer: ');
+            console.log(newContainer);
+            localStorage.setItem('container', JSON.stringify(this.state.container));
             this.setState({ container: newContainer });
+            console.log('checking container from localStorage: ');
+            console.log(JSON.parse(localStorage.getItem('container')));
+            console.log('removeDomain current container: ');
+            console.log(this.state.container);
         }
     }, {
         key: 'render',

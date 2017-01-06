@@ -44,15 +44,6 @@ class DomainContainer extends React.Component {
             );
         }
     }
-    
-    /*
-    render() {
-        return (
-            <ul id='domain-container'>
-                {this.renderContainer()}
-            </ul>
-        );
-    }*/
 }
 
 module.exports = DomainContainer;
