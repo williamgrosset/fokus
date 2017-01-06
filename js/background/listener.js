@@ -11,6 +11,7 @@ chrome.runtime.onMessage.addListener(
         if (request.validDomain) {
             console.log('adding');
             array.push(request.validDomain);
+            var empty = []; // used for testing
             updateFilters(array);
         }
         if (request.index) {
@@ -25,6 +26,7 @@ chrome.runtime.onMessage.addListener(
         }
     }
 );
+
 function blockRequest(details) {
     return {cancel: true};
 }
@@ -36,7 +38,10 @@ function updateFilters(urls) {
     }
     if (urls.length == 0) {
         // we are blocking our own chrome id when we send an empty array
+        return;
+    } else {
+        chrome.webRequest.onBeforeRequest.addListener(blockRequest, {urls: urls}, ['blocking']);
+        console.log('Domains being blocked: ');
+        console.log(urls);
     }
-    chrome.webRequest.onBeforeRequest.addListener(blockRequest, {urls: urls}, ['blocking']);
-    console.log('Domains being blocked: ' + urls);
 }
