@@ -26,22 +26,28 @@ chrome.runtime.onMessage.addListener(
 
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {  
     if (changeInfo.status == 'complete') {
-        chrome.tabs.query({}, function (tabs) {
+        chrome.tabs.query({active: true, currentWindow: true}, function (tabs) {
+            for (var i = 0; i < domains.length; i++) {
+                var reDomain = new RegExp(domains[i], 'i');
+                if (reDomain.test(tabs[0].url)) {
+                    console.log('WE GOT THE FIRST ONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE'); 
+                    chrome.tabs.update(tabs[0].id, {url: "html/home.html" });
+                    return;
+                }
+            }
+        });
+        chrome.tabs.query({currentWindow: true}, function (tabs) {
             var currDomain = location.href;
             console.log('current domain: ');
             console.log(currDomain);
             console.log(tabs);
-            // loop through array
-            // check if current domain matches URL (using regular expressions) in array
-            // if we get a match, replace that shit
-            for (var i = 0; i < tabs.length; i++) {
-                for (var k = 0; k < domains.length; k++) {
-                    var reDomain = new RegExp(domains[k], 'i');
-                    if (reDomain.test(tabs[i].url)) {
+            for (var i = 0; i < domains.length; i++) {
+                for (var k = 0; k < tabs.length; k++) {
+                    var reDomain = new RegExp(domains[i], 'i');
+                    if (reDomain.test(tabs[k].url)) {
                         console.log('we matched'); 
-                        chrome.tabs.update(tabs.id, {url: "html/home.html" });
-                        console.log(tabs[i].url);
-                        //location.replace(chrome.extension.getURL("html/home.html"));
+                        chrome.tabs.update(tabs[k].id, {url: "html/home.html" });
+                        return;
                     }
                 }
             }       
@@ -67,24 +73,3 @@ function updateFilters(urls) {
         console.log(urls);
     }
 }
-
-/*
-function pageRedirect() {
-    var currDomain = location.href;
-    console.log('current domain: ');
-    console.log(currDomain);
-    console.log('we in the content script boyssss');
-    console.log(request.array);
-    chrome.tabs.query({}, function(tabs){
-        // loop through array
-        // check if current domain matches URL (using regular expressions) in array
-        // if we get a match, replace that shit
-        for (var i = 0; i < tabs.length; i++) {
-            var reDomain = new RegExp(tabs[i], 'i');
-            reDomain
-            console.log('matched'); 
-            //location.replace(chrome.extension.getURL("html/home.html"));
-        }       
-    }
-}   
-*/
