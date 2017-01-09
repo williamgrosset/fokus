@@ -8,7 +8,8 @@ class Domains extends React.Component {
     constructor(props) {
         super(props);
  
-        var container = []; //used for testing
+        var container = []; // used for testing
+        //localStorage.setItem('container', JSON.stringify(container)); // used for testing
         var container = JSON.parse(localStorage.getItem('container')) || [];
 
         this.state = {
@@ -37,7 +38,7 @@ class Domains extends React.Component {
     addDomain(domain) {
         console.log('addDomain (before adding) current container: ');
         console.log(this.state.container);
-        var validDomain = this.validDomain(domain);
+        domain = this.validDomain(domain);
         var idValue = shortid.generate();
         this.state.container.push({
             id: idValue,
@@ -45,7 +46,7 @@ class Domains extends React.Component {
         });
         console.log('addDomain current container: ' + this.state.container);
         this.setState({ container: this.state.container });
-        this.storeDomain(idValue, validDomain, this.state.container);
+        this.storeDomain(idValue, domain, this.state.container);
     }
 
     /*
@@ -55,8 +56,8 @@ class Domains extends React.Component {
     * - Add prefix and suffix for else case (DONE)
     */
     validDomain(domain) {
-        var prefix = "*://*.";
-        var suffix = "/*";
+        var prefix = ".*:\/\/\.*";
+        var suffix = "\/.*";
         var validDomain = prefix.concat(domain).concat(suffix);
         return validDomain;
     }
@@ -74,6 +75,11 @@ class Domains extends React.Component {
         });
         var empty = []; // used for testing
         localStorage.setItem('container', JSON.stringify(container));
+        /*
+        chrome.runtime.sendMessage({
+            container
+        });
+        */
     }
 
     /*
@@ -115,6 +121,11 @@ class Domains extends React.Component {
         console.log(JSON.parse(localStorage.getItem('container')));
         console.log('removeDomain current container: ');
         console.log(this.state.container);
+        /*
+        chrome.runtime.sendMessage({
+            newContainer
+        });
+        */
     }
 
     render() {

@@ -38,26 +38,6 @@ var DomainContainer = function (_React$Component) {
     }
 
     _createClass(DomainContainer, [{
-        key: 'renderContainer',
-        value: function renderContainer() {
-            var extra = this.props; // passing down too many things
-            var test = this.props.container.map(function (domain) {
-                return _react2.default.createElement(_domainItem2.default, _extends({}, domain, { key: domain.id }, extra));
-            });
-            console.log('renderContainer: ' + test);
-            return test;
-        }
-
-        /*
-        getStorage(callback) {
-            chrome.storage.local.get('container', function (result) {
-                console.log(result.container);
-                thing = result.container;
-                callback(thing);
-            }.bind(this));
-        }*/
-
-    }, {
         key: 'render',
         value: function render() {
             var extra = this.props;
@@ -260,7 +240,8 @@ var Domains = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Domains.__proto__ || Object.getPrototypeOf(Domains)).call(this, props));
 
-        var container = []; //used for testing
+        var container = []; // used for testing
+        //localStorage.setItem('container', JSON.stringify(container)); // used for testing
         var container = JSON.parse(localStorage.getItem('container')) || [];
 
         _this.state = {
@@ -294,7 +275,7 @@ var Domains = function (_React$Component) {
         value: function addDomain(domain) {
             console.log('addDomain (before adding) current container: ');
             console.log(this.state.container);
-            var validDomain = this.validDomain(domain);
+            domain = this.validDomain(domain);
             var idValue = _shortid2.default.generate();
             this.state.container.push({
                 id: idValue,
@@ -302,7 +283,7 @@ var Domains = function (_React$Component) {
             });
             console.log('addDomain current container: ' + this.state.container);
             this.setState({ container: this.state.container });
-            this.storeDomain(idValue, validDomain, this.state.container);
+            this.storeDomain(idValue, domain, this.state.container);
         }
 
         /*
@@ -315,8 +296,8 @@ var Domains = function (_React$Component) {
     }, {
         key: 'validDomain',
         value: function validDomain(domain) {
-            var prefix = "*://*.";
-            var suffix = "/*";
+            var prefix = ".*:\/\/\.*";
+            var suffix = "\/.*";
             var validDomain = prefix.concat(domain).concat(suffix);
             return validDomain;
         }
@@ -337,6 +318,11 @@ var Domains = function (_React$Component) {
             });
             var empty = []; // used for testing
             localStorage.setItem('container', JSON.stringify(container));
+            /*
+            chrome.runtime.sendMessage({
+                container
+            });
+            */
         }
 
         /*
@@ -386,6 +372,11 @@ var Domains = function (_React$Component) {
             console.log(JSON.parse(localStorage.getItem('container')));
             console.log('removeDomain current container: ');
             console.log(this.state.container);
+            /*
+            chrome.runtime.sendMessage({
+                newContainer
+            });
+            */
         }
     }, {
         key: 'render',

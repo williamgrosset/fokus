@@ -12,22 +12,6 @@ class DomainContainer extends React.Component {
         //console.log(this.state.container);
     }
 
-    renderContainer() {
-        const extra = this.props; // passing down too many things
-        const test = this.props.container.map((domain) => <DomainItem {...domain} key={domain.id} {...extra} /> );
-        console.log('renderContainer: ' + test);
-        return test;
-    }
-
-    /*
-    getStorage(callback) {
-        chrome.storage.local.get('container', function (result) {
-            console.log(result.container);
-            thing = result.container;
-            callback(thing);
-        }.bind(this));
-    }*/
-
     render() {
         const extra = this.props;
         if (this.props.container.length != 0) {

@@ -4,13 +4,15 @@
     "description": "Google chrome extension to help you focus on the things that really matter.",
     "version": "1.0",
     "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
+    "web_accessible_resources": [
+        "html/home.html"
+    ],
     "browser_action": {
         "default_popup": "html/popup.html",
         "default_title": "Click here!"
     },
     "background": {
-        "scripts": ["js/background/listener.js"],
-        "persistence": false
+        "scripts": ["js/background/listener.js"]
     },
     "icons": {
         "16": "png/fokus_logo_16.png",
@@ -18,7 +20,6 @@
         "128": "png/fokus_logo_128.png"
     },
     "permissions": [
-        "storage",
         "tabs",
         "webRequest",
         "webRequestBlocking",
