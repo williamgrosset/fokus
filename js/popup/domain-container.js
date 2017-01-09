@@ -23,7 +23,7 @@ class DomainContainer extends React.Component {
         } else {
             return (
                 <ul id='domain-container'>
-                    <p>You currently have no domains blocked :(</p>
+                    <p>No domains currently blocked.</p>
                 </ul>
             );
         }

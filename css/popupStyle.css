@@ -1,5 +1,7 @@
 #header {
-    padding: 0cm 2cm 0cm 2cm;
+    width: 103%;
+    margin-left: -10px;
+    padding: 0cm 3cm 0cm 3cm;
     border-bottom: 1px solid;
     padding-bottom: 8px;
 }
@@ -9,30 +11,47 @@
 }
 
 #toggle {
+    padding: 0cm 3cm 0cm 3cm;
+    border-top: 1px solid;
+    width: 103%;
+    margin-right: -10px;
+    margin-left: -10px;
+}
+
+p.domains-title {
     text-align: center;
     font-family: 'Lato', serif;
-    font-size: 15px;
-    border-top: 1px solid;
+    padding-top: 8px;
+    font-size: 16.5px;
+    color: #000000;
+}
+
+#form {
+    padding-top: 5px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+#domain-delete:focus {
+    outline: none;
+    box-shadow: none;
 }
 
 input[type=text] {
+    text-align: center;
     border: none;
     border-bottom: 1px solid;
     font-size: 15px;
 }
 
 #domain-container {
+    display: block;
     font-family: 'Lato', serif;
     height: 180px;
     overflow: auto;
     font-size: 15px;
-}
-
-#domain-element {
-    float: left;
-}
-
-#domain-delete {
+    text-align: center;
+    padding: 0cm 1cm 0cm 1cm;
 }
 
 .divider{
@@ -41,15 +60,10 @@ input[type=text] {
     display:inline-block;
 }
 
-p.domains-title {
-    text-align: center;
-    font-family: 'Lato', serif;
-    font-size: 15px;
-    color: #000000;
-}
-
 p.toggle-button1 {
     text-align: center;
+    font-family: 'Lato', serif;
+    font-size: 16.5px;
     display: inline-block;
     cursor: pointer;
     color: #A1A1A1;
@@ -57,6 +71,8 @@ p.toggle-button1 {
 
 p.toggle-button2 {
     text-align: center;
+    font-family: 'Lato', serif;
+    font-size: 16.5px;
     display: inline-block;
     cursor: pointer;
     color: #A1A1A1;
@@ -68,4 +84,28 @@ p.toggle-button2 {
 
 .toggle-button2:hover {
     color: #000000;
+}
+
+ul {
+  list-style: none;
+  padding: 0 20px;
+  margin: 0;
+}
+
+ul li {
+  position: relative;
+  overflow: hidden;
+  padding-left: 15px;
+  padding-right: 3px;
+  margin: 0px 0px 8px 0px;
+}
+
+ul li:before {
+  background-color: black;
+  position: absolute;
+  height: 5px;
+  content: '';
+  width: 5px;
+  left: 0;
+  top: 5px;
 }

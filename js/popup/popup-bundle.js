@@ -56,7 +56,7 @@ var DomainContainer = function (_React$Component) {
                     _react2.default.createElement(
                         'p',
                         null,
-                        'You currently have no domains blocked :('
+                        'No domains currently blocked.'
                     )
                 );
             }
@@ -94,6 +94,7 @@ var DomainItem = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (DomainItem.__proto__ || Object.getPrototypeOf(DomainItem)).call(this, props));
 
         _this.handleClick = _this.handleClick.bind(_this);
+
         return _this;
     }
 
@@ -117,10 +118,18 @@ var DomainItem = function (_React$Component) {
                 null,
                 _react2.default.createElement(
                     "li",
-                    { id: "domain-element" },
-                    validDomain
-                ),
-                _react2.default.createElement("input", { id: "domain-delete", type: "image", src: "../../png/garbage_can_16.png", onClick: this.handleClick })
+                    null,
+                    _react2.default.createElement(
+                        "div",
+                        { style: { float: 'left' } },
+                        validDomain
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        null,
+                        _react2.default.createElement("input", { type: "image", id: "domain-delete", style: { float: 'right' }, src: "../../png/garbage_can_16.png", onClick: this.handleClick })
+                    )
+                )
             );
         }
     }]);
@@ -194,7 +203,7 @@ var DomainNew = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 'form',
-                { onSubmit: this.handleSubmit },
+                { onSubmit: this.handleSubmit, id: 'form' },
                 _react2.default.createElement('input', { type: 'text', value: this.state.value, placeholder: 'e.g. facebook.com', onChange: this.handleChange })
             );
         }
@@ -509,15 +518,20 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Toggle = function (_React$Component) {
     _inherits(Toggle, _React$Component);
 
-    function Toggle() {
+    function Toggle(props) {
         _classCallCheck(this, Toggle);
 
-        return _possibleConstructorReturn(this, (Toggle.__proto__ || Object.getPrototypeOf(Toggle)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Toggle.__proto__ || Object.getPrototypeOf(Toggle)).call(this, props));
+
+        var container = JSON.parse(localStorage.getItem('container'));
+        var containerToggle = JSON.parse(localStorage.getItem('container-boolean'));
+        return _this;
     }
 
     _createClass(Toggle, [{
-        key: 'fokusTab',
-        value: function fokusTab() {
+        key: 'enableTab',
+        value: function enableTab() {
+            //var containerEnable = localStorage.setItem('container', JSON.stringify(container));
             var enable = document.getElementById('enable');
             enable.style.color = '#000000';
             var disable = document.getElementById('disable');
@@ -527,12 +541,12 @@ var Toggle = function (_React$Component) {
             }, function () {
                 (0, _jquery2.default)(this).css("color", "#A1A1A1");
             });
-            //var win = window.open("/html/home.html");
-            //win.focus();
         }
     }, {
-        key: 'aboutTab',
-        value: function aboutTab() {
+        key: 'disableFokus',
+        value: function disableFokus() {
+            var tempEmpty = [];
+            //var containerEnable = localStorage.setItem('container', JSON.stringify(tempEmpty));
             var enable = document.getElementById('enable');
             enable.style.color = '#A1A1A1';
             var disable = document.getElementById('disable');
@@ -542,8 +556,6 @@ var Toggle = function (_React$Component) {
             }, function () {
                 (0, _jquery2.default)(this).css("color", "#A1A1A1");
             });
-            //var win = window.open("/html/about.html");
-            //win.focus();
         }
 
         // props to use (boolean enable)
@@ -565,13 +577,13 @@ var Toggle = function (_React$Component) {
                 null,
                 _react2.default.createElement(
                     'p',
-                    { id: 'enable', className: 'toggle-button1', onClick: this.fokusTab },
+                    { id: 'enable', className: 'toggle-button1', onClick: this.enableFokus },
                     'Enable'
                 ),
                 _react2.default.createElement('div', { className: 'divider' }),
                 _react2.default.createElement(
                     'p',
-                    { id: 'disable', className: 'toggle-button2', onClick: this.aboutTab },
+                    { id: 'disable', className: 'toggle-button2', onClick: this.disableFokus },
                     'Disable'
                 )
             );

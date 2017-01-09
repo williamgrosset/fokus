@@ -32,7 +32,7 @@ class DomainNew extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} id='form' >
                 <input type='text' value={this.state.value} placeholder='e.g. facebook.com' onChange={this.handleChange} />
             </form>
         );

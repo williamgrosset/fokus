@@ -13,12 +13,6 @@ function quoteReader() {
         var fileContentLines = data.split("\n");
         var randomLineIndex = Math.floor(Math.random() * fileContentLines.length);
         var randomLine = fileContentLines[randomLineIndex];
-        $("#bottom-quote").delay(200000);
-        setTimeout(function() {$("#bottom-quote").typed({
-            strings: [randomLine],
-            contentType: "html",
-            showCursor: false,
-            typeSpeed: 0
-        });}, 3000);
+        $("#bottom-quote").html(randomLine);
     });
 }

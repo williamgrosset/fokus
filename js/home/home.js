@@ -27,8 +27,8 @@ function typeHeader() {
         strings: ["Stay fokuse", "Stay focused."],
         contentType: "html",
         showCursor: false,
-        typeSpeed: 90,
-        backSpeed: 90,
+        typeSpeed: 50,
+        backSpeed: 50,
     });
 }
 

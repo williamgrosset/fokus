@@ -2,7 +2,14 @@ import React from 'react';
 import $ from 'jquery';
 
 class Toggle extends React.Component {
-    fokusTab() {
+    constructor(props) {
+        super(props);
+        var container = JSON.parse(localStorage.getItem('container'));
+        var containerToggle = JSON.parse(localStorage.getItem('container-boolean'));
+    }
+
+    enableTab() {
+        //var containerEnable = localStorage.setItem('container', JSON.stringify(container));
         var enable = document.getElementById('enable');
         enable.style.color = '#000000';
         var disable = document.getElementById('disable')
@@ -12,11 +19,11 @@ class Toggle extends React.Component {
         }, function() {
             $(this).css("color", "#A1A1A1");
         });
-        //var win = window.open("/html/home.html");
-        //win.focus();
     }
 
-    aboutTab() {
+    disableFokus() {
+        var tempEmpty = [];
+        //var containerEnable = localStorage.setItem('container', JSON.stringify(tempEmpty));
         var enable = document.getElementById('enable');
         enable.style.color = '#A1A1A1';
         var disable = document.getElementById('disable')
@@ -26,8 +33,6 @@ class Toggle extends React.Component {
         }, function() {
             $(this).css("color", "#A1A1A1");
         });
-        //var win = window.open("/html/about.html");
-        //win.focus();
     }
 
     // props to use (boolean enable)
@@ -42,7 +47,7 @@ class Toggle extends React.Component {
     render() {
         return (
             <div>
-                <p id='enable' className='toggle-button1' onClick={this.fokusTab}>Enable</p><div className="divider"/><p id='disable' className='toggle-button2' onClick={this.aboutTab}>Disable</p>
+                <p id='enable' className='toggle-button1' onClick={this.enableFokus}>Enable</p><div className="divider"/><p id='disable' className='toggle-button2' onClick={this.disableFokus}>Disable</p>
             </div>
         );
     }

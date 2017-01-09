@@ -76,3 +76,7 @@ div.front {
     left: 3;
     animation: fadeIn 2s;
 }
+
+#bottom-quote {
+    animation: fadeIn 1s;
+}
