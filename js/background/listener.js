@@ -3,8 +3,6 @@ var domains = [];
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-        console.log('are we in addListener everytime?');
-        console.log(request);
         if (request.validDomain) {
             console.log('adding');
             domains.push(request.validDomain);

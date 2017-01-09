@@ -69,11 +69,11 @@ var DomainContainer = function (_React$Component) {
 module.exports = DomainContainer;
 
 },{"./domain-item.js":2,"react":185}],2:[function(require,module,exports){
-'use strict';
+"use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -98,23 +98,29 @@ var DomainItem = function (_React$Component) {
     }
 
     _createClass(DomainItem, [{
-        key: 'handleClick',
+        key: "handleClick",
         value: function handleClick(e) {
             e.preventDefault();
             this.props.removeDomain(this.props.id);
+            console.log(this.props.id);
         }
     }, {
-        key: 'render',
+        key: "render",
         value: function render() {
+            var validDomain = this.props.domain;
+            var prefix = ".*:\/\/\.*";
+            var suffix = "\/.*";
+            validDomain = validDomain.replace(prefix, '');
+            validDomain = validDomain.replace(suffix, '');
             return _react2.default.createElement(
-                'div',
+                "div",
                 null,
                 _react2.default.createElement(
-                    'li',
-                    { id: 'domain-element' },
-                    this.props.domain
+                    "li",
+                    { id: "domain-element" },
+                    validDomain
                 ),
-                _react2.default.createElement('input', { id: 'domain-delete', type: 'image', src: '../../png/garbage_can_16.png', onClick: this.handleClick })
+                _react2.default.createElement("input", { id: "domain-delete", type: "image", src: "../../png/garbage_can_16.png", onClick: this.handleClick })
             );
         }
     }]);
