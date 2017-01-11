@@ -8,7 +8,11 @@ class Toggle extends React.Component {
         var containerToggle = JSON.parse(localStorage.getItem('container-boolean'));
     }
 
-    enableTab() {
+    enableFokus() {
+        var enable = true;
+        chrome.runtime.sendMessage({
+            enable 
+        });
         //var containerEnable = localStorage.setItem('container', JSON.stringify(container));
         var enable = document.getElementById('enable');
         enable.style.color = '#000000';
@@ -22,7 +26,11 @@ class Toggle extends React.Component {
     }
 
     disableFokus() {
-        var tempEmpty = [];
+        var disable = true;
+        chrome.runtime.sendMessage({
+            disable
+        });
+        //var tempEmpty = [];
         //var containerEnable = localStorage.setItem('container', JSON.stringify(tempEmpty));
         var enable = document.getElementById('enable');
         enable.style.color = '#A1A1A1';
@@ -34,15 +42,6 @@ class Toggle extends React.Component {
             $(this).css("color", "#A1A1A1");
         });
     }
-
-    // props to use (boolean enable)
-
-    if (enable) {
-        // set button to enable
-        // active blocking domains
-    }
-        // set button to disable
-        // disable blocking domains
 
     render() {
         return (

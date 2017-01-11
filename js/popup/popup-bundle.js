@@ -94,7 +94,6 @@ var DomainItem = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (DomainItem.__proto__ || Object.getPrototypeOf(DomainItem)).call(this, props));
 
         _this.handleClick = _this.handleClick.bind(_this);
-
         return _this;
     }
 
@@ -121,7 +120,7 @@ var DomainItem = function (_React$Component) {
                     null,
                     _react2.default.createElement(
                         "div",
-                        { style: { float: 'left' } },
+                        { style: { float: 'left' }, id: "domain-item" },
                         validDomain
                     ),
                     _react2.default.createElement(
@@ -529,8 +528,12 @@ var Toggle = function (_React$Component) {
     }
 
     _createClass(Toggle, [{
-        key: 'enableTab',
-        value: function enableTab() {
+        key: 'enableFokus',
+        value: function enableFokus() {
+            var enable = true;
+            chrome.runtime.sendMessage({
+                enable: enable
+            });
             //var containerEnable = localStorage.setItem('container', JSON.stringify(container));
             var enable = document.getElementById('enable');
             enable.style.color = '#000000';
@@ -545,7 +548,11 @@ var Toggle = function (_React$Component) {
     }, {
         key: 'disableFokus',
         value: function disableFokus() {
-            var tempEmpty = [];
+            var disable = true;
+            chrome.runtime.sendMessage({
+                disable: disable
+            });
+            //var tempEmpty = [];
             //var containerEnable = localStorage.setItem('container', JSON.stringify(tempEmpty));
             var enable = document.getElementById('enable');
             enable.style.color = '#A1A1A1';
@@ -557,18 +564,6 @@ var Toggle = function (_React$Component) {
                 (0, _jquery2.default)(this).css("color", "#A1A1A1");
             });
         }
-
-        // props to use (boolean enable)
-
-    }, {
-        key: 'if',
-        value: function _if(enable) {}
-        // set button to enable
-        // active blocking domains
-
-        // set button to disable
-        // disable blocking domains
-
     }, {
         key: 'render',
         value: function render() {

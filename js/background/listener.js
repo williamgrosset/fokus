@@ -1,5 +1,6 @@
 var disabled = false;
 var domains = [];
+var domainsEnable = [];
 
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
@@ -19,6 +20,16 @@ chrome.runtime.onMessage.addListener(
             domains.splice(request.index, 1);
             //updateFilters(domains);
         }
+        if (request.disable) {
+            console.log('disable the domains!');
+            var domainsDisable = [];
+            domainsEnable = domains;
+            domains = domainsDisable;
+        }
+        if (request.enable) {
+            console.log('enable the domains!');
+            domains = domainsEnable;
+        }
     }
 );
 
@@ -28,7 +39,6 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
             for (var i = 0; i < domains.length; i++) {
                 var reDomain = new RegExp(domains[i], 'i');
                 if (reDomain.test(tabs[0].url)) {
-                    console.log('WE GOT THE FIRST ONEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE'); 
                     chrome.tabs.update(tabs[0].id, {url: "html/home.html" });
                     return;
                 }
@@ -57,7 +67,8 @@ function blockRequest(details) {
     return {cancel: true};
 }
 
-function updateFilters(urls) {
+function updateFilters(urls1) {
+    var urls = urls1;
     if(chrome.webRequest.onBeforeRequest.hasListener(blockRequest)) {
         chrome.webRequest.onBeforeRequest.removeListener(blockRequest);
     }
@@ -66,8 +77,16 @@ function updateFilters(urls) {
         // we are blocking our own chrome id when we send an empty array
         return;
     } else {
-        chrome.webRequest.onBeforeRequest.addListener(blockRequest, {urls: urls}, ['blocking']);
-        console.log('Domains being blocked: ');
-        console.log(urls);
+    /*
+    var prefix = ".*:\/\/\.*";
+    var suffix = "\/.*";
+    for (var i = 0; i < urls.length; i++) {
+       urls[i] = urls[i].replace(prefix, '*://www.');
+       urls[i] = urls[i].replace(suffix, '/*');
+    }
+    */
+    chrome.webRequest.onBeforeRequest.addListener(blockRequest, {urls: urls}, ['blocking']);
+    console.log('Domains being blocked: ');
+    console.log(urls);
     }
 }

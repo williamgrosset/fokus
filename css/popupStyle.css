@@ -11,9 +11,8 @@
 }
 
 #toggle {
-    padding: 0cm 3cm 0cm 3cm;
+    text-align: center;
     border-top: 1px solid;
-    width: 103%;
     margin-right: -10px;
     margin-left: -10px;
 }
@@ -29,7 +28,7 @@ p.domains-title {
 #form {
     padding-top: 5px;
     text-align: center;
-    padding-bottom: 20px;
+    padding-bottom: 25px;
 }
 
 #domain-delete:focus {
@@ -47,15 +46,15 @@ input[type=text] {
 #domain-container {
     display: block;
     font-family: 'Lato', serif;
-    height: 180px;
+    height: 140px;
     overflow: auto;
-    font-size: 15px;
+    font-size: 16px;
     text-align: center;
     padding: 0cm 1cm 0cm 1cm;
 }
 
 .divider{
-    width:80px;
+    width: 90px;
     height:auto;
     display:inline-block;
 }
@@ -87,25 +86,25 @@ p.toggle-button2 {
 }
 
 ul {
-  list-style: none;
-  padding: 0 20px;
-  margin: 0;
+    list-style: none;
+    padding: 0 20px;
+    margin: 0;
 }
 
 ul li {
-  position: relative;
-  overflow: hidden;
-  padding-left: 15px;
-  padding-right: 3px;
-  margin: 0px 0px 8px 0px;
+    position: relative;
+    overflow: hidden;
+    padding-left: 15px;
+    padding-right: 3px;
+    margin: 0px 0px 8px 0px;
 }
 
 ul li:before {
-  background-color: black;
-  position: absolute;
-  height: 5px;
-  content: '';
-  width: 5px;
-  left: 0;
-  top: 5px;
+    background-color: black;
+    position: absolute;
+    height: 5px;
+    content: '';
+    width: 5px;
+    left: 0;
+    top: 5px;
 }

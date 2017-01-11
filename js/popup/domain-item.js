@@ -4,7 +4,6 @@ class DomainItem extends React.Component {
     constructor(props) {
         super(props);
         this.handleClick = this.handleClick.bind(this);
-
     }
 
     handleClick(e) {
@@ -22,7 +21,7 @@ class DomainItem extends React.Component {
         return (
             <div>
                 <li>
-                    <div style={{float:'left'}}>{validDomain}</div>
+                    <div style={{float:'left'}} id='domain-item'>{validDomain}</div>
                     <div><input type='image' id='domain-delete' style={{float:'right'}} src='../../png/garbage_can_16.png' onClick={this.handleClick} /></div>
                 </li>
             </div>
