@@ -13,6 +13,6 @@ function quoteReader() {
         var fileContentLines = data.split("\n");
         var randomLineIndex = Math.floor(Math.random() * fileContentLines.length);
         var randomLine = fileContentLines[randomLineIndex];
-        $("#bottom-quote").html(randomLine).delay(1000);
+        $("#bottom-quote").html(randomLine);
     });
 }

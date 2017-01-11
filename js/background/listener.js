@@ -7,16 +7,19 @@ chrome.runtime.onMessage.addListener(
         if (request.validDomain) {
             console.log('adding');
             domains.push(request.validDomain);
+            domainsEnable = domains;
             var empty = []; // used for testing
             //updateFilters(domains);
         }
         if (request.index) {
             console.log('deleting');
             domains.splice(request.index, 1);
+            domainsEnable = domains;
             //updateFilters(domains);
         }
         if (request.index == 0) {
             console.log('we have hit the motherload');
+            domainsEnable = domains;
             domains.splice(request.index, 1);
             //updateFilters(domains);
         }
