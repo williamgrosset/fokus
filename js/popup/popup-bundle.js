@@ -524,6 +524,9 @@ var Toggle = function (_React$Component) {
 
         var container = JSON.parse(localStorage.getItem('container'));
         var containerToggle = JSON.parse(localStorage.getItem('container-boolean'));
+        _this.state = {
+            toggle: false
+        };
         return _this;
     }
 
@@ -534,16 +537,21 @@ var Toggle = function (_React$Component) {
             chrome.runtime.sendMessage({
                 enable: enable
             });
-            //var containerEnable = localStorage.setItem('container', JSON.stringify(container));
-            var enable = document.getElementById('enable');
-            enable.style.color = '#000000';
-            var disable = document.getElementById('disable');
-            disable.style.color = '#A1A1A1';
-            (0, _jquery2.default)(".toggle-button2").hover(function () {
-                (0, _jquery2.default)(this).css("color", "#000000");
-            }, function () {
-                (0, _jquery2.default)(this).css("color", "#A1A1A1");
+            (0, _jquery2.default)("#domain-container").css({
+                "color": "#000000",
+                "text-decoration": 'none'
             });
+            (0, _jquery2.default)(".toggle-button1").css("color", "#000000");
+            (0, _jquery2.default)(".toggle-button2").css("color", "#A1A1A1");
+            (0, _jquery2.default)(".domains-title").css("color", "#000000");
+            (0, _jquery2.default)("input[type=text]").css("border-bottom-color", "#000000");
+            /*
+            $(".toggle-button2").hover(function() {
+                $(this).css("color", "#000000");
+            }, function() {
+                $(this).css("color", "#A1A1A1");
+            });*/
+            //localStorage.setItem('fokus-toggle', JSON.stringify(booleanValue));
         }
     }, {
         key: 'disableFokus',
@@ -552,17 +560,21 @@ var Toggle = function (_React$Component) {
             chrome.runtime.sendMessage({
                 disable: disable
             });
-            //var tempEmpty = [];
-            //var containerEnable = localStorage.setItem('container', JSON.stringify(tempEmpty));
-            var enable = document.getElementById('enable');
-            enable.style.color = '#A1A1A1';
-            var disable = document.getElementById('disable');
-            disable.style.color = '#000000';
-            (0, _jquery2.default)(".toggle-button1").hover(function () {
-                (0, _jquery2.default)(this).css("color", "#000000");
-            }, function () {
-                (0, _jquery2.default)(this).css("color", "#A1A1A1");
+            (0, _jquery2.default)("#domain-container").css({
+                "color": "#A1A1A1",
+                "text-decoration": "line-through",
+                "text-decoration-color": "#A1A1A1"
             });
+            (0, _jquery2.default)(".toggle-button1").css("color", "#A1A1A1");
+            (0, _jquery2.default)(".toggle-button2").css("color", "#000000");
+            (0, _jquery2.default)(".domains-title").css("color", "#A1A1A1");
+            (0, _jquery2.default)("input[type=text]").css("border-bottom-color", "#A1A1A1");
+            /*
+            $(".toggle-button1").hover(function() {
+                $(this).css("color", "#000000");
+            }, function() {
+                $(this).css("color", "#A1A1A1");
+            });*/
         }
     }, {
         key: 'render',
