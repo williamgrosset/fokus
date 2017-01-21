@@ -238,6 +238,10 @@ var _shortid = require('shortid');
 
 var _shortid2 = _interopRequireDefault(_shortid);
 
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -262,9 +266,6 @@ var Domains = function (_React$Component) {
             container: container
         };
 
-        console.log('Domains: ');
-        console.log(container);
-
         _this.addDomain = _this.addDomain.bind(_this);
         _this.validDomain = _this.validDomain.bind(_this);
         _this.storeDomain = _this.storeDomain.bind(_this);
@@ -272,8 +273,6 @@ var Domains = function (_React$Component) {
         _this.getIndex = _this.getIndex.bind(_this);
         return _this;
     }
-
-    // Using cookies, show example way to add a valid domain
 
     /*
     * addDomain(domain):
@@ -304,7 +303,6 @@ var Domains = function (_React$Component) {
         * validDomain(domain):
         * TODO:
         * - Add pattern matching for showing invalid input
-        * - Add prefix and suffix for else case (DONE)
         */
 
     }, {
@@ -318,10 +316,6 @@ var Domains = function (_React$Component) {
 
         /*
         * storeDomain(validDomain):
-        * TODO: Needs storing:
-        * - background page array
-        * - chrome.storage.local
-        * - viusally on UI (DONE)
         */
 
     }, {
@@ -356,10 +350,6 @@ var Domains = function (_React$Component) {
 
         /*
         * removeDomain(e):
-        * TODO: Needs deleting from: 
-        * - background page array
-        * - chrome.storage.local
-        * - visually on UI (DONE)
         */
 
     }, {
@@ -414,7 +404,7 @@ var Domains = function (_React$Component) {
 
 module.exports = Domains;
 
-},{"./domain-container.js":1,"./domain-item.js":2,"./domain-new.js":3,"react":185,"shortid":186}],5:[function(require,module,exports){
+},{"./domain-container.js":1,"./domain-item.js":2,"./domain-new.js":3,"jquery":31,"react":185,"shortid":186}],5:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -523,10 +513,16 @@ var Toggle = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (Toggle.__proto__ || Object.getPrototypeOf(Toggle)).call(this, props));
 
         var container = JSON.parse(localStorage.getItem('container'));
-        var containerToggle = JSON.parse(localStorage.getItem('container-boolean'));
+
         _this.state = {
             toggle: false
         };
+
+        _this.enableFokus = _this.enableFokus.bind(_this);
+        _this.disableFokus = _this.disableFokus.bind(_this);
+        _this.modifyCss = _this.modifyCss.bind(_this);
+        _this.onloadEnable = _this.onloadEnable.bind(_this);
+        _this.onloadDisable = _this.onloadDisable.bind(_this);
         return _this;
     }
 
@@ -537,21 +533,10 @@ var Toggle = function (_React$Component) {
             chrome.runtime.sendMessage({
                 enable: enable
             });
-            (0, _jquery2.default)("#domain-container").css({
-                "color": "#000000",
-                "text-decoration": 'none'
-            });
-            (0, _jquery2.default)(".toggle-button1").css("color", "#000000");
-            (0, _jquery2.default)(".toggle-button2").css("color", "#A1A1A1");
-            (0, _jquery2.default)(".domains-title").css("color", "#000000");
-            (0, _jquery2.default)("input[type=text]").css("border-bottom-color", "#000000");
-            /*
-            $(".toggle-button2").hover(function() {
-                $(this).css("color", "#000000");
-            }, function() {
-                $(this).css("color", "#A1A1A1");
-            });*/
-            //localStorage.setItem('fokus-toggle', JSON.stringify(booleanValue));
+            this.modifyCss("#000000", "#A1A1A1");
+            localStorage.setItem('fokus-toggle', 'enable');
+            document.getElementById('enable').innerHTML = 'Enabled';
+            document.getElementById('disable').innerHTML = 'Disable';
         }
     }, {
         key: 'disableFokus',
@@ -560,21 +545,45 @@ var Toggle = function (_React$Component) {
             chrome.runtime.sendMessage({
                 disable: disable
             });
+            this.modifyCss("#A1A1A1", "#000000");
+            localStorage.setItem('fokus-toggle', 'disable');
+            document.getElementById('disable').innerHTML = 'Disabled';
+            document.getElementById('enable').innerHTML = 'Enable';
+        }
+    }, {
+        key: 'modifyCss',
+        value: function modifyCss(color1, color2) {
             (0, _jquery2.default)("#domain-container").css({
-                "color": "#A1A1A1",
-                "text-decoration": "line-through",
-                "text-decoration-color": "#A1A1A1"
+                "color": color1
             });
-            (0, _jquery2.default)(".toggle-button1").css("color", "#A1A1A1");
-            (0, _jquery2.default)(".toggle-button2").css("color", "#000000");
-            (0, _jquery2.default)(".domains-title").css("color", "#A1A1A1");
-            (0, _jquery2.default)("input[type=text]").css("border-bottom-color", "#A1A1A1");
-            /*
-            $(".toggle-button1").hover(function() {
-                $(this).css("color", "#000000");
-            }, function() {
-                $(this).css("color", "#A1A1A1");
-            });*/
+            (0, _jquery2.default)(".domains-title").css("color", color1);
+            (0, _jquery2.default)("input[type=text]").css("border-bottom-color", color1);
+        }
+    }, {
+        key: 'onloadEnable',
+        value: function onloadEnable() {
+            var toggle = localStorage.getItem('fokus-toggle');
+
+            if (toggle == 'disable') {
+                this.modifyCss("#A1A1A1", "#000000");
+                return { __html: 'Enable' };
+            } else {
+                this.modifyCss("#000000", "#A1A1A1");
+                return { __html: 'Enabled' };
+            }
+        }
+    }, {
+        key: 'onloadDisable',
+        value: function onloadDisable() {
+            var toggle = localStorage.getItem('fokus-toggle');
+
+            if (toggle == 'disable') {
+                this.modifyCss("#A1A1A1", "#000000");
+                return { __html: 'Disabled' };
+            } else {
+                this.modifyCss("#000000", "#A1A1A1");
+                return { __html: 'Disable' };
+            }
         }
     }, {
         key: 'render',
@@ -582,17 +591,9 @@ var Toggle = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement(
-                    'p',
-                    { id: 'enable', className: 'toggle-button1', onClick: this.enableFokus },
-                    'Enable'
-                ),
+                _react2.default.createElement('p', { id: 'enable', className: 'toggle-button1', onClick: this.enableFokus, dangerouslySetInnerHTML: this.onloadEnable() }),
                 _react2.default.createElement('div', { className: 'divider' }),
-                _react2.default.createElement(
-                    'p',
-                    { id: 'disable', className: 'toggle-button2', onClick: this.disableFokus },
-                    'Disable'
-                )
+                _react2.default.createElement('p', { id: 'disable', className: 'toggle-button2', onClick: this.disableFokus, dangerouslySetInnerHTML: this.onloadDisable() })
             );
         }
     }]);

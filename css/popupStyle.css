@@ -28,7 +28,7 @@ p.domains-title {
 #form {
     padding-top: 5px;
     text-align: center;
-    padding-bottom: 25px;
+    padding-bottom: 15px;
 }
 
 #domain-delete:focus {
@@ -44,6 +44,8 @@ input[type=text] {
 }
 
 #domain-container {
+    list-style: none;
+    list-style-type: none;
     display: block;
     font-family: 'Lato', serif;
     height: 140px;
@@ -53,7 +55,7 @@ input[type=text] {
     padding: 0cm 1cm 0cm 1cm;
 }
 
-.divider{
+.divider {
     width: 90px;
     height:auto;
     display:inline-block;
@@ -65,7 +67,6 @@ p.toggle-button1 {
     font-size: 16.5px;
     display: inline-block;
     cursor: pointer;
-    color: #A1A1A1;
 }
 
 p.toggle-button2 {
@@ -74,21 +75,6 @@ p.toggle-button2 {
     font-size: 16.5px;
     display: inline-block;
     cursor: pointer;
-    color: #A1A1A1;
-}
-
-.toggle-button1:hover {
-    color: #000000;
-}
-
-.toggle-button2:hover {
-    color: #000000;
-}
-
-ul {
-    list-style: none;
-    padding: 0 20px;
-    margin: 0;
 }
 
 ul li {
@@ -96,14 +82,13 @@ ul li {
     overflow: hidden;
     padding-left: 15px;
     padding-right: 3px;
-    margin: 0px 0px 8px 0px;
+    margin: 0px 0px 10px 0px;
 }
 
 ul li:before {
     background-color: black;
     position: absolute;
     height: 5px;
-    content: '';
     width: 5px;
     left: 0;
     top: 5px;

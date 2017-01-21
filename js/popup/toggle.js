@@ -5,10 +5,16 @@ class Toggle extends React.Component {
     constructor(props) {
         super(props);
         var container = JSON.parse(localStorage.getItem('container'));
-        var containerToggle = JSON.parse(localStorage.getItem('container-boolean'));
+
         this.state = {
             toggle: false
         };
+
+        this.enableFokus = this.enableFokus.bind(this);
+        this.disableFokus = this.disableFokus.bind(this);
+        this.modifyCss = this.modifyCss.bind(this);
+        this.onloadEnable = this.onloadEnable.bind(this);
+        this.onloadDisable = this.onloadDisable.bind(this);
     }
 
     enableFokus() {
@@ -16,21 +22,10 @@ class Toggle extends React.Component {
         chrome.runtime.sendMessage({
             enable 
         });
-        $("#domain-container").css({
-            "color": "#000000",
-            "text-decoration": 'none'
-        });
-        $(".toggle-button1").css("color", "#000000");
-        $(".toggle-button2").css("color", "#A1A1A1");
-        $(".domains-title").css("color", "#000000");
-        $("input[type=text]").css("border-bottom-color", "#000000");
-        /*
-        $(".toggle-button2").hover(function() {
-            $(this).css("color", "#000000");
-        }, function() {
-            $(this).css("color", "#A1A1A1");
-        });*/
-        //localStorage.setItem('fokus-toggle', JSON.stringify(booleanValue));
+        this.modifyCss("#000000", "#A1A1A1");
+        localStorage.setItem('fokus-toggle', 'enable');
+        document.getElementById('enable').innerHTML = 'Enabled';
+        document.getElementById('disable').innerHTML = 'Disable';
     }
 
     disableFokus() {
@@ -38,27 +33,50 @@ class Toggle extends React.Component {
         chrome.runtime.sendMessage({
             disable
         });
+        this.modifyCss("#A1A1A1", "#000000");
+        localStorage.setItem('fokus-toggle', 'disable');
+        document.getElementById('disable').innerHTML = 'Disabled';
+        document.getElementById('enable').innerHTML = 'Enable';
+    }
+
+    modifyCss(color1, color2) {
         $("#domain-container").css({
-            "color": "#A1A1A1",
-            "text-decoration": "line-through",
-            "text-decoration-color": "#A1A1A1"
+            "color": color1
         });
-        $(".toggle-button1").css("color", "#A1A1A1");
-        $(".toggle-button2").css("color", "#000000");
-        $(".domains-title").css("color", "#A1A1A1");
-        $("input[type=text]").css("border-bottom-color", "#A1A1A1");
-        /*
-        $(".toggle-button1").hover(function() {
-            $(this).css("color", "#000000");
-        }, function() {
-            $(this).css("color", "#A1A1A1");
-        });*/
+        $(".domains-title").css("color", color1);
+        $("input[type=text]").css("border-bottom-color", color1);
+    }
+
+    onloadEnable() {
+        var toggle = localStorage.getItem('fokus-toggle');
+
+        if (toggle == 'disable') {
+            this.modifyCss("#A1A1A1", "#000000");
+            return {__html: 'Enable'};
+        } else {
+            this.modifyCss("#000000", "#A1A1A1");
+            return {__html: 'Enabled'};
+        }
+    }
+
+    onloadDisable() {
+        var toggle = localStorage.getItem('fokus-toggle');
+
+        if (toggle == 'disable') {
+            this.modifyCss("#A1A1A1", "#000000");
+            return {__html: 'Disabled'};
+        } else {
+            this.modifyCss("#000000", "#A1A1A1");
+            return {__html: 'Disable'};
+        }
     }
 
     render() {
         return (
             <div>
-                <p id='enable' className='toggle-button1' onClick={this.enableFokus}>Enable</p><div className="divider"/><p id='disable' className='toggle-button2' onClick={this.disableFokus}>Disable</p>
+                <p id='enable' className='toggle-button1' onClick={this.enableFokus} dangerouslySetInnerHTML={this.onloadEnable()}></p>
+                <div className='divider'/>
+                <p id='disable' className='toggle-button2' onClick={this.disableFokus} dangerouslySetInnerHTML={this.onloadDisable()}></p>
             </div>
         );
     }
