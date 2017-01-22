@@ -25,15 +25,25 @@ class DomainNew extends React.Component {
     * the value in the input box to an empty string.
     */
     handleSubmit(e) {
-        e.preventDefault();
-        this.props.addDomain(this.state.value);
-        this.setState({value: ''});
+        if (this.props.container.length == 30) {
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'block';
+            var span = document.getElementsByClassName("close")[0];
+            span.onclick = function() {
+                modal.style.display = 'none';
+            }
+            e.preventDefault();
+        } else {
+            e.preventDefault();
+            this.props.addDomain(this.state.value);
+            this.setState({value: ''});
+        }
     }
 
     render() {
         return (
             <form onSubmit={this.handleSubmit} id='form' >
-                <input type='text' value={this.state.value} placeholder='e.g. facebook.com' onChange={this.handleChange} />
+                <input id='input' type='text' value={this.state.value} placeholder='e.g. facebook.com' onChange={this.handleChange} />
             </form>
         );
     }

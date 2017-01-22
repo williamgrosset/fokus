@@ -119,7 +119,7 @@ class Domains extends React.Component {
         return (
             <div>
                 <p className='domains-title'>Blocked Domains</p>
-                <DomainNew addDomain={this.addDomain} />
+                <DomainNew container={this.state.container} addDomain={this.addDomain} />
                 <DomainContainer container={this.state.container} removeDomain={this.removeDomain} />
             </div>
         );

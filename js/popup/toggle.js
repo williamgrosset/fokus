@@ -24,8 +24,9 @@ class Toggle extends React.Component {
         });
         this.modifyCss("#000000", "#A1A1A1");
         localStorage.setItem('fokus-toggle', 'enable');
-        document.getElementById('enable').innerHTML = 'Enabled';
-        document.getElementById('disable').innerHTML = 'Disable';
+        $('#enable').html('Enabled');
+        $('#disable').html('Disable');
+        $('#input').prop('disabled', false);
     }
 
     disableFokus() {
@@ -35,8 +36,9 @@ class Toggle extends React.Component {
         });
         this.modifyCss("#A1A1A1", "#000000");
         localStorage.setItem('fokus-toggle', 'disable');
-        document.getElementById('disable').innerHTML = 'Disabled';
-        document.getElementById('enable').innerHTML = 'Enable';
+        $('#disable').html('Disabled');
+        $('#enable').html('Enable');
+        $('#input').prop('disabled', true);
     }
 
     modifyCss(color1, color2) {

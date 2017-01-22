@@ -193,9 +193,19 @@ var DomainNew = function (_React$Component) {
     }, {
         key: 'handleSubmit',
         value: function handleSubmit(e) {
-            e.preventDefault();
-            this.props.addDomain(this.state.value);
-            this.setState({ value: '' });
+            if (this.props.container.length == 30) {
+                var modal = document.getElementById('myModal');
+                modal.style.display = 'block';
+                var span = document.getElementsByClassName("close")[0];
+                span.onclick = function () {
+                    modal.style.display = 'none';
+                };
+                e.preventDefault();
+            } else {
+                e.preventDefault();
+                this.props.addDomain(this.state.value);
+                this.setState({ value: '' });
+            }
         }
     }, {
         key: 'render',
@@ -203,7 +213,7 @@ var DomainNew = function (_React$Component) {
             return _react2.default.createElement(
                 'form',
                 { onSubmit: this.handleSubmit, id: 'form' },
-                _react2.default.createElement('input', { type: 'text', value: this.state.value, placeholder: 'e.g. facebook.com', onChange: this.handleChange })
+                _react2.default.createElement('input', { id: 'input', type: 'text', value: this.state.value, placeholder: 'e.g. facebook.com', onChange: this.handleChange })
             );
         }
     }]);
@@ -393,7 +403,7 @@ var Domains = function (_React$Component) {
                     { className: 'domains-title' },
                     'Blocked Domains'
                 ),
-                _react2.default.createElement(_domainNew2.default, { addDomain: this.addDomain }),
+                _react2.default.createElement(_domainNew2.default, { container: this.state.container, addDomain: this.addDomain }),
                 _react2.default.createElement(_domainContainer2.default, { container: this.state.container, removeDomain: this.removeDomain })
             );
         }
@@ -535,8 +545,9 @@ var Toggle = function (_React$Component) {
             });
             this.modifyCss("#000000", "#A1A1A1");
             localStorage.setItem('fokus-toggle', 'enable');
-            document.getElementById('enable').innerHTML = 'Enabled';
-            document.getElementById('disable').innerHTML = 'Disable';
+            (0, _jquery2.default)('#enable').html('Enabled');
+            (0, _jquery2.default)('#disable').html('Disable');
+            (0, _jquery2.default)('#input').prop('disabled', false);
         }
     }, {
         key: 'disableFokus',
@@ -547,8 +558,9 @@ var Toggle = function (_React$Component) {
             });
             this.modifyCss("#A1A1A1", "#000000");
             localStorage.setItem('fokus-toggle', 'disable');
-            document.getElementById('disable').innerHTML = 'Disabled';
-            document.getElementById('enable').innerHTML = 'Enable';
+            (0, _jquery2.default)('#disable').html('Disabled');
+            (0, _jquery2.default)('#enable').html('Enable');
+            (0, _jquery2.default)('#input').prop('disabled', true);
         }
     }, {
         key: 'modifyCss',
