@@ -54,9 +54,11 @@ class Toggle extends React.Component {
 
         if (toggle == 'disable') {
             this.modifyCss("#A1A1A1", "#000000");
+            $('#input').prop('disabled', true);
             return {__html: 'Enable'};
         } else {
             this.modifyCss("#000000", "#A1A1A1");
+            $('#input').prop('disabled', false);
             return {__html: 'Enabled'};
         }
     }
@@ -66,9 +68,11 @@ class Toggle extends React.Component {
 
         if (toggle == 'disable') {
             this.modifyCss("#A1A1A1", "#000000");
+            $('#input').prop('disabled', true);
             return {__html: 'Disabled'};
         } else {
             this.modifyCss("#000000", "#A1A1A1");
+            $('#input').prop('disabled', false);
             return {__html: 'Disable'};
         }
     }

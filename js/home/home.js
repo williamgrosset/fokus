@@ -1,5 +1,5 @@
 /*
-* Global Variables (will be encapsulated eventually)
+* Global Variables
 */
 var stopwatchOn = false;
 var seconds = 3;

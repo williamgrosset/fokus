@@ -193,14 +193,28 @@ var DomainNew = function (_React$Component) {
     }, {
         key: 'handleSubmit',
         value: function handleSubmit(e) {
+            var domain = this.state.value;
+            domain.toLowerCase();
             if (this.props.container.length == 30) {
-                var modal = document.getElementById('myModal');
+                var modal = document.getElementById('myModalMax');
                 modal.style.display = 'block';
                 var span = document.getElementsByClassName("close")[0];
                 span.onclick = function () {
                     modal.style.display = 'none';
                 };
                 e.preventDefault();
+                return;
+            } else if (domain.includes("http") || domain.includes("https") || domain.includes("://") || domain.includes("//")) {
+                var modal = document.getElementById('myModalHTTP');
+                modal.style.display = 'block';
+                var span = document.getElementsByClassName("close")[1];
+                span.onclick = function () {
+                    modal.style.display = 'none';
+                };
+                var input = document.getElementById('input');
+                input.value = "";
+                e.preventDefault();
+                return;
             } else {
                 e.preventDefault();
                 this.props.addDomain(this.state.value);
@@ -212,8 +226,8 @@ var DomainNew = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 'form',
-                { onSubmit: this.handleSubmit, id: 'form' },
-                _react2.default.createElement('input', { id: 'input', type: 'text', value: this.state.value, placeholder: 'e.g. facebook.com', onChange: this.handleChange })
+                { autoComplete: 'off', onSubmit: this.handleSubmit, id: 'form' },
+                _react2.default.createElement('input', { id: 'input', type: 'text', value: this.state.value, placeholder: 'e.g. facebook.com', autoComplete: 'off', onChange: this.handleChange })
             );
         }
     }]);
@@ -578,9 +592,11 @@ var Toggle = function (_React$Component) {
 
             if (toggle == 'disable') {
                 this.modifyCss("#A1A1A1", "#000000");
+                (0, _jquery2.default)('#input').prop('disabled', true);
                 return { __html: 'Enable' };
             } else {
                 this.modifyCss("#000000", "#A1A1A1");
+                (0, _jquery2.default)('#input').prop('disabled', false);
                 return { __html: 'Enabled' };
             }
         }
@@ -591,9 +607,11 @@ var Toggle = function (_React$Component) {
 
             if (toggle == 'disable') {
                 this.modifyCss("#A1A1A1", "#000000");
+                (0, _jquery2.default)('#input').prop('disabled', true);
                 return { __html: 'Disabled' };
             } else {
                 this.modifyCss("#000000", "#A1A1A1");
+                (0, _jquery2.default)('#input').prop('disabled', false);
                 return { __html: 'Disable' };
             }
         }

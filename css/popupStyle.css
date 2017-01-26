@@ -94,6 +94,7 @@ ul li:before {
     left: 0;
     top: 5px;
 }
+
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
