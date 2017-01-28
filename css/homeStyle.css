@@ -120,26 +120,26 @@ body {
     transform: translateY(4px);
 }
 
+.bottom-container {
+  padding-top: 4em;
+}
+
 #bottom {
     font-style: italic;
     animation: fadeIn 2s;
 }
 
 #bottom-right {
-    /*
     position: fixed;
     bottom: 3;
     right: 3;
-    */
     animation: fadeIn 2s;
 }
 
 #bottom-left {
-    /*
     position:fixed;
     bottom: 3;
     left: 3;
-    */
     animation: fadeIn 2s;
 }
 
