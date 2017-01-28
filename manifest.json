@@ -9,7 +9,7 @@
     ],
     "browser_action": {
         "default_popup": "html/popup.html",
-        "default_title": "Click here!"
+        "default_title": "Time to get productive."
     },
     "background": {
         "scripts": ["js/background/listener.js"]
