@@ -12,13 +12,3 @@ Not exactly. Most extensions are a bit overkill with their design and functional
 
 ### Do you realize you spelt "focus" wrong?
 Yes. Fokus is swedish for focus (I know, it's pretty original). :godmode:
-
-## Development Updates
-### November 10th, 2016
-My plans right now are to make the domains I want blocked directly embedded into the source code. There are awesome things to come in terms of user experience; however, I will keep those details disclosed for now.
-
-### November 23rd, 2016.
-Semester is extremely busy, but the main page of the extension is coming along nicely. I need to find a huge text file of quotes...
-
-### December 24th, 2016
-Decided to switch to developing the Chrome popup with React instead of vanilla JS/jQuery. This is my first time with React, so it has been a painful but enjoyable time learning this library. Also, an additional feature I want to add is the ability for users to choose how long they want the domain blocker to be enabled. On a side note, *Merry Christmas!*

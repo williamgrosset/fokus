@@ -1,6 +1,6 @@
 (function() {
 
-    var seconds = 3;
+    var seconds = 120;
     var timer;
     $("#stopwatchStop").hide();
     $("#stopwatchReset").hide();
