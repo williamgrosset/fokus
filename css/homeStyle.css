@@ -1,27 +1,48 @@
-@media (max-width: 1200px) {
+/*
+ * Media queries. Read the rules here and note the order they come in. 
+ * CSS uses the last declared rule over previous ones so order matters
+ */
+
+@media (min-width: 600px) {
+  body {
+    font-size:16;
+  }
+}
+@media (min-width: 900px) {
+  body {
+    font-size:18;
+  }
+}
+@media (min-width: 1200px) {
   body {
     font-size:22;
   }
 }
-@media (max-width: 1000px) {
-  body {
-    font-size:12;
-  }
-}
-@media (max-width: 600px) {
+@media (max-width: 599px) {
   body {
     font-size:6;
   }
 }
 
-div.front {
-    /*
+/*
+ * Put 'global' rules for the whole page in body. 
+ * But you want seperate from media queries, because these apply
+ * for all page sizes. If you make a more specific selector for 
+ * some element where text should be left, then you can make the 
+ * rule there and it will overrule this one.
+ */
+
+body {
     text-align: center;
-    white-space: nowrap;
-    max-width: 100%;
-    height: auto;
-    width: auto;
-    */
+}
+
+/* Flexbox rules start here. Use CLASSES instead of IDs.
+ * Use smart CSS selectors to keep the LOC down.
+ * We'll have one big outer flexbox with 3 children.
+ * Then those three children can be flexbox if necessary.
+ */
+
+.front {
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
@@ -49,11 +70,10 @@ div.front {
 
 #clock {
     /*
-    font-size: 1500%;
-    display: inline;
     animation: fadeIn 2s;
     */
-    font-size: 5em;
+    display: inline;
+    font-size: 6em;
 }
     
 #center-below {
@@ -65,15 +85,16 @@ div.front {
 
 #seconds {
     /*
-    display: inline;
     animation: fadeIn 2s;
     */
+    display: inline;
+    font-size: 0.5em;
 }
 
 .button {
     display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 0.5em 1em;
+    font-size: 0.6em;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
