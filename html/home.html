@@ -14,25 +14,35 @@
         <ul id="background" class="background"></ul>
         <div class="widgets">
             <div class='front'>
-                <h1 id="center-above">.</h1>
-                <div id="center"> 
-                    <p>Take a short break with some meditation.</p>
+
+                <div class="header-container">
+                  <h1 id="center-above">.</h1>
+                  <p>Take a short break with some meditation.</p>
                 </div>
-                <p id='clock'>120</p><p id='seconds'>seconds</p>
-                <div id="center-below">
-                    <button class='button' id='stopwatchStart'>Start</button>
-                    <button class='button' id='stopwatchStop'>Stop</button>
-                    <button class='button' id='stopwatchReset'>Reset</button>
+                  
+                <div class="clock-and-buttons-container">
+                  <span><p id='clock'>120</p><p id='seconds'>seconds</p></span>
+                  <div id="center-below">
+                      <button class='button' id='stopwatchStart'>Start</button>
+                      <button class='button' id='stopwatchStop'>Stop</button>
+                      <button class='button' id='stopwatchReset'>Reset</button>
+                  </div>
                 </div>
-                <div id="bottom">
-                    <p id="bottom-quote"></p>
-                </div>
+
+
             </div>
-            <div id="bottom-right">
-                <a href="about.html"><img src=/png/fokus_question_32.png alt="About"></a>
-            </div>
-            <div id="bottom-left">
-                <a href="http://github.com/williamgrosset/fokus"><img src=/png/fokus_github_32.png alt="Open Source"></a>
+            <div class="bottom-container">
+              <div class="quote-container">
+                  <div id="bottom">
+                      <p id="bottom-quote"></p>
+                  </div>
+              </div>
+              <div id="bottom-right">
+                  <a href="about.html"><img src=/png/fokus_question_32.png alt="About"></a>
+              </div>
+              <div id="bottom-left">
+                  <a href="http://github.com/williamgrosset/fokus"><img src=/png/fokus_github_32.png alt="Open Source"></a>
+              </div>
             </div>
         </div>
         <audio id="audio" src="/mp3/BassySwoosh.mp3" preload="auto"></audio>

@@ -1,47 +1,106 @@
-div.front {
-    font-family: Helvetica;
-    text-align: center;
-    white-space: nowrap;
-    max-width: 100%;
-    height: auto;
-    width: auto;
+/* MEDIA QUERIES
+ * Read the rules here and note the order they come in. 
+ * CSS uses the last declared rule over previous ones so order matters
+ */
+
+@media (min-width: 600px) {
+  body {
+    font-size:16;
+  }
 }
+@media (min-width: 900px) {
+  body {
+    font-size:18;
+  }
+}
+@media (min-width: 1200px) {
+  body {
+    font-size:22;
+  }
+}
+@media (max-width: 599px) {
+  body {
+    font-size:13;
+  }
+}
+
+
+/* GLOBAL RULES
+ * Put 'global' rules for the whole page in body. 
+ * But you want seperate from media queries, because these apply
+ * for all page sizes. If you make a more specific selector for 
+ * some element where text should be left, then you can make the 
+ * rule there and it will overrule this one.
+ */
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-#center-above {
+body {
+    text-align: center;
+    font-family: Helvetica;
+}
+
+
+/* FLEXBOX */
+ 
+.widgets {
+    display: flex; 
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 96%;
+}
+
+.front {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+
+
+.header-container h1 {
+    /*
     padding-top: 120px;
     padding-bottom: 20px;
     font-size: 600%;
+    */
     animation: fadeIn 2s;
+    padding-bottom: 1.5em;
 }
 
-#center {
-    font-size: 270%;
+.header-container p {
     animation: fadeIn 2s;
+    padding-bottom: 1em;
+}
+
+.quote-container {
 }
 
 #clock {
-    font-size: 1500%;
-    display: inline;
     animation: fadeIn 2s;
+    display: inline;
+    font-size: 6em;
 }
     
 #center-below {
-    padding-top: 20px;
     animation: fadeIn 2s;
+    padding-top: 1em;
 }
 
 #seconds {
-    display: inline;
     animation: fadeIn 2s;
-    padding-bottom:
+    display: inline;
+    font-size: 0.5em;
 }
 
 .button {
     display: inline-block;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 0.5em 1em;
+    font-size: 0.6em;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -62,9 +121,11 @@ div.front {
     transform: translateY(4px);
 }
 
+.bottom-container {
+  padding-top: 4em;
+}
+
 #bottom {
-    padding-top: 90px;
-    font-size: 16px;
     font-style: italic;
     animation: fadeIn 2s;
 }
