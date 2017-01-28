@@ -3,14 +3,10 @@ import DomainNew from './domain-new.js';
 import DomainContainer from './domain-container.js';
 import DomainItem from './domain-item.js';
 import shortid from 'shortid';
-import $ from 'jquery';
 
 class Domains extends React.Component {
     constructor(props) {
         super(props);
- 
-        var container = []; // used for testing
-        //localStorage.setItem('container', JSON.stringify(container)); // used for testing
         var container = JSON.parse(localStorage.getItem('container')) || [];
 
         this.state = {
@@ -25,60 +21,63 @@ class Domains extends React.Component {
     }
 
     /*
-    * addDomain(domain):
-    * This method is passed down to the child component (DomainNew)
-    * and is used when the user inputs a valid domain to be blocked.
-    * The valid domain is added to the container array that contains
-    * an object for each unique domain.
+    *  Domain from form user input is added to our container. Our
+    *  validDomain function validates our domain to be blocked and 
+    *  then we call our storeDomain function to store our container
+    *  in localStorage.
+    *
+    *  @param domain: Domain from event.target.value.
     */
     addDomain(domain) {
-        console.log('addDomain (before adding) current container: ');
-        console.log(this.state.container);
         domain = this.validDomain(domain);
         var idValue = shortid.generate();
         this.state.container.push({
             id: idValue,
             domain
         });
-        console.log('addDomain current container: ' + this.state.container);
         this.setState({ container: this.state.container });
-        this.storeDomain(idValue, domain, this.state.container);
+        this.storeDomain(domain, this.state.container);
     }
 
     /*
-    * validDomain(domain):
-    * TODO:
-    * - Add pattern matching for showing invalid input
+    *  Adds prefix and suffix to our domain to be properly blocked.
+    *
+    *  @param domain: Domain from event.target.value.
+    *  @return validDomain: Domain with added prefix and suffix.
     */
     validDomain(domain) {
         var prefix = ".*:\/\/\.*";
         var suffix = "\/.*";
-        var validDomain = prefix.concat(domain).concat(suffix);
-        return validDomain;
+        return prefix.concat(domain).concat(suffix);
     }
 
     /*
-    * storeDomain(validDomain):
+    *  Send our validDomain to our background script to be added
+    *  to our collection of our blocked domains to be enabled and 
+    *  disabled. Then, we store our domains container to local
+    *  storage to keep our data persistent.
+    *
+    *  @param validDomain: Domain with prefix and suffix for
+    *  proper URL blocking.
+    *  @param container: Container with all of our domains.
     */
-    storeDomain(idValue, validDomain, container) {
+    storeDomain(validDomain, container) {
         chrome.runtime.sendMessage({
             validDomain
         });
-        var empty = []; // used for testing
         localStorage.setItem('container', JSON.stringify(container));
-        /*
-        chrome.runtime.sendMessage({
-            container
-        });
-        */
     }
 
     /*
-    * getIndex(value, prop):
+    *  Retrieve index value of domain to delete.
+    *
+    *  @param value: Unique id to match.
+    *  @param key: Attribute of object.
+    *  @return index: Index of domain to delete.
     */
-    getIndex(value, prop) {
+    getIndex(value, key) {
         for (var i = 0; i < this.state.container.length; i++) {
-            if (this.state.container[i][prop] === value) {
+            if (this.state.container[i][key] === value) {
                 return i;
             }
         }
@@ -86,13 +85,15 @@ class Domains extends React.Component {
     }
 
     /*
-    * removeDomain(e):
+    *  Seach for index and filter matched item out of container. 
+    *  Send index to background script for domain to be removed from
+    *  domain blocker container.
+    *
+    *  @param id: Unique id for domain to delete.
     */
     removeDomain(id) {
         var index = this.getIndex(id, 'id');
-        console.log('index: ' + index);
         if (index == -1) {
-            console.log('removeDomain: could not find index :(');
             return;
         }
         chrome.runtime.sendMessage({
@@ -100,19 +101,8 @@ class Domains extends React.Component {
         });
         var newContainer = this.state.container.filter((_, ind) => ind !== index);
         this.state.container = newContainer;
-        console.log('newContainer: ');
-        console.log(newContainer);
-        localStorage.setItem('container', JSON.stringify(this.state.container));
         this.setState({ container: newContainer });
-        console.log('checking container from localStorage: ');
-        console.log(JSON.parse(localStorage.getItem('container')));
-        console.log('removeDomain current container: ');
-        console.log(this.state.container);
-        /*
-        chrome.runtime.sendMessage({
-            newContainer
-        });
-        */
+        localStorage.setItem('container', JSON.stringify(this.state.container));
     }
 
     render() {

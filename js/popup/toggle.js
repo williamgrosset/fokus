@@ -17,6 +17,11 @@ class Toggle extends React.Component {
         this.onloadDisable = this.onloadDisable.bind(this);
     }
 
+    /*
+    *  Send a message to our background script to enable our
+    *  domain blocker. Send toggle value to localStorage and 
+    *  modify CSS for enabled visuals.
+    */
     enableFokus() {
         var enable = true;
         chrome.runtime.sendMessage({
@@ -29,6 +34,11 @@ class Toggle extends React.Component {
         $('#input').prop('disabled', false);
     }
 
+    /*
+    *  Send a message to our background script to disable our
+    *  domain blocker. Send toggle value to localStorage and 
+    *  modify CSS for disabled visuals.
+    */
     disableFokus() {
         var disable = true;
         chrome.runtime.sendMessage({
@@ -41,14 +51,24 @@ class Toggle extends React.Component {
         $('#input').prop('disabled', true);
     }
 
-    modifyCss(color1, color2) {
+    /*
+    *  Modify color of domain container items, domain title, 
+    *  and bottom border of form input.
+    *
+    *  @param color: Modify color of domain container items,
+    */
+    modifyCss(color) {
         $("#domain-container").css({
-            "color": color1
+            "color": color
         });
-        $(".domains-title").css("color", color1);
-        $("input[type=text]").css("border-bottom-color", color1);
+        $(".domains-title").css("color", color);
+        $("input[type=text]").css("border-bottom-color", color);
     }
 
+    /*
+    *  Inject appropriate text and modify CSS for enabled 
+    *  domain blocker.
+    */
     onloadEnable() {
         var toggle = localStorage.getItem('fokus-toggle');
 
@@ -63,6 +83,10 @@ class Toggle extends React.Component {
         }
     }
 
+    /*
+    *  Inject appropriate text and modify CSS for disabled
+    *  domain blocker.
+    */
     onloadDisable() {
         var toggle = localStorage.getItem('fokus-toggle');
 

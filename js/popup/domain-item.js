@@ -3,26 +3,29 @@ import React from 'react';
 class DomainItem extends React.Component {
     constructor(props) {
         super(props);
-        this.handleClick = this.handleClick.bind(this);
+        this.deleteDomain = this.deleteDomain.bind(this);
     }
 
-    handleClick(e) {
+    /*
+    *  Handles onClick event and removes the domain with the
+    *  corresponding id.
+    */
+    deleteDomain(e) {
         e.preventDefault();
         this.props.removeDomain(this.props.id);
-        console.log(this.props.id);
     }
 
     render() {
-        var validDomain = this.props.domain;
         var prefix = ".*:\/\/\.*";
         var suffix = "\/.*";
+        var validDomain = this.props.domain;
         validDomain = validDomain.replace(prefix, '');
         validDomain = validDomain.replace(suffix, '');
         return (
             <div>
                 <li>
                     <div style={{float:'left'}} id='domain-item'>{validDomain}</div>
-                    <div><input type='image' id='domain-delete' style={{float:'right'}} src='../../png/garbage_can_16.png' onClick={this.handleClick} /></div>
+                    <div><input type='image' id='domain-delete' style={{float:'right'}} src='../../png/garbage_can_16.png' onClick={this.deleteDomain} /></div>
                 </li>
             </div>
         );

@@ -8,8 +8,6 @@ class DomainContainer extends React.Component {
         this.state = {
             container: this.props.container
         };
-        //console.log('DomainContainer constructor: ');
-        //console.log(this.state.container);
     }
 
     render() {

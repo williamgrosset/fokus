@@ -1,6 +1,3 @@
-/*
-* onload tag not allowed with chrome extensions
-*/
 document.addEventListener('DOMContentLoaded', function() {
       typeHeader();
 });

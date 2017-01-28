@@ -1,6 +1,9 @@
 div.front {
     text-align: center;
     white-space: nowrap;
+    max-width: 100%;
+    height: auto;
+    width: auto;
 }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }

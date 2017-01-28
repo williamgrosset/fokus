@@ -32,8 +32,6 @@ var DomainContainer = function (_React$Component) {
         _this.state = {
             container: _this.props.container
         };
-        //console.log('DomainContainer constructor: ');
-        //console.log(this.state.container);
         return _this;
     }
 
@@ -93,23 +91,28 @@ var DomainItem = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (DomainItem.__proto__ || Object.getPrototypeOf(DomainItem)).call(this, props));
 
-        _this.handleClick = _this.handleClick.bind(_this);
+        _this.deleteDomain = _this.deleteDomain.bind(_this);
         return _this;
     }
 
+    /*
+    *  Handles onClick event and removes the domain with the
+    *  corresponding id.
+    */
+
+
     _createClass(DomainItem, [{
-        key: "handleClick",
-        value: function handleClick(e) {
+        key: "deleteDomain",
+        value: function deleteDomain(e) {
             e.preventDefault();
             this.props.removeDomain(this.props.id);
-            console.log(this.props.id);
         }
     }, {
         key: "render",
         value: function render() {
-            var validDomain = this.props.domain;
             var prefix = ".*:\/\/\.*";
             var suffix = "\/.*";
+            var validDomain = this.props.domain;
             validDomain = validDomain.replace(prefix, '');
             validDomain = validDomain.replace(suffix, '');
             return _react2.default.createElement(
@@ -126,7 +129,7 @@ var DomainItem = function (_React$Component) {
                     _react2.default.createElement(
                         "div",
                         null,
-                        _react2.default.createElement("input", { type: "image", id: "domain-delete", style: { float: 'right' }, src: "../../png/garbage_can_16.png", onClick: this.handleClick })
+                        _react2.default.createElement("input", { type: "image", id: "domain-delete", style: { float: 'right' }, src: "../../png/garbage_can_16.png", onClick: this.deleteDomain })
                     )
                 )
             );
@@ -163,38 +166,42 @@ var DomainNew = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (DomainNew.__proto__ || Object.getPrototypeOf(DomainNew)).call(this, props));
 
-        _this.state = { value: '' };
+        _this.state = {
+            value: ''
+        };
 
-        _this.handleChange = _this.handleChange.bind(_this);
-        _this.handleSubmit = _this.handleSubmit.bind(_this);
+        _this.inputChange = _this.inputChange.bind(_this);
+        _this.addDomain = _this.addDomain.bind(_this);
         return _this;
     }
 
     /*
-    * handleChange(e):
-    * Keeps track of the user input and constantly updates the state.
-    * Yes, this is obviously not the most optimized and will be fixed
-    * by using the 'ref' attribute.
+    *  Keeps track of the user input and constantly updates the state
+    *  (yes, this is obviously not the most optimized solution).
+    *
+    *  @param e: Changed form input value.
     */
 
 
     _createClass(DomainNew, [{
-        key: 'handleChange',
-        value: function handleChange(e) {
+        key: 'inputChange',
+        value: function inputChange(e) {
             this.setState({ value: e.target.value });
         }
 
         /*
-        * handleSubmit(e):
-        * Adds the user input value to the domain collection and resets
-        * the value in the input box to an empty string.
+        *  Displays appropriate modal for max container and domain validation.
+        *  If domain is valid, add form input value to domain container.
+        *
+        *  @param e: Submitted form input value.
         */
 
     }, {
-        key: 'handleSubmit',
-        value: function handleSubmit(e) {
+        key: 'addDomain',
+        value: function addDomain(e) {
             var domain = this.state.value;
             domain.toLowerCase();
+            e.preventDefault();
             if (this.props.container.length == 30) {
                 var modal = document.getElementById('myModalMax');
                 modal.style.display = 'block';
@@ -202,7 +209,6 @@ var DomainNew = function (_React$Component) {
                 span.onclick = function () {
                     modal.style.display = 'none';
                 };
-                e.preventDefault();
                 return;
             } else if (domain.includes("http") || domain.includes("https") || domain.includes("://") || domain.includes("//")) {
                 var modal = document.getElementById('myModalHTTP');
@@ -216,7 +222,6 @@ var DomainNew = function (_React$Component) {
                 e.preventDefault();
                 return;
             } else {
-                e.preventDefault();
                 this.props.addDomain(this.state.value);
                 this.setState({ value: '' });
             }
@@ -226,8 +231,8 @@ var DomainNew = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 'form',
-                { autoComplete: 'off', onSubmit: this.handleSubmit, id: 'form' },
-                _react2.default.createElement('input', { id: 'input', type: 'text', value: this.state.value, placeholder: 'e.g. facebook.com', autoComplete: 'off', onChange: this.handleChange })
+                { autoComplete: 'off', onSubmit: this.addDomain, id: 'form' },
+                _react2.default.createElement('input', { id: 'input', type: 'text', value: this.state.value, placeholder: 'e.g. facebook.com', autoComplete: 'off', onChange: this.inputChange })
             );
         }
     }]);
@@ -262,10 +267,6 @@ var _shortid = require('shortid');
 
 var _shortid2 = _interopRequireDefault(_shortid);
 
-var _jquery = require('jquery');
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -282,8 +283,6 @@ var Domains = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Domains.__proto__ || Object.getPrototypeOf(Domains)).call(this, props));
 
-        var container = []; // used for testing
-        //localStorage.setItem('container', JSON.stringify(container)); // used for testing
         var container = JSON.parse(localStorage.getItem('container')) || [];
 
         _this.state = {
@@ -299,34 +298,33 @@ var Domains = function (_React$Component) {
     }
 
     /*
-    * addDomain(domain):
-    * This method is passed down to the child component (DomainNew)
-    * and is used when the user inputs a valid domain to be blocked.
-    * The valid domain is added to the container array that contains
-    * an object for each unique domain.
+    *  Domain from form user input is added to our container. Our
+    *  validDomain function validates our domain to be blocked and 
+    *  then we call our storeDomain function to store our container
+    *  in localStorage.
+    *
+    *  @param domain: Domain from event.target.value.
     */
 
 
     _createClass(Domains, [{
         key: 'addDomain',
         value: function addDomain(domain) {
-            console.log('addDomain (before adding) current container: ');
-            console.log(this.state.container);
             domain = this.validDomain(domain);
             var idValue = _shortid2.default.generate();
             this.state.container.push({
                 id: idValue,
                 domain: domain
             });
-            console.log('addDomain current container: ' + this.state.container);
             this.setState({ container: this.state.container });
-            this.storeDomain(idValue, domain, this.state.container);
+            this.storeDomain(domain, this.state.container);
         }
 
         /*
-        * validDomain(domain):
-        * TODO:
-        * - Add pattern matching for showing invalid input
+        *  Adds prefix and suffix to our domain to be properly blocked.
+        *
+        *  @param domain: Domain from event.target.value.
+        *  @return validDomain: Domain with added prefix and suffix.
         */
 
     }, {
@@ -334,38 +332,42 @@ var Domains = function (_React$Component) {
         value: function validDomain(domain) {
             var prefix = ".*:\/\/\.*";
             var suffix = "\/.*";
-            var validDomain = prefix.concat(domain).concat(suffix);
-            return validDomain;
+            return prefix.concat(domain).concat(suffix);
         }
 
         /*
-        * storeDomain(validDomain):
+        *  Send our validDomain to our background script to be added
+        *  to our collection of our blocked domains to be enabled and 
+        *  disabled. Then, we store our domains container to local
+        *  storage to keep our data persistent.
+        *
+        *  @param validDomain: Domain with prefix and suffix for
+        *  proper URL blocking.
+        *  @param container: Container with all of our domains.
         */
 
     }, {
         key: 'storeDomain',
-        value: function storeDomain(idValue, validDomain, container) {
+        value: function storeDomain(validDomain, container) {
             chrome.runtime.sendMessage({
                 validDomain: validDomain
             });
-            var empty = []; // used for testing
             localStorage.setItem('container', JSON.stringify(container));
-            /*
-            chrome.runtime.sendMessage({
-                container
-            });
-            */
         }
 
         /*
-        * getIndex(value, prop):
+        *  Retrieve index value of domain to delete.
+        *
+        *  @param value: Unique id to match.
+        *  @param key: Attribute of object.
+        *  @return index: Index of domain to delete.
         */
 
     }, {
         key: 'getIndex',
-        value: function getIndex(value, prop) {
+        value: function getIndex(value, key) {
             for (var i = 0; i < this.state.container.length; i++) {
-                if (this.state.container[i][prop] === value) {
+                if (this.state.container[i][key] === value) {
                     return i;
                 }
             }
@@ -373,16 +375,18 @@ var Domains = function (_React$Component) {
         }
 
         /*
-        * removeDomain(e):
+        *  Seach for index and filter matched item out of container. 
+        *  Send index to background script for domain to be removed from
+        *  domain blocker container.
+        *
+        *  @param id: Unique id for domain to delete.
         */
 
     }, {
         key: 'removeDomain',
         value: function removeDomain(id) {
             var index = this.getIndex(id, 'id');
-            console.log('index: ' + index);
             if (index == -1) {
-                console.log('removeDomain: could not find index :(');
                 return;
             }
             chrome.runtime.sendMessage({
@@ -392,19 +396,8 @@ var Domains = function (_React$Component) {
                 return ind !== index;
             });
             this.state.container = newContainer;
-            console.log('newContainer: ');
-            console.log(newContainer);
-            localStorage.setItem('container', JSON.stringify(this.state.container));
             this.setState({ container: newContainer });
-            console.log('checking container from localStorage: ');
-            console.log(JSON.parse(localStorage.getItem('container')));
-            console.log('removeDomain current container: ');
-            console.log(this.state.container);
-            /*
-            chrome.runtime.sendMessage({
-                newContainer
-            });
-            */
+            localStorage.setItem('container', JSON.stringify(this.state.container));
         }
     }, {
         key: 'render',
@@ -428,7 +421,7 @@ var Domains = function (_React$Component) {
 
 module.exports = Domains;
 
-},{"./domain-container.js":1,"./domain-item.js":2,"./domain-new.js":3,"jquery":31,"react":185,"shortid":186}],5:[function(require,module,exports){
+},{"./domain-container.js":1,"./domain-item.js":2,"./domain-new.js":3,"react":185,"shortid":186}],5:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -456,6 +449,12 @@ var Headers = function (_React$Component) {
 
     _createClass(Headers, [{
         key: 'fokusTab',
+
+
+        /*
+        *  When an onClick event happens on the header image, 
+        *  the current window will be changed to the home page.
+        */
         value: function fokusTab() {
             var win = window.open("/html/home.html");
             win.focus();
@@ -466,7 +465,7 @@ var Headers = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'fokus-link' },
-                _react2.default.createElement('img', { src: '../../png/fokus_title_128.png', onClick: this.fokusTab })
+                _react2.default.createElement('img', { src: '../../png/fokus_title_128.png', onClick: this.fokusTab.bind(this) })
             );
         }
     }]);
@@ -550,6 +549,13 @@ var Toggle = function (_React$Component) {
         return _this;
     }
 
+    /*
+    *  Send a message to our background script to enable our
+    *  domain blocker. Send toggle value to localStorage and 
+    *  modify CSS for enabled visuals.
+    */
+
+
     _createClass(Toggle, [{
         key: 'enableFokus',
         value: function enableFokus() {
@@ -563,6 +569,13 @@ var Toggle = function (_React$Component) {
             (0, _jquery2.default)('#disable').html('Disable');
             (0, _jquery2.default)('#input').prop('disabled', false);
         }
+
+        /*
+        *  Send a message to our background script to disable our
+        *  domain blocker. Send toggle value to localStorage and 
+        *  modify CSS for disabled visuals.
+        */
+
     }, {
         key: 'disableFokus',
         value: function disableFokus() {
@@ -576,15 +589,29 @@ var Toggle = function (_React$Component) {
             (0, _jquery2.default)('#enable').html('Enable');
             (0, _jquery2.default)('#input').prop('disabled', true);
         }
+
+        /*
+        *  Modify color of domain container items, domain title, 
+        *  and bottom border of form input.
+        *
+        *  @param color: Modify color of domain container items,
+        */
+
     }, {
         key: 'modifyCss',
-        value: function modifyCss(color1, color2) {
+        value: function modifyCss(color) {
             (0, _jquery2.default)("#domain-container").css({
-                "color": color1
+                "color": color
             });
-            (0, _jquery2.default)(".domains-title").css("color", color1);
-            (0, _jquery2.default)("input[type=text]").css("border-bottom-color", color1);
+            (0, _jquery2.default)(".domains-title").css("color", color);
+            (0, _jquery2.default)("input[type=text]").css("border-bottom-color", color);
         }
+
+        /*
+        *  Inject appropriate text and modify CSS for enabled 
+        *  domain blocker.
+        */
+
     }, {
         key: 'onloadEnable',
         value: function onloadEnable() {
@@ -600,6 +627,12 @@ var Toggle = function (_React$Component) {
                 return { __html: 'Enabled' };
             }
         }
+
+        /*
+        *  Inject appropriate text and modify CSS for disabled
+        *  domain blocker.
+        */
+
     }, {
         key: 'onloadDisable',
         value: function onloadDisable() {
