@@ -3,11 +3,15 @@
 *Google chrome extension to help you focus on the things that really matter.*
 
 ## How to use fokus
-1. Download the chrome extension [here](https://).
+1. Download the chrome extension [here](https://chrome.google.com/webstore/detail/fokus/kapnmpfkldbacoamceiggkcoaepfgiea).
 2. Open the chrome popup and add new domains to be blocked.
 3. Enjoy your meditation breaks for increased focus and productivity.  
 
 ![](https://github.com/williamgrosset/fokus/blob/master/png/example.gif)
+
+## How to contribute
+1. Clone this repository and create your own branch.
+2. Complete necessary changes and submit a [pull request](https://help.github.com/articles/about-pull-requests/).
 
 ## F.A.Q.
 ### Why am I making this?
@@ -18,8 +22,3 @@ Not exactly. Most extensions are a bit overkill with their design and functional
 
 ### Do you realize you spelt "focus" wrong?
 Yes. Fokus is swedish for focus (I know, it's pretty original). :godmode:
-
-## How to contribute
-1. Clone this repository and create your own branch.
-2. Complete necessary changes and submit a [pull request](https://help.github.com/articles/about-pull-requests/).
-
