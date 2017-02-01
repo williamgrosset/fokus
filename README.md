@@ -10,12 +10,13 @@
 ![](https://github.com/williamgrosset/fokus/blob/master/png/example.gif)
 
 ## How to contribute
-1. Clone this repository and create your own branch.
-2. Complete necessary changes and submit a [pull request](https://help.github.com/articles/about-pull-requests/).
+1. Clone this repository and run ```npm i``` to install dependencies.
+2. Create a branch and complete any necessary changes or features. For continuous build, run ```npm run watch```.
+3. Submit a [pull request](https://help.github.com/articles/about-pull-requests/).
 
 ## F.A.Q.
 ### Why am I making this?
-Lately, I have started to notice that I subconciously go to websites that I do not actually want to be on. Individuals seek stimulus, so we happen to jump on board with anything to distract our mind. Whether it is Facebook, Twitch, Reddit, or any other domain - when I am working, I want to be completely focused on the things that are currently important. We are all guilty of this, but we can fix it.
+I have started to notice that I subconciously go to websites that I do not actually want to be on. Individuals seek stimulus, so we happen to jump on board with anything to distract our mind when we get bored. Whether it is Facebook, Twitch, Reddit, or any other domain - when I am working, I want to be completely focused on what is currently important with my work. We are all guilty of this, but we can fix it.
 
 ### "This problem has already been solved."
 Not exactly. Most extensions are a bit overkill with their design and functionality. I want to build something that I can use everyday and be able to practice meditation when I need it the most.

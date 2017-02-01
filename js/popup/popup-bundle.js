@@ -209,14 +209,19 @@ var DomainNew = function (_React$Component) {
                 span.onclick = function () {
                     modal.style.display = 'none';
                 };
+
+                var input = document.getElementById('input');
+                input.value = "";
+                e.preventDefault();
                 return;
-            } else if (domain.includes("http") || domain.includes("https") || domain.includes("://") || domain.includes("//")) {
-                var modal = document.getElementById('myModalHTTP');
+            } else if (domain.includes("http") || domain.includes("https") || domain.includes("://") || domain.includes("//") || domain === "") {
+                var modal = document.getElementById('myModalError');
                 modal.style.display = 'block';
                 var span = document.getElementsByClassName("close")[1];
                 span.onclick = function () {
                     modal.style.display = 'none';
                 };
+
                 var input = document.getElementById('input');
                 input.value = "";
                 e.preventDefault();
