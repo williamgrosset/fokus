@@ -1,6 +1,6 @@
 (function() {
 
-    var seconds = 120;
+    var seconds = 300;
     var timer;
     $("#stopwatchStop").hide();
     $("#stopwatchReset").hide();
@@ -35,6 +35,7 @@
         $("#stopwatchStop").show();
         $("#stopwatchReset").show();
         $("#reset").show();
+
         timer = setInterval(countDown, 1000);
     }
 
@@ -43,10 +44,10 @@
     *  start.
     */
     function stopCounter() {
+        clearInterval(timer);
         $("#stopwatchStop").hide();
         $("#stopwatchStart").show();
         $("#reset").show();
-        clearInterval(timer);
     }
 
     /*
@@ -54,11 +55,13 @@
     */
     function resetCounter() {
         clearInterval(timer);
+        seconds = 300;
+
         $("#stopwatchStop").hide();
         $("#stopwatchStart").show();
         $("#stopwatchReset").hide();
-        seconds = 120;
         $("#clock").html(seconds);
+        $("#seconds").html('seconds');
     }
 
     /*
@@ -68,6 +71,10 @@
     function countDown() {
         seconds--;
         $("#clock").html(seconds);
+
+        if (seconds == 1 ) {
+            $("#seconds").html('second');
+        }
         if (seconds == 0) {
             document.getElementById("audio").play();
             resetCounter();

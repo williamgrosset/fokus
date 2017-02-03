@@ -46,7 +46,7 @@ class DomainNew extends React.Component {
             return;
         } else if (domain.includes("http") || domain.includes("https") 
                       || domain.includes("://") || domain.includes("//") 
-                      || domain === "") {
+                      || domain === "" || !domain.includes(".")) {
             var modal = document.getElementById('myModalError');
             modal.style.display = 'block';
             var span = document.getElementsByClassName("close")[1];

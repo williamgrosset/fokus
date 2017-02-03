@@ -214,7 +214,7 @@ var DomainNew = function (_React$Component) {
                 input.value = "";
                 e.preventDefault();
                 return;
-            } else if (domain.includes("http") || domain.includes("https") || domain.includes("://") || domain.includes("//") || domain === "") {
+            } else if (domain.includes("http") || domain.includes("https") || domain.includes("://") || domain.includes("//") || domain === "" || !domain.includes(".")) {
                 var modal = document.getElementById('myModalError');
                 modal.style.display = 'block';
                 var span = document.getElementsByClassName("close")[1];
