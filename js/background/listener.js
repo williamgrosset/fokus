@@ -49,9 +49,6 @@
             // Check rest of tabs for URL replacement
             chrome.tabs.query({currentWindow: true}, function (tabs) {
                 var currDomain = location.href;
-                console.log('current domain: ');
-                console.log(currDomain);
-                console.log(tabs);
                 for (var i = 0; i < domains.length; i++) {
                     for (var k = 0; k < tabs.length; k++) {
                         var reDomain = new RegExp(domains[i], 'i');

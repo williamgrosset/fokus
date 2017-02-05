@@ -19,8 +19,10 @@ class DomainItem extends React.Component {
         var prefix = ".*:\/\/\.*";
         var suffix = "\/.*";
         var validDomain = this.props.domain;
+
         validDomain = validDomain.replace(prefix, '');
         validDomain = validDomain.replace(suffix, '');
+
         return (
             <div>
                 <li>

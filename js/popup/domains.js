@@ -31,6 +31,7 @@ class Domains extends React.Component {
     addDomain(domain) {
         domain = this.validDomain(domain);
         var idValue = shortid.generate();
+
         this.state.container.push({
             id: idValue,
             domain
@@ -96,11 +97,13 @@ class Domains extends React.Component {
         if (index == -1) {
             return;
         }
+
         chrome.runtime.sendMessage({
             index
         });
         var newContainer = this.state.container.filter((_, ind) => ind !== index);
         this.state.container = newContainer;
+
         this.setState({ container: newContainer });
         localStorage.setItem('container', JSON.stringify(this.state.container));
     }

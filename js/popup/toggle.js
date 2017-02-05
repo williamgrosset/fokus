@@ -27,8 +27,10 @@ class Toggle extends React.Component {
         chrome.runtime.sendMessage({
             enable 
         });
+
         this.modifyCss("#000000", "#A1A1A1");
         localStorage.setItem('fokus-toggle', 'enable');
+
         $('#enable').html('Enabled');
         $('#disable').html('Disable');
         $('#input').prop('disabled', false);
@@ -44,8 +46,10 @@ class Toggle extends React.Component {
         chrome.runtime.sendMessage({
             disable
         });
+
         this.modifyCss("#A1A1A1", "#000000");
         localStorage.setItem('fokus-toggle', 'disable');
+
         $('#disable').html('Disabled');
         $('#enable').html('Enable');
         $('#input').prop('disabled', true);

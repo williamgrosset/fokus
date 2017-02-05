@@ -14,7 +14,8 @@ class DomainNew extends React.Component {
 
     /*
     *  Keeps track of the user input and constantly updates the state
-    *  (yes, this is obviously not the most optimized solution).
+    *  (this is definitely not the most optimized solution and will be
+    *  updated).
     *
     *  @param e: Changed form input value.
     */
@@ -32,10 +33,12 @@ class DomainNew extends React.Component {
         var domain = this.state.value;
         domain.toLowerCase();
         e.preventDefault();
+
         if (this.props.container.length == 30) {
             var modal = document.getElementById('myModalMax');
             modal.style.display = 'block';
             var span = document.getElementsByClassName("close")[0];
+
             span.onclick = function() {
                 modal.style.display = 'none';
             }
@@ -50,6 +53,7 @@ class DomainNew extends React.Component {
             var modal = document.getElementById('myModalError');
             modal.style.display = 'block';
             var span = document.getElementsByClassName("close")[1];
+
             span.onclick = function() {
                 modal.style.display = 'none';
             }

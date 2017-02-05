@@ -66,7 +66,7 @@
 
     /*
     *  Decrement counter and play audio file after full
-    *  120 second meditation.
+    *  300 second meditation.
     */
     function countDown() {
         seconds--;
