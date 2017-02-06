@@ -38,7 +38,6 @@ class DomainNew extends React.Component {
             var modal = document.getElementById('myModalMax');
             modal.style.display = 'block';
             var span = document.getElementsByClassName("close")[0];
-
             span.onclick = function() {
                 modal.style.display = 'none';
             }
@@ -48,12 +47,12 @@ class DomainNew extends React.Component {
             e.preventDefault(); 
             return;
         } else if (domain.includes("http") || domain.includes("https") 
-                      || domain.includes("://") || domain.includes("//") 
-                      || domain === "" || !domain.includes(".")) {
+                      || domain.includes(":") || domain.includes("/") 
+                      || domain === "" || !domain.includes(".") 
+                      || domain.includes(" ")) {
             var modal = document.getElementById('myModalError');
             modal.style.display = 'block';
             var span = document.getElementsByClassName("close")[1];
-
             span.onclick = function() {
                 modal.style.display = 'none';
             }

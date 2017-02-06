@@ -113,8 +113,11 @@ var DomainItem = function (_React$Component) {
             var prefix = ".*:\/\/\.*";
             var suffix = "\/.*";
             var validDomain = this.props.domain;
+
             validDomain = validDomain.replace(prefix, '');
             validDomain = validDomain.replace(suffix, '');
+            if (validDomain.length >= 20) validDomain = validDomain.substring(0, 21).concat("...");
+
             return _react2.default.createElement(
                 "div",
                 null,
@@ -177,7 +180,8 @@ var DomainNew = function (_React$Component) {
 
     /*
     *  Keeps track of the user input and constantly updates the state
-    *  (yes, this is obviously not the most optimized solution).
+    *  (this is definitely not the most optimized solution and will be
+    *  updated).
     *
     *  @param e: Changed form input value.
     */
@@ -202,6 +206,7 @@ var DomainNew = function (_React$Component) {
             var domain = this.state.value;
             domain.toLowerCase();
             e.preventDefault();
+
             if (this.props.container.length == 30) {
                 var modal = document.getElementById('myModalMax');
                 modal.style.display = 'block';
@@ -214,7 +219,7 @@ var DomainNew = function (_React$Component) {
                 input.value = "";
                 e.preventDefault();
                 return;
-            } else if (domain.includes("http") || domain.includes("https") || domain.includes("://") || domain.includes("//") || domain === "" || !domain.includes(".")) {
+            } else if (domain.includes("http") || domain.includes("https") || domain.includes(":") || domain.includes("/") || domain === "" || !domain.includes(".") || domain.includes(" ")) {
                 var modal = document.getElementById('myModalError');
                 modal.style.display = 'block';
                 var span = document.getElementsByClassName("close")[1];
@@ -317,6 +322,7 @@ var Domains = function (_React$Component) {
         value: function addDomain(domain) {
             domain = this.validDomain(domain);
             var idValue = _shortid2.default.generate();
+
             this.state.container.push({
                 id: idValue,
                 domain: domain
@@ -394,6 +400,7 @@ var Domains = function (_React$Component) {
             if (index == -1) {
                 return;
             }
+
             chrome.runtime.sendMessage({
                 index: index
             });
@@ -401,6 +408,7 @@ var Domains = function (_React$Component) {
                 return ind !== index;
             });
             this.state.container = newContainer;
+
             this.setState({ container: newContainer });
             localStorage.setItem('container', JSON.stringify(this.state.container));
         }
@@ -568,8 +576,10 @@ var Toggle = function (_React$Component) {
             chrome.runtime.sendMessage({
                 enable: enable
             });
+
             this.modifyCss("#000000", "#A1A1A1");
             localStorage.setItem('fokus-toggle', 'enable');
+
             (0, _jquery2.default)('#enable').html('Enabled');
             (0, _jquery2.default)('#disable').html('Disable');
             (0, _jquery2.default)('#input').prop('disabled', false);
@@ -588,8 +598,10 @@ var Toggle = function (_React$Component) {
             chrome.runtime.sendMessage({
                 disable: disable
             });
+
             this.modifyCss("#A1A1A1", "#000000");
             localStorage.setItem('fokus-toggle', 'disable');
+
             (0, _jquery2.default)('#disable').html('Disabled');
             (0, _jquery2.default)('#enable').html('Enable');
             (0, _jquery2.default)('#input').prop('disabled', true);

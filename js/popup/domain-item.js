@@ -22,6 +22,8 @@ class DomainItem extends React.Component {
 
         validDomain = validDomain.replace(prefix, '');
         validDomain = validDomain.replace(suffix, '');
+        if (validDomain.length >= 20)
+            validDomain = validDomain.substring(0, 21).concat("...");
 
         return (
             <div>
