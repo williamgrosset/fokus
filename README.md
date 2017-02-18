@@ -10,9 +10,9 @@
 ![](https://github.com/williamgrosset/fokus/blob/master/png/example.gif)
 
 ## How to contribute
-1. Clone this repository and run ```npm i``` to install dependencies.
+1. Fork this repository and run ```npm i``` to install dependencies.
 2. Create a branch and complete any necessary changes or features. For continuous build, run ```npm run watch```.
-3. Submit a [pull request](https://help.github.com/articles/about-pull-requests/).
+3. Submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
 
 ## F.A.Q.
 ### Why am I making this?
