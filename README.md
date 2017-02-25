@@ -14,6 +14,8 @@
 2. Create a branch and complete any necessary changes or features. For continuous build, run ```npm run watch```.
 3. Submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
 
+*This is my first time using React, so any feedback is appreciated!*
+
 ## F.A.Q.
 ### Why am I making this?
 I have started to notice that I subconciously go to websites that I do not actually want to be on. Individuals seek stimulus, so we happen to jump on board with anything to distract our mind when we get bored. Whether it is Facebook, Twitch, Reddit, or any other domain - when I am working, I want to be completely focused on what is currently important with my work. We are all guilty of this, but we can fix it.

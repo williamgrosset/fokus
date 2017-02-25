@@ -40,7 +40,7 @@
                 for (var i = 0; i < domains.length; i++) {
                     var reDomain = new RegExp(domains[i], 'i');
                     if (reDomain.test(tabs[0].url)) {
-                        chrome.tabs.update(tabs[0].id, {url: "html/home.html" });
+                        chrome.tabs.update(tabs[0].id, {url: "src/html/home.html" });
                         return;
                     }
                 }
@@ -53,7 +53,7 @@
                     for (var k = 0; k < tabs.length; k++) {
                         var reDomain = new RegExp(domains[i], 'i');
                         if (reDomain.test(tabs[k].url)) {
-                            chrome.tabs.update(tabs[k].id, {url: "html/home.html" });
+                            chrome.tabs.update(tabs[k].id, {url: "src/html/home.html" });
                             return;
                         }
                     }

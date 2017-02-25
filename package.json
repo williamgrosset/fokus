@@ -20,7 +20,7 @@
   },
   "scripts": {
     "build": "./scripts/build.sh",
-    "watch": "watchify js/popup/popup.js -t babelify -o js/popup/popup-bundle.js"
+    "watch": "watchify src/js/popup/popup.js -t babelify -o src/js/popup/popup-bundle.js"
   },
   "author": "William Grosset",
   "license": "MIT",
