@@ -31099,7 +31099,6 @@ var DomainItem = function (_React$Component) {
             var prefix = ".*:\/\/\.*";
             var suffix = "\/.*";
             var validDomain = this.props.domain;
-
             validDomain = validDomain.replace(prefix, '');
             validDomain = validDomain.replace(suffix, '');
             if (validDomain.length >= 20) validDomain = validDomain.substring(0, 21).concat("...");
