@@ -8,24 +8,6 @@
     $("#stopwatchStop").bind("click", stopCounter);
     $("#stopwatchReset").bind("click", resetCounter);
 
-    document.addEventListener('DOMContentLoaded', function() {
-          //typeHeader();
-    });
-
-    /*
-    *  typed.js: wwww.mattboldt.com
-    *  Type out header on page load.
-    */
-    function typeHeader() {
-        $("#center-above").typed({
-            strings: ["Stay fokuse", "Stay focused."],
-            contentType: "html",
-            showCursor: false,
-            typeSpeed: 50,
-            backSpeed: 50,
-        });
-    }
-
     /*
     *  Begin decrementing counter and switch start button to
     *  stop.
