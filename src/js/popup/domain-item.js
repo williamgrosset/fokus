@@ -29,7 +29,7 @@ class DomainItem extends React.Component {
             <div>
                 <li>
                     <div style={{float:'left'}} id='domain-item'>{validDomain}</div>
-                    <div><input type='image' id='domain-delete' style={{float:'right'}} src='../../../png/garbage_can_16.png' onClick={this.deleteDomain} /></div>
+                    <div><input type='image' id='domain-delete' style={{float:'right'}} src='/png/garbage_can_16.png' onClick={this.deleteDomain} /></div>
                 </li>
             </div>
         );

@@ -272,7 +272,7 @@
 				// the stopNum actually represents the amount of chars to
 				// keep in the current string. In my case it's 14.
 				if (self.arrayPos == 0){
-				  self.stopNum = 7;
+				  self.stopNum = 1;
 				}
 				//every other time, delete the whole typed string
 				//else{

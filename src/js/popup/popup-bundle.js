@@ -31118,7 +31118,7 @@ var DomainItem = function (_React$Component) {
                     _react2.default.createElement(
                         "div",
                         null,
-                        _react2.default.createElement("input", { type: "image", id: "domain-delete", style: { float: 'right' }, src: "../../../png/garbage_can_16.png", onClick: this.deleteDomain })
+                        _react2.default.createElement("input", { type: "image", id: "domain-delete", style: { float: 'right' }, src: "/png/garbage_can_16.png", onClick: this.deleteDomain })
                     )
                 )
             );
@@ -31455,7 +31455,7 @@ var Headers = function (_React$Component) {
         *  the current window will be changed to the home page.
         */
         value: function fokusTab() {
-            var win = window.open("/html/home.html");
+            var win = window.open("/src/html/home.html");
             win.focus();
         }
     }, {
@@ -31464,7 +31464,7 @@ var Headers = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'fokus-link' },
-                _react2.default.createElement('img', { src: '../../../png/fokus_title_128.png', onClick: this.fokusTab.bind(this) })
+                _react2.default.createElement('img', { src: '/png/fokus_title_128.png', onClick: this.fokusTab.bind(this) })
             );
         }
     }]);

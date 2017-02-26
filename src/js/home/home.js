@@ -9,7 +9,7 @@
     $("#stopwatchReset").bind("click", resetCounter);
 
     document.addEventListener('DOMContentLoaded', function() {
-          typeHeader();
+          //typeHeader();
     });
 
     /*

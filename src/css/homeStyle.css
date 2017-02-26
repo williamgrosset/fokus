@@ -128,7 +128,6 @@ body {
 #bottom {
     font-style: italic;
     animation-delay: 3s;
-    animation: fadeIn 5s;
 }
 
 #bottom-right {
