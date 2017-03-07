@@ -12,14 +12,14 @@
 ## How to contribute
 1. Let me know about your idea (williamhgrosset@gmail.com) - I'd love to hear from you. :)
 1. Fork this repository and run ```npm i``` to install dependencies.
-2. Create a branch and complete any necessary changes or features. For browserify bundling with watchify, run ```npm run watch```.
+2. Create a branch and complete any necessary changes or features. For bundling with watchify, run ```npm run watch```.
 3. Submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
 
 *This is my first time using React, so any feedback is appreciated!*
 
 ## F.A.Q.
 ### Why am I making this?
-I have started to notice that I subconciously go to websites that I do not actually want to be on. Individuals seek stimulus, so we happen to jump on board with anything to distract our mind when we get bored. Whether it is Facebook, Twitch, Reddit, or any other domain - when I am working, I want to be completely focused on what is currently important. We are all guilty of this, but we can fix it.
+I have started to notice that I subconciously go to websites that I do not actually want to be on. Individuals seek stimulus, so we happen to distract our mind when we get bored. Whether it is Facebook, Twitch, Reddit, or any other domain - when I am working, I want to be completely focused on what is currently important. We are all guilty of this, but we can fix it.
 
 ### "Domain blocking has already been solved."
 Not exactly. Most extensions are a bit overkill with their design and functionality. I want to build something that I can easily use everyday and be able to practice meditation when I need it the most.
