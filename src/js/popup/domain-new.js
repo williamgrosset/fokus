@@ -9,16 +9,14 @@ class DomainNew extends React.Component {
         };
     
         this.inputChange = this.inputChange.bind(this);
-        this.addDomain = this.addDomain.bind(this);
+        this.domainValidation = this.domainValidation.bind(this);
         this.showModal = this.showModal.bind(this);
     }
 
     /*
-    *  Keeps track of the user input and constantly updates the state
-    *  (this is definitely not the most optimized solution and will be
-    *  updated).
+    *  Keeps track of the user input and update state.
     *
-    *  @param e: Changed form input value.
+    *  @param e: Event handler for form input value.
     */
     inputChange(e) {
         this.setState({value: e.target.value});
@@ -28,8 +26,9 @@ class DomainNew extends React.Component {
     *  Add valid domain to domain container.
     *
     *  @param e: Submitted form input value.
+    *  @param e: Event handler for form input value.
     */
-    addDomain(e) {
+    domainValidation(e) {
         var domain = this.state.value;
         domain.toLowerCase();
         e.preventDefault();
@@ -75,7 +74,7 @@ class DomainNew extends React.Component {
 
     render() {
         return (
-            <form autoComplete="off" onSubmit={this.addDomain} id='form' >
+            <form autoComplete="off" onSubmit={this.domainValidation} id='form' >
                 <input id='input' type='text' value={this.state.value} placeholder='e.g. facebook.com' autoComplete="off" onChange={this.inputChange} />
             </form>
         );

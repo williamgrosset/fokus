@@ -3,8 +3,8 @@ import React from 'react';
 class Headers extends React.Component {
 
     /*
-    *  When an onClick event happens on the header image, 
-    *  the current window will be changed to the home page.
+    *  Handle onClick event with header image - the current window 
+    *  will be changed to the fokus home page.
     */
     fokusTab() {
         var win = window.open("/src/html/home.html");

@@ -9,6 +9,8 @@ class DomainItem extends React.Component {
     /*
     *  Handles onClick event and removes the domain with the
     *  corresponding id.
+    *
+    *  @param e: Event handler for domain deletion.
     */
     deleteDomain(e) {
         e.preventDefault();

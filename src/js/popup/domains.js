@@ -14,22 +14,19 @@ class Domains extends React.Component {
         };
 
         this.addDomain = this.addDomain.bind(this);
-        this.validDomain = this.validDomain.bind(this);
+        this.domainURL = this.domainURL.bind(this);
         this.storeDomain = this.storeDomain.bind(this);
         this.removeDomain = this.removeDomain.bind(this);
         this.getIndex = this.getIndex.bind(this);
     }
 
     /*
-    *  Domain from form user input is added to our container. Our
-    *  validDomain function validates our domain to be blocked and 
-    *  then we call our storeDomain function to store our container
-    *  in localStorage.
+    *  Adds domain from form input into the domain container.
     *
-    *  @param domain: Domain from event.target.value.
+    *  @param domain: Domain from form input value.
     */
     addDomain(domain) {
-        domain = this.validDomain(domain);
+        domain = this.domainURL(domain);
         var idValue = shortid.generate();
 
         this.state.container.push({
@@ -41,22 +38,21 @@ class Domains extends React.Component {
     }
 
     /*
-    *  Adds prefix and suffix to our domain to be properly blocked.
+    *  Adds prefix and suffix to domain for domain blocking.
     *
-    *  @param domain: Domain from event.target.value.
-    *  @return validDomain: Domain with added prefix and suffix.
+    *  @param domain: Domain from form input value.
+    *  @return domain: Domain with added prefix and suffix.
     */
-    validDomain(domain) {
+    domainURL(domain) {
         var prefix = ".*:\/\/\.*";
         var suffix = "\/.*";
         return prefix.concat(domain).concat(suffix);
     }
 
     /*
-    *  Send our validDomain to our background script to be added
-    *  to our collection of our blocked domains to be enabled and 
-    *  disabled. Then, we store our domains container to local
-    *  storage to keep our data persistent.
+    *  Send validDomain to the background script to be added
+    *  to the collection of blocked domains and store the domains 
+    *  container in HTML localStorage.
     *
     *  @param validDomain: Domain with prefix and suffix for
     *  proper URL blocking.
@@ -86,9 +82,8 @@ class Domains extends React.Component {
     }
 
     /*
-    *  Seach for index and filter matched item out of container. 
-    *  Send index to background script for domain to be removed from
-    *  domain blocker container.
+    *  Search for index and filter matched item out of container and
+    *  send index to background script for domain to be removed.
     *
     *  @param id: Unique id for domain to delete.
     */

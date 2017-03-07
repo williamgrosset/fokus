@@ -12,7 +12,7 @@
 ## How to contribute
 1. Let me know about your idea (williamhgrosset@gmail.com) - I'd love to hear from you. :)
 1. Fork this repository and run ```npm i``` to install dependencies.
-2. Create a branch and complete any necessary changes or features. For continuous build, run ```npm run watch```.
+2. Create a branch and complete any necessary changes or features. For browserify bundling with watchify, run ```npm run watch```.
 3. Submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
 
 *This is my first time using React, so any feedback is appreciated!*

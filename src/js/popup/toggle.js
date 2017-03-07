@@ -18,9 +18,8 @@ class Toggle extends React.Component {
     }
 
     /*
-    *  Send a message to our background script to enable our
-    *  domain blocker. Send toggle value to localStorage and 
-    *  modify CSS for enabled visuals.
+    *  Send message to background script and enable domain blocker.
+    *  Update boolean value in localStorage and modify CSS for enabled visuals.
     */
     enableFokus() {
         var enable = true;
@@ -37,9 +36,8 @@ class Toggle extends React.Component {
     }
 
     /*
-    *  Send a message to our background script to disable our
-    *  domain blocker. Send toggle value to localStorage and 
-    *  modify CSS for disabled visuals.
+    *  Send message to background script and disable domain blocker. 
+    *  Update boolean value in localStorage and modify CSS for disabled visuals.
     */
     disableFokus() {
         var disable = true;
@@ -70,12 +68,11 @@ class Toggle extends React.Component {
     }
 
     /*
-    *  Inject appropriate text and modify CSS for enabled 
-    *  domain blocker.
+    *  Change HTML text for enable mode and modify CSS for 
+    *  enabled domain blocker.
     */
     onloadEnable() {
         var toggle = localStorage.getItem('fokus-toggle');
-
         if (toggle == 'disable') {
             this.modifyCss("#A1A1A1", "#000000");
             $('#input').prop('disabled', true);
@@ -88,12 +85,11 @@ class Toggle extends React.Component {
     }
 
     /*
-    *  Inject appropriate text and modify CSS for disabled
-    *  domain blocker.
+    *  Change HTML text for disable mode and modify CSS for 
+    *  disabled domain blocker.
     */
     onloadDisable() {
         var toggle = localStorage.getItem('fokus-toggle');
-
         if (toggle == 'disable') {
             this.modifyCss("#A1A1A1", "#000000");
             $('#input').prop('disabled', true);

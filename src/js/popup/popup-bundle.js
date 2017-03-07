@@ -31084,6 +31084,8 @@ var DomainItem = function (_React$Component) {
     /*
     *  Handles onClick event and removes the domain with the
     *  corresponding id.
+    *
+    *  @param e: Event handler for domain deletion.
     */
 
 
@@ -31161,19 +31163,15 @@ var DomainNew = function (_React$Component) {
         };
 
         _this.inputChange = _this.inputChange.bind(_this);
-        _this.addDomain = _this.addDomain.bind(_this);
-        //this.showModalMax = this.showModalMax.bind(this);
-        //this.showModalError = this.showModalError.bind(this);
+        _this.domainValidation = _this.domainValidation.bind(_this);
         _this.showModal = _this.showModal.bind(_this);
         return _this;
     }
 
     /*
-    *  Keeps track of the user input and constantly updates the state
-    *  (this is definitely not the most optimized solution and will be
-    *  updated).
+    *  Keeps track of the user input and update state.
     *
-    *  @param e: Changed form input value.
+    *  @param e: Event handler for form input value.
     */
 
 
@@ -31184,61 +31182,43 @@ var DomainNew = function (_React$Component) {
         }
 
         /*
-        *  Displays appropriate modal for max container and domain validation.
-        *  If domain is valid, add form input value to domain container.
+        *  Add valid domain to domain container.
         *
         *  @param e: Submitted form input value.
+        *  @param e: Event handler for form input value.
         */
 
     }, {
-        key: 'addDomain',
-        value: function addDomain(e) {
+        key: 'domainValidation',
+        value: function domainValidation(e) {
             var domain = this.state.value;
             domain.toLowerCase();
             e.preventDefault();
 
+            // Show modal for domain container max
             if (this.props.container.length == 30) {
-                // Show modal for container max
                 this.showModal(e, 'myModalMax', 0);
                 return;
-            } else if (domain.includes("http") || domain.includes("https") || domain.includes(":") || domain.includes("/") || domain === "" || !domain.includes(".") || domain.includes(" ")) {
                 // Show modal for invalid domain
+            } else if (domain.includes("http") || domain.includes("https") || domain.includes(":") || domain.includes("/") || domain === "" || !domain.includes(".") || domain.includes(" ")) {
                 this.showModal(e, 'myModalError', 1);
                 return;
-            } else {
                 // Successfully add domain to domain blocker container
+            } else {
                 this.props.addDomain(this.state.value);
                 this.setState({ value: '' });
             }
         }
-    }, {
-        key: 'showModalMax',
-        value: function showModalMax(e) {
-            var modal = document.getElementById('myModalMax');
-            modal.style.display = 'block';
-            var span = document.getElementsByClassName("close")[0];
-            span.onclick = function () {
-                modal.style.display = 'none';
-            };
 
-            var input = document.getElementById('input');
-            input.value = "";
-            e.preventDefault();
-        }
-    }, {
-        key: 'showModalError',
-        value: function showModalError(e) {
-            var modal = document.getElementById('myModalError');
-            modal.style.display = 'block';
-            var span = document.getElementsByClassName("close")[1];
-            span.onclick = function () {
-                modal.style.display = 'none';
-            };
+        /*
+        *  Displays appropriate modal for max container and domain validation.
+        *
+        *  @param e: Submitted form input value.
+        *  @param id: ID of modal (valid values: "myModalMax" or "myModalError").
+        *  @param i: Integer value for grabbing appropriate modal within span 
+        *  (valid values: 0 or 1).
+        */
 
-            var input = document.getElementById('input');
-            input.value = "";
-            e.preventDefault();
-        }
     }, {
         key: 'showModal',
         value: function showModal(e, id, i) {
@@ -31258,7 +31238,7 @@ var DomainNew = function (_React$Component) {
         value: function render() {
             return _react2.default.createElement(
                 'form',
-                { autoComplete: 'off', onSubmit: this.addDomain, id: 'form' },
+                { autoComplete: 'off', onSubmit: this.domainValidation, id: 'form' },
                 _react2.default.createElement('input', { id: 'input', type: 'text', value: this.state.value, placeholder: 'e.g. facebook.com', autoComplete: 'off', onChange: this.inputChange })
             );
         }
@@ -31317,7 +31297,7 @@ var Domains = function (_React$Component) {
         };
 
         _this.addDomain = _this.addDomain.bind(_this);
-        _this.validDomain = _this.validDomain.bind(_this);
+        _this.domainURL = _this.domainURL.bind(_this);
         _this.storeDomain = _this.storeDomain.bind(_this);
         _this.removeDomain = _this.removeDomain.bind(_this);
         _this.getIndex = _this.getIndex.bind(_this);
@@ -31325,19 +31305,16 @@ var Domains = function (_React$Component) {
     }
 
     /*
-    *  Domain from form user input is added to our container. Our
-    *  validDomain function validates our domain to be blocked and 
-    *  then we call our storeDomain function to store our container
-    *  in localStorage.
+    *  Adds domain from form input into the domain container.
     *
-    *  @param domain: Domain from event.target.value.
+    *  @param domain: Domain from form input value.
     */
 
 
     _createClass(Domains, [{
         key: 'addDomain',
         value: function addDomain(domain) {
-            domain = this.validDomain(domain);
+            domain = this.domainURL(domain);
             var idValue = _shortid2.default.generate();
 
             this.state.container.push({
@@ -31349,25 +31326,24 @@ var Domains = function (_React$Component) {
         }
 
         /*
-        *  Adds prefix and suffix to our domain to be properly blocked.
+        *  Adds prefix and suffix to domain for domain blocking.
         *
-        *  @param domain: Domain from event.target.value.
-        *  @return validDomain: Domain with added prefix and suffix.
+        *  @param domain: Domain from form input value.
+        *  @return domain: Domain with added prefix and suffix.
         */
 
     }, {
-        key: 'validDomain',
-        value: function validDomain(domain) {
+        key: 'domainURL',
+        value: function domainURL(domain) {
             var prefix = ".*:\/\/\.*";
             var suffix = "\/.*";
             return prefix.concat(domain).concat(suffix);
         }
 
         /*
-        *  Send our validDomain to our background script to be added
-        *  to our collection of our blocked domains to be enabled and 
-        *  disabled. Then, we store our domains container to local
-        *  storage to keep our data persistent.
+        *  Send validDomain to the background script to be added
+        *  to the collection of blocked domains and store the domains 
+        *  container in HTML localStorage.
         *
         *  @param validDomain: Domain with prefix and suffix for
         *  proper URL blocking.
@@ -31403,9 +31379,8 @@ var Domains = function (_React$Component) {
         }
 
         /*
-        *  Seach for index and filter matched item out of container. 
-        *  Send index to background script for domain to be removed from
-        *  domain blocker container.
+        *  Search for index and filter matched item out of container and
+        *  send index to background script for domain to be removed.
         *
         *  @param id: Unique id for domain to delete.
         */
@@ -31482,8 +31457,8 @@ var Headers = function (_React$Component) {
 
 
         /*
-        *  When an onClick event happens on the header image, 
-        *  the current window will be changed to the home page.
+        *  Handle onClick event with header image - the current window 
+        *  will be changed to the fokus home page.
         */
         value: function fokusTab() {
             var win = window.open("/src/html/home.html");
@@ -31580,9 +31555,8 @@ var Toggle = function (_React$Component) {
     }
 
     /*
-    *  Send a message to our background script to enable our
-    *  domain blocker. Send toggle value to localStorage and 
-    *  modify CSS for enabled visuals.
+    *  Send message to background script and enable domain blocker.
+    *  Update boolean value in localStorage and modify CSS for enabled visuals.
     */
 
 
@@ -31603,9 +31577,8 @@ var Toggle = function (_React$Component) {
         }
 
         /*
-        *  Send a message to our background script to disable our
-        *  domain blocker. Send toggle value to localStorage and 
-        *  modify CSS for disabled visuals.
+        *  Send message to background script and disable domain blocker. 
+        *  Update boolean value in localStorage and modify CSS for disabled visuals.
         */
 
     }, {
@@ -31642,15 +31615,14 @@ var Toggle = function (_React$Component) {
         }
 
         /*
-        *  Inject appropriate text and modify CSS for enabled 
-        *  domain blocker.
+        *  Change HTML text for enable mode and modify CSS for 
+        *  enabled domain blocker.
         */
 
     }, {
         key: 'onloadEnable',
         value: function onloadEnable() {
             var toggle = localStorage.getItem('fokus-toggle');
-
             if (toggle == 'disable') {
                 this.modifyCss("#A1A1A1", "#000000");
                 (0, _jquery2.default)('#input').prop('disabled', true);
@@ -31663,15 +31635,14 @@ var Toggle = function (_React$Component) {
         }
 
         /*
-        *  Inject appropriate text and modify CSS for disabled
-        *  domain blocker.
+        *  Change HTML text for disable mode and modify CSS for 
+        *  disabled domain blocker.
         */
 
     }, {
         key: 'onloadDisable',
         value: function onloadDisable() {
             var toggle = localStorage.getItem('fokus-toggle');
-
             if (toggle == 'disable') {
                 this.modifyCss("#A1A1A1", "#000000");
                 (0, _jquery2.default)('#input').prop('disabled', true);
