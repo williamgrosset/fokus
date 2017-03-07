@@ -2,6 +2,7 @@
 
     var domains = [];
     var domainsEnable = [];
+    var disabled = false;
 
     chrome.runtime.onMessage.addListener(
         function(request, sender, sendResponse) {
@@ -15,20 +16,26 @@
                 domains.splice(request.index, 1);
                 domainsEnable = domains;
             }
-            // Remove domain from domain blocker container (case required for 0)
+            // Remove domain from domain blocker container
             if (request.index == 0) {
                 domainsEnable = domains;
                 domains.splice(request.index, 1);
             }
             // Disable domain blocker
             if (request.disable) {
-                var domainsDisable = [];
-                domainsEnable = domains;
-                domains = domainsDisable;
+                if (!disabled) {
+                    var domainsDisable = [];
+                    domainsEnable = domains;
+                    domains = domainsDisable;
+                    disabled = true;
+                }
             }
             // Enable domain blocker
             if (request.enable) {
-                domains = domainsEnable;
+                if (disabled) {
+                    domains = domainsEnable;
+                    disabled = false;
+                }
             }
         }
     );

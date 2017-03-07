@@ -22,7 +22,7 @@
 I have started to notice that I subconciously go to websites that I do not actually want to be on. Individuals seek stimulus, so we happen to jump on board with anything to distract our mind when we get bored. Whether it is Facebook, Twitch, Reddit, or any other domain - when I am working, I want to be completely focused on what is currently important. We are all guilty of this, but we can fix it.
 
 ### "Domain blocking has already been solved."
-Not exactly. Most extensions are a bit overkill with their design and functionality. I want to build something that I can use easily use everyday and be able to practice meditation when I need it the most.
+Not exactly. Most extensions are a bit overkill with their design and functionality. I want to build something that I can easily use everyday and be able to practice meditation when I need it the most.
 
 ### Do you realize you spelt "focus" wrong?
 Yes. Fokus is swedish for focus (I know, it's pretty original). :godmode:
