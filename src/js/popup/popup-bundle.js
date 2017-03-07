@@ -31101,7 +31101,9 @@ var DomainItem = function (_React$Component) {
             var validDomain = this.props.domain;
             validDomain = validDomain.replace(prefix, '');
             validDomain = validDomain.replace(suffix, '');
-            if (validDomain.length >= 20) validDomain = validDomain.substring(0, 21).concat("...");
+
+            // Add "..." to end of the domain if length is too large for popup window
+            if (validDomain.length >= 19) validDomain = validDomain.substring(0, 21).concat("...");
 
             return _react2.default.createElement(
                 "div",
@@ -31160,6 +31162,9 @@ var DomainNew = function (_React$Component) {
 
         _this.inputChange = _this.inputChange.bind(_this);
         _this.addDomain = _this.addDomain.bind(_this);
+        //this.showModalMax = this.showModalMax.bind(this);
+        //this.showModalError = this.showModalError.bind(this);
+        _this.showModal = _this.showModal.bind(_this);
         return _this;
     }
 
@@ -31193,33 +31198,60 @@ var DomainNew = function (_React$Component) {
             e.preventDefault();
 
             if (this.props.container.length == 30) {
-                var modal = document.getElementById('myModalMax');
-                modal.style.display = 'block';
-                var span = document.getElementsByClassName("close")[0];
-                span.onclick = function () {
-                    modal.style.display = 'none';
-                };
-
-                var input = document.getElementById('input');
-                input.value = "";
-                e.preventDefault();
+                // Show modal for container max
+                this.showModal(e, 'myModalMax', 0);
                 return;
             } else if (domain.includes("http") || domain.includes("https") || domain.includes(":") || domain.includes("/") || domain === "" || !domain.includes(".") || domain.includes(" ")) {
-                var modal = document.getElementById('myModalError');
-                modal.style.display = 'block';
-                var span = document.getElementsByClassName("close")[1];
-                span.onclick = function () {
-                    modal.style.display = 'none';
-                };
-
-                var input = document.getElementById('input');
-                input.value = "";
-                e.preventDefault();
+                // Show modal for invalid domain
+                this.showModal(e, 'myModalError', 1);
                 return;
             } else {
+                // Successfully add domain to domain blocker container
                 this.props.addDomain(this.state.value);
                 this.setState({ value: '' });
             }
+        }
+    }, {
+        key: 'showModalMax',
+        value: function showModalMax(e) {
+            var modal = document.getElementById('myModalMax');
+            modal.style.display = 'block';
+            var span = document.getElementsByClassName("close")[0];
+            span.onclick = function () {
+                modal.style.display = 'none';
+            };
+
+            var input = document.getElementById('input');
+            input.value = "";
+            e.preventDefault();
+        }
+    }, {
+        key: 'showModalError',
+        value: function showModalError(e) {
+            var modal = document.getElementById('myModalError');
+            modal.style.display = 'block';
+            var span = document.getElementsByClassName("close")[1];
+            span.onclick = function () {
+                modal.style.display = 'none';
+            };
+
+            var input = document.getElementById('input');
+            input.value = "";
+            e.preventDefault();
+        }
+    }, {
+        key: 'showModal',
+        value: function showModal(e, id, i) {
+            var modal = document.getElementById(id);
+            modal.style.display = 'block';
+            var span = document.getElementsByClassName("close")[i];
+            span.onclick = function () {
+                modal.style.display = 'none';
+            };
+
+            var input = document.getElementById('input');
+            input.value = "";
+            e.preventDefault();
         }
     }, {
         key: 'render',

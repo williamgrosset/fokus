@@ -21,7 +21,9 @@ class DomainItem extends React.Component {
         var validDomain = this.props.domain;
         validDomain = validDomain.replace(prefix, '');
         validDomain = validDomain.replace(suffix, '');
-        if (validDomain.length >= 20)
+
+        // Add "..." to end of the domain if length is too large for popup window
+        if (validDomain.length >= 19)
             validDomain = validDomain.substring(0, 21).concat("...");
 
         return (
