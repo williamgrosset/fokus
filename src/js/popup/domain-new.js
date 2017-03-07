@@ -25,7 +25,6 @@ class DomainNew extends React.Component {
     /*
     *  Add valid domain to domain container.
     *
-    *  @param e: Submitted form input value.
     *  @param e: Event handler for form input value.
     */
     domainValidation(e) {
