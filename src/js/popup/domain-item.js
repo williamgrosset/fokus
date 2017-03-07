@@ -18,11 +18,9 @@ class DomainItem extends React.Component {
     }
 
     render() {
-        var prefix = ".*:\/\/\.*";
-        var suffix = "\/.*";
         var validDomain = this.props.domain;
-        validDomain = validDomain.replace(prefix, '');
-        validDomain = validDomain.replace(suffix, '');
+        validDomain = validDomain.replace(".*:\/\/\.*", '');
+        validDomain = validDomain.replace("\/.*", '');
 
         // Add "..." to end of the domain if length is too large for popup window
         if (validDomain.length >= 19)
