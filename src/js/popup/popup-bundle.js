@@ -31053,11 +31053,11 @@ var DomainContainer = function (_React$Component) {
 module.exports = DomainContainer;
 
 },{"./domain-item.js":189,"react":178}],189:[function(require,module,exports){
-"use strict";
+'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require("react");
+var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
@@ -31090,38 +31090,36 @@ var DomainItem = function (_React$Component) {
 
 
     _createClass(DomainItem, [{
-        key: "deleteDomain",
+        key: 'deleteDomain',
         value: function deleteDomain(e) {
             e.preventDefault();
             this.props.removeDomain(this.props.id);
         }
     }, {
-        key: "render",
+        key: 'render',
         value: function render() {
-            var prefix = ".*:\/\/\.*";
-            var suffix = "\/.*";
             var validDomain = this.props.domain;
-            validDomain = validDomain.replace(prefix, '');
-            validDomain = validDomain.replace(suffix, '');
+            validDomain = validDomain.replace(".*:\/\/\.*", '');
+            validDomain = validDomain.replace("\/.*", '');
 
             // Add "..." to end of the domain if length is too large for popup window
             if (validDomain.length >= 19) validDomain = validDomain.substring(0, 21).concat("...");
 
             return _react2.default.createElement(
-                "div",
+                'div',
                 null,
                 _react2.default.createElement(
-                    "li",
+                    'li',
                     null,
                     _react2.default.createElement(
-                        "div",
-                        { style: { float: 'left' }, id: "domain-item" },
+                        'div',
+                        { style: { float: 'left' }, id: 'domain-item' },
                         validDomain
                     ),
                     _react2.default.createElement(
-                        "div",
+                        'div',
                         null,
-                        _react2.default.createElement("input", { type: "image", id: "domain-delete", style: { float: 'right' }, src: "/png/garbage_can_16.png", onClick: this.deleteDomain })
+                        _react2.default.createElement('input', { type: 'image', id: 'domain-delete', style: { float: 'right' }, src: '/png/garbage_can_16.png', onClick: this.deleteDomain })
                     )
                 )
             );
@@ -31184,7 +31182,6 @@ var DomainNew = function (_React$Component) {
         /*
         *  Add valid domain to domain container.
         *
-        *  @param e: Submitted form input value.
         *  @param e: Event handler for form input value.
         */
 
@@ -31314,7 +31311,8 @@ var Domains = function (_React$Component) {
     _createClass(Domains, [{
         key: 'addDomain',
         value: function addDomain(domain) {
-            domain = this.domainURL(domain);
+            //domain = this.domainURL(domain);
+            domain = ".*:\/\/\.*".concat(domain).concat("\/.*");
             var idValue = _shortid2.default.generate();
 
             this.state.container.push({

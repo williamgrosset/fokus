@@ -14,19 +14,18 @@ class Domains extends React.Component {
         };
 
         this.addDomain = this.addDomain.bind(this);
-        this.domainURL = this.domainURL.bind(this);
         this.storeDomain = this.storeDomain.bind(this);
         this.removeDomain = this.removeDomain.bind(this);
         this.getIndex = this.getIndex.bind(this);
     }
 
     /*
-    *  Adds domain from form input into the domain container.
+    *  Adds valid domain from form input into the domain container.
     *
     *  @param domain: Domain from form input value.
     */
     addDomain(domain) {
-        domain = this.domainURL(domain);
+        domain = ".*:\/\/\.*".concat(domain).concat("\/.*");
         var idValue = shortid.generate();
 
         this.state.container.push({
@@ -35,18 +34,6 @@ class Domains extends React.Component {
         });
         this.setState({ container: this.state.container });
         this.storeDomain(domain, this.state.container);
-    }
-
-    /*
-    *  Adds prefix and suffix to domain for domain blocking.
-    *
-    *  @param domain: Domain from form input value.
-    *  @return domain: Domain with added prefix and suffix.
-    */
-    domainURL(domain) {
-        var prefix = ".*:\/\/\.*";
-        var suffix = "\/.*";
-        return prefix.concat(domain).concat(suffix);
     }
 
     /*
