@@ -9,13 +9,17 @@
   },
   "devDependencies": {
     "browserify": "^13.1.1",
+    "chai": "^3.5.0",
+    "enzyme": "^2.7.1",
+    "jsdom": "^9.12.0",
     "mocha": "^3.2.0",
+    "react-addons-test-utils": "^15.4.2",
     "watchify": "^3.7.0"
   },
   "scripts": {
     "build": "./scripts/build.sh",
     "watch": "watchify src/js/popup/popup.js -t babelify -o src/js/popup/popup-bundle.js",
-    "test": "mocha"
+    "test": "mocha --require test/helpers/browser.js test/*.spec.js"
   },
   "author": "William Grosset",
   "license": "MIT",
