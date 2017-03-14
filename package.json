@@ -9,11 +9,13 @@
   },
   "devDependencies": {
     "browserify": "^13.1.1",
+    "mocha": "^3.2.0",
     "watchify": "^3.7.0"
   },
   "scripts": {
     "build": "./scripts/build.sh",
-    "watch": "watchify src/js/popup/popup.js -t babelify -o src/js/popup/popup-bundle.js"
+    "watch": "watchify src/js/popup/popup.js -t babelify -o src/js/popup/popup-bundle.js",
+    "test": "mocha"
   },
   "author": "William Grosset",
   "license": "MIT",
