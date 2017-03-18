@@ -19,7 +19,7 @@
   "scripts": {
     "build": "./scripts/build.sh",
     "watch": "watchify src/js/popup/popup.js -t babelify -o src/js/popup/popup-bundle.js",
-    "test": "mocha --require test/helpers/browser.js test/*.spec.js"
+    "test": "./scripts/test.sh"
   },
   "author": "William Grosset",
   "license": "MIT",
