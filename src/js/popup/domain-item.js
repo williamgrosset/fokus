@@ -18,7 +18,7 @@ class DomainItem extends React.Component {
     }
 
     render() {
-        var validDomain = this.props.domain || "";
+        var validDomain = this.props.domain;
         validDomain = validDomain.replace(".*:\/\/\.*", '');
         validDomain = validDomain.replace("\/.*", '');
 

@@ -31147,7 +31147,7 @@ var DomainContainer = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (DomainContainer.__proto__ || Object.getPrototypeOf(DomainContainer)).call(this, props));
 
         _this.state = {
-            container: _this.props.container || []
+            container: _this.props.container
         };
         return _this;
     }
@@ -31156,7 +31156,7 @@ var DomainContainer = function (_React$Component) {
         key: 'render',
         value: function render() {
             var extra = this.props;
-            if (this.state.container.length != 0) {
+            if (this.props.container.length != 0) {
                 return _react2.default.createElement(
                     'ul',
                     { id: 'domain-container' },
@@ -31416,6 +31416,7 @@ var Domains = function (_React$Component) {
     function Domains(props) {
         _classCallCheck(this, Domains);
 
+        //localStorage.setItem('container', JSON.stringify([]));
         var _this = _possibleConstructorReturn(this, (Domains.__proto__ || Object.getPrototypeOf(Domains)).call(this, props));
 
         var container = JSON.parse(localStorage.getItem('container')) || [];

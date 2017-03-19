@@ -6,13 +6,13 @@ class DomainContainer extends React.Component {
         super(props);
         
         this.state = {
-            container: this.props.container || []
+            container: this.props.container
         };
     }
 
     render() {
         const extra = this.props;
-        if (this.state.container.length != 0) {
+        if (this.props.container.length != 0) {
             return (
                 <ul id='domain-container'>
                     {this.props.container.map((domain) => <DomainItem {...domain} key={domain.id} {...extra} /> )}

@@ -7,6 +7,7 @@ import shortid from 'shortid';
 class Domains extends React.Component {
     constructor(props) {
         super(props);
+        //localStorage.setItem('container', JSON.stringify([]));
         var container = JSON.parse(localStorage.getItem('container')) || [];
 
         this.state = {
