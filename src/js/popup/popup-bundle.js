@@ -31652,12 +31652,6 @@ var Toggle = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (Toggle.__proto__ || Object.getPrototypeOf(Toggle)).call(this, props));
 
-        var container = JSON.parse(localStorage.getItem('container'));
-
-        _this.state = {
-            toggle: false
-        };
-
         _this.enableFokus = _this.enableFokus.bind(_this);
         _this.disableFokus = _this.disableFokus.bind(_this);
         _this.modifyCss = _this.modifyCss.bind(_this);

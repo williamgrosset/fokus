@@ -4,12 +4,6 @@ import $ from 'jquery';
 class Toggle extends React.Component {
     constructor(props) {
         super(props);
-        var container = JSON.parse(localStorage.getItem('container'));
-
-        this.state = {
-            toggle: false
-        };
-
         this.enableFokus = this.enableFokus.bind(this);
         this.disableFokus = this.disableFokus.bind(this);
         this.modifyCss = this.modifyCss.bind(this);
