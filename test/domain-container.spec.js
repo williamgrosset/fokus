@@ -7,7 +7,7 @@ import DomainContainer from '../src/js/popup/domain-container.js'
 
 describe('<DomainContainer /> (domain-container.js)', function() {
     it('should have props for container and handling removeDomain()', function () {
-        const wrapper = mount(<DomainContainer container={[]}/>);
+        const wrapper = shallow(<DomainContainer container={[]}/>);
         expect(wrapper.props().container).to.be.defined;
     });
     describe('render()', function() {
