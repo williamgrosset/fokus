@@ -5,7 +5,7 @@ import assert from 'assert';
 
 import Toggle from '../src/js/popup/toggle.js'
 
-describe('<Toggle />', function() {
+describe('<Toggle /> (toggle.js)', function() {
     describe('enableFokus()', function() {
         it('should successfully set boolean in localStorage', function() {
             assert(true);

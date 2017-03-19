@@ -5,7 +5,7 @@ import assert from 'assert';
 
 import DomainContainer from '../src/js/popup/domain-container.js'
 
-describe('<DomainContainer />', function() {
+describe('<DomainContainer /> (domain-container.js)', function() {
     it('should have props for domain container and handling removeDomain()', function () {
         const wrapper = shallow(<DomainContainer />);
     });
