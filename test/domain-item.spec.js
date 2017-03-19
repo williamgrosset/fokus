@@ -7,7 +7,7 @@ import DomainItem from '../src/js/popup/domain-item.js'
 
 describe('<DomainItem /> (domain-item.js)', function() {
     it('should have props for domain container and handling addDomain()', function () {
-        const wrapper = shallow(<DomainItem />);
+        const wrapper = shallow(<DomainItem domain={""}/>);
         //expect(wrapper.props().addDomain).to.be.defined;
         //expect(wrapper.props().container).to.be.defined;
     });
