@@ -27508,8 +27508,120 @@ module.exports = validateDOMNesting;
 },{"_process":26,"fbjs/lib/emptyFunction":8,"fbjs/lib/warning":23,"object-assign":25}],154:[function(require,module,exports){
 arguments[4][49][0].apply(exports,arguments)
 },{"dup":49}],155:[function(require,module,exports){
-arguments[4][51][0].apply(exports,arguments)
-},{"./reactProdInvariant":176,"_process":26,"dup":51,"fbjs/lib/invariant":16}],156:[function(require,module,exports){
+(function (process){
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ * 
+ */
+
+'use strict';
+
+var _prodInvariant = require('./reactProdInvariant');
+
+var invariant = require('fbjs/lib/invariant');
+
+/**
+ * Static poolers. Several custom versions for each potential number of
+ * arguments. A completely generic pooler is easy to implement, but would
+ * require accessing the `arguments` object. In each of these, `this` refers to
+ * the Class itself, not an instance. If any others are needed, simply add them
+ * here, or in their own files.
+ */
+var oneArgumentPooler = function (copyFieldsFrom) {
+  var Klass = this;
+  if (Klass.instancePool.length) {
+    var instance = Klass.instancePool.pop();
+    Klass.call(instance, copyFieldsFrom);
+    return instance;
+  } else {
+    return new Klass(copyFieldsFrom);
+  }
+};
+
+var twoArgumentPooler = function (a1, a2) {
+  var Klass = this;
+  if (Klass.instancePool.length) {
+    var instance = Klass.instancePool.pop();
+    Klass.call(instance, a1, a2);
+    return instance;
+  } else {
+    return new Klass(a1, a2);
+  }
+};
+
+var threeArgumentPooler = function (a1, a2, a3) {
+  var Klass = this;
+  if (Klass.instancePool.length) {
+    var instance = Klass.instancePool.pop();
+    Klass.call(instance, a1, a2, a3);
+    return instance;
+  } else {
+    return new Klass(a1, a2, a3);
+  }
+};
+
+var fourArgumentPooler = function (a1, a2, a3, a4) {
+  var Klass = this;
+  if (Klass.instancePool.length) {
+    var instance = Klass.instancePool.pop();
+    Klass.call(instance, a1, a2, a3, a4);
+    return instance;
+  } else {
+    return new Klass(a1, a2, a3, a4);
+  }
+};
+
+var standardReleaser = function (instance) {
+  var Klass = this;
+  !(instance instanceof Klass) ? process.env.NODE_ENV !== 'production' ? invariant(false, 'Trying to release an instance into a pool of a different type.') : _prodInvariant('25') : void 0;
+  instance.destructor();
+  if (Klass.instancePool.length < Klass.poolSize) {
+    Klass.instancePool.push(instance);
+  }
+};
+
+var DEFAULT_POOL_SIZE = 10;
+var DEFAULT_POOLER = oneArgumentPooler;
+
+/**
+ * Augments `CopyConstructor` to be a poolable class, augmenting only the class
+ * itself (statically) not adding any prototypical fields. Any CopyConstructor
+ * you give this may have a `poolSize` property, and will look for a
+ * prototypical `destructor` on instances.
+ *
+ * @param {Function} CopyConstructor Constructor that can be used to reset.
+ * @param {Function} pooler Customizable pooler.
+ */
+var addPoolingTo = function (CopyConstructor, pooler) {
+  // Casting as any so that flow ignores the actual implementation and trusts
+  // it to match the type we declared
+  var NewKlass = CopyConstructor;
+  NewKlass.instancePool = [];
+  NewKlass.getPooled = pooler || DEFAULT_POOLER;
+  if (!NewKlass.poolSize) {
+    NewKlass.poolSize = DEFAULT_POOL_SIZE;
+  }
+  NewKlass.release = standardReleaser;
+  return NewKlass;
+};
+
+var PooledClass = {
+  addPoolingTo: addPoolingTo,
+  oneArgumentPooler: oneArgumentPooler,
+  twoArgumentPooler: twoArgumentPooler,
+  threeArgumentPooler: threeArgumentPooler,
+  fourArgumentPooler: fourArgumentPooler
+};
+
+module.exports = PooledClass;
+}).call(this,require('_process'))
+},{"./reactProdInvariant":176,"_process":26,"fbjs/lib/invariant":16}],156:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -29680,7 +29792,14 @@ var ReactElementValidator = {
     // We warn in this case but don't throw. We expect the element creation to
     // succeed and there will likely be errors in render.
     if (!validType) {
-      process.env.NODE_ENV !== 'production' ? warning(false, 'React.createElement: type should not be null, undefined, boolean, or ' + 'number. It should be a string (for DOM elements) or a ReactClass ' + '(for composite components).%s', getDeclarationErrorAddendum()) : void 0;
+      if (typeof type !== 'function' && typeof type !== 'string') {
+        var info = '';
+        if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
+          info += ' You likely forgot to export your component from the file ' + 'it\'s defined in.';
+        }
+        info += getDeclarationErrorAddendum();
+        process.env.NODE_ENV !== 'production' ? warning(false, 'React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', type == null ? type : typeof type, info) : void 0;
+      }
     }
 
     var element = ReactElement.createElement.apply(this, arguments);
@@ -30324,8 +30443,20 @@ ReactPureComponent.prototype.isPureReactComponent = true;
 
 module.exports = ReactPureComponent;
 },{"./ReactComponent":159,"./ReactNoopUpdateQueue":166,"fbjs/lib/emptyObject":9,"object-assign":25}],171:[function(require,module,exports){
-arguments[4][105][0].apply(exports,arguments)
-},{"dup":105}],172:[function(require,module,exports){
+/**
+ * Copyright 2013-present, Facebook, Inc.
+ * All rights reserved.
+ *
+ * This source code is licensed under the BSD-style license found in the
+ * LICENSE file in the root directory of this source tree. An additional grant
+ * of patent rights can be found in the PATENTS file in the same directory.
+ *
+ */
+
+'use strict';
+
+module.exports = '15.4.2';
+},{}],172:[function(require,module,exports){
 (function (process){
 /**
  * Copyright 2013-present, Facebook, Inc.
@@ -31016,7 +31147,7 @@ var DomainContainer = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (DomainContainer.__proto__ || Object.getPrototypeOf(DomainContainer)).call(this, props));
 
         _this.state = {
-            container: _this.props.container
+            container: _this.props.container || []
         };
         return _this;
     }
@@ -31025,7 +31156,7 @@ var DomainContainer = function (_React$Component) {
         key: 'render',
         value: function render() {
             var extra = this.props;
-            if (this.props.container.length != 0) {
+            if (this.state.container.length != 0) {
                 return _react2.default.createElement(
                     'ul',
                     { id: 'domain-container' },
@@ -31294,7 +31425,6 @@ var Domains = function (_React$Component) {
         };
 
         _this.addDomain = _this.addDomain.bind(_this);
-        _this.domainURL = _this.domainURL.bind(_this);
         _this.storeDomain = _this.storeDomain.bind(_this);
         _this.removeDomain = _this.removeDomain.bind(_this);
         _this.getIndex = _this.getIndex.bind(_this);
@@ -31302,7 +31432,7 @@ var Domains = function (_React$Component) {
     }
 
     /*
-    *  Adds domain from form input into the domain container.
+    *  Adds valid domain from form input into the domain container.
     *
     *  @param domain: Domain from form input value.
     */
@@ -31311,7 +31441,6 @@ var Domains = function (_React$Component) {
     _createClass(Domains, [{
         key: 'addDomain',
         value: function addDomain(domain) {
-            //domain = this.domainURL(domain);
             domain = ".*:\/\/\.*".concat(domain).concat("\/.*");
             var idValue = _shortid2.default.generate();
 
@@ -31321,21 +31450,6 @@ var Domains = function (_React$Component) {
             });
             this.setState({ container: this.state.container });
             this.storeDomain(domain, this.state.container);
-        }
-
-        /*
-        *  Adds prefix and suffix to domain for domain blocking.
-        *
-        *  @param domain: Domain from form input value.
-        *  @return domain: Domain with added prefix and suffix.
-        */
-
-    }, {
-        key: 'domainURL',
-        value: function domainURL(domain) {
-            var prefix = ".*:\/\/\.*";
-            var suffix = "\/.*";
-            return prefix.concat(domain).concat(suffix);
         }
 
         /*
