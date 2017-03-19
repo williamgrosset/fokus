@@ -31558,20 +31558,23 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Headers = function (_React$Component) {
     _inherits(Headers, _React$Component);
 
-    function Headers() {
+    function Headers(props) {
         _classCallCheck(this, Headers);
 
-        return _possibleConstructorReturn(this, (Headers.__proto__ || Object.getPrototypeOf(Headers)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (Headers.__proto__ || Object.getPrototypeOf(Headers)).call(this, props));
+
+        _this.fokusTab = _this.fokusTab.bind(_this);
+        return _this;
     }
+
+    /*
+    *  Handle onClick event with header image - the current window 
+    *  will be changed to the fokus home page.
+    */
+
 
     _createClass(Headers, [{
         key: 'fokusTab',
-
-
-        /*
-        *  Handle onClick event with header image - the current window 
-        *  will be changed to the fokus home page.
-        */
         value: function fokusTab() {
             var win = window.open("/src/html/home.html");
             win.focus();
@@ -31582,7 +31585,7 @@ var Headers = function (_React$Component) {
             return _react2.default.createElement(
                 'div',
                 { className: 'fokus-link' },
-                _react2.default.createElement('img', { src: '/png/fokus_title_128.png', onClick: this.fokusTab.bind(this) })
+                _react2.default.createElement('img', { src: '/png/fokus_title_128.png', onClick: this.fokusTab })
             );
         }
     }]);

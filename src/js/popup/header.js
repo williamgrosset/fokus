@@ -1,6 +1,10 @@
 import React from 'react';
 
 class Headers extends React.Component {
+    constructor(props) {
+        super(props);
+        this.fokusTab = this.fokusTab.bind(this);
+    }
 
     /*
     *  Handle onClick event with header image - the current window 
@@ -14,7 +18,7 @@ class Headers extends React.Component {
     render() {
         return (
             <div className='fokus-link'>
-                <img src='/png/fokus_title_128.png' onClick={this.fokusTab.bind(this)}/>
+                <img src='/png/fokus_title_128.png' onClick={this.fokusTab}/>
             </div>
         );
     }

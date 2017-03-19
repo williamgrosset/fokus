@@ -7,7 +7,7 @@ import DomainContainer from '../src/js/popup/domain-container.js'
 
 describe('<DomainContainer />', function() {
     it('should have props for domain container and handling removeDomain()', function () {
-        const wrapper = mount(<DomainContainer />);
+        const wrapper = shallow(<DomainContainer />);
     });
     describe('render()', function() {
         it('should render "No domains currently blocked."', function() {
