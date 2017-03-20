@@ -3,6 +3,10 @@ import React from 'react';
 class DomainItem extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            domain: this.props.domain,
+            id: this.props.id
+        }
         this.deleteDomain = this.deleteDomain.bind(this);
     }
 
@@ -18,7 +22,7 @@ class DomainItem extends React.Component {
     }
 
     render() {
-        var validDomain = this.props.domain;
+        var validDomain = this.state.domain;
         validDomain = validDomain.replace(".*:\/\/\.*", '');
         validDomain = validDomain.replace("\/.*", '');
 

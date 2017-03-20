@@ -31208,6 +31208,10 @@ var DomainItem = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (DomainItem.__proto__ || Object.getPrototypeOf(DomainItem)).call(this, props));
 
+        _this.state = {
+            domain: _this.props.domain,
+            id: _this.props.id
+        };
         _this.deleteDomain = _this.deleteDomain.bind(_this);
         return _this;
     }
@@ -31229,7 +31233,7 @@ var DomainItem = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var validDomain = this.props.domain;
+            var validDomain = this.state.domain;
             validDomain = validDomain.replace(".*:\/\/\.*", '');
             validDomain = validDomain.replace("\/.*", '');
 
