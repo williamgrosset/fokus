@@ -18,7 +18,6 @@ describe('<DomainContainer />', function() {
     describe('render() with empty container', function() {
         it('should render "No domains currently blocked."', function() {
             const wrapper = shallow(<DomainContainer container={[]} />);
-            wrapper.setState({ container: [] });
             expect(wrapper.state('container')).to.deep.equal([]);
             expect(wrapper.contains(
                     <ul id='domain-container'>

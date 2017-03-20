@@ -4,7 +4,7 @@ import DomainItem from './domain-item.js'
 class DomainContainer extends React.Component {
     constructor(props) {
         super(props);
-        
+
         this.state = {
             container: this.props.container
         };

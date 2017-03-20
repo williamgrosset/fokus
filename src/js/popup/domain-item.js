@@ -3,6 +3,7 @@ import React from 'react';
 class DomainItem extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
             domain: this.props.domain,
             id: this.props.id
@@ -18,6 +19,7 @@ class DomainItem extends React.Component {
     */
     deleteDomain(e) {
         e.preventDefault();
+        this.setState({ domain: '' });
         this.props.removeDomain(this.props.id);
     }
 
