@@ -2,6 +2,7 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 import assert from 'assert';
+import chrome from 'sinon-chrome';
 
 import DomainItem from '../src/js/popup/domain-item.js'
 import Domains from '../src/js/popup/domains.js'
@@ -17,18 +18,19 @@ describe('<DomainItem />', function() {
         expect(wrapper.props().removeDomain).to.be.defined;
     });
     describe('deleteDomain(e) triggered on click', function() {
+        before(function () {
+            global.chrome = chrome;
+        });
         it('should successfully call removeDomain', function() {
             const wrapper = mount(<Domains />);
             wrapper.setState({ container: [{
                 id: 20,
                 domain: "testDomain.com"
             }]});
-            //const wrapper = shallow(<DomainItem domain={"testDomain.com"}/>);
-            console.log(wrapper.debug());
             wrapper.find('#domain-delete').simulate('click', {
                 preventDefault: () => {}
             });
-            expect(wrapper.state('domain')).to.deep.equal("");
+            expect(wrapper.state('container')).to.deep.equal([]);
         });
     });
     describe('render() with regular domain length', function() {
