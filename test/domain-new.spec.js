@@ -14,16 +14,19 @@ describe('<DomainNew />', function() {
         expect(wrapper.props().addDomain).to.be.defined;
         expect(wrapper.props().container).to.be.defined;
     });
+
     describe('domainValidation(e)', function() {
         it('should successfully add domain to container', function() {
             assert(true);
         });
     });
+
     describe('domainValidation(e)', function() {
         it('should show modal for invalid domain', function() {
             assert(true);
         });
     });
+
     describe('domainValidation(e)', function() {
         it('should show modal for domain container max', function() {
             assert(true);

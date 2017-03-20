@@ -4,7 +4,6 @@ import { expect } from 'chai';
 import assert from 'assert';
 
 import DomainContainer from '../src/js/popup/domain-container.js'
-import DomainItem from '../src/js/popup/domain-item.js'
 
 /*
 *  Tests for DomainContainer component in src/js/popup/domain-container.js.
@@ -15,6 +14,7 @@ describe('<DomainContainer />', function() {
         expect(wrapper.props().container).to.be.defined;
         expect(wrapper.props().removeDomain).to.be.defined;
     });
+
     describe('render() with empty container', function() {
         it('should render "No domains currently blocked."', function() {
             const wrapper = shallow(<DomainContainer container={[]} />);
@@ -26,6 +26,7 @@ describe('<DomainContainer />', function() {
             )).to.be.true;
         });
     });
+
     describe('render() with populated container', function() {
         it('should render domains as list items', function() {
             const wrapper = shallow(<DomainContainer container={[]} />);

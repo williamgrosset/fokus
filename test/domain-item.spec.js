@@ -17,6 +17,7 @@ describe('<DomainItem />', function() {
         expect(wrapper.props().domain).to.be.defined;
         expect(wrapper.props().removeDomain).to.be.defined;
     });
+
     describe('deleteDomain(e) triggered on click', function() {
         before(function () {
             global.chrome = chrome;
@@ -33,6 +34,7 @@ describe('<DomainItem />', function() {
             expect(wrapper.state('container')).to.deep.equal([]);
         });
     });
+
     describe('render() with regular domain length', function() {
         it('should show domain without "..." appended', function() {
             const wrapper = shallow(<DomainItem domain={"testDomain.com"}/>);
@@ -42,6 +44,7 @@ describe('<DomainItem />', function() {
             )).to.be.true;
         });
     });
+
     describe('render() with long domain length', function() {
         it('should show domain with "..." appended', function() {
             const wrapper = shallow(<DomainItem domain={"testDomainWithVeryLongLength.organization"}/>);
