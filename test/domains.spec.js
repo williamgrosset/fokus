@@ -5,7 +5,10 @@ import assert from 'assert';
 
 import Domains from '../src/js/popup/domains.js'
 
-describe('<Domains /> (domains.js)', function() {
+/*
+*  Tests for Domains component in src/js/popup/domains.js.
+*/
+describe('<Domains />', function() {
     describe('addDomain(domain)', function() {
         it('should successfully add domain to container', function() {
             assert(true);

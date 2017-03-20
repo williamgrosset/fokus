@@ -5,7 +5,10 @@ import assert from 'assert';
 
 import DomainNew from '../src/js/popup/domain-new.js'
 
-describe('<DomainNew /> (domain-new.js)', function() {
+/*
+*  Tests for DomainNew component in src/js/popup/domain-new.js.
+*/
+describe('<DomainNew />', function() {
     it('should have props for domain container and handling addDomain()', function () {
         const wrapper = shallow(<DomainNew />);
         expect(wrapper.props().addDomain).to.be.defined;

@@ -5,7 +5,10 @@ import assert from 'assert';
 
 import DomainItem from '../src/js/popup/domain-item.js'
 
-describe('<DomainItem /> (domain-item.js)', function() {
+/*
+*  Tests for DomainItem component in src/js/popup/domain-item.js.
+*/
+describe('<DomainItem />', function() {
     it('should have props for domain container and handling addDomain()', function () {
         const wrapper = shallow(<DomainItem domain={""}/>);
         //expect(wrapper.props().addDomain).to.be.defined;
