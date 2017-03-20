@@ -18,9 +18,15 @@
 
 *This is my first time using React, so any feedback is appreciated!*
 
+### Development
++ Build and test scripts in ```scripts/```
++ Photo assests in ```png/```
++ React components in ```src/js/popup/```
++ Tests in ```test/```
+
 ## F.A.Q.
 ### Why am I making this?
-I have started to notice that I subconciously go to websites that I do not actually want to be on. Individuals seek stimulus, so we happen to distract our mind when we get bored. Whether it is Facebook, Twitch, Reddit, or any other domain - when I am working, I want to be completely focused on what is currently important. We are all guilty of this, but we can fix it.
+I have started to notice that I subconciously go to websites that I do not actually want to be on. Individuals seek stimulus, so we happen to distract our mind when we get bored. Whether it is Facebook, Twitch, Reddit, or any other domain - when I am working, I want to be completely focused on what is currently important. We are all guilty of this, but we can fix it. I also really wanted to learn [React](https://facebook.github.io/react/).
 
 ### "Domain blocking has already been solved."
 Not exactly. Most extensions are a bit overkill with their design and functionality. I want to build something that I can easily use everyday and be able to practice meditation when I need it the most.
