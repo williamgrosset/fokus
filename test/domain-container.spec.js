@@ -1,9 +1,9 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
-import assert from 'assert';
 
 import DomainContainer from '../src/js/popup/domain-container.js'
+import DomainItem from '../src/js/popup/domain-item.js'
 
 /*
 *  Tests for DomainContainer component in src/js/popup/domain-container.js.
@@ -29,10 +29,14 @@ describe('<DomainContainer />', function() {
 
     describe('render() with populated container', function() {
         it('should render domains as list items', function() {
-            const wrapper = shallow(<DomainContainer container={[]} />);
-            wrapper.setState({ container: ['testdomain.com', 'anotherone.com'] });
-            expect(wrapper.state('container')).to.deep.equal(['testdomain.com', 'anotherone.com']);
-            //expect <ul id='domain-container'> to have a list of <li>
+            const wrapper = shallow(<DomainContainer container={["testdomain.com"]} domain={"testdomain.com"}/>);
+            expect(wrapper.state('container')).to.deep.equal(["testdomain.com"]);
+            /*
+            console.log(wrapper.debug());
+            expect(wrapper.contains(
+                    "what.com"
+            )).to.be.true;
+            */
         });
     });
 });

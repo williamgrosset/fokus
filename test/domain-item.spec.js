@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
-import assert from 'assert';
 import chrome from 'sinon-chrome';
 
 import DomainItem from '../src/js/popup/domain-item.js'
@@ -37,20 +36,20 @@ describe('<DomainItem />', function() {
 
     describe('render() with regular domain length', function() {
         it('should show domain without "..." appended', function() {
-            const wrapper = shallow(<DomainItem domain={"testDomain.com"}/>);
-            expect(wrapper.state('domain')).to.deep.equal("testDomain.com");
+            const wrapper = shallow(<DomainItem domain={"testdomain.com"}/>);
+            expect(wrapper.state('domain')).to.deep.equal("testdomain.com");
             expect(wrapper.contains(
-                    "testDomain.com"
+                    "testdomain.com"
             )).to.be.true;
         });
     });
 
     describe('render() with long domain length', function() {
         it('should show domain with "..." appended', function() {
-            const wrapper = shallow(<DomainItem domain={"testDomainWithVeryLongLength.organization"}/>);
-            expect(wrapper.state('domain')).to.deep.equal("testDomainWithVeryLongLength.organization");
+            const wrapper = shallow(<DomainItem domain={"testdomainwithverylonglength.organization"}/>);
+            expect(wrapper.state('domain')).to.deep.equal("testdomainwithverylonglength.organization");
             expect(wrapper.contains(
-                    "testDomainWithVeryLon..."
+                    "testdomainwithverylon..."
             )).to.be.true;
         });
     });
