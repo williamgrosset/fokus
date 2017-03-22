@@ -31255,7 +31255,7 @@ var DomainItem = function (_React$Component) {
                     _react2.default.createElement(
                         'div',
                         null,
-                        _react2.default.createElement('button', { type: 'image', id: 'domain-delete', style: { float: 'right' }, src: '/png/garbage_can_16.png', onClick: this.deleteDomain })
+                        _react2.default.createElement('input', { type: 'image', id: 'domain-delete', style: { float: 'right' }, src: '/png/garbage_can_16.png', onClick: this.deleteDomain })
                     )
                 )
             );
