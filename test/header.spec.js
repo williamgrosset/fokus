@@ -16,13 +16,15 @@ describe('<Headers />', function() {
 
     describe('fokusTab()', function() {
         it('should successfully redirect user on header click', function() {
-            assert(true);
+            const wrapper = shallow(<Headers />);
+            wrapper.find('.fokus-link').simulate('click');
         });
     });
 
     describe('render()', function() {
         it('should successfully contain logo image', function() {
-            assert(true);
+            const wrapper = shallow(<Headers />);
+            expect(wrapper.find('.fokus-link').length).to.equal(1);
         });
     });
 });
