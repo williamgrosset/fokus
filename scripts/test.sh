@@ -5,7 +5,7 @@ echo "*                     TESTS                        *"
 echo "*                                                  *"
 echo "****************************************************"
 
-echo "* Running tests on React components in popup window... 👷 "
+echo "* Running tests on React components for Chrome popup window... 👷 "
 echo "* Components can be found in src/js/popup/ directory... 📂 "
 
 mocha --require mock-local-storage test/helpers/browser.js test/*.spec.js

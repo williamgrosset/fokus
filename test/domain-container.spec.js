@@ -29,14 +29,9 @@ describe('<DomainContainer />', function() {
 
     describe('render() with populated container', function() {
         it('should render domains as list items', function() {
-            const wrapper = shallow(<DomainContainer container={["testdomain.com"]} domain={"testdomain.com"}/>);
-            expect(wrapper.state('container')).to.deep.equal(["testdomain.com"]);
-            /*
-            console.log(wrapper.debug());
-            expect(wrapper.contains(
-                    "what.com"
-            )).to.be.true;
-            */
+            const wrapper = mount(<DomainContainer container={["testdomain.com", "another1.com"]} />);
+            expect(wrapper.state('container')).to.deep.equal(["testdomain.com", "another1.com"]);
+            expect(wrapper.find("#domain-item")).to.have.length(2);
         });
     });
 });

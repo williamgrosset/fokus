@@ -15,7 +15,7 @@ describe('<Headers />', function() {
     });
 
     describe('fokusTab()', function() {
-        it('should successfully redirect user on header click', function() {
+        it('should successfully handle click event', function() {
             const wrapper = shallow(<Headers />);
             wrapper.find('.fokus-link').simulate('click');
         });
@@ -24,7 +24,7 @@ describe('<Headers />', function() {
     describe('render()', function() {
         it('should successfully contain logo image', function() {
             const wrapper = shallow(<Headers />);
-            expect(wrapper.find('.fokus-link').length).to.equal(1);
+            expect(wrapper.find('img').length).to.equal(1);
         });
     });
 });

@@ -31234,12 +31234,15 @@ var DomainItem = function (_React$Component) {
     }, {
         key: 'render',
         value: function render() {
-            var validDomain = this.state.domain;
-            validDomain = validDomain.replace(".*:\/\/\.*", '');
-            validDomain = validDomain.replace("\/.*", '');
+            var validDomain = "";
+            if (this.state.domain == undefined) validDomain = "An error has occured.";else {
+                validDomain = this.state.domain;
+                validDomain = validDomain.replace(".*:\/\/\.*", '');
+                validDomain = validDomain.replace("\/.*", '');
 
-            // Add "..." to end of the domain if length is too large for popup window
-            if (validDomain.length >= 19) validDomain = validDomain.substring(0, 21).concat("...");
+                // Add "..." to end of the domain if length is too large for popup window
+                if (validDomain.length >= 19) validDomain = validDomain.substring(0, 21).concat("...");
+            }
 
             return _react2.default.createElement(
                 'div',
@@ -31421,7 +31424,7 @@ var Domains = function (_React$Component) {
     function Domains(props) {
         _classCallCheck(this, Domains);
 
-        //localStorage.setItem('container', JSON.stringify([]));
+        //localStorage.setItem('container', JSON.stringify([])); // TESTING PURPOSES
         var _this = _possibleConstructorReturn(this, (Domains.__proto__ || Object.getPrototypeOf(Domains)).call(this, props));
 
         var container = JSON.parse(localStorage.getItem('container')) || [];
