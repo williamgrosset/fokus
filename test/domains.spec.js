@@ -9,12 +9,26 @@ import Domains from '../src/js/popup/domains.js'
 *  Tests for Domains component in src/js/popup/domains.js.
 */
 describe('<Domains />', function() {
-    it('should have props for container and handling removeDomain()', function () {
+    before(function () {
+        global.chrome = chrome;
+    });
+    it('should have addDomain(), storeDomain(), removeDomain(), getIndex() binded and initial container state', function () {
         const wrapper = shallow(<Domains />);
+        expect(wrapper.state().container).to.be.defined;
+        expect(wrapper.state().addDomain).to.be.defined;
+        expect(wrapper.state().storeDomain).to.be.defined;
+        expect(wrapper.state().removeDomain).to.be.defined;
+        expect(wrapper.state().getIndex).to.be.defined;
     });
 
     describe('addDomain(domain)', function() {
         it('should successfully add domain to container', function() {
+            assert(true);
+        });
+    });
+
+    describe('addDomain(domain)', function() {
+        it('should fail to add domain to container', function() {
             assert(true);
         });
     });
@@ -39,6 +53,12 @@ describe('<Domains />', function() {
 
     describe('removeDomain(id)', function() {
         it('should successfully remove domain from container', function() {
+            assert(true);
+        });
+    });
+
+    describe('removeDomain(id)', function() {
+        it('should fail to remove domain from container', function() {
             assert(true);
         });
     });
