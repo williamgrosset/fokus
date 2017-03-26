@@ -23,7 +23,10 @@ describe('<Domains />', function() {
 
     describe('addDomain(domain)', function() {
         it('should successfully add domain to container', function() {
-            assert(true);
+            const wrapper = shallow(<Domains />);
+            wrapper.instance().addDomain("testdomain.com");
+            var shortid = wrapper.state('container')[0].id;
+            expect(wrapper.state('container')).to.deep.equal([ { id: shortid, domain: '.*://.*testdomain.com/.*' } ]);
         });
     });
 
