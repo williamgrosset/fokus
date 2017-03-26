@@ -27,6 +27,8 @@ describe('<Domains />', function() {
             wrapper.instance().addDomain("testdomain.com");
             var shortid = wrapper.state('container')[0].id;
             expect(wrapper.state('container')).to.deep.equal([ { id: shortid, domain: '.*://.*testdomain.com/.*' } ]);
+            wrapper.setState({ container: []});
+            expect(wrapper.state('container')).to.deep.equal([]);
         });
     });
 
@@ -43,14 +45,24 @@ describe('<Domains />', function() {
     });
 
     describe('getIndex(value, key)', function() {
-        it('should successfully retrieve index of domain in container', function() {
-            assert(true);
+        it('should successfully retrieve and return index of domain in container', function() {
+            const wrapper = shallow(<Domains />);
+            wrapper.setState({ container: []});
+            wrapper.instance().addDomain("testdomain.com");
+            var shortid = wrapper.state('container')[0].id;
+            expect(wrapper.state('container')).to.deep.equal([ { id: shortid, domain: '.*://.*testdomain.com/.*' } ]);
+            expect(wrapper.instance().getIndex(shortid, 'id')).equals(0);
         });
     });
 
     describe('getIndex(value, key)', function() {
-        it('should fail to retrieve index of domain in container', function() {
-            assert(true);
+        it('should fail to retrieve index of domain in container and return -1', function() {
+            const wrapper = shallow(<Domains />);
+            wrapper.setState({ container: []});
+            wrapper.instance().addDomain("testdomain.com");
+            var shortid = wrapper.state('container')[0].id;
+            expect(wrapper.state('container')).to.deep.equal([ { id: shortid, domain: '.*://.*testdomain.com/.*' } ]);
+            expect(wrapper.instance().getIndex(12345, 'id')).equals(-1);
         });
     });
 
