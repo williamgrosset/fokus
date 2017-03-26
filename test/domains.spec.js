@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
-import assert from 'assert';
 
 import Domains from '../src/js/popup/domains.js'
 
@@ -24,23 +23,21 @@ describe('<Domains />', function() {
     describe('addDomain(domain)', function() {
         it('should successfully add domain to container', function() {
             const wrapper = shallow(<Domains />);
+            wrapper.setState({ container: []});
             wrapper.instance().addDomain("testdomain.com");
             var shortid = wrapper.state('container')[0].id;
             expect(wrapper.state('container')).to.deep.equal([ { id: shortid, domain: '.*://.*testdomain.com/.*' } ]);
-            wrapper.setState({ container: []});
-            expect(wrapper.state('container')).to.deep.equal([]);
-        });
-    });
-
-    describe('addDomain(domain)', function() {
-        it('should fail to add domain to container', function() {
-            assert(true);
         });
     });
 
     describe('storeDomain(validDomain, container)', function() {
         it('should successfully add container to localStorage', function() {
-            assert(true);
+            const wrapper = shallow(<Domains />);
+            wrapper.setState({ container: []});
+            wrapper.instance().addDomain("testdomain.com");
+            var shortid = wrapper.state('container')[0].id;
+            expect(wrapper.state('container')).to.deep.equal([ { id: shortid, domain: '.*://.*testdomain.com/.*' } ]);
+            expect(localStorage.getItem('container')).equals('[{"id":"' + shortid + '","domain":".*://.*testdomain.com/.*"}]');
         });
     });
 
@@ -68,13 +65,25 @@ describe('<Domains />', function() {
 
     describe('removeDomain(id)', function() {
         it('should successfully remove domain from container', function() {
-            assert(true);
+            const wrapper = shallow(<Domains />);
+            wrapper.setState({ container: []});
+            wrapper.instance().addDomain("testdomain.com");
+            var shortid = wrapper.state('container')[0].id;
+            expect(wrapper.state('container')).to.deep.equal([ { id: shortid, domain: '.*://.*testdomain.com/.*' } ]);
+            wrapper.instance().removeDomain(shortid);    
+            expect(localStorage.getItem('container')).equals('[]');
         });
     });
 
     describe('removeDomain(id)', function() {
         it('should fail to remove domain from container', function() {
-            assert(true);
+            const wrapper = shallow(<Domains />);
+            wrapper.setState({ container: []});
+            wrapper.instance().addDomain("testdomain.com");
+            var shortid = wrapper.state('container')[0].id;
+            expect(wrapper.state('container')).to.deep.equal([ { id: shortid, domain: '.*://.*testdomain.com/.*' } ]);
+            wrapper.instance().removeDomain(12345);
+            expect(localStorage.getItem('container')).equals('[{"id":"' + shortid + '","domain":".*://.*testdomain.com/.*"}]');
         });
     });
 });
