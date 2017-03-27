@@ -10,47 +10,34 @@ import Domains from '../src/js/popup/domains.js'
 *  Tests for DomainItem component in src/js/popup/domain-item.js.
 */
 describe('<DomainItem />', function() {
-    it('should have props for the domain, domain container, handling removeDomain()', function () {
-        const wrapper = shallow(<DomainItem domain={""}/>);
-        expect(wrapper.props().container).to.be.defined;
-        expect(wrapper.props().domain).to.be.defined;
-        expect(wrapper.props().removeDomain).to.be.defined;
+    before(function () {
+        global.chrome = chrome;
+    });
+    it('calls removeDomain(e) when trash can is clicked', function() {
+        const wrapper = mount(<Domains />);
+        wrapper.setState({ container: [{
+            id: 20,
+            domain: "testDomain.com"
+        }]});
+        wrapper.find('#domain-delete').simulate('click', {
+            preventDefault: () => {}
+        });
+        expect(wrapper.state('container')).to.deep.equal([]);
     });
 
-    describe('deleteDomain(e) triggered on click', function() {
-        before(function () {
-            global.chrome = chrome;
-        });
-        it('should successfully call removeDomain', function() {
-            const wrapper = mount(<Domains />);
-            wrapper.setState({ container: [{
-                id: 20,
-                domain: "testDomain.com"
-            }]});
-            wrapper.find('#domain-delete').simulate('click', {
-                preventDefault: () => {}
-            });
-            expect(wrapper.state('container')).to.deep.equal([]);
-        });
+    it('renders domain without "..." appended', function() {
+        const wrapper = shallow(<DomainItem domain={"testdomain.com"}/>);
+        expect(wrapper.state('domain')).to.deep.equal("testdomain.com");
+        expect(wrapper.contains(
+                "testdomain.com"
+        )).to.be.true;
     });
 
-    describe('render() with regular domain length', function() {
-        it('should show domain without "..." appended', function() {
-            const wrapper = shallow(<DomainItem domain={"testdomain.com"}/>);
-            expect(wrapper.state('domain')).to.deep.equal("testdomain.com");
-            expect(wrapper.contains(
-                    "testdomain.com"
-            )).to.be.true;
-        });
-    });
-
-    describe('render() with long domain length', function() {
-        it('should show domain with "..." appended', function() {
-            const wrapper = shallow(<DomainItem domain={"testdomainwithverylonglength.organization"}/>);
-            expect(wrapper.state('domain')).to.deep.equal("testdomainwithverylonglength.organization");
-            expect(wrapper.contains(
-                    "testdomainwithverylon..."
-            )).to.be.true;
-        });
+    it('renders domain with "..." appended when length is too long', function() {
+        const wrapper = shallow(<DomainItem domain={"testdomainwithverylonglength.organization"}/>);
+        expect(wrapper.state('domain')).to.deep.equal("testdomainwithverylonglength.organization");
+        expect(wrapper.contains(
+                "testdomainwithverylon..."
+        )).to.be.true;
     });
 });

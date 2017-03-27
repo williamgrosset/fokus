@@ -22,7 +22,7 @@
 + Build and test scripts in ```scripts/```
 + Photo assests in ```png/```
 + React components in ```src/js/popup/```
-+ Tests in ```test/```
++ Tests in ```test/``` ([Enzyme](https://github.com/airbnb/enzyme))
 
 ## F.A.Q.
 ### Why am I making this?

@@ -9,22 +9,13 @@ import Headers from '../src/js/popup/header.js'
 *  Tests for Toggle component in src/js/popup/toggle.js.
 */
 describe('<Headers />', function() {
-    it('should have fokusTab() binded', function () {
+    it('fokusTab() successfully handles click event', function() {
         const wrapper = shallow(<Headers />);
-        expect(wrapper.props().fokusTab).to.be.defined;
+        wrapper.find('.fokus-link').simulate('click');
     });
 
-    describe('fokusTab()', function() {
-        it('should successfully handle click event', function() {
-            const wrapper = shallow(<Headers />);
-            wrapper.find('.fokus-link').simulate('click');
-        });
-    });
-
-    describe('render()', function() {
-        it('should successfully contain logo image', function() {
-            const wrapper = shallow(<Headers />);
-            expect(wrapper.find('img').length).to.equal(1);
-        });
+    it('renders logo image', function() {
+        const wrapper = shallow(<Headers />);
+        expect(wrapper.find('img').length).to.equal(1);
     });
 });

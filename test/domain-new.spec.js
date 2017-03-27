@@ -4,39 +4,37 @@ import { expect } from 'chai';
 import assert from 'assert';
 
 import DomainNew from '../src/js/popup/domain-new.js'
+import Domains from '../src/js/popup/domains.js'
 
 /*
 *  Tests for DomainNew component in src/js/popup/domain-new.js.
 */
 describe('<DomainNew />', function() {
-    it('should have props for domain container and handling addDomain()', function () {
-        const wrapper = shallow(<DomainNew />);
-        expect(wrapper.props().addDomain).to.be.defined;
-        expect(wrapper.props().container).to.be.defined;
+    it('domainValidation(e) successfully adds domain to container', function() {
+        /*
+        const wrapper = mount(<Domains container={["firstdomain.com"]} />);
+        wrapper.setState({ value: "openproblems.world" });
+        expect(wrapper.state('value')).equals("openproblems.world");
+        //const wrapper = shallow(<DomainNew container={["testdomain.com", "anotherone.com"]}/>);
+        //expect(wrapper.state('domain')).to.deep.equal("testdomain.com");
+        wrapper.find('#form').simulate('submit', {
+            preventDefault: () => {}
+        });
+        wrapper.setState({ value: "" });
+        */
     });
 
-    describe('domainValidation(e)', function() {
-        it('should successfully add domain to container', function() {
-            //const wrapper = shallow(<DomainNew container={["testdomain.com", "anotherone.com"]}/>);
-            //expect(wrapper.state('domain')).to.deep.equal("testdomain.com");
-            /*
-            wrapper.find('#form').simulate('submit', {
-                preventDefault: () => {}
-            });
-            */
-            //expect(wrapper.state('value')).to.deep.equal("");
-        });
+    it('domanValidation(e) shows modal for domain container max', function() {
+        // check for rendered myModalMax
+        assert(true);
     });
 
-    describe('domainValidation(e)', function() {
-        it('should show modal for invalid domain', function() {
-            assert(true);
-        });
+    it('domainValidation(e) shows modal for invalid domain', function() {
+        // check for rendered myModalError
+        assert(true);
     });
 
-    describe('domainValidation(e)', function() {
-        it('should show modal for domain container max', function() {
-            assert(true);
-        });
+    it('renders form input with placeholder', function() {
+        assert(true);
     });
 });
