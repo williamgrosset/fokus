@@ -21,7 +21,7 @@ class Toggle extends React.Component {
             enable 
         });
 
-        this.modifyCss("#000000", "#A1A1A1");
+        this.modifyCss("#000000");
         localStorage.setItem('fokus-toggle', 'enable');
 
         $('#enable').html('Enabled');
@@ -39,7 +39,7 @@ class Toggle extends React.Component {
             disable
         });
 
-        this.modifyCss("#A1A1A1", "#000000");
+        this.modifyCss("#A1A1A1");
         localStorage.setItem('fokus-toggle', 'disable');
 
         $('#disable').html('Disabled');
@@ -51,7 +51,7 @@ class Toggle extends React.Component {
     *  Modify color of domain container items, domain title, 
     *  and bottom border of form input.
     *
-    *  @param color: Modify color of domain container items,
+    *  @param color: Modify color of domain container items.
     */
     modifyCss(color) {
         $("#domain-container").css({
@@ -68,11 +68,11 @@ class Toggle extends React.Component {
     onloadEnable() {
         var toggle = localStorage.getItem('fokus-toggle');
         if (toggle == 'disable') {
-            this.modifyCss("#A1A1A1", "#000000");
+            this.modifyCss("#A1A1A1");
             $('#input').prop('disabled', true);
             return {__html: 'Enable'};
         } else {
-            this.modifyCss("#000000", "#A1A1A1");
+            this.modifyCss("#000000");
             $('#input').prop('disabled', false);
             return {__html: 'Enabled'};
         }
@@ -85,11 +85,11 @@ class Toggle extends React.Component {
     onloadDisable() {
         var toggle = localStorage.getItem('fokus-toggle');
         if (toggle == 'disable') {
-            this.modifyCss("#A1A1A1", "#000000");
+            this.modifyCss("#A1A1A1");
             $('#input').prop('disabled', true);
             return {__html: 'Disabled'};
         } else {
-            this.modifyCss("#000000", "#A1A1A1");
+            this.modifyCss("#000000");
             $('#input').prop('disabled', false);
             return {__html: 'Disable'};
         }

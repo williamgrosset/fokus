@@ -31686,7 +31686,8 @@ var Toggle = function (_React$Component) {
                 enable: enable
             });
 
-            this.modifyCss("#000000", "#A1A1A1");
+            //this.modifyCss("#000000", "#A1A1A1");
+            this.modifyCss("#000000");
             localStorage.setItem('fokus-toggle', 'enable');
 
             (0, _jquery2.default)('#enable').html('Enabled');
@@ -31707,7 +31708,8 @@ var Toggle = function (_React$Component) {
                 disable: disable
             });
 
-            this.modifyCss("#A1A1A1", "#000000");
+            //this.modifyCss("#A1A1A1", "#000000");
+            this.modifyCss("#A1A1A1");
             localStorage.setItem('fokus-toggle', 'disable');
 
             (0, _jquery2.default)('#disable').html('Disabled');
@@ -31719,7 +31721,7 @@ var Toggle = function (_React$Component) {
         *  Modify color of domain container items, domain title, 
         *  and bottom border of form input.
         *
-        *  @param color: Modify color of domain container items,
+        *  @param color: Modify color of domain container items.
         */
 
     }, {
@@ -31742,11 +31744,13 @@ var Toggle = function (_React$Component) {
         value: function onloadEnable() {
             var toggle = localStorage.getItem('fokus-toggle');
             if (toggle == 'disable') {
-                this.modifyCss("#A1A1A1", "#000000");
+                //this.modifyCss("#A1A1A1", "#000000");
+                this.modifyCss("#A1A1A1");
                 (0, _jquery2.default)('#input').prop('disabled', true);
                 return { __html: 'Enable' };
             } else {
-                this.modifyCss("#000000", "#A1A1A1");
+                //this.modifyCss("#000000", "#A1A1A1");
+                this.modifyCss("#000000");
                 (0, _jquery2.default)('#input').prop('disabled', false);
                 return { __html: 'Enabled' };
             }
@@ -31762,11 +31766,13 @@ var Toggle = function (_React$Component) {
         value: function onloadDisable() {
             var toggle = localStorage.getItem('fokus-toggle');
             if (toggle == 'disable') {
-                this.modifyCss("#A1A1A1", "#000000");
+                //this.modifyCss("#A1A1A1", "#000000");
+                this.modifyCss("#A1A1A1");
                 (0, _jquery2.default)('#input').prop('disabled', true);
                 return { __html: 'Disabled' };
             } else {
-                this.modifyCss("#000000", "#A1A1A1");
+                //this.modifyCss("#000000", "#A1A1A1");
+                this.modifyCss("#000000");
                 (0, _jquery2.default)('#input').prop('disabled', false);
                 return { __html: 'Disable' };
             }
