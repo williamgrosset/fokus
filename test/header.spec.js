@@ -1,7 +1,6 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
-import assert from 'assert';
 
 import Headers from '../src/js/popup/header.js'
 
