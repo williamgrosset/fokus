@@ -31301,6 +31301,7 @@ var DomainNew = function (_React$Component) {
 
         _this.inputChange = _this.inputChange.bind(_this);
         _this.domainValidation = _this.domainValidation.bind(_this);
+        _this.errorCheck = _this.errorCheck.bind(_this);
         _this.showModal = _this.showModal.bind(_this);
         return _this;
     }
@@ -31335,14 +31336,38 @@ var DomainNew = function (_React$Component) {
             if (this.props.container.length == 30) {
                 this.showModal(e, 'myModalMax', 0);
                 return;
-                // Show modal for invalid domain
-            } else if (domain.includes("http") || domain.includes("https") || domain.includes(":") || domain.includes("/") || domain === "" || !domain.includes(".") || domain.includes(" ")) {
+            }
+
+            // Show modal for invalid domain
+            if (!this.errorCheck(domain)) {
                 this.showModal(e, 'myModalError', 1);
-                return;
                 // Successfully add domain to domain blocker container
             } else {
                 this.props.addDomain(this.state.value);
                 this.setState({ value: '' });
+            }
+
+            /*
+            // Show modal for invalid domain
+            } else if (domain.includes("http") || domain.includes("https") 
+                          || domain.includes(":") || domain.includes("/") 
+                          || domain === "" || !domain.includes(".") 
+                          || domain.includes(" ")) {
+                this.showModal(e, 'myModalError', 1);
+                return; 
+            // Successfully add domain to domain blocker container
+            } else {
+                this.props.addDomain(this.state.value);
+                this.setState({value: ''});
+            }*/
+        }
+    }, {
+        key: 'errorCheck',
+        value: function errorCheck(domain) {
+            if (domain.includes("http") || domain.includes("https") || domain.includes(":") || domain.includes("/") || domain === "" || !domain.includes(".") || domain.includes(" ")) {
+                return false;
+            } else {
+                return true;
             }
         }
 
@@ -31686,7 +31711,6 @@ var Toggle = function (_React$Component) {
                 enable: enable
             });
 
-            //this.modifyCss("#000000", "#A1A1A1");
             this.modifyCss("#000000");
             localStorage.setItem('fokus-toggle', 'enable');
 
@@ -31708,7 +31732,6 @@ var Toggle = function (_React$Component) {
                 disable: disable
             });
 
-            //this.modifyCss("#A1A1A1", "#000000");
             this.modifyCss("#A1A1A1");
             localStorage.setItem('fokus-toggle', 'disable');
 
@@ -31744,12 +31767,10 @@ var Toggle = function (_React$Component) {
         value: function onloadEnable() {
             var toggle = localStorage.getItem('fokus-toggle');
             if (toggle == 'disable') {
-                //this.modifyCss("#A1A1A1", "#000000");
                 this.modifyCss("#A1A1A1");
                 (0, _jquery2.default)('#input').prop('disabled', true);
                 return { __html: 'Enable' };
             } else {
-                //this.modifyCss("#000000", "#A1A1A1");
                 this.modifyCss("#000000");
                 (0, _jquery2.default)('#input').prop('disabled', false);
                 return { __html: 'Enabled' };
@@ -31766,12 +31787,10 @@ var Toggle = function (_React$Component) {
         value: function onloadDisable() {
             var toggle = localStorage.getItem('fokus-toggle');
             if (toggle == 'disable') {
-                //this.modifyCss("#A1A1A1", "#000000");
                 this.modifyCss("#A1A1A1");
                 (0, _jquery2.default)('#input').prop('disabled', true);
                 return { __html: 'Disabled' };
             } else {
-                //this.modifyCss("#000000", "#A1A1A1");
                 this.modifyCss("#000000");
                 (0, _jquery2.default)('#input').prop('disabled', false);
                 return { __html: 'Disable' };

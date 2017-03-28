@@ -41,7 +41,7 @@ describe('<DomainNew />', function() {
         assert(true);
     });
 
-    it('renders form input with placeholder', function() {
+    it('renders form input', function() {
         const wrapper = shallow(<DomainNew container={["firstdomain.com"]} />);
         expect(wrapper.find('input')).to.have.length(1);
     });
