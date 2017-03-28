@@ -4,6 +4,7 @@ import { expect } from 'chai';
 import assert from 'assert';
 
 import Toggle from '../src/js/popup/toggle.js'
+import Domains from '../src/js/popup/Domains.js'
 
 /*
 *  Tests for Toggle component in src/js/popup/toggle.js.
@@ -25,12 +26,6 @@ describe('<Toggle />', function() {
         localStorage.setItem('fokus-toggle', 'disable');
         wrapper.instance().disableFokus();
         expect(localStorage.getItem('fokus-toggle')).equals('disable');
-    });
-
-    it('modifyCss() successfully updated color of elements in popup window', function() {
-        const wrapper = shallow(<Toggle />);
-        wrapper.instance().modifyCss("#000000");
-        //expect(wrapper.find('#domain-container')).getAttribute("color").to.equal("#000000");
     });
 
     it('onloadEnable() returns "Enable" html for button text', function() {
