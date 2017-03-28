@@ -57,10 +57,9 @@ class DomainNew extends React.Component {
     *  @returns boolean: False if a domain is invalid, otherwise true.
     */
     errorCheck(domain) {
-        if (domain.includes("http") || domain.includes("https") 
-                      || domain.includes(":") || domain.includes("/") 
-                      || domain === "" || !domain.includes(".") 
-                      || domain.includes(" ")) {
+        if (domain.includes("http") || domain.includes(":") 
+                || domain.includes("/") || domain === "" 
+                || !domain.includes(".") || domain.includes(" ")) {
             return false;
         } else {
             return true;
