@@ -68,7 +68,7 @@ describe('<Domains />', function() {
         expect(localStorage.getItem('container')).equals('[{"id":"' + shortid + '","domain":".*://.*testdomain.com/.*"}]');
     });
 
-    it('renders "Blocked Domains" title and two child components', function() {
+    it('renders "Blocked Domains" title, <DomainNew /> component, and <DomainContainer /> component', function() {
         const wrapper = shallow(<Domains />);
         expect(wrapper.find(".domains-title")).to.have.length(1);
         expect(wrapper.find(DomainNew)).to.have.length(1);

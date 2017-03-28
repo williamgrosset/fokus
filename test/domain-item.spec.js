@@ -13,7 +13,7 @@ describe('<DomainItem />', function() {
     before(function () {
         global.chrome = chrome;
     });
-    it('calls removeDomain(e) when trash can is clicked', function() {
+    it('removeDomain(e) successfully handles click event', function() {
         const wrapper = mount(<Domains />);
         wrapper.setState({ container: [{
             id: 20,

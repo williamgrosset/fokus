@@ -22,37 +22,37 @@ describe('<DomainNew />', function() {
         wrapper.setState({ value: "" });
     });
 
-    it('errorCheck(domain) returns false on domain: "<empty string>"', function() {
+    it('errorCheck(domain) returns false with domain: "<empty string>"', function() {
         const wrapper = shallow(<DomainNew container={["firstdomain.com"]} />);
         expect(wrapper.instance().errorCheck(" ")).to.equal(false);
     });
 
-    it('errorCheck(domain) returns false on domain: "test"', function() {
+    it('errorCheck(domain) returns false with domain: "test"', function() {
         const wrapper = shallow(<DomainNew container={["firstdomain.com"]} />);
         expect(wrapper.instance().errorCheck("test")).to.equal(false);
     });
 
-    it('errorCheck(domain) returns false on domain: "te st.com"', function() {
+    it('errorCheck(domain) returns false with domain: "te st.com"', function() {
         const wrapper = shallow(<DomainNew container={["firstdomain.com"]} />);
         expect(wrapper.instance().errorCheck("te st.com")).to.equal(false);
     });
 
-    it('errorCheck(domain) returns false on domain: "test.com/"', function() {
+    it('errorCheck(domain) returns false with domain: "test.com/"', function() {
         const wrapper = shallow(<DomainNew container={["firstdomain.com"]} />);
         expect(wrapper.instance().errorCheck("test.com/")).to.equal(false);
     });
 
-    it('errorCheck(domain) returns false on domain: "http://www.test.com"', function() {
+    it('errorCheck(domain) returns false with domain: "http://www.test.com"', function() {
         const wrapper = shallow(<DomainNew container={["firstdomain.com"]} />);
         expect(wrapper.instance().errorCheck("http://www.test.com")).to.equal(false);
     });
 
-    it('errorCheck(domain) returns true on domain: "www.test.com"', function() {
+    it('errorCheck(domain) returns true with domain: "www.test.com"', function() {
         const wrapper = shallow(<DomainNew container={["firstdomain.com"]} />);
         expect(wrapper.instance().errorCheck("www.test.com")).to.equal(true);
     });
 
-    it('errorCheck(domain) returns true on domain: "test.com"', function() {
+    it('errorCheck(domain) returns true with domain: "test.com"', function() {
         const wrapper = shallow(<DomainNew container={["firstdomain.com"]} />);
         expect(wrapper.instance().errorCheck("test.com")).to.equal(true);
     });

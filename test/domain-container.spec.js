@@ -9,7 +9,7 @@ import DomainItem from '../src/js/popup/domain-item.js'
 *  Tests for DomainContainer component in src/js/popup/domain-container.js.
 */
 describe('<DomainContainer />', function() {
-    it('renders "No domains currently blocked." when zero domains', function() {
+    it('renders "No domains currently blocked." with zero domains', function() {
         const wrapper = shallow(<DomainContainer container={[]} />);
         expect(wrapper.state('container')).to.deep.equal([]);
         expect(wrapper.contains(
