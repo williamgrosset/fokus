@@ -20,8 +20,16 @@ describe('<DomainContainer />', function() {
     });
 
     it('renders two <DomainItem /> components as list items', function() {
-        const wrapper = mount(<DomainContainer container={["testdomain.com", "another1.com"]} />);
-        expect(wrapper.state('container')).to.deep.equal(["testdomain.com", "another1.com"]);
+        const wrapper = mount(<DomainContainer container={[
+            {
+              "id": "fa9123nan", 
+              "domain": "testdomain.com"
+            },
+            {
+              "id": "1imnb3as", 
+              "domain": "another1.com"
+            }
+        ]} />);
         expect(wrapper.find("#domain-item")).to.have.length(2);
         expect(wrapper.find(DomainItem)).to.have.length(2);
     });
