@@ -3,6 +3,8 @@ import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 
 import Domains from '../src/js/popup/domains.js'
+import DomainContainer from '../src/js/popup/domain-container.js'
+import DomainNew from '../src/js/popup/domain-new.js'
 
 /*
 *  Tests for Domains component in src/js/popup/domains.js.
@@ -64,5 +66,12 @@ describe('<Domains />', function() {
         expect(wrapper.state('container')).to.deep.equal([ { id: shortid, domain: '.*://.*testdomain.com/.*' } ]);
         wrapper.instance().removeDomain(12345);
         expect(localStorage.getItem('container')).equals('[{"id":"' + shortid + '","domain":".*://.*testdomain.com/.*"}]');
+    });
+
+    it('renders "Blocked Domains" title and two child components', function() {
+        const wrapper = shallow(<Domains />);
+        expect(wrapper.find(".domains-title")).to.have.length(1);
+        expect(wrapper.find(DomainNew)).to.have.length(1);
+        expect(wrapper.find(DomainContainer)).to.have.length(1);
     });
 });
