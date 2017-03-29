@@ -13,7 +13,7 @@ describe('<DomainItem />', function() {
     before(function () {
         global.chrome = chrome;
     });
-    it('removeDomain(e) successfully handles click event', function() {
+    it('removeDomain(e) successfully handles click event and deletes domain', function() {
         const wrapper = mount(<Domains />);
         wrapper.setState({ container: [{
             id: 20,
@@ -25,7 +25,7 @@ describe('<DomainItem />', function() {
         expect(wrapper.state('container')).to.deep.equal([]);
     });
 
-    it('renders domain without "..." appended', function() {
+    it('renders domain without "..." appended (general case)', function() {
         const wrapper = shallow(<DomainItem domain={"testdomain.com"}/>);
         expect(wrapper.state('domain')).to.deep.equal("testdomain.com");
         expect(wrapper.contains(

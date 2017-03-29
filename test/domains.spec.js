@@ -13,7 +13,7 @@ describe('<Domains />', function() {
     before(function () {
         global.chrome = chrome;
     });
-    it('addDomain(domain) successfully adds domain to container', function() {
+    it('addDomain(domain) successfully adds domain to container with unique id', function() {
         const wrapper = shallow(<Domains />);
         wrapper.setState({ container: []});
         wrapper.instance().addDomain("testdomain.com");

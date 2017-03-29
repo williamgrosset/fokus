@@ -28,30 +28,30 @@ describe('<Toggle />', function() {
         expect(localStorage.getItem('fokus-toggle')).equals('disable');
     });
 
-    it('onloadEnable() returns "Enable" html for button text', function() {
+    it('onloadEnable() returns "Enable" html for button text with disabled mode on', function() {
         const wrapper = shallow(<Toggle />);
         localStorage.setItem('fokus-toggle', 'disable');
         expect(wrapper.instance().onloadEnable()).to.deep.equal({ __html: 'Enable' });
     });
 
-    it('onloadEnable() returns "Enabled" html for button text', function() {
+    it('onloadEnable() returns "Enabled" html for button text with enabled mode on', function() {
         const wrapper = shallow(<Toggle />);
         localStorage.setItem('fokus-toggle', 'enable');
         expect(wrapper.instance().onloadEnable()).to.deep.equal({ __html: 'Enabled' });
     });
 
-    it('onloadDisable() returns "Disable" html for button text', function() {
-        const wrapper = shallow(<Toggle />);
-        localStorage.setItem('fokus-toggle', 'enable');
-        expect(wrapper.instance().onloadDisable()).to.deep.equal({ __html: 'Disable' });
-    });
-    
-    it('onloadDisable() returns "Disabled" html for button text', function() {
+    it('onloadDisable() returns "Disabled" html for button text with disabled mode on', function() {
         const wrapper = shallow(<Toggle />);
         localStorage.setItem('fokus-toggle', 'disable');
         expect(wrapper.instance().onloadDisable()).to.deep.equal({ __html: 'Disabled' });
     });
 
+    it('onloadDisable() returns "Disable" html for button text with enabled mode on', function() {
+        const wrapper = shallow(<Toggle />);
+        localStorage.setItem('fokus-toggle', 'enable');
+        expect(wrapper.instance().onloadDisable()).to.deep.equal({ __html: 'Disable' });
+    });
+    
     it('renders two buttons for enabled/disabled modes', function() {
         const wrapper = shallow(<Toggle />);
         expect(wrapper.find("#enable")).to.have.length(1);

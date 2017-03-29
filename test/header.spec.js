@@ -2,19 +2,19 @@ import React from 'react';
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 
-import Headers from '../src/js/popup/header.js'
+import Header from '../src/js/popup/header.js'
 
 /*
-*  Tests for Toggle component in src/js/popup/toggle.js.
+*  Tests for Header component in src/js/popup/header.js.
 */
-describe('<Headers />', function() {
+describe('<Header />', function() {
     it('fokusTab() successfully handles click event', function() {
-        const wrapper = shallow(<Headers />);
+        const wrapper = shallow(<Header />);
         wrapper.find('.fokus-link').simulate('click');
     });
 
     it('renders logo image', function() {
-        const wrapper = shallow(<Headers />);
+        const wrapper = shallow(<Header />);
         expect(wrapper.find('img').length).to.equal(1);
     });
 });
