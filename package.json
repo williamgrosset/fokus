@@ -20,7 +20,7 @@
   },
   "scripts": {
     "build": "./scripts/build.sh",
-    "watch": "watchify src/js/popup/popup.js -t babelify -o src/js/popup/popup-bundle.js",
+    "watch": "./scripts/watch.sh",
     "test": "./scripts/test.sh"
   },
   "author": "William Grosset",
