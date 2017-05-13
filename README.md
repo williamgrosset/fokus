@@ -10,20 +10,28 @@
 
 ![](https://github.com/williamgrosset/fokus/blob/master/png/example.gif)
 
-## How to contribute
+## Development
+...
+
+### How to contribute
 1. Let me know about your idea (williamhgrosset@gmail.com) - I'd love to hear from you. :relaxed:
-2. Fork this repository and run ```npm i``` to install dependencies.
-3. Create a branch and complete any necessary changes or features. For bundling with watchify, run ```npm run watch```.
-4. Make sure the tests are **all passing** by running ```npm test```.
-5. Submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
+2. Fork this repository and run `nvm install` to use the required Node version.
+3. Run ```npm i``` to install the required dependencies.
+4. Create a branch and complete any necessary changes or features. For bundling with watchify, run ```npm run watch```.
+5. Make sure the linting/tests **all pass** by running ```npm test```.
+6. Submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
 
 *This is my first time using React, so any feedback is appreciated!*
 
-### Development
+### Project layout
 + Build and test scripts in ```scripts/```
 + Photo assests in ```png/```
 + React components in ```src/js/popup/```
 + Tests in ```test/``` ([Enzyme](https://github.com/airbnb/enzyme))
+
+### Future additions
++ Allow users to configure meditation timer
++ (Make a pull request to add your own idea!)
 
 ## F.A.Q.
 ### Why am I making this?

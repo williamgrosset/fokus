@@ -1,5 +1,5 @@
 node_modules
 npm-debug.log
-*.swp
++*.swp
 .DS_Store
-*/popup-bundle.js
+src/js/popup/popup-bundle.js
