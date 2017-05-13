@@ -5,16 +5,16 @@ import Domains from './domains.js';
 import Toggle from './toggle.js';
 
 ReactDOM.render(
-    <HeaderLink />,
-    document.getElementById('header')
+  <HeaderLink />,
+  document.getElementById('header')
 );
 
 ReactDOM.render (
-    <Domains />,
-    document.getElementById('domains')
+  <Domains />,
+  document.getElementById('domains')
 );
 
 ReactDOM.render(
-    <Toggle />,
-    document.getElementById('toggle')
+  <Toggle />,
+  document.getElementById('toggle')
 );

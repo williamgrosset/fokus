@@ -1,172 +1,172 @@
 body {
-    height: 400px;
-    width: 325px;
+  height: 400px;
+  width: 325px;
 }
 
 div.front {
-    font-family: 'Helvetica';
-    text-align: center;
-    white-space: nowrap;
-    max-width: 100%;
-    height: auto;
-    width: auto;
+  font-family: 'Helvetica';
+  text-align: center;
+  white-space: nowrap;
+  max-width: 100%;
+  height: auto;
+  width: auto;
 }
 
 #header {
-    width: 103%;
-    margin-left: -10px;
-    padding: 0cm 3cm 0cm 3cm;
-    border-bottom: 1px solid;
-    padding-bottom: 8px;
+  width: 103%;
+  margin-left: -10px;
+  padding: 0cm 3cm 0cm 3cm;
+  border-bottom: 1px solid;
+  padding-bottom: 8px;
 }
 
 .fokus-link {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #toggle {
-    text-align: center;
-    border-top: 1px solid;
-    margin-right: -10px;
-    margin-left: -10px;
+  text-align: center;
+  border-top: 1px solid;
+  margin-right: -10px;
+  margin-left: -10px;
 }
 
 p.domains-title {
-    text-align: center;
-    font-family: 'Lato', serif;
-    padding-top: 8px;
-    font-size: 16.5px;
-    color: #000000;
+  text-align: center;
+  font-family: 'Lato', serif;
+  padding-top: 8px;
+  font-size: 16.5px;
+  color: #000000;
 }
 
 #form {
-    padding-top: 5px;
-    text-align: center;
-    padding-bottom: 15px;
+  padding-top: 5px;
+  text-align: center;
+  padding-bottom: 15px;
 }
 
 #domain-delete:focus {
-    outline: none;
-    box-shadow: none;
+  outline: none;
+  box-shadow: none;
 }
 
 input[type=text] {
-    text-align: center;
-    border: none;
-    border-bottom: 1px solid;
-    font-size: 15px;
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid;
+  font-size: 15px;
 }
 
 #domain-container {
-    list-style: none;
-    list-style-type: none;
-    display: block;
-    font-family: 'Lato', serif;
-    height: 140px;
-    overflow: auto;
-    font-size: 16px;
-    text-align: center;
-    padding: 0cm 1cm 0cm 1cm;
+  list-style: none;
+  list-style-type: none;
+  display: block;
+  font-family: 'Lato', serif;
+  height: 140px;
+  overflow: auto;
+  font-size: 16px;
+  text-align: center;
+  padding: 0cm 1cm 0cm 1cm;
 }
 
 .divider {
-    width: 90px;
-    height:auto;
-    display:inline-block;
+  width: 90px;
+  height:auto;
+  display:inline-block;
 }
 
 .toggle-button1 {
-    padding-top: 7px;
+  padding-top: 7px;
 }
 
 p.toggle-button1 {
-    text-align: center;
-    font-family: 'Lato', serif;
-    font-size: 16.5px;
-    display: inline-block;
-    cursor: pointer;
+  text-align: center;
+  font-family: 'Lato', serif;
+  font-size: 16.5px;
+  display: inline-block;
+  cursor: pointer;
 }
 
 p.toggle-button2 {
-    text-align: center;
-    font-family: 'Lato', serif;
-    font-size: 16.5px;
-    display: inline-block;
-    cursor: pointer;
+  text-align: center;
+  font-family: 'Lato', serif;
+  font-size: 16.5px;
+  display: inline-block;
+  cursor: pointer;
 }
 
 ul li {
-    position: relative;
-    overflow: hidden;
-    padding-left: 15px;
-    padding-right: 3px;
-    margin: 0px 0px 10px 0px;
+  position: relative;
+  overflow: hidden;
+  padding-left: 15px;
+  padding-right: 3px;
+  margin: 0px 0px 10px 0px;
 }
 
 
 ul li:before {
-    background-color: black;
-    position: absolute;
-    height: 5px;
-    width: 5px;
-    left: 0;
-    top: 5px;
+  background-color: black;
+  position: absolute;
+  height: 5px;
+  width: 5px;
+  left: 0;
+  top: 5px;
 }
 
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
 }
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Could be more or less, depending on screen size */
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
 }
 
 /* The Close Button */
 .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 /* Modal Content */
 .modal-content {
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
-    font-family: 'Lato', serif;
-    font-size: 14px;
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+  font-family: 'Lato', serif;
+  font-size: 14px;
 }
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
-    from {top: -300px; opacity: 0} 
-    to {top: 0; opacity: 1}
+  from {top: -300px; opacity: 0} 
+  to {top: 0; opacity: 1}
 }
 
 @keyframes animatetop {
-    from {top: -300px; opacity: 0}
-    to {top: 0; opacity: 1}
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
 }
