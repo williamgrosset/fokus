@@ -1,9 +1,9 @@
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
 div.front {
   text-align: center;
   white-space: nowrap;
 }
-
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 .center-above {
   padding-top: 160px;

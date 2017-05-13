@@ -1,7 +1,4 @@
-/* MEDIA QUERIES
-*  Read the rules here and note the order they come in. 
-*  CSS uses the last declared rule over previous ones so order matters
-*/
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 @media (min-width: 600px) {
   body {
@@ -27,11 +24,25 @@
   }
 }
 
-@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
 body {
   text-align: center;
   font-family: Helvetica;
+}
+
+button {
+  display: inline-block;
+  padding: 1em 1.5em;
+  font-size: 0.6em;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #000;
+  background-color: #fff;
+  border-color: #444;
+  border-style: solid;
+  border-radius: 25px;
+  box-shadow: 0 8.5px #444;
 }
 
 /* FLEXBOX */
@@ -81,22 +92,6 @@ body {
   animation: fadeIn 2s;
   display: inline;
   font-size: 0.6em;
-}
-
-button {
-  display: inline-block;
-  padding: 1em 1.5em;
-  font-size: 0.6em;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #000;
-  background-color: #fff;
-  border-color: #444;
-  border-style: solid;
-  border-radius: 25px;
-  box-shadow: 0 8.5px #444;
 }
 
 .button:hover {
