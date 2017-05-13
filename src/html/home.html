@@ -1,53 +1,53 @@
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>fokus</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-        <!-- Home CSS -->
-        <link rel="stylesheet" href="/src/css/homeStyle.css">
-        <!-- Google Font -->
-        <link href='fonts.googleapis.com/css?family=Helvetica' rel='stylesheet' type='text/css'/>
-    </head>
-    <body>
-        <div class="background-overlay"></div>
-        <ul id="background" class="background"></ul>
-        <div class="widgets">
-            <div class='front'>
-                <div class="header-container">
-                  <h1 id="center-above">Stay fokused.</h1>
-                  <p>Breathe. Take a short break with some meditation.</p>
-                </div>
-                  
-                <div class="clock-and-buttons-container">
-                  <span><p id='clock'>300</p><p id='seconds'>seconds</p></span>
-                  <div id="center-below">
-                      <button class='button' id='stopwatchStart'>Start</button>
-                      <button class='button' id='stopwatchStop'>Stop</button>
-                      <button class='button' id='stopwatchReset'>Reset</button>
-                  </div>
-                </div>
-                <div class="bottom-container">
-                  <div class="quote-container">
-                      <div id="bottom">
-                          <p id="bottom-quote">.</p>
-                      </div>
-                  </div>
+  <head>
+    <meta charset="utf-8">
+    <title>fokus</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Home CSS -->
+    <link rel="stylesheet" href="/src/css/homeStyle.css">
+    <!-- Google Font -->
+    <link href='fonts.googleapis.com/css?family=Helvetica' rel='stylesheet' type='text/css'/>
+  </head>
+  <body>
+    <div class="background-overlay"></div>
+      <ul class="background"></ul>
+      <div class="widgets">
+        <div class='front'>
+          <div class="header-container">
+            <h1 class="center-above">Stay fokused.</h1>
+            <p>Breathe. Take a short break with some meditation.</p>
+          </div>
+          <div class="clock-and-buttons-container">
+            <span><p id='clock' class='clock'>300</p><p id='seconds' class='seconds'>seconds</p></span>
+            <div class="center-below">
+              <button id='stopwatchStart'>Start</button>
+              <button id='stopwatchStop'>Stop</button>
+              <button id='stopwatchReset'>Reset</button>
             </div>
-              <div id="bottom-right">
-                  <a href="about.html"><img src=/png/fokus_question_32.png alt="About"></a>
-              </div>
-              <div id="bottom-left">
-                  <a href="http://github.com/williamgrosset/fokus"><img src=/png/fokus_github_32.png alt="Open Source"></a>
+          </div>
+          <div class="bottom-container">
+            <div class="quote-container">
+              <div class="bottom">
+                <p id="bottom-quote">.</p>
               </div>
             </div>
+          </div>
         </div>
-        <!-- Audio file used for completed meditation. -->
-        <audio id="audio" src="/mp3/BassySwoosh.mp3" preload="auto"></audio>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-        <!-- Typed.js: github.com/mattboldt/typed.js -->
-        <script src="/src/js/home/typed.js" type="text/javascript"></script>
-        <script src="/src/js/home/stopwatch.js" type="text/javascript"></script>
-        <script src="/src/js/home/quote.js" type="text/javascript"></script>
-    </body>
+        <div class="bottom-right">
+          <a href="about.html"><img src=/png/fokus_question_32.png alt="About"></a>
+        </div>
+        <div class="bottom-left">
+          <a href="http://github.com/williamgrosset/fokus"><img src=/png/fokus_github_32.png alt="Open Source"></a>
+        </div>
+      </div>
+    </div>
+    <!-- Audio file used for completed meditation. -->
+    <audio id="audio" src="/mp3/BassySwoosh.mp3" preload="auto"></audio>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- Typed.js: github.com/mattboldt/typed.js -->
+    <script src="/src/js/home/typed.js" type="text/javascript"></script>
+    <script src="/src/js/home/stopwatch.js" type="text/javascript"></script>
+    <script src="/src/js/home/quote.js" type="text/javascript"></script>
+  </body>
 </html>

@@ -27,119 +27,109 @@
   }
 }
 
-
-/* GLOBAL RULES
-*  Put 'global' rules for the whole page in body. 
-*  But you want seperate from media queries, because these apply
-*  for all page sizes. If you make a more specific selector for 
-*  some element where text should be left, then you can make the 
-*  rule there and it will overrule this one.
-*/
-
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 body {
-    text-align: center;
-    font-family: Helvetica;
+  text-align: center;
+  font-family: Helvetica;
 }
-
 
 /* FLEXBOX */
 .widgets {
-    display: flex; 
-    flex-flow: column nowrap;
-    justify-content: space-between;
-    align-items: stretch;
-    height: 96%;
+  display: flex; 
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 96%;
 }
 
 .front {
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .header-container h1 {
-    font-size: 3em;
-    animation: fadeIn 2s;
-    padding-bottom: 0.7em;
+  font-size: 3em;
+  animation: fadeIn 2s;
+  padding-bottom: 0.7em;
 }
 
 .header-container p {
-    font-size: 1.3em;
-    animation: fadeIn 2s;
-    padding-bottom: 0.7em;
+  font-size: 1.3em;
+  animation: fadeIn 2s;
+  padding-bottom: 0.7em;
 }
 
 .quote-container {
-    padding-top: 7em;
+  padding-top: 7em;
 }
 
-#clock {
-    animation: fadeIn 2s;
-    display: inline;
-    font-size: 8em;
+.clock {
+  animation: fadeIn 2s;
+  display: inline;
+  font-size: 8em;
 }
     
-#center-below {
-    animation: fadeIn 2s;
+.center-below {
+  animation: fadeIn 2s;
 }
 
-#seconds {
-    animation: fadeIn 2s;
-    display: inline;
-    font-size: 0.6em;
+.seconds {
+  animation: fadeIn 2s;
+  display: inline;
+  font-size: 0.6em;
 }
 
-.button {
-    display: inline-block;
-    padding: 1em 1.5em;
-    font-size: 0.6em;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #000;
-    background-color: #fff;
-    border-color: #444;
-    border-style: solid;
-    border-radius: 25px;
-    box-shadow: 0 8.5px #444;
+button {
+  display: inline-block;
+  padding: 1em 1.5em;
+  font-size: 0.6em;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #000;
+  background-color: #fff;
+  border-color: #444;
+  border-style: solid;
+  border-radius: 25px;
+  box-shadow: 0 8.5px #444;
 }
 
 .button:hover {
-    background-color: #e6e6e6
+  background-color: #e6e6e6
 }
 
 .button:active {
-    background-color: #e6e6e6;
-    box-shadow: 0 5px #222;
-    transform: translateY(4px);
+  background-color: #e6e6e6;
+  box-shadow: 0 5px #222;
+  transform: translateY(4px);
 }
 
 .bottom-container {
-    font-size: 0.7em;
-    animation: fadeIn 2s;
-    padding-bottom: 2.5em;
+  font-size: 0.7em;
+  animation: fadeIn 2s;
+  padding-bottom: 2.5em;
 }
 
-#bottom {
-    font-style: italic;
-    animation-delay: 3s;
+.bottom {
+  font-style: italic;
+  animation-delay: 3s;
 }
 
-#bottom-right {
-    position: fixed;
-    bottom: 3;
-    right: 3;
-    animation: fadeIn 2s;
+.bottom-right {
+  position: fixed;
+  bottom: 3;
+  right: 3;
+  animation: fadeIn 2s;
 }
 
-#bottom-left {
-    position:fixed;
-    bottom: 3;
-    left: 3;
-    animation: fadeIn 2s;
+.bottom-left {
+  position:fixed;
+  bottom: 3;
+  left: 3;
+  animation: fadeIn 2s;
 }

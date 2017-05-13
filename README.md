@@ -29,7 +29,7 @@
 + React components in ```src/js/popup/```
 + Tests in ```test/``` ([Enzyme](https://github.com/airbnb/enzyme))
 
-### Future additions
+## Future additions
 + Allow users to configure meditation timer
 + (Make a pull request to add your own idea!)
 
