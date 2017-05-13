@@ -1,33 +1,33 @@
 div.front {
-    text-align: center;
-    white-space: nowrap;
+  text-align: center;
+  white-space: nowrap;
 }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-#center-above {
-    padding-top: 160px;
-    font-size: 600%;
-    animation: fadeIn 2s;
+.center-above {
+  padding-top: 160px;
+  font-size: 600%;
+  animation: fadeIn 2s;
 }
 
-#bottom {
-    padding-top: 80px;
-    font-size: 16px;
-    font-style: italic;
-    animation: fadeIn 2s;
+.bottom {
+  padding-top: 80px;
+  font-size: 16px;
+  font-style: italic;
+  animation: fadeIn 2s;
 }
 
-#bottom-right {
-    position: fixed;
-    bottom: 3;
-    right: 3;
-    animation: fadeIn 2s;
+.bottom-right {
+  position: fixed;
+  bottom: 3;
+  right: 3;
+  animation: fadeIn 2s;
 }
 
-#bottom-left {
-    position:fixed;
-    bottom: 3;
-    left: 3;
-    animation: fadeIn 2s;
+.bottom-left {
+  position:fixed;
+  bottom: 3;
+  left: 3;
+  animation: fadeIn 2s;
 }
