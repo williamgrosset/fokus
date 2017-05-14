@@ -11,7 +11,6 @@ import DomainItem from '../src/js/popup/domain-item.js'
 describe('<DomainContainer />', function() {
   it('renders "No domains currently blocked." with zero domains', function() {
     const wrapper = shallow(<DomainContainer container={[]} />);
-    expect(wrapper.state('container')).to.deep.equal([]);
     expect(wrapper.contains(
       <ul id='domain-container'>
         <p>No domains currently blocked.</p>

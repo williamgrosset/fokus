@@ -4,7 +4,7 @@
 
 ## How to use fokus
 1. Download the chrome extension on the Google chrome store [here](https://chrome.google.com/webstore/detail/fokus/kapnmpfkldbacoamceiggkcoaepfgiea?hl=en-US).
-2. Open the chrome popup and add new domains to be blocked: e.g.`domain.com` or `www.domain.com`.
+2. Open the chrome popup and add new domains to be blocked, e.g:`domain.com` or `www.domain.com`.
 3. Toggle the chrome extension on/off by clicking on either **Enable** or **Disable** mode.
 4. Enjoy your meditation breaks for increased focus and productivity.  
 

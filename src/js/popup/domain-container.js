@@ -2,14 +2,6 @@ import React from 'react';
 import DomainItem from './domain-item.js'
 
 class DomainContainer extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      container: this.props.container
-    };
-  }
-
   render() {
     const extra = this.props;
     if (this.props.container.length != 0) {

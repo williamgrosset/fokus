@@ -1,98 +1,16 @@
+@-webkit-keyframes animatetop {
+  from {top: -300px; opacity: 0} 
+  to {top: 0; opacity: 1}
+}
+
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
+}
+
 body {
   height: 400px;
   width: 325px;
-}
-
-div.front {
-  font-family: 'Helvetica';
-  text-align: center;
-  white-space: nowrap;
-  max-width: 100%;
-  height: auto;
-  width: auto;
-}
-
-#header {
-  width: 103%;
-  margin-left: -10px;
-  padding: 0cm 3cm 0cm 3cm;
-  border-bottom: 1px solid;
-  padding-bottom: 8px;
-}
-
-.fokus-link {
-  cursor: pointer;
-}
-
-#toggle {
-  text-align: center;
-  border-top: 1px solid;
-  margin-right: -10px;
-  margin-left: -10px;
-}
-
-p.domains-title {
-  text-align: center;
-  font-family: 'Lato', serif;
-  padding-top: 8px;
-  font-size: 16.5px;
-  color: #000000;
-}
-
-#form {
-  padding-top: 5px;
-  text-align: center;
-  padding-bottom: 15px;
-}
-
-#domain-delete:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-input[type=text] {
-  text-align: center;
-  border: none;
-  border-bottom: 1px solid;
-  font-size: 15px;
-}
-
-#domain-container {
-  list-style: none;
-  list-style-type: none;
-  display: block;
-  font-family: 'Lato', serif;
-  height: 140px;
-  overflow: auto;
-  font-size: 16px;
-  text-align: center;
-  padding: 0cm 1cm 0cm 1cm;
-}
-
-.divider {
-  width: 90px;
-  height:auto;
-  display:inline-block;
-}
-
-.toggle-button1 {
-  padding-top: 7px;
-}
-
-p.toggle-button1 {
-  text-align: center;
-  font-family: 'Lato', serif;
-  font-size: 16.5px;
-  display: inline-block;
-  cursor: pointer;
-}
-
-p.toggle-button2 {
-  text-align: center;
-  font-family: 'Lato', serif;
-  font-size: 16.5px;
-  display: inline-block;
-  cursor: pointer;
 }
 
 ul li {
@@ -111,6 +29,60 @@ ul li:before {
   width: 5px;
   left: 0;
   top: 5px;
+}
+
+input[type=text] {
+  text-align: center;
+  border: none;
+  border-bottom: 1px solid;
+  font-size: 15px;
+}
+
+div.front {
+  font-family: 'Helvetica';
+  text-align: center;
+  white-space: nowrap;
+  max-width: 100%;
+  height: auto;
+  width: auto;
+}
+
+p.toggle-button1 {
+  text-align: center;
+  font-family: 'Lato', serif;
+  font-size: 16.5px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+p.toggle-button2 {
+  text-align: center;
+  font-family: 'Lato', serif;
+  font-size: 16.5px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+p.domains-title {
+  text-align: center;
+  font-family: 'Lato', serif;
+  padding-top: 8px;
+  font-size: 16.5px;
+  color: #000000;
+}
+
+.fokus-link {
+  cursor: pointer;
+}
+
+.divider {
+  width: 90px;
+  height:auto;
+  display:inline-block;
+}
+
+.toggle-button1 {
+  padding-top: 7px;
 }
 
 .modal {
@@ -160,13 +132,40 @@ ul li:before {
   font-size: 14px;
 }
 
-/* Add Animation */
-@-webkit-keyframes animatetop {
-  from {top: -300px; opacity: 0} 
-  to {top: 0; opacity: 1}
+#header {
+  width: 103%;
+  margin-left: -10px;
+  padding: 0cm 3cm 0cm 3cm;
+  border-bottom: 1px solid;
+  padding-bottom: 8px;
 }
 
-@keyframes animatetop {
-  from {top: -300px; opacity: 0}
-  to {top: 0; opacity: 1}
+#toggle {
+  text-align: center;
+  border-top: 1px solid;
+  margin-right: -10px;
+  margin-left: -10px;
+}
+
+#form {
+  padding-top: 5px;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+#domain-delete:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+#domain-container {
+  list-style: none;
+  list-style-type: none;
+  display: block;
+  font-family: 'Lato', serif;
+  height: 140px;
+  overflow: auto;
+  font-size: 16px;
+  text-align: center;
+  padding: 0cm 1cm 0cm 1cm;
 }
