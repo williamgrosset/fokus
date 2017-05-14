@@ -2,8 +2,8 @@ import React from 'react';
 import $ from 'jquery';
 
 export default class DomainNew extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       value: '',
     };

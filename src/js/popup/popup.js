@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import HeaderLink from './header.js';
-import Domains from './domains.js';
-import Toggle from './toggle.js';
+import Header from './Header.react.jsx';
+import Domains from './Domains.react.jsx';
+import Toggle from './Toggle.react.jsx';
 
 ReactDOM.render(
-  <HeaderLink />,
+  <Header />,
   document.getElementById('header')
 );
 

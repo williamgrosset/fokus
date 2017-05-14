@@ -1,5 +1,5 @@
 import React from 'react';
-import DomainItem from './domain-item.js'
+import DomainItem from './DomainItem.react.jsx'
 import PropTypes from 'prop-types';
 
 export default class DomainContainer extends React.Component {
