@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import $ from 'jquery';
 
 export default class DomainNew extends React.Component {
@@ -90,3 +91,7 @@ export default class DomainNew extends React.Component {
     );
   }
 }
+
+DomainNew.propTypes = {
+  container: PropTypes.array.isRequired,
+};

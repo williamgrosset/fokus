@@ -47,6 +47,11 @@ export default class DomainItem extends React.Component {
   }
 }
 
+DomainItem.defaultProps = {
+  domain: undefined,
+  id: undefined,
+};
+
 DomainItem.propTypes = {
   domain: PropTypes.string,
   id: PropTypes.string,

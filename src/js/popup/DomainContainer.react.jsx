@@ -23,5 +23,5 @@ export default class DomainContainer extends React.Component {
 }
 
 DomainContainer.propTypes = {
-  container: PropTypes.array,
+  container: PropTypes.array.isRequired,
 };
