@@ -1,8 +1,20 @@
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
+body {
+  font-family: Helvetica;
+}
+
 div.front {
   text-align: center;
   white-space: nowrap;
+}
+
+.content {
+  display: block;
+  font-size: 1.3em;
+  justify-content: center;
+  flex-flow: column nowrap;
+  word-wrap: break-word;
 }
 
 .center-above {

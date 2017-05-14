@@ -11,14 +11,14 @@
 ![](https://github.com/williamgrosset/fokus/blob/master/png/example.gif)
 
 ## Development
-...
+Fokus follows the [AirBnB JavaScript style guide](https://github.com/airbnb/javascript) and uses `eslint` to enfource conventions. The following outlines the step-by-step process on how to contribute to the open source chrome extension project and where each of the file components can be located.
 
 ### How to contribute
 1. Let me know about your idea (williamhgrosset@gmail.com) - I'd love to hear from you. :relaxed:
 2. Fork this repository and run `nvm install` to use the required Node version.
 3. Run ```npm i``` to install the required dependencies.
 4. Create a branch and complete any necessary changes or features. For bundling with watchify, run ```npm run watch```.
-5. Make sure the linting/tests **all pass** by running ```npm test```.
+5. Make sure the linting/tests **all pass** by running ```npm test``` (linting currently being added).
 6. Submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
 
 *This is my first time using React, so any feedback is appreciated!*
@@ -31,6 +31,7 @@
 
 ## Future additions
 + Allow users to configure meditation timer
++ Redesign home page
 + (Make a pull request to add your own idea!)
 
 ## F.A.Q.
