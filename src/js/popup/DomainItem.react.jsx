@@ -4,10 +4,11 @@ import PropTypes from 'prop-types';
 export default class DomainItem extends React.Component {
   constructor(props) {
     super(props);
+    this.deleteDomain = this.deleteDomain.bind(this);
+
     this.state = {
       domain: this.props.domain || '',
-    }
-    this.deleteDomain = this.deleteDomain.bind(this);
+    };
   }
 
   /*
@@ -22,7 +23,7 @@ export default class DomainItem extends React.Component {
   }
 
   render() {
-    let validDomain;
+    let validDomain = '';
     if (this.state.domain == undefined) {
       validDomain = "An error has occured.";
     } else {
@@ -35,8 +36,12 @@ export default class DomainItem extends React.Component {
 
     return (
       <li id='domain-item'>
-        <div style={{float:'left'}} id='domain-name'>{validDomain}</div>
-        <div><input type='image' id='domain-delete' style={{float:'right'}} src='/png/garbage_can_16.png' onClick={this.deleteDomain} /></div>
+        <div style={{float:'left'}} id='domain-name'>
+          {validDomain}
+        </div>
+        <div>
+          <input type='image' id='domain-delete' style={{float:'right'}} src='/png/garbage_can_16.png' onClick={this.deleteDomain} />
+        </div>
       </li>
     );
   }

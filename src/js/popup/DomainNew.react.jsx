@@ -2,15 +2,16 @@ import React from 'react';
 import $ from 'jquery';
 
 export default class DomainNew extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      value: '',
-    };
+  constructor(props) {
+    super(props);
     this.inputChange = this.inputChange.bind(this);
     this.domainValidation = this.domainValidation.bind(this);
     this.errorCheck = this.errorCheck.bind(this);
     this.showModal = this.showModal.bind(this);
+
+    this.state = {
+      value: '',
+    };
   }
 
   /*
@@ -83,7 +84,7 @@ export default class DomainNew extends React.Component {
 
   render() {
     return (
-      <form autoComplete='off' onSubmit={this.domainValidation} id='form' >
+      <form autoComplete='off' onSubmit={this.domainValidation} id='form'>
         <input id='input' type='text' value={this.state.value} placeholder='e.g. facebook.com' autoComplete='off' onChange={this.inputChange} />
       </form>
     );

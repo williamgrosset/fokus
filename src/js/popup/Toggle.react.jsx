@@ -63,6 +63,7 @@ export default class Toggle extends React.Component {
   */
   onloadEnable() {
     const toggle = localStorage.getItem('fokus-toggle');
+
     if (toggle == 'disable') {
       this.modifyCss("#A1A1A1");
       $('#input').prop('disabled', true);
@@ -79,6 +80,7 @@ export default class Toggle extends React.Component {
   */
   onloadDisable() {
     const toggle = localStorage.getItem('fokus-toggle');
+
     if (toggle == 'disable') {
       this.modifyCss("#A1A1A1");
       $('#input').prop('disabled', true);
@@ -92,7 +94,7 @@ export default class Toggle extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='toggle'>
         <p id='enable' className='toggle-button1' onClick={this.enableFokus} dangerouslySetInnerHTML={this.onloadEnable()}></p>
         <div className='divider'/>
         <p id='disable' className='toggle-button2' onClick={this.disableFokus} dangerouslySetInnerHTML={this.onloadDisable()}></p>

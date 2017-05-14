@@ -7,15 +7,15 @@ import shortid from 'shortid';
 export default class Domains extends React.Component {
   constructor(props) {
     super(props);
-    const container = JSON.parse(localStorage.getItem('container')) || [];
-    this.state = {
-      container
-    };
-    console.log(this.state.container);
     this.addDomain = this.addDomain.bind(this);
     this.storeDomain = this.storeDomain.bind(this);
     this.removeDomain = this.removeDomain.bind(this);
     this.getIndex = this.getIndex.bind(this);
+
+    const container = JSON.parse(localStorage.getItem('container')) || [];
+    this.state = {
+      container
+    };
   }
 
   /*
@@ -26,6 +26,7 @@ export default class Domains extends React.Component {
   addDomain(domain) {
     domain = ".*:\/\/\.*".concat(domain).concat("\/.*");
     const idValue = shortid.generate();
+
     this.state.container.push({
       id: idValue,
       domain,
@@ -99,7 +100,7 @@ export default class Domains extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='domains'>
         <p className='domains-title'>Blocked Domains</p>
         <DomainNew container={this.state.container} addDomain={this.addDomain} />
         <DomainContainer container={this.state.container} removeDomain={this.removeDomain} />

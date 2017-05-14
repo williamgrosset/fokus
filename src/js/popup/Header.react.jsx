@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class Header extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.fokusTab = this.fokusTab.bind(this);
   }
 
@@ -18,7 +18,10 @@ export default class Header extends React.Component {
   render() {
     return (
       <div className='fokus-link'>
-        <img src='/png/fokus_title_128.png' onClick={this.fokusTab}/>
+        <img 
+          src='/png/fokus_title_128.png' 
+          onClick={this.fokusTab}
+        />
       </div>
     );
   }

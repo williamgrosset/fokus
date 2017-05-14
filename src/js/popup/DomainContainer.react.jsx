@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 export default class DomainContainer extends React.Component {
   render() {
     const extra = this.props;
+
     if (this.props.container.length != 0) {
       return (
         <ul id='domain-container'>
