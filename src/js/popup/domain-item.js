@@ -1,19 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-class DomainItem extends React.Component {
+export default class DomainItem extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
-      domain: this.props.domain,
-      id: this.props.id
+      domain: this.props.domain || '',
     }
     this.deleteDomain = this.deleteDomain.bind(this);
   }
 
   /*
-  *  Handles onClick event and removes the domain with the
-  *  corresponding id.
+  *  Handles onClick event and removes the domain with the corresponding id.
   *
   *  @param e: Event handler for domain deletion.
   */
@@ -24,14 +22,11 @@ class DomainItem extends React.Component {
   }
 
   render() {
-    var validDomain = "";
+    let validDomain;
     if (this.state.domain == undefined) {
       validDomain = "An error has occured.";
     } else {
-      validDomain = this.state.domain;
-      validDomain = validDomain.replace(".*:\/\/\.*", '');
-      validDomain = validDomain.replace("\/.*", '');
-
+      validDomain = this.state.domain.replace(".*:\/\/\.*", '').replace("\/.*", '');
       // Add "..." to end of the domain if length is too large for popup window
       if (validDomain.length >= 19) {
           validDomain = validDomain.substring(0, 21).concat("...");
@@ -39,14 +34,15 @@ class DomainItem extends React.Component {
     }
 
     return (
-      <div>
-        <li>
-          <div style={{float:'left'}} id='domain-item'>{validDomain}</div>
-          <div><input type='image' id='domain-delete' style={{float:'right'}} src='/png/garbage_can_16.png' onClick={this.deleteDomain} /></div>
-        </li>
-      </div>
+      <li id='domain-item'>
+        <div style={{float:'left'}} id='domain-name'>{validDomain}</div>
+        <div><input type='image' id='domain-delete' style={{float:'right'}} src='/png/garbage_can_16.png' onClick={this.deleteDomain} /></div>
+      </li>
     );
   }
 }
 
-module.exports = DomainItem;
+DomainItem.propTypes = {
+  domain: PropTypes.string,
+  id: PropTypes.string,
+};

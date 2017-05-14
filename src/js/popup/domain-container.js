@@ -1,5 +1,6 @@
 import React from 'react';
 import DomainItem from './domain-item.js'
+import PropTypes from 'prop-types';
 
 export default class DomainContainer extends React.Component {
   render() {
@@ -21,5 +22,5 @@ export default class DomainContainer extends React.Component {
 }
 
 DomainContainer.propTypes = {
-  container: React.PropTypes.array,
+  container: PropTypes.array,
 };
