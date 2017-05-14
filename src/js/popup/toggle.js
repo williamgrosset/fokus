@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 
-class Toggle extends React.Component {
+export default class Toggle extends React.Component {
   constructor(props) {
     super(props);
     this.enableFokus = this.enableFokus.bind(this);
@@ -16,17 +16,16 @@ class Toggle extends React.Component {
   *  Update boolean value in localStorage and modify CSS for enabled visuals.
   */
   enableFokus() {
-    var enable = true;
+    const enable = true;
     chrome.runtime.sendMessage({
       enable 
     });
 
     this.modifyCss("#000000");
-    localStorage.setItem('fokus-toggle', 'enable');
-
     $('#enable').html('Enabled');
     $('#disable').html('Disable');
     $('#input').prop('disabled', false);
+    localStorage.setItem('fokus-toggle', 'enable');
   }
 
   /*
@@ -34,22 +33,20 @@ class Toggle extends React.Component {
   *  Update boolean value in localStorage and modify CSS for disabled visuals.
   */
   disableFokus() {
-    var disable = true;
+    const disable = true;
     chrome.runtime.sendMessage({
       disable
     });
 
     this.modifyCss("#A1A1A1");
     localStorage.setItem('fokus-toggle', 'disable');
-
     $('#disable').html('Disabled');
     $('#enable').html('Enable');
     $('#input').prop('disabled', true);
   }
 
   /*
-  *  Modify color of domain container items, domain title, 
-  *  and bottom border of form input.
+  *  Modify color of domain container items, domain title, and bottom border of form input.
   *
   *  @param color: Modify color of domain container items.
   */
@@ -62,11 +59,10 @@ class Toggle extends React.Component {
   }
 
   /*
-  *  Change HTML text for enable mode and modify CSS for 
-  *  enabled domain blocker.
+  *  Update HTML for enable mode and modify CSS for enabled domain blocker.
   */
   onloadEnable() {
-    var toggle = localStorage.getItem('fokus-toggle');
+    const toggle = localStorage.getItem('fokus-toggle');
     if (toggle == 'disable') {
       this.modifyCss("#A1A1A1");
       $('#input').prop('disabled', true);
@@ -79,11 +75,10 @@ class Toggle extends React.Component {
   }
 
   /*
-  *  Change HTML text for disable mode and modify CSS for 
-  *  disabled domain blocker.
+  *  Update HTML for disable mode and modify CSS for disabled domain blocker.
   */
   onloadDisable() {
-    var toggle = localStorage.getItem('fokus-toggle');
+    const toggle = localStorage.getItem('fokus-toggle');
     if (toggle == 'disable') {
       this.modifyCss("#A1A1A1");
       $('#input').prop('disabled', true);
@@ -105,5 +100,3 @@ class Toggle extends React.Component {
     );
   }
 }
-
-module.exports = Toggle;

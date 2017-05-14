@@ -4,14 +4,14 @@ import DomainContainer from './domain-container.js';
 import DomainItem from './domain-item.js';
 import shortid from 'shortid';
 
-class Domains extends React.Component {
+export default class Domains extends React.Component {
   constructor(props) {
     super(props);
-    var container = JSON.parse(localStorage.getItem('container')) || [];
+    const container = JSON.parse(localStorage.getItem('container')) || [];
     this.state = {
       container
     };
-
+    console.log(this.state.container);
     this.addDomain = this.addDomain.bind(this);
     this.storeDomain = this.storeDomain.bind(this);
     this.removeDomain = this.removeDomain.bind(this);
@@ -25,24 +25,31 @@ class Domains extends React.Component {
   */
   addDomain(domain) {
     domain = ".*:\/\/\.*".concat(domain).concat("\/.*");
-    var idValue = shortid.generate();
-
+    const idValue = shortid.generate();
     this.state.container.push({
       id: idValue,
-      domain
+      domain,
     });
     this.setState({ container: this.state.container });
+    /*
+    const container = this.state.container;
+    this.setState({ container: 
+      container.push({
+        id: idValue,
+        domain,
+      })
+    });
+    */
     this.storeDomain(domain, this.state.container);
+    console.log(this.state.container);
   }
 
   /*
-  *  Send validDomain to the background script to be added
-  *  to the collection of blocked domains and store the domains 
+  *  Send validDomain to the background script to be added to the collection of blocked domains and store the domains 
   *  container in HTML localStorage.
   *
-  *  @param validDomain: Domain with prefix and suffix for
-  *  proper URL blocking.
-  *  @param container: Container with all of our domains.
+  *  @param validDomain: Domain with prefix and suffix for proper URL blocking.
+  *  @param container:   Container with all of our domains.
   */
   storeDomain(validDomain, container) {
     chrome.runtime.sendMessage({
@@ -54,8 +61,8 @@ class Domains extends React.Component {
   /*
   *  Retrieve index value of domain to delete.
   *
-  *  @param value: Unique id to match.
-  *  @param key: Attribute of object.
+  *  @param value:  Unique id to match.
+  *  @param key:    Attribute of object.
   *  @return index: Index of domain to delete.
   */
   getIndex(value, key) {
@@ -68,13 +75,13 @@ class Domains extends React.Component {
   }
 
   /*
-  *  Search for index and filter matched item out of container and
-  *  send index to background script for domain to be removed.
+  *  Search for index and filter matched item out of container and send index to background script for domain to 
+  *  be removed.
   *
   *  @param id: Unique id for domain to delete.
   */
   removeDomain(id) {
-    var index = this.getIndex(id, 'id');
+    const index = this.getIndex(id, 'id');
     if (index == -1) {
       return;
     }
@@ -82,6 +89,7 @@ class Domains extends React.Component {
     chrome.runtime.sendMessage({
       index
     });
+    // BELOW NEEDS FIXING
     var newContainer = this.state.container.filter((_, ind) => ind !== index);
     this.state.container = newContainer;
 
@@ -99,5 +107,3 @@ class Domains extends React.Component {
     );
   }
 }
-
-module.exports = Domains;

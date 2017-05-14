@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default class Headers extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.fokusTab = this.fokusTab.bind(this);
   }
 
