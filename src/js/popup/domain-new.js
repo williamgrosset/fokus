@@ -1,13 +1,11 @@
 import React from 'react';
 
-class DomainNew extends React.Component {
-  constructor(props) {
-    super(props);
-
+export default class DomainNew extends React.Component {
+  constructor() {
+    super();
     this.state = {
-      value: ''
+      value: '',
     };
-  
     this.inputChange = this.inputChange.bind(this);
     this.domainValidation = this.domainValidation.bind(this);
     this.errorCheck = this.errorCheck.bind(this);
@@ -15,7 +13,7 @@ class DomainNew extends React.Component {
   }
 
   /*
-  *  Keeps track of the user input and update state.
+  *  Keeps track of the user input and updates state.
   *
   *  @param e: Event handler for form input value.
   */
@@ -24,14 +22,12 @@ class DomainNew extends React.Component {
   }
 
   /*
-  *  Add valid domain to domain container or show appropriate
-  *  modal if an error exists.
+  *  Add valid domain to domain container or show appropriate modal if an error exists.
   *
   *  @param e: Event handler for form input value.
   */
   domainValidation(e) {
-    var domain = this.state.value;
-    domain.toLowerCase();
+    const domain = this.state.value.toLowerCase();
     e.preventDefault();
 
     // Show modal for domain container max
@@ -39,7 +35,6 @@ class DomainNew extends React.Component {
       this.showModal(e, 'myModalMax', 0);
       return;
     }
-
     // Show modal for invalid domain
     if (!this.errorCheck(domain)) {
       this.showModal(e, 'myModalError', 1);
@@ -53,7 +48,7 @@ class DomainNew extends React.Component {
   /*
   *  Checks if domain is valid before being added into parent container.
   *
-  *  @param domain: Domain from form input value.
+  *  @param domain:    Domain from form input value.
   *  @returns boolean: False if a domain is invalid, otherwise true.
   */
   errorCheck(domain) {
@@ -68,31 +63,28 @@ class DomainNew extends React.Component {
   /*
   *  Displays appropriate modal for max container and domain validation.
   *
-  *  @param e: Submitted form input value.
+  *  @param e:  Submitted form input value.
   *  @param id: ID of modal (valid values: "myModalMax" or "myModalError").
-  *  @param i: Integer value for grabbing appropriate modal within span 
-  *  (valid values: 0 or 1).
+  *  @param i:  Integer value for grabbing appropriate modal within span (valid values: 0 or 1).
   */
   showModal(e, id, i) {
-    var modal = document.getElementById(id);
+    const modal = document.getElementById(id);
     modal.style.display = 'block';
-    var span = document.getElementsByClassName("close")[i];
+    const span = document.getElementsByClassName('close')[i];
     span.onclick = function() {
       modal.style.display = 'none';
     }
 
-    var input = document.getElementById('input');
-    input.value = "";
+    const input = document.getElementById('input');
+    input.value = '';
     e.preventDefault(); 
   }
 
   render() {
     return (
-      <form autoComplete="off" onSubmit={this.domainValidation} id='form' >
-        <input id='input' type='text' value={this.state.value} placeholder='e.g. facebook.com' autoComplete="off" onChange={this.inputChange} />
+      <form autoComplete='off' onSubmit={this.domainValidation} id='form' >
+        <input id='input' type='text' value={this.state.value} placeholder='e.g. facebook.com' autoComplete='off' onChange={this.inputChange} />
       </form>
     );
   }
 }
-
-module.exports = DomainNew;
