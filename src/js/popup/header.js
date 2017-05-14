@@ -1,17 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-class Headers extends React.Component {
-  constructor(props) {
-    super(props);
+export default class Headers extends React.Component {
+  constructor() {
+    super();
     this.fokusTab = this.fokusTab.bind(this);
   }
 
   /*
-  *  Handle onClick event with header image - the current window 
-  *  will be changed to the fokus home page.
+  *  Handle onClick event with header image. The current window will be changed to the fokus home page.
   */
   fokusTab() {
-    var win = window.open("/src/html/home.html");
+    const win = window.open("/src/html/home.html");
     win.focus()
   }
 
@@ -23,5 +23,3 @@ class Headers extends React.Component {
     );
   }
 }
-
-module.exports = Headers;
