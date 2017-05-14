@@ -1,10 +1,9 @@
 import React from 'react';
+import Toggle from '../src/js/popup/Toggle.react.jsx';
+import Domains from '../src/js/popup/Domains.react.jsx';
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 import assert from 'assert';
-
-import Toggle from '../src/js/popup/toggle.js'
-import Domains from '../src/js/popup/Domains.js'
 
 /*
 *  Tests for Toggle component in src/js/popup/toggle.js.
@@ -54,7 +53,7 @@ describe('<Toggle />', function() {
   
   it('renders two buttons for enabled/disabled modes', function() {
     const wrapper = shallow(<Toggle />);
-    expect(wrapper.find("#enable")).to.have.length(1);
-    expect(wrapper.find("#disable")).to.have.length(1);
+    expect(wrapper.find('#enable')).to.have.length(1);
+    expect(wrapper.find('#disable')).to.have.length(1);
   });
 });
