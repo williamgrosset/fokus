@@ -55,8 +55,8 @@ export default class DomainNew extends React.Component {
   *  @returns boolean: False if a domain is invalid, otherwise true.
   */
   errorCheck(domain) {
-    if (domain.includes("http") || domain.includes(":") || domain.includes("/") || domain === "" 
-          || !domain.includes(".") || domain.includes(" ")) {
+    if (domain.includes('http') || domain.includes(':') || domain.includes('/') || domain === '' 
+        || !domain.includes('.') || domain.includes(' ')) {
       return false;
     } else {
       return true;
@@ -71,22 +71,20 @@ export default class DomainNew extends React.Component {
   *  @param i:  Integer value for grabbing appropriate modal within span (valid values: 0 or 1).
   */
   showModal(e, id, i) {
-    const modal = document.getElementById(id);
-    modal.style.display = 'block';
-    const span = document.getElementsByClassName('close')[i];
-    span.onclick = function() {
-      modal.style.display = 'none';
-    }
-
-    const input = document.getElementById('input');
-    input.value = '';
+    const span = $('.close')[i];
     e.preventDefault(); 
+
+    $('#' + id).css('display', 'block');
+    span.onclick = () => {
+      $('#' + id).css('display', 'none');
+    }
+    $('#input').val('');
   }
 
   render() {
     return (
       <form autoComplete='off' onSubmit={this.domainValidation} id='form'>
-        <input id='input' type='text' value={this.state.value} placeholder='e.g. facebook.com' autoComplete='off' onChange={this.inputChange} />
+        <input id='input' type='text' value={this.state.value} placeholder='e.g. tomgrosset.com' autoComplete='off' onChange={this.inputChange} />
       </form>
     );
   }

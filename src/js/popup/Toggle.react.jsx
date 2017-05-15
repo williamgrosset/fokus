@@ -21,7 +21,7 @@ export default class Toggle extends React.Component {
       enable 
     });
 
-    this.modifyCss("#000000");
+    this.modifyCss('#000000');
     $('#enable').html('Enabled');
     $('#disable').html('Disable');
     $('#input').prop('disabled', false);
@@ -38,7 +38,7 @@ export default class Toggle extends React.Component {
       disable
     });
 
-    this.modifyCss("#A1A1A1");
+    this.modifyCss('#A1A1A1');
     localStorage.setItem('fokus-toggle', 'disable');
     $('#disable').html('Disabled');
     $('#enable').html('Enable');
@@ -51,11 +51,11 @@ export default class Toggle extends React.Component {
   *  @param color: Modify color of domain container items.
   */
   modifyCss(color) {
-    $("#domain-container").css({
-      "color": color
+    $('#domain-container').css({
+      'color': color
     });
-    $(".domains-title").css("color", color);
-    $("input[type=text]").css("border-bottom-color", color);
+    $('.domains-title').css('color', color);
+    $('input[type=text]').css('border-bottom-color', color);
   }
 
   /*
@@ -65,11 +65,11 @@ export default class Toggle extends React.Component {
     const toggle = localStorage.getItem('fokus-toggle');
 
     if (toggle == 'disable') {
-      this.modifyCss("#A1A1A1");
+      this.modifyCss('#A1A1A1');
       $('#input').prop('disabled', true);
       return {__html: 'Enable'};
     } else {
-      this.modifyCss("#000000");
+      this.modifyCss('#000000');
       $('#input').prop('disabled', false);
       return {__html: 'Enabled'};
     }
@@ -82,11 +82,11 @@ export default class Toggle extends React.Component {
     const toggle = localStorage.getItem('fokus-toggle');
 
     if (toggle == 'disable') {
-      this.modifyCss("#A1A1A1");
+      this.modifyCss('#A1A1A1');
       $('#input').prop('disabled', true);
       return {__html: 'Disabled'};
     } else {
-      this.modifyCss("#000000");
+      this.modifyCss('#000000');
       $('#input').prop('disabled', false);
       return {__html: 'Disable'};
     }
