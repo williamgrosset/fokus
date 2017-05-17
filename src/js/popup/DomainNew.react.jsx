@@ -84,7 +84,10 @@ export default class DomainNew extends React.Component {
   render() {
     return (
       <form autoComplete='off' onSubmit={this.domainValidation} id='form'>
-        <input id='input' type='text' value={this.state.value} placeholder='e.g. tomgrosset.com' autoComplete='off' onChange={this.inputChange} />
+        <input id='input' type='text' placeholder='e.g. tomgrosset.com' autoComplete='off' 
+          value={this.state.value} 
+          onChange={this.inputChange} 
+        />
       </form>
     );
   }
