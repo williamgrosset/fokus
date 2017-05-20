@@ -11,21 +11,22 @@
 ![](https://github.com/williamgrosset/fokus/blob/master/png/example.gif)
 
 ## Development
-Fokus follows the [AirBnB JavaScript style guide](https://github.com/airbnb/javascript) and uses `eslint` to enfource conventions (linting currently being added). The following outlines the step-by-step process on how to contribute to the chrome extension and where each file can be located.
+Fokus follows the [AirBnB JavaScript style guide](https://github.com/airbnb/javascript) and uses `eslint` to enfource conventions _(linting currently being added)_. The following outlines the step-by-step process on how to contribute to the chrome extension and where each file can be located.
 
 ### How to contribute
 1. Let me know about your idea (williamhgrosset@gmail.com) - I'd love to hear from you. :relaxed:
 2. Fork this repository and run `nvm install` to use the required Node version.
-3. Run ```npm i``` to install the required dependencies.
-4. Create a branch and complete any necessary changes or features. For bundling with watchify, run ```npm run watch```.
-5. Make sure the linting/tests **all pass** by running ```npm test```.
+3. Run `npm install` to install the required dependencies.
+4. Create a branch and complete any necessary changes or features. For bundling with watchify, run `npm run watch`.
+5. Make sure the linting/tests **all pass** by running `npm test`.
 6. Submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
 
 *This is my first time using React, so any feedback is appreciated!*
 
 ### Project layout
-+ Development/testing scripts in ```scripts/```
-+ Photo assests in ```png/```
++ Development/testing scripts in `scripts/`
++ Photo assests in `png/`
++ JavaScript bundle in `build/` (see `[.gitignore](https://github.com/williamgrosset/fokus/blob/master/.gitignore#L5)`)
 + React components in ```src/js/popup/```
 + React tests in ```test/``` ([Enzyme](https://github.com/airbnb/enzyme))
 
