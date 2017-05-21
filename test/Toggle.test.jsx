@@ -15,7 +15,7 @@ describe('<Toggle />', function() {
 
   it('enableFokus() successfully set boolean in localStorage', function() {
     const wrapper = shallow(<Toggle />);
-    localStorage.setItem('fokus-toggle', 'disable');
+    localStorage.setItem('fokus-toggle', 'enable');
     wrapper.instance().enableFokus();
     expect(localStorage.getItem('fokus-toggle')).equals('enable');
   });
