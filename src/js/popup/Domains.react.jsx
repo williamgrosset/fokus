@@ -25,24 +25,15 @@ export default class Domains extends React.Component {
   */
   addDomain(domain) {
     domain = '.*:\/\/\.*'.concat(domain).concat('\/.*');
-    const idValue = shortid.generate();
-
-    this.state.container.push({
-      id: idValue,
-      domain,
-    });
-    this.setState({ container: this.state.container });
-    /*
-    const container = this.state.container;
-    this.setState({ container: 
-      container.push({
-        id: idValue,
-        domain,
-      })
-    });
-    */
-    this.storeDomain(domain, this.state.container);
-    console.log(this.state.container);
+    const newDomain = {
+      id: shortid.generate(),
+      domain
+    };
+    this.setState((prevState) => ({
+      container: prevState.container.concat(newDomain)}), () => {
+        this.storeDomain(domain, this.state.container);
+      }
+    );
   }
 
   /*
