@@ -10,8 +10,8 @@ export default class Toggle extends React.Component {
     this.onloadEnable = this.onloadEnable.bind(this);
     this.onloadDisable = this.onloadDisable.bind(this);
 
-    const toggle = localStorage.getItem('fokus-toggle');
     let enable = true;
+    const toggle = localStorage.getItem('fokus-toggle');
     if (toggle == 'disable') {
       enable = false
     }
@@ -28,17 +28,16 @@ export default class Toggle extends React.Component {
   enableFokus() {
     if (this.state.enable == false) {
       this.setState({ enable: true }, () => {
-        const enable = this.state.enable;  
         chrome.runtime.sendMessage({
-          enable 
+          enable: this.state.enable
         });
       });
 
       this.modifyCss('#000000');
-      localStorage.setItem('fokus-toggle', 'enable');
       $('#enable').html('Enabled');
       $('#disable').html('Disable');
       $('#input').prop('disabled', false);
+      localStorage.setItem('fokus-toggle', 'enable');
     }
   }
 
@@ -49,17 +48,16 @@ export default class Toggle extends React.Component {
   disableFokus() {
     if (this.state.enable == true) {
       this.setState({ enable: false }, () => {
-        const enable = this.state.enable;
         chrome.runtime.sendMessage({
-          enable 
+          enable: this.state.enable
         });
       });
 
       this.modifyCss('#A1A1A1');
-      localStorage.setItem('fokus-toggle', 'disable');
       $('#disable').html('Disabled');
       $('#enable').html('Enable');
       $('#input').prop('disabled', true);
+      localStorage.setItem('fokus-toggle', 'disable');
     }
   }
 
