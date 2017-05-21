@@ -17,24 +17,16 @@ export default class DomainItem extends React.Component {
   *  @param e: Event handler for domain deletion.
   */
   deleteDomain(e) {
-    if (this.props.id == undefined) {
-      return;
-    }
     e.preventDefault();
     this.setState({ domain: '' });
     this.props.removeDomain(this.props.id);
   }
 
   render() {
-    let validDomain = '';
-    if (this.state.domain == undefined) {
-      validDomain = 'An error has occured.';
-    } else {
-      validDomain = this.state.domain.replace('.*:\/\/\.*', '').replace('\/.*', '');
-      // Add "..." to end of the domain if length is too large for popup window
-      if (validDomain.length >= 19) {
-        validDomain = validDomain.substring(0, 21).concat('...');
-      }
+    let validDomain = this.state.domain.replace('.*:\/\/\.*', '').replace('\/.*', '');
+    // Add "..." to end of the domain if length is too large for popup window
+    if (validDomain.length >= 19) {
+      validDomain = validDomain.substring(0, 21).concat('...');
     }
 
     return (
@@ -50,12 +42,7 @@ export default class DomainItem extends React.Component {
   }
 }
 
-DomainItem.defaultProps = {
-  domain: undefined,
-  id: undefined,
-};
-
 DomainItem.propTypes = {
-  domain: PropTypes.string,
-  id: PropTypes.string,
+  domain: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
