@@ -81,12 +81,11 @@ export default class Domains extends React.Component {
     chrome.runtime.sendMessage({
       index
     });
-    // BELOW NEEDS FIXING
-    var newContainer = this.state.container.filter((_, ind) => ind !== index);
-    this.state.container = newContainer;
-
-    this.setState({ container: newContainer });
-    localStorage.setItem('container', JSON.stringify(this.state.container));
+    this.setState((prevState) => ({
+      container: prevState.container.filter((_, ind) => ind !== index)}), () => {
+        localStorage.setItem('container', JSON.stringify(this.state.container));
+      }
+    );
   }
 
   render() {
