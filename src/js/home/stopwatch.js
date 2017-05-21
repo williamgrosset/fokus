@@ -1,6 +1,6 @@
-(function() {
-  var seconds = 300;
-  var timer;
+(() => {
+  let timer;
+  let seconds = 300;
   $('#stopwatchStop').hide();
   $('#stopwatchReset').hide();
   $('#stopwatchStart').bind('click', startCounter);

@@ -1,5 +1,5 @@
-(function() {
-  document.addEventListener('DOMContentLoaded', function() {
+(() => {
+  document.addEventListener('DOMContentLoaded', () => {
     typeHeader();
   });
 
@@ -10,7 +10,7 @@
   function typeHeader() {
     $('.center-above').typed({
       strings: ['Coming soon.'],
-      contentType: "html",
+      contentType: 'html',
       showCursor: false,
       typeSpeed: 90,
       backSpeed: 90,

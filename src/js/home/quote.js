@@ -1,6 +1,6 @@
-(function() {
-  var randomLine = ''; 
-  document.addEventListener('DOMContentLoaded', function() {
+(() => {
+  let randomLine = ''; 
+  document.addEventListener('DOMContentLoaded', () => {
     quoteReader();
   });
   
@@ -9,9 +9,9 @@
   *  quote from the text file.
   */
   function quoteReader() {
-    jQuery.get('https://raw.githubusercontent.com/williamgrosset/fokus/master/quotes/short-and-shuffled-quotes.txt', function(data) {    
-      var fileContentLines = data.split('\n');
-      var randomLineIndex = Math.floor(Math.random() * fileContentLines.length);
+    jQuery.get('https://raw.githubusercontent.com/williamgrosset/fokus/master/quotes/short-and-shuffled-quotes.txt', (data) => {    
+      const fileContentLines = data.split('\n');
+      const randomLineIndex = Math.floor(Math.random() * fileContentLines.length);
       randomLine = fileContentLines[randomLineIndex];
       typeFooter();
     });
