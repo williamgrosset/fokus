@@ -9,7 +9,7 @@ ReactDOM.render(
   document.getElementById('header')
 );
 
-ReactDOM.render (
+ReactDOM.render(
   <Domains />,
   document.getElementById('domains')
 );

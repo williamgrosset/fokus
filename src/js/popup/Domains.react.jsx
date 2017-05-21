@@ -24,7 +24,7 @@ export default class Domains extends React.Component {
   *  @param domain: Domain from form input value.
   */
   addDomain(domain) {
-    domain = ".*:\/\/\.*".concat(domain).concat("\/.*");
+    domain = '.*:\/\/\.*'.concat(domain).concat('\/.*');
     const idValue = shortid.generate();
 
     this.state.container.push({

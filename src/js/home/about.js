@@ -8,8 +8,8 @@
   *  Type out header on page load.
   */
   function typeHeader() {
-    $(".center-above").typed({
-      strings: ["Coming soon."],
+    $('.center-above').typed({
+      strings: ['Coming soon.'],
       contentType: "html",
       showCursor: false,
       typeSpeed: 90,

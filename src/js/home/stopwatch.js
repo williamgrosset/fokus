@@ -1,20 +1,20 @@
 (function() {
   var seconds = 300;
   var timer;
-  $("#stopwatchStop").hide();
-  $("#stopwatchReset").hide();
-  $("#stopwatchStart").bind("click", startCounter);
-  $("#stopwatchStop").bind("click", stopCounter);
-  $("#stopwatchReset").bind("click", resetCounter);
+  $('#stopwatchStop').hide();
+  $('#stopwatchReset').hide();
+  $('#stopwatchStart').bind('click', startCounter);
+  $('#stopwatchStop').bind('click', stopCounter);
+  $('#stopwatchReset').bind('click', resetCounter);
 
   /*
   *  Begin decrementing counter and switch start button to
   *  stop.
   */
   function startCounter() {
-    $("#stopwatchStart").hide();
-    $("#stopwatchStop").show();
-    $("#stopwatchReset").show();
+    $('#stopwatchStart').hide();
+    $('#stopwatchStop').show();
+    $('#stopwatchReset').show();
     timer = setInterval(countDown, 1000);
   }
 
@@ -24,8 +24,8 @@
   */
   function stopCounter() {
     clearInterval(timer);
-    $("#stopwatchStop").hide();
-    $("#stopwatchStart").show();
+    $('#stopwatchStop').hide();
+    $('#stopwatchStart').show();
   }
 
   /*
@@ -34,11 +34,11 @@
   function resetCounter() {
     clearInterval(timer);
     seconds = 300;
-    $("#stopwatchStop").hide();
-    $("#stopwatchStart").show();
-    $("#stopwatchReset").hide();
-    $("#clock").html(seconds);
-    $("#seconds").html('seconds');
+    $('#stopwatchStop').hide();
+    $('#stopwatchStart').show();
+    $('#stopwatchReset').hide();
+    $('#clock').html(seconds);
+    $('#seconds').html('seconds');
   }
 
   /*
@@ -47,12 +47,12 @@
   */
   function countDown() {
     seconds--;
-    $("#clock").html(seconds);
+    $('#clock').html(seconds);
     if (seconds == 1) {
-      $("#seconds").html('second');
+      $('#seconds').html('second');
     }
     if (seconds == 0) {
-      document.getElementById("audio").play();
+      document.getElementById('audio').play();
       resetCounter();
     }
   }
