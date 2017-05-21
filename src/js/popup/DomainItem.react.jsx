@@ -17,6 +17,9 @@ export default class DomainItem extends React.Component {
   *  @param e: Event handler for domain deletion.
   */
   deleteDomain(e) {
+    if (this.props.id == undefined) {
+      return;
+    }
     e.preventDefault();
     this.setState({ domain: '' });
     this.props.removeDomain(this.props.id);
@@ -30,17 +33,17 @@ export default class DomainItem extends React.Component {
       validDomain = this.state.domain.replace('.*:\/\/\.*', '').replace('\/.*', '');
       // Add "..." to end of the domain if length is too large for popup window
       if (validDomain.length >= 19) {
-          validDomain = validDomain.substring(0, 21).concat("...");
+        validDomain = validDomain.substring(0, 21).concat('...');
       }
     }
 
     return (
       <li id='domain-item'>
-        <div style={{float:'left'}} id='domain-name'>
+        <div style={{ float:'left' }} id='domain-name'>
           {validDomain}
         </div>
         <div>
-          <input type='image' id='domain-delete' style={{float:'right'}} src='/png/garbage_can_16.png' onClick={this.deleteDomain} />
+          <input type='image' id='domain-delete' style={{ float:'right' }} src='/png/garbage_can_16.png' onClick={this.deleteDomain} />
         </div>
       </li>
     );
