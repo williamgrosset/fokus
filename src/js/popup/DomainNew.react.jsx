@@ -21,7 +21,7 @@ export default class DomainNew extends React.Component {
   *  @param e: Event handler for form input value.
   */
   inputChange(e) {
-    this.setState({value: e.target.value});
+    this.setState({ value: e.target.value });
   }
 
   /*
@@ -44,7 +44,7 @@ export default class DomainNew extends React.Component {
     // Successfully add domain to domain blocker container
     } else {
       this.props.addDomain(this.state.value);
-      this.setState({value: ''});
+      this.setState({ value: '' });
     }
   }
 
@@ -52,7 +52,7 @@ export default class DomainNew extends React.Component {
   *  Checks if domain is valid before being added into parent container.
   *
   *  @param domain:    Domain from form input value.
-  *  @returns boolean: False if a domain is invalid, otherwise true.
+  *  @returns boolean: False if domain is invalid, otherwise true.
   */
   errorCheck(domain) {
     if (domain.includes('http') || domain.includes(':') || domain.includes('/') || domain === '' 
@@ -67,7 +67,7 @@ export default class DomainNew extends React.Component {
   *  Displays appropriate modal for max container and domain validation.
   *
   *  @param e:  Submitted form input value.
-  *  @param id: ID of modal (valid values: "myModalMax" or "myModalError").
+  *  @param id: ID of modal (valid values: 'myModalMax' or 'myModalError').
   *  @param i:  Integer value for grabbing appropriate modal within span (valid values: 0 or 1).
   */
   showModal(e, id, i) {

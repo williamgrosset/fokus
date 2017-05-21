@@ -5,6 +5,8 @@
 
   chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
+      console.log('We are in the background script...');
+      console.log(request);
       // Add domain to domain blocker container
       if (request.validDomain) {
         domains.push(request.validDomain);
@@ -20,20 +22,20 @@
         domainsEnable = domains;
         domains.splice(request.index, 1);
       }
+      // Enable domain blocker
+      if (request.enable == true) {
+        if (disabled) {
+          domains = domainsEnable;
+          disabled = false;
+        }
+      }
       // Disable domain blocker
-      if (request.disable) {
+      if (request.enable == false) {
         if (!disabled) {
           var domainsDisable = [];
           domainsEnable = domains;
           domains = domainsDisable;
           disabled = true;
-        }
-      }
-      // Enable domain blocker
-      if (request.enable) {
-        if (disabled) {
-          domains = domainsEnable;
-          disabled = false;
         }
       }
     }

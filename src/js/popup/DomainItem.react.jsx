@@ -25,9 +25,9 @@ export default class DomainItem extends React.Component {
   render() {
     let validDomain = '';
     if (this.state.domain == undefined) {
-      validDomain = "An error has occured.";
+      validDomain = 'An error has occured.';
     } else {
-      validDomain = this.state.domain.replace(".*:\/\/\.*", '').replace("\/.*", '');
+      validDomain = this.state.domain.replace('.*:\/\/\.*', '').replace('\/.*', '');
       // Add "..." to end of the domain if length is too large for popup window
       if (validDomain.length >= 19) {
           validDomain = validDomain.substring(0, 21).concat("...");
