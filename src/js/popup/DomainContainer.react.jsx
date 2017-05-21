@@ -4,11 +4,11 @@ import PropTypes from 'prop-types';
 
 export default class DomainContainer extends React.Component {
   render() {
-    const extra = this.props;
+    const removeDomain = this.props;
     if (this.props.container.length != 0) {
       return (
         <ul id='domain-container'>
-          {this.props.container.map((domain) => <DomainItem {...domain} key={domain.id} {...extra} /> )}
+          {this.props.container.map((domain) => <DomainItem {...removeDomain} {...domain} key={domain.id} /> )}
         </ul>
       );
     } else {

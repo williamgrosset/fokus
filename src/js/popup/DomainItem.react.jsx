@@ -23,16 +23,16 @@ export default class DomainItem extends React.Component {
   }
 
   render() {
-    let validDomain = this.state.domain.replace('.*:\/\/\.*', '').replace('\/.*', '');
+    let uiDomain = this.state.domain.replace('.*:\/\/\.*', '').replace('\/.*', '');
     // Add "..." to end of the domain if length is too large for popup window
-    if (validDomain.length >= 19) {
-      validDomain = validDomain.substring(0, 21).concat('...');
+    if (uiDomain.length >= 19) {
+      uiDomain = uiDomain.substring(0, 21).concat('...');
     }
 
     return (
       <li id='domain-item'>
         <div style={{ float:'left' }} id='domain-name'>
-          {validDomain}
+          {uiDomain}
         </div>
         <div>
           <input type='image' id='domain-delete' style={{ float:'right' }} src='/png/garbage_can_16.png' onClick={this.deleteDomain} />
