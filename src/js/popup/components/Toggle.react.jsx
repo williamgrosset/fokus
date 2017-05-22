@@ -10,12 +10,8 @@ export default class Toggle extends React.Component {
     this.onloadEnable = this.onloadEnable.bind(this);
     this.onloadDisable = this.onloadDisable.bind(this);
 
-    let enable = true;
     const toggle = localStorage.getItem('fokus-toggle');
-    if (toggle == 'disable') {
-      enable = false
-    }
-
+    const enable = (toggle === 'disable' ? false :  true);
     this.state = {
       enable
     };

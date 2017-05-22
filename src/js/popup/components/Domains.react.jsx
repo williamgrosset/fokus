@@ -29,11 +29,9 @@ export default class Domains extends React.Component {
       id: shortid.generate(),
       domain
     };
-    this.setState((prevState) => ({
-      container: prevState.container.concat(newDomain)}), () => {
-        this.storeDomain(domain, this.state.container);
-      }
-    );
+    this.setState((prevState) => ({ container: prevState.container.concat(newDomain) }), () => {
+      this.storeDomain(domain, this.state.container);
+    });
   }
 
   /*
@@ -58,7 +56,7 @@ export default class Domains extends React.Component {
   *  @return index: Index of domain to delete.
   */
   getIndex(value, key) {
-    for (var i = 0; i < this.state.container.length; i++) {
+    for (let i = 0; i < this.state.container.length; i++) {
       if (this.state.container[i][key] === value) {
         return i;
       }
@@ -81,11 +79,9 @@ export default class Domains extends React.Component {
     chrome.runtime.sendMessage({
       index
     });
-    this.setState((prevState) => ({
-      container: prevState.container.filter((_, ind) => ind !== index)}), () => {
-        localStorage.setItem('container', JSON.stringify(this.state.container));
-      }
-    );
+    this.setState((prevState) => ({ container: prevState.container.filter((_, ind) => ind !== index) }), () => {
+      localStorage.setItem('container', JSON.stringify(this.state.container));
+    });
   }
 
   render() {
