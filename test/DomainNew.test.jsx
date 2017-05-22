@@ -1,5 +1,5 @@
 import React from 'react';
-import DomainNew from '../src/js/popup/DomainNew.react.jsx';
+import DomainNew from '../src/js/popup/components/DomainNew.react.jsx';
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 import assert from 'assert';

@@ -1,6 +1,6 @@
 import React from 'react';
-import DomainItem from '../src/js/popup/DomainItem.react.jsx';
-import Domains from '../src/js/popup/Domains.react.jsx';
+import DomainItem from '../src/js/popup/components/DomainItem.react.jsx';
+import Domains from '../src/js/popup/components/Domains.react.jsx';
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 import chrome from 'sinon-chrome';

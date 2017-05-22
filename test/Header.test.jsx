@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../src/js/popup/Header.react.jsx';
+import Header from '../src/js/popup/components/Header.react.jsx';
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 

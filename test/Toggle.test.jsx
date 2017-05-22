@@ -1,6 +1,6 @@
 import React from 'react';
-import Toggle from '../src/js/popup/Toggle.react.jsx';
-import Domains from '../src/js/popup/Domains.react.jsx';
+import Toggle from '../src/js/popup/components/Toggle.react.jsx';
+import Domains from '../src/js/popup/components/Domains.react.jsx';
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 import assert from 'assert';

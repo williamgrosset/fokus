@@ -1,6 +1,6 @@
 import React from 'react';
-import DomainContainer from '../src/js/popup/DomainContainer.react.jsx';
-import DomainItem from '../src/js/popup/DomainItem.react.jsx';
+import DomainContainer from '../src/js/popup/components/DomainContainer.react.jsx';
+import DomainItem from '../src/js/popup/components/DomainItem.react.jsx';
 import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 
