@@ -1,11 +1,6 @@
 (() => {
   let timer;
   let seconds = 300;
-  $('#stopwatchStop').hide();
-  $('#stopwatchReset').hide();
-  $('#stopwatchStart').bind('click', startCounter);
-  $('#stopwatchStop').bind('click', stopCounter);
-  $('#stopwatchReset').bind('click', resetCounter);
 
   /*
   *  Begin decrementing counter and switch start button to
@@ -48,12 +43,18 @@
   function countDown() {
     seconds--;
     $('#clock').html(seconds);
-    if (seconds == 1) {
+    if (seconds === 1) {
       $('#seconds').html('second');
     }
-    if (seconds == 0) {
+    if (seconds === 0) {
       document.getElementById('audio').play();
       resetCounter();
     }
   }
+
+  $('#stopwatchStop').hide();
+  $('#stopwatchReset').hide();
+  $('#stopwatchStart').bind('click', startCounter);
+  $('#stopwatchStop').bind('click', stopCounter);
+  $('#stopwatchReset').bind('click', resetCounter);
 })();

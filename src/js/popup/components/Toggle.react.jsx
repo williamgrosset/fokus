@@ -22,7 +22,7 @@ export default class Toggle extends React.Component {
   *  Update boolean value in localStorage and modify CSS for enabled visuals.
   */
   enableFokus() {
-    if (this.state.enable == false) {
+    if (this.state.enable === false) {
       this.setState({ enable: true }, () => {
         chrome.runtime.sendMessage({
           enable: this.state.enable
@@ -42,7 +42,7 @@ export default class Toggle extends React.Component {
   *  Update boolean value in localStorage and modify CSS for disabled visuals.
   */
   disableFokus() {
-    if (this.state.enable == true) {
+    if (this.state.enable === true) {
       this.setState({ enable: false }, () => {
         chrome.runtime.sendMessage({
           enable: this.state.enable
@@ -75,7 +75,7 @@ export default class Toggle extends React.Component {
   */
   onloadEnable() {
     const toggle = localStorage.getItem('fokus-toggle');
-    if (toggle == 'disable') {
+    if (toggle === 'disable') {
       this.modifyCss('#A1A1A1');
       $('#input').prop('disabled', true);
       return {__html: 'Enable'};
@@ -91,7 +91,7 @@ export default class Toggle extends React.Component {
   */
   onloadDisable() {
     const toggle = localStorage.getItem('fokus-toggle');
-    if (toggle == 'disable') {
+    if (toggle === 'disable') {
       this.modifyCss('#A1A1A1');
       $('#input').prop('disabled', true);
       return {__html: 'Disabled'};

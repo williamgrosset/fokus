@@ -4,5 +4,10 @@ module.exports = {
         "react",
         "jsx-a11y",
         "import"
-    ]
+    ],
+    "env": {
+      "browser": true,
+      "es6": true,
+      "jquery": true,
+    }
 };

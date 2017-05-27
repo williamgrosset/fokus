@@ -1,8 +1,4 @@
 (() => {
-  document.addEventListener('DOMContentLoaded', () => {
-    typeHeader();
-  });
-
   /*
   *  typed.js: wwww.mattboldt.com
   *  Type out header on page load.
@@ -16,4 +12,8 @@
       backSpeed: 90,
     });
   }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    typeHeader();
+  });
 })();

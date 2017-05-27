@@ -72,7 +72,7 @@ export default class Domains extends React.Component {
   */
   removeDomain(id) {
     const index = this.getIndex(id, 'id');
-    if (index == -1) {
+    if (index === -1) {
       return;
     }
 

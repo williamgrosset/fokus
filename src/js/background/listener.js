@@ -15,19 +15,19 @@
       domainsEnable = domains;
     }
     // Remove domain from domain blocker container
-    if (request.index == 0) {
+    if (request.index === 0) {
       domainsEnable = domains;
       domains.splice(request.index, 1);
     }
     // Enable domain blocker
-    if (request.enable == true) {
+    if (request.enable === true) {
       if (disabled) {
         domains = domainsEnable;
         disabled = false;
       }
     }
     // Disable domain blocker
-    if (request.enable == false) {
+    if (request.enable === false) {
       if (!disabled) {
         let domainsDisable = [];
         domainsEnable = domains;
@@ -38,7 +38,7 @@
   });
 
   chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {  
-    if (changeInfo.status == 'complete') {
+    if (changeInfo.status === 'complete') {
       // Check current tab for URL replacement
       chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
         for (let i = 0; i < domains.length; i++) {

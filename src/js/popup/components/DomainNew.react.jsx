@@ -34,7 +34,7 @@ export default class DomainNew extends React.Component {
     e.preventDefault();
 
     // Show modal for domain container max
-    if (this.props.container.length == 30) {
+    if (this.props.container.length === 30) {
       this.showModal(e, 'myModalMax', 0);
       return;
     }
