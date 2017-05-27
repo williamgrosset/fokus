@@ -26,7 +26,7 @@
   "scripts": {
     "build": "./scripts/build.sh",
     "watch": "./scripts/watch.sh",
-    "lint": "./node_modules/.bin/eslint ./src/js/*/*.js",
+    "lint": "./scripts/lint.sh",
     "test": "./scripts/test.sh"
   },
   "author": "William Grosset",
