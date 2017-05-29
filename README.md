@@ -11,7 +11,7 @@
 ![](https://github.com/williamgrosset/fokus/blob/master/png/example.gif)
 
 ## Development
-Fokus follows the [AirBnB JavaScript style guide](https://github.com/airbnb/javascript) and uses `eslint` to enfource conventions _(linting currently being added)_. The following outlines the step-by-step process on how to contribute to the chrome extension and where each file can be located.
+The [fokus](https://chrome.google.com/webstore/detail/fokus/kapnmpfkldbacoamceiggkcoaepfgiea?hl=en-US) chrome extension uses `eslint` to enfource conventions with the [AirBnB JavaScript style guide](https://github.com/airbnb/javascript). The following information outlines the step-by-step process on how other developers can contribute to the open source project.
 
 ### How to contribute
 1. Let me know about your idea (williamhgrosset@gmail.com) - I'd love to hear from you. :relaxed:
@@ -24,10 +24,14 @@ Fokus follows the [AirBnB JavaScript style guide](https://github.com/airbnb/java
 *This is my first time using React, so any feedback is appreciated!*
 
 ### Project layout
-+ Development/testing scripts in `scripts/`
++ Development scripts in `scripts/`
+  * `build.sh/`: `npm run build`
+  * `watch.sh/`: `npm run watch`
+  * `lint.sh/`: `npm run lint`
+  * `test.sh/`: `npm run test`
 + Photo assests in `png/`
 + JavaScript bundle in `build/` (see [`.gitignore`](https://github.com/williamgrosset/fokus/blob/master/.gitignore#L5))
-+ React components in ```src/js/popup/```
++ React components in ```src/js/popup/components```
 + React tests in ```test/``` ([Enzyme](https://github.com/airbnb/enzyme))
 
 ## Future additions
@@ -44,7 +48,7 @@ I have started to notice that I subconciously go to websites that I do not actua
 I also really wanted to learn [React](https://facebook.github.io/react/).
 
 ### "Domain blocking has already been solved."
-Not exactly. Most extensions are a bit overkill with their design and functionality. I want to build something that I can easily use everyday and be able to practice meditation when I need it the most.
+Not exactly - most extensions are a bit overkill with their design and functionality. I want to build something that I can easily use to increase my productivity and be able to practice meditation daily.
 
 ### Do you realize you spelt "focus" wrong?
 Yes. Fokus is swedish for focus (I know, it's pretty original). :godmode:
