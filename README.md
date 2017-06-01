@@ -37,9 +37,8 @@ The [fokus](https://chrome.google.com/webstore/detail/fokus/kapnmpfkldbacoamceig
 ## Future additions
 Make a pull request to add your own idea below:
 + Allow users to configure meditation timer
-+ Redesign home page
 + Integrate [Circle CI](https://circleci.com/) with project
-+ Add regression test suite
++ Add new design to home page
 
 ## F.A.Q.
 ### Why am I making this?

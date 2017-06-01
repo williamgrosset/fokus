@@ -29,12 +29,12 @@
     // Disable domain blocker
     if (request.enable === false) {
       if (!disabled) {
-        let domainsDisable = [];
         domainsEnable = domains;
-        domains = domainsDisable;
+        domains = [];
         disabled = true;
       }
     }
+    sendReponse(null);
   });
 
   chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {  
