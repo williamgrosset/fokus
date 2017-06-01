@@ -3,7 +3,7 @@ echo "****************************************************"
 echo "*                      LINT                        *"
 echo "****************************************************"
 echo "* Running eslint. 🔩"
-echo "* Loading..."
+echo "* Loading... 🔮"
 echo ""
 
 echo "****************************************************"
@@ -24,6 +24,7 @@ echo "****************************************************"
 ./node_modules/.bin/eslint ./src/js/popup/*
 ./node_modules/.bin/eslint ./src/js/popup/components/*
 
+echo "If you saw no errors being raised, you have done very well. 👍"
 echo "****************************************************"
 echo "*                      /LINT                       *"
 echo "****************************************************"

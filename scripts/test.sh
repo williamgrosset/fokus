@@ -2,9 +2,9 @@
 echo "****************************************************"
 echo "*                     TESTS                        *"
 echo "****************************************************"
-echo "* Running tests on React components for Chrome popup window. 👷 "
+echo "* Running tests on React components for popup window. 👷 "
 echo "* Components can be found in src/js/popup/ directory. 📂 "
-echo "* Loading..."
+echo "* Loading... 🔮"
 echo ""
 
 mocha --require mock-local-storage test/helpers/browser.js test/*.test.jsx
