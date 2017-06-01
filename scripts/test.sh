@@ -2,8 +2,8 @@
 echo "****************************************************"
 echo "*                     TESTS                        *"
 echo "****************************************************"
-echo "* Running tests on React components for popup window. 👷 "
-echo "* Components can be found in src/js/popup/ directory. 📂 "
+echo "* Running tests on React components for popup window. 👷"
+echo "* Components can be found in src/js/popup/ directory. 📂"
 echo "* Loading... 🔮"
 echo ""
 
