@@ -6,15 +6,15 @@ import Toggle from './components/Toggle.react.jsx';
 
 ReactDOM.render(
   <Header />,
-  document.getElementById('header')
+  document.getElementById('header'),
 );
 
 ReactDOM.render(
   <Domains />,
-  document.getElementById('domains')
+  document.getElementById('domains'),
 );
 
 ReactDOM.render(
   <Toggle />,
-  document.getElementById('toggle')
+  document.getElementById('toggle'),
 );

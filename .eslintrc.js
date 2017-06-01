@@ -3,7 +3,7 @@ module.exports = {
     "plugins": [
         "react",
         "jsx-a11y",
-        "import"
+        "import",
     ],
     "env": {
       "browser": true,
@@ -11,6 +11,16 @@ module.exports = {
       "jquery": true,
     },
     "globals": {
-      "chrome": false
-    }
+      "chrome": false,
+    },
+    "rules": {
+      "jsx-quotes": [
+        "error", 
+        "prefer-single",
+      ],
+      "max-len": [
+        "error", 
+        120,
+      ],
+    },
 };
