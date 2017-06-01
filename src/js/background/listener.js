@@ -1,9 +1,10 @@
+/* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
 (() => {
   let domains = [];
   let domainsEnable = [];
   let disabled = false;
 
-  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+  chrome.runtime.onMessage.addListener((request) => {
     // Add domain to domain blocker container
     if (request.validDomain) {
       domains.push(request.validDomain);
@@ -34,33 +35,32 @@
         disabled = true;
       }
     }
-    sendReponse(null);
   });
 
-  chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {  
+  chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
     if (changeInfo.status === 'complete') {
       // Check current tab for URL replacement
-      chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         for (let i = 0; i < domains.length; i++) {
           const reDomain = new RegExp(domains[i], 'i');
           if (reDomain.test(tabs[0].url)) {
-            chrome.tabs.update(tabs[0].id, {url: 'src/html/home.html' });
+            chrome.tabs.update(tabs[0].id, { url: 'src/html/home.html' });
             return;
           }
         }
       });
 
       // Check rest of tabs for URL replacement
-      chrome.tabs.query({currentWindow: true}, (tabs) => {
+      chrome.tabs.query({ currentWindow: true }, (tabs) => {
         for (let i = 0; i < domains.length; i++) {
           for (let k = 0; k < tabs.length; k++) {
             const reDomain = new RegExp(domains[i], 'i');
             if (reDomain.test(tabs[k].url)) {
-              chrome.tabs.update(tabs[k].id, {url: 'src/html/home.html' });
+              chrome.tabs.update(tabs[k].id, { url: 'src/html/home.html' });
               return;
             }
           }
-        }       
+        }
       });
     }
   });
