@@ -1,4 +1,3 @@
-/* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
 (() => {
   let domains = [];
   let domainsEnable = [];

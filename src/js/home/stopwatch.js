@@ -1,5 +1,3 @@
-/* eslint no-plusplus: ["error", { "allowForLoopAfterthoughts": true }] */
-
 (() => {
   let timer;
   let seconds = 300;

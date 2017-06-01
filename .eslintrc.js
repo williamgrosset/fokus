@@ -22,5 +22,11 @@ module.exports = {
         "error", 
         120,
       ],
+      "no-plusplus": [
+        "error",
+        { 
+          "allowForLoopAfterthoughts": true
+        },
+      ]
     },
 };
