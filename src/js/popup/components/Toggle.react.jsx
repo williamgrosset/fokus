@@ -18,46 +18,6 @@ export default class Toggle extends React.Component {
   }
 
   /*
-  *  Send message to background script and disable domain blocker.
-  *  Update boolean value in localStorage and modify CSS for disabled visuals.
-  */
-  disableFokus() {
-    if (this.state.enable === true) {
-      this.setState({ enable: false }, () => {
-        chrome.runtime.sendMessage({
-          enable: this.state.enable,
-        });
-      });
-
-      this.modifyCss('#A1A1A1');
-      $('#disable').html('Disabled');
-      $('#enable').html('Enable');
-      $('#input').prop('disabled', true);
-      localStorage.setItem('fokus-toggle', 'disable');
-    }
-  }
-
-  /*
-  *  Send message to background script and enable domain blocker.
-  *  Update boolean value in localStorage and modify CSS for enabled visuals.
-  */
-  enableFokus() {
-    if (this.state.enable === false) {
-      this.setState({ enable: true }, () => {
-        chrome.runtime.sendMessage({
-          enable: this.state.enable,
-        });
-      });
-
-      this.modifyCss('#000000');
-      $('#enable').html('Enabled');
-      $('#disable').html('Disable');
-      $('#input').prop('disabled', false);
-      localStorage.setItem('fokus-toggle', 'enable');
-    }
-  }
-
-  /*
   *  Modify color of domain container items, domain title, and bottom border of form input.
   *
   *  @param color: Modify color of domain container items.
@@ -96,6 +56,46 @@ export default class Toggle extends React.Component {
     this.modifyCss('#000000');
     $('#input').prop('disabled', false);
     return { __html: 'Disable' };
+  }
+
+  /*
+  *  Send message to background script and enable domain blocker.
+  *  Update boolean value in localStorage and modify CSS for enabled visuals.
+  */
+  enableFokus() {
+    if (this.state.enable === false) {
+      this.setState({ enable: true }, () => {
+        chrome.runtime.sendMessage({
+          enable: this.state.enable,
+        });
+      });
+
+      this.modifyCss('#000000');
+      $('#enable').html('Enabled');
+      $('#disable').html('Disable');
+      $('#input').prop('disabled', false);
+      localStorage.setItem('fokus-toggle', 'enable');
+    }
+  }
+
+  /*
+  *  Send message to background script and disable domain blocker.
+  *  Update boolean value in localStorage and modify CSS for disabled visuals.
+  */
+  disableFokus() {
+    if (this.state.enable === true) {
+      this.setState({ enable: false }, () => {
+        chrome.runtime.sendMessage({
+          enable: this.state.enable,
+        });
+      });
+
+      this.modifyCss('#A1A1A1');
+      $('#disable').html('Disabled');
+      $('#enable').html('Enable');
+      $('#input').prop('disabled', true);
+      localStorage.setItem('fokus-toggle', 'disable');
+    }
   }
 
   render() {
