@@ -13,39 +13,19 @@ export default class Toggle extends React.Component {
     const toggle = localStorage.getItem('fokus-toggle');
     const enable = (toggle === 'disable' ? false : true);
     this.state = {
-      enable
+      enable,
     };
   }
 
   /*
-  *  Send message to background script and enable domain blocker.
-  *  Update boolean value in localStorage and modify CSS for enabled visuals.
-  */
-  enableFokus() {
-    if (this.state.enable === false) {
-      this.setState({ enable: true }, () => {
-        chrome.runtime.sendMessage({
-          enable: this.state.enable
-        });
-      });
-
-      this.modifyCss('#000000');
-      $('#enable').html('Enabled');
-      $('#disable').html('Disable');
-      $('#input').prop('disabled', false);
-      localStorage.setItem('fokus-toggle', 'enable');
-    }
-  }
-
-  /*
-  *  Send message to background script and disable domain blocker. 
+  *  Send message to background script and disable domain blocker.
   *  Update boolean value in localStorage and modify CSS for disabled visuals.
   */
   disableFokus() {
     if (this.state.enable === true) {
       this.setState({ enable: false }, () => {
         chrome.runtime.sendMessage({
-          enable: this.state.enable
+          enable: this.state.enable,
         });
       });
 
@@ -58,14 +38,32 @@ export default class Toggle extends React.Component {
   }
 
   /*
+  *  Send message to background script and enable domain blocker.
+  *  Update boolean value in localStorage and modify CSS for enabled visuals.
+  */
+  enableFokus() {
+    if (this.state.enable === false) {
+      this.setState({ enable: true }, () => {
+        chrome.runtime.sendMessage({
+          enable: this.state.enable,
+        });
+      });
+
+      this.modifyCss('#000000');
+      $('#enable').html('Enabled');
+      $('#disable').html('Disable');
+      $('#input').prop('disabled', false);
+      localStorage.setItem('fokus-toggle', 'enable');
+    }
+  }
+
+  /*
   *  Modify color of domain container items, domain title, and bottom border of form input.
   *
   *  @param color: Modify color of domain container items.
   */
   modifyCss(color) {
-    $('#domain-container').css({
-      'color': color
-    });
+    $('#domain-container').css({ 'color': color });
     $('.domains-title').css('color', color);
     $('input[type=text]').css('border-bottom-color', color);
   }
@@ -78,12 +76,11 @@ export default class Toggle extends React.Component {
     if (toggle === 'disable') {
       this.modifyCss('#A1A1A1');
       $('#input').prop('disabled', true);
-      return {__html: 'Enable'};
-    } else {
-      this.modifyCss('#000000');
-      $('#input').prop('disabled', false);
-      return {__html: 'Enabled'};
+      return { __html: 'Enable' };
     }
+    this.modifyCss('#000000');
+    $('#input').prop('disabled', false);
+    return { __html: 'Enabled' };
   }
 
   /*
@@ -94,20 +91,19 @@ export default class Toggle extends React.Component {
     if (toggle === 'disable') {
       this.modifyCss('#A1A1A1');
       $('#input').prop('disabled', true);
-      return {__html: 'Disabled'};
-    } else {
-      this.modifyCss('#000000');
-      $('#input').prop('disabled', false);
-      return {__html: 'Disable'};
+      return { __html: 'Disabled' };
     }
+    this.modifyCss('#000000');
+    $('#input').prop('disabled', false);
+    return { __html: 'Disable' };
   }
 
   render() {
     return (
       <div className='toggle'>
-        <p id='enable' className='toggle-button1' onClick={this.enableFokus} dangerouslySetInnerHTML={this.onloadEnable()}></p>
-        <div className='divider'/>
-        <p id='disable' className='toggle-button2' onClick={this.disableFokus} dangerouslySetInnerHTML={this.onloadDisable()}></p>
+        <p id='enable' className='toggle-button1' onClick={this.enableFokus} dangerouslySetInnerHTML={this.onloadEnable()} />
+        <div className='divider' />
+        <p id='disable' className='toggle-button2' onClick={this.disableFokus} dangerouslySetInnerHTML={this.onloadDisable()} />
       </div>
     );
   }

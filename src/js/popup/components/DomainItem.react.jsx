@@ -31,11 +31,13 @@ export default class DomainItem extends React.Component {
 
     return (
       <li id='domain-item'>
-        <div style={{ float:'left' }} id='domain-name'>
+        <div style={{ float: 'left' }} id='domain-name'>
           {uiDomain}
         </div>
         <div>
-          <input type='image' id='domain-delete' style={{ float:'right' }} src='/png/garbage_can_16.png' onClick={this.deleteDomain} />
+          <input type='image' id='domain-delete' style={{ float: 'right' }} src='/png/garbage_can_16.png' 
+            onClick={this.deleteDomain} alt='Delete'
+          />
         </div>
       </li>
     );
