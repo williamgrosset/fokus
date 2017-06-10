@@ -55,12 +55,11 @@ export default class DomainNew extends React.Component {
   *  @returns boolean: False if domain is invalid, otherwise true.
   */
   errorCheck(domain) {
-    if (domain.includes('http') || domain.includes(':') || domain.includes('/') || domain === '' 
+    if (domain.includes('http') || domain.includes(':') || domain.includes('/') || domain === ''
         || !domain.includes('.') || domain.includes(' ')) {
       return false;
-    } else {
-      return true;
     }
+    return true;
   }
 
   /*
@@ -72,19 +71,26 @@ export default class DomainNew extends React.Component {
   */
   showModal(e, id, i) {
     const span = $('.close')[i];
-    e.preventDefault(); 
+    e.preventDefault();
 
-    $('#' + id).css('display', 'block');
+    $(`#${id}`).css('display', 'block');
     span.onclick = () => {
-      $('#' + id).css('display', 'none');
-    }
+      $(`#${id}`).css('display', 'none');
+    };
     $('#input').val('');
   }
 
   render() {
     return (
-      <form autoComplete='off' onSubmit={this.domainValidation} id='form'>
-        <input id='input' type='text' placeholder='e.g. tomgrosset.com' autoComplete='off' value={this.state.value} onChange={this.inputChange}/>
+      <form id='form' autoComplete='off' onSubmit={this.domainValidation}>
+        <input
+          id='input'
+          type='text'
+          placeholder='e.g. tomgrosset.com'
+          autoComplete='off'
+          value={this.state.value}
+          onChange={this.inputChange}
+        />
       </form>
     );
   }
@@ -92,4 +98,5 @@ export default class DomainNew extends React.Component {
 
 DomainNew.propTypes = {
   container: PropTypes.array.isRequired,
+  addDomain: PropTypes.func.isRequired,
 };
