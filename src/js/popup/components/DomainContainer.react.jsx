@@ -8,19 +8,18 @@ export default class DomainContainer extends React.Component {
     if (this.props.container.length !== 0) {
       return (
         <ul id='domain-container'>
-          {this.props.container.map((domain) => <DomainItem {...removeDomain} {...domain} key={domain.id} /> )}
-        </ul>
-      );
-    } else {
-      return (
-        <ul id='domain-container'>
-          <p>No domains currently blocked.</p>
+          {this.props.container.map(domain => <DomainItem {...removeDomain} {...domain} key={domain.id} />)}
         </ul>
       );
     }
+    return (
+      <ul id='domain-container'>
+        <p>No domains currently blocked.</p>
+      </ul>
+    );
   }
 }
 
 DomainContainer.propTypes = {
-  container: PropTypes.array.isRequired,
+  container: PropTypes.arrayOf(PropTypes.string).isRequired,
 };

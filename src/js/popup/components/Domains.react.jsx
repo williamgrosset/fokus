@@ -11,8 +11,9 @@ export default class Domains extends React.Component {
     this.addDomain = this.addDomain.bind(this);
     this.storeDomain = this.storeDomain.bind(this);
 
+    const container = JSON.parse(localStorage.getItem('container')) || [];
     this.state = {
-      JSON.parse(localStorage.getItem('container')) || [],
+      container,
     };
   }
 
@@ -56,10 +57,10 @@ export default class Domains extends React.Component {
   *  @param domain: Domain from form input value.
   */
   addDomain(domain) {
-    domain = '.*:\/\/\.*'.concat(domain).concat('\/.*');
+    const validDomain = '.*:\/\/\.*'.concat(domain).concat('\/.*');
     const newDomain = {
       id: shortid.generate(),
-      domain,
+      validDomain,
     };
     this.setState((prevState) => ({ container: prevState.container.concat(newDomain) }), () => {
       this.storeDomain(domain, this.state.container);
