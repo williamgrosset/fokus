@@ -17,7 +17,7 @@ describe('<Domains />', function() {
     wrapper.setState({ container: []});
     wrapper.instance().addDomain('testdomain.com');
     const shortid = wrapper.state('container')[0].id;
-    expect(wrapper.state('container')).to.deep.equal([ { id: shortid, domain: '.*://.*testdomain.com/.*' } ]);
+    expect(wrapper.state('container')).to.deep.equal([ { id: shortid, validDomain: '.*://.*testdomain.com/.*' } ]);
   });
 
   it('storeDomain(validDomain, container) successfully adds container to localStorage', function() {
@@ -25,8 +25,8 @@ describe('<Domains />', function() {
     wrapper.setState({ container: []});
     wrapper.instance().addDomain('testdomain.com');
     const shortid = wrapper.state('container')[0].id;
-    expect(wrapper.state('container')).to.deep.equal([ { id: shortid, domain: '.*://.*testdomain.com/.*' } ]);
-    expect(localStorage.getItem('container')).equals('[{"id":"' + shortid + '","domain":".*://.*testdomain.com/.*"}]');
+    expect(wrapper.state('container')).to.deep.equal([ { id: shortid, validDomain: '.*://.*testdomain.com/.*' } ]);
+    expect(localStorage.getItem('container')).equals('[{"id":"' + shortid + '","validDomain":".*://.*testdomain.com/.*"}]');
   });
 
   it('getIndex(value, key) successfully retrieves and returns index of domain in container', function() {
@@ -34,7 +34,7 @@ describe('<Domains />', function() {
     wrapper.setState({ container: []});
     wrapper.instance().addDomain('testdomain.com');
     const shortid = wrapper.state('container')[0].id;
-    expect(wrapper.state('container')).to.deep.equal([ { id: shortid, domain: '.*://.*testdomain.com/.*' } ]);
+    expect(wrapper.state('container')).to.deep.equal([ { id: shortid, validDomain: '.*://.*testdomain.com/.*' } ]);
     expect(wrapper.instance().getIndex(shortid, 'id')).equals(0);
   });
 
@@ -43,7 +43,7 @@ describe('<Domains />', function() {
     wrapper.setState({ container: []});
     wrapper.instance().addDomain('testdomain.com');
     const shortid = wrapper.state('container')[0].id;
-    expect(wrapper.state('container')).to.deep.equal([ { id: shortid, domain: '.*://.*testdomain.com/.*' } ]);
+    expect(wrapper.state('container')).to.deep.equal([ { id: shortid, validDomain: '.*://.*testdomain.com/.*' } ]);
     expect(wrapper.instance().getIndex(12345, 'id')).equals(-1);
   });
 
@@ -52,7 +52,7 @@ describe('<Domains />', function() {
     wrapper.setState({ container: []});
     wrapper.instance().addDomain('testdomain.com');
     const shortid = wrapper.state('container')[0].id;
-    expect(wrapper.state('container')).to.deep.equal([ { id: shortid, domain: '.*://.*testdomain.com/.*' } ]);
+    expect(wrapper.state('container')).to.deep.equal([ { id: shortid, validDomain: '.*://.*testdomain.com/.*' } ]);
     wrapper.instance().removeDomain(shortid);    
     expect(localStorage.getItem('container')).equals('[]');
   });
@@ -62,9 +62,9 @@ describe('<Domains />', function() {
     wrapper.setState({ container: []});
     wrapper.instance().addDomain('testdomain.com');
     const shortid = wrapper.state('container')[0].id;
-    expect(wrapper.state('container')).to.deep.equal([ { id: shortid, domain: '.*://.*testdomain.com/.*' } ]);
+    expect(wrapper.state('container')).to.deep.equal([ { id: shortid, validDomain: '.*://.*testdomain.com/.*' } ]);
     wrapper.instance().removeDomain(12345);
-    expect(localStorage.getItem('container')).equals('[{"id":"' + shortid + '","domain":".*://.*testdomain.com/.*"}]');
+    expect(localStorage.getItem('container')).equals('[{"id":"' + shortid + '","validDomain":".*://.*testdomain.com/.*"}]');
   });
 
   it('renders "Blocked Domains" title, <DomainNew /> component, and <DomainContainer /> component', function() {
