@@ -11,9 +11,8 @@ export default class Domains extends React.Component {
     this.addDomain = this.addDomain.bind(this);
     this.storeDomain = this.storeDomain.bind(this);
 
-    const container = JSON.parse(localStorage.getItem('container')) || [];
     this.state = {
-      container,
+      JSON.parse(localStorage.getItem('container')) || [],
     };
   }
 

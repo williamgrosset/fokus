@@ -4,11 +4,11 @@ import $ from 'jquery';
 export default class Toggle extends React.Component {
   constructor(props) {
     super(props);
-    this.enableFokus = this.enableFokus.bind(this);
-    this.disableFokus = this.disableFokus.bind(this);
     this.modifyCss = this.modifyCss.bind(this);
     this.onloadEnable = this.onloadEnable.bind(this);
     this.onloadDisable = this.onloadDisable.bind(this);
+    this.enableFokus = this.enableFokus.bind(this);
+    this.disableFokus = this.disableFokus.bind(this);
 
     const toggle = localStorage.getItem('fokus-toggle');
     const enable = (toggle === 'disable' ? false : true);
