@@ -1,16 +1,17 @@
 import React from 'react';
 
 export default class Header extends React.Component {
-  constructor(props) {
-    super(props);
-    this.fokusTab = this.fokusTab.bind(this);
-  }
 
   /*
   *  Handle onClick event with header image. The current window will be changed to the fokus home page.
   */
-  fokusTab() {
+  static fokusTab() {
     window.open('/src/html/home.html').focus();
+  }
+
+  constructor(props) {
+    super(props);
+    this.fokusTab = this.fokusTab.bind(this);
   }
 
   render() {

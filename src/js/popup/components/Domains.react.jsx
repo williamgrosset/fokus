@@ -4,6 +4,21 @@ import DomainNew from './DomainNew.react.jsx';
 import DomainContainer from './DomainContainer.react.jsx';
 
 export default class Domains extends React.Component {
+
+  /*
+  *  Send validDomain to the background script to be added to the collection of blocked domains and store the domains
+  *  container in HTML localStorage.
+  *
+  *  @param validDomain: Domain with prefix and suffix for proper URL blocking.
+  *  @param container:   Container with all of our domains.
+  */
+  static storeDomain(validDomain, container) {
+    chrome.runtime.sendMessage({
+      validDomain,
+    });
+    localStorage.setItem('container', JSON.stringify(container));
+  }
+
   constructor(props) {
     super(props);
     this.getIndex = this.getIndex.bind(this);
@@ -65,20 +80,6 @@ export default class Domains extends React.Component {
     this.setState(prevState => ({ container: prevState.container.concat(newDomain) }), () => {
       this.storeDomain(domain, this.state.container);
     });
-  }
-
-  /*
-  *  Send validDomain to the background script to be added to the collection of blocked domains and store the domains
-  *  container in HTML localStorage.
-  *
-  *  @param validDomain: Domain with prefix and suffix for proper URL blocking.
-  *  @param container:   Container with all of our domains.
-  */
-  storeDomain(validDomain, container) {
-    chrome.runtime.sendMessage({
-      validDomain,
-    });
-    localStorage.setItem('container', JSON.stringify(container));
   }
 
   render() {
