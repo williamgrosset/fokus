@@ -35,8 +35,13 @@ export default class DomainItem extends React.Component {
           {uiDomain}
         </div>
         <div>
-          <input type='image' id='domain-delete' style={{ float: 'right' }} src='/png/garbage_can_16.png' 
-            onClick={this.deleteDomain} alt='Delete'
+          <input
+            type='image'
+            id='domain-delete'
+            alt='Delete'
+            src='/png/garbage_can_16.png'
+            style={{ float: 'right' }}
+            onClick={this.deleteDomain}
           />
         </div>
       </li>
@@ -47,4 +52,5 @@ export default class DomainItem extends React.Component {
 DomainItem.propTypes = {
   domain: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  removeDomain: PropTypes.func.isRequired,
 };
