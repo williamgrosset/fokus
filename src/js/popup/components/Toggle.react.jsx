@@ -18,17 +18,6 @@ export default class Toggle extends React.Component {
   }
 
   /*
-  *  Modify color of domain container items, domain title, and bottom border of form input.
-  *
-  *  @param color: Modify color of domain container items.
-  */
-  modifyCss(color) {
-    $('#domain-container').css({ 'color': color });
-    $('.domains-title').css('color', color);
-    $('input[type=text]').css('border-bottom-color', color);
-  }
-
-  /*
   *  Update HTML for enable mode and modify CSS for enabled domain blocker.
   */
   onloadEnable() {
@@ -56,6 +45,17 @@ export default class Toggle extends React.Component {
     this.modifyCss('#000000');
     $('#input').prop('disabled', false);
     return { __html: 'Disable' };
+  }
+
+  /*
+  *  Modify color of domain container items, domain title, and bottom border of form input.
+  *
+  *  @param color: Modify color of domain container items.
+  */
+  modifyCss(color) {
+    $('#domain-container').css({ 'color': color });
+    $('.domains-title').css('color', color);
+    $('input[type=text]').css('border-bottom-color', color);
   }
 
   /*
@@ -101,9 +101,19 @@ export default class Toggle extends React.Component {
   render() {
     return (
       <div className='toggle'>
-        <p id='enable' className='toggle-button1' onClick={this.enableFokus} dangerouslySetInnerHTML={this.onloadEnable()} />
+        <p
+          id='enable'
+          className='toggle-button1'
+          onClick={this.enableFokus}
+          dangerouslySetInnerHTML={this.onloadEnable()}
+        />
         <div className='divider' />
-        <p id='disable' className='toggle-button2' onClick={this.disableFokus} dangerouslySetInnerHTML={this.onloadDisable()} />
+        <p
+          id='disable'
+          className='toggle-button2'
+          onClick={this.disableFokus}
+          dangerouslySetInnerHTML={this.onloadDisable()}
+        />
       </div>
     );
   }

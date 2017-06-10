@@ -97,6 +97,6 @@ export default class DomainNew extends React.Component {
 }
 
 DomainNew.propTypes = {
-  container: PropTypes.array.isRequired,
+  container: PropTypes.arrayOf(PropTypes.object).isRequired,
   addDomain: PropTypes.func.isRequired,
 };
