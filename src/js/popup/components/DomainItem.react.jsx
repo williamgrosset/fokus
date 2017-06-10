@@ -23,7 +23,7 @@ export default class DomainItem extends React.Component {
   }
 
   render() {
-    let uiDomain = this.state.domain.replace('.*:\/\/\.*', '').replace('\/.*', '');
+    let uiDomain = this.state.domain.replace('.*://.*', '').replace('/.*', '');
     // Add "..." to end of the domain if length is too large for popup window
     if (uiDomain.length >= 19) {
       uiDomain = uiDomain.substring(0, 21).concat('...');

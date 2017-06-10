@@ -53,8 +53,8 @@ export default class Toggle extends React.Component {
   *  @param color: Modify color of domain container items.
   */
   modifyCss(color) {
-    $('#domain-container').css({ 'color': color });
-    $('.domains-title').css('color', color);
+    $('#domain-container').css(color);
+    $('.domains-title').css(color);
     $('input[type=text]').css('border-bottom-color', color);
   }
 
