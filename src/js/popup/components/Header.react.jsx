@@ -11,13 +11,12 @@ export default class Header extends React.Component {
 
   constructor(props) {
     super(props);
-    this.fokusTab = this.fokusTab.bind(this);
   }
 
   render() {
     return (
       <div className='fokus-link'>
-        <img src='/png/fokus_title_128.png' alt='fokus' onClick={this.fokusTab} />
+        <img src='/png/fokus_title_128.png' alt='fokus' onClick={Header.fokusTab} />
       </div>
     );
   }

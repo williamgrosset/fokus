@@ -7,7 +7,7 @@ export default class DomainItem extends React.Component {
     this.deleteDomain = this.deleteDomain.bind(this);
 
     this.state = {
-      domain: this.props.domain || '',
+      validDomain: this.props.validDomain || '',
     };
   }
 
@@ -18,12 +18,13 @@ export default class DomainItem extends React.Component {
   */
   deleteDomain(e) {
     e.preventDefault();
-    this.setState({ domain: '' });
+    this.setState({ validDomain: '' });
     this.props.removeDomain(this.props.id);
   }
 
   render() {
-    let uiDomain = this.state.domain.replace('.*://.*', '').replace('/.*', '');
+    let uiDomain = this.state.validDomain;
+    uiDomain = uiDomain.replace('.*://.*', '').replace('/.*', '');
     // Add "..." to end of the domain if length is too large for popup window
     if (uiDomain.length >= 19) {
       uiDomain = uiDomain.substring(0, 21).concat('...');
@@ -50,7 +51,7 @@ export default class DomainItem extends React.Component {
 }
 
 DomainItem.propTypes = {
-  domain: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
+  validDomain: PropTypes.string.isRequired,
   removeDomain: PropTypes.func.isRequired,
 };

@@ -24,7 +24,6 @@ export default class Domains extends React.Component {
     this.getIndex = this.getIndex.bind(this);
     this.removeDomain = this.removeDomain.bind(this);
     this.addDomain = this.addDomain.bind(this);
-    this.storeDomain = this.storeDomain.bind(this);
 
     const container = JSON.parse(localStorage.getItem('container')) || [];
     this.state = {
@@ -77,8 +76,9 @@ export default class Domains extends React.Component {
       id: shortid.generate(),
       validDomain,
     };
+
     this.setState(prevState => ({ container: prevState.container.concat(newDomain) }), () => {
-      this.storeDomain(domain, this.state.container);
+      Domains.storeDomain(domain, this.state.container);
     });
   }
 

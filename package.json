@@ -2,7 +2,7 @@
   "name": "fokusextension",
   "version": "1.0.0",
   "description": "Chrome extension to allow users to relax and stay productive.",
-  "main": "popup.js",
+  "main": "popup.jsx",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/williamgrosset/fokus.git"

@@ -40,8 +40,6 @@ export default class DomainNew extends React.Component {
     super(props);
     this.inputChange = this.inputChange.bind(this);
     this.domainValidation = this.domainValidation.bind(this);
-    this.errorCheck = this.errorCheck.bind(this);
-    this.showModal = this.showModal.bind(this);
 
     this.state = {
       value: '',
@@ -68,12 +66,12 @@ export default class DomainNew extends React.Component {
 
     // Show modal for domain container max
     if (this.props.container.length === 30) {
-      this.showModal(e, 'myModalMax', 0);
+      DomainNew.showModal(e, 'myModalMax', 0);
       return;
     }
     // Show modal for invalid domain
-    if (!this.errorCheck(domain)) {
-      this.showModal(e, 'myModalError', 1);
+    if (!DomainNew.errorCheck(domain)) {
+      DomainNew.showModal(e, 'myModalError', 1);
     // Successfully add domain to domain blocker container
     } else {
       this.props.addDomain(this.state.value);
