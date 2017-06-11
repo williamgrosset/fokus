@@ -9,10 +9,6 @@ export default class Header extends React.Component {
     window.open('/src/html/home.html').focus();
   }
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className='fokus-link'>
