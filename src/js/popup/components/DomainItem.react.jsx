@@ -6,7 +6,6 @@ export default class DomainItem extends React.Component {
     super(props);
     this.deleteDomain = this.deleteDomain.bind(this);
 
-    console.log(this.props);
     this.state = {
       validDomain: this.props.validDomain || '',
     };

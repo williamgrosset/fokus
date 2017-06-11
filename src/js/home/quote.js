@@ -20,12 +20,13 @@
   *  quote from the text file.
   */
   function quoteReader() {
-    jQuery.get('https://raw.githubusercontent.com/williamgrosset/fokus/master/quotes/short-and-shuffled-quotes.txt', (data) => {
-      const fileContentLines = data.split('\n');
-      const randomLineIndex = Math.floor(Math.random() * fileContentLines.length);
-      randomLine = fileContentLines[randomLineIndex];
-      typeFooter();
-    });
+    jQuery.get('https://raw.githubusercontent.com/williamgrosset/fokus/master/quotes/short-and-shuffled-quotes.txt',
+      (data) => {
+        const fileContentLines = data.split('\n');
+        const randomLineIndex = Math.floor(Math.random() * fileContentLines.length);
+        randomLine = fileContentLines[randomLineIndex];
+        typeFooter();
+      });
   }
 
   document.addEventListener('DOMContentLoaded', () => {
