@@ -2,8 +2,9 @@
   
 *Google chrome extension to help you focus on the things that really matter.*
 
+**NOTICE**: The chrome extension is currently not available on the chrome store and is being redesigned. These changes are **required** due to Google's new policy of having to request permissions from the user each time before a page redirection occurs. However, you can install it locally and still use it!
+
 ## How to use fokus
-* **NOTICE**: The chrome extension is disabled and being redesigned. These changes are **required** due to Google's new policies of having to request permissions of the user each time before a page redirection occurs.
 1. ~~Download the chrome extension on the Google chrome store [here]()~~ *(see notice above)*.
 2. Open the chrome popup and add new domains to be blocked, e.g: `domain.com` or `www.domain.com`.
 3. Toggle the chrome extension on/off by clicking on either **Enable** or **Disable** mode.
