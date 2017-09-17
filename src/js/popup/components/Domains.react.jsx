@@ -4,6 +4,17 @@ import DomainNew from './DomainNew.react.jsx';
 import DomainContainer from './DomainContainer.react.jsx';
 
 export default class Domains extends React.Component {
+  constructor(props) {
+    super(props);
+    this.getIndex = this.getIndex.bind(this);
+    this.removeDomain = this.removeDomain.bind(this);
+    this.addDomain = this.addDomain.bind(this);
+
+    const container = JSON.parse(localStorage.getItem('container')) || [];
+    this.state = {
+      container,
+    };
+  }
 
   /*
   *  Send validDomain to the background script to be added to the collection of blocked domains and store the domains
@@ -17,18 +28,6 @@ export default class Domains extends React.Component {
       validDomain,
     });
     localStorage.setItem('container', JSON.stringify(container));
-  }
-
-  constructor(props) {
-    super(props);
-    this.getIndex = this.getIndex.bind(this);
-    this.removeDomain = this.removeDomain.bind(this);
-    this.addDomain = this.addDomain.bind(this);
-
-    const container = JSON.parse(localStorage.getItem('container')) || [];
-    this.state = {
-      container,
-    };
   }
 
   /*
@@ -55,14 +54,16 @@ export default class Domains extends React.Component {
   */
   removeDomain(id) {
     const index = this.getIndex(id, 'id');
-    if (index === -1) return;
 
-    chrome.runtime.sendMessage({
-      index,
-    });
-    this.setState(prevState => ({ container: prevState.container.filter((_, ind) => ind !== index) }), () => {
-      localStorage.setItem('container', JSON.stringify(this.state.container));
-    });
+    if (index !== -1) {
+      chrome.runtime.sendMessage({
+        index,
+      });
+
+      this.setState(prevState => ({ container: prevState.container.filter((_, ind) => ind !== index) }), () => {
+        localStorage.setItem('container', JSON.stringify(this.state.container));
+      });
+    }
   }
 
   /*
@@ -71,10 +72,9 @@ export default class Domains extends React.Component {
   *  @param domain: Domain from form input value.
   */
   addDomain(domain) {
-    const validDomain = '.*://.*'.concat(domain).concat('/.*');
     const newDomain = {
       id: shortid.generate(),
-      validDomain,
+      validDomain: '.*://.*'.concat(domain).concat('/.*'),
     };
 
     this.setState(prevState => ({ container: prevState.container.concat(newDomain) }), () => {

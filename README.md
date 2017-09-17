@@ -18,8 +18,8 @@ The fokus chrome extension uses `eslint` to enfource conventions with the [AirBn
 1. Shoot me and email and let me know about your idea (williamhgrosset@gmail.com)!
 2. Fork and clone this repository and run `nvm install` to use the required Node version.
 3. Run `npm install` to install the required dependencies.
-4. Create a branch and complete any necessary changes or features. For bundling with watchify, run `npm run watch`.
-5. Create the build directory: `mkdir build`.
+4. Create the build directory: `mkdir build`.
+5. Create a branch and complete any necessary changes or features. For bundling with watchify, run `npm run watch`.
 6. Make sure the linting/tests **all pass** by running `npm test`.
 7. Submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
 

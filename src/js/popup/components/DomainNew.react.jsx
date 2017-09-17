@@ -13,9 +13,9 @@ export default class DomainNew extends React.Component {
   static errorCheck(domain) {
     if (domain.includes('http') || domain.includes(':') || domain.includes('/') || domain === ''
         || !domain.includes('.') || domain.includes(' ')) {
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
 
   /*
@@ -70,7 +70,7 @@ export default class DomainNew extends React.Component {
       return;
     }
     // Show modal for invalid domain
-    if (!DomainNew.errorCheck(domain)) {
+    if (DomainNew.errorCheck(domain)) {
       DomainNew.showModal(e, 'myModalError', 1);
     // Successfully add domain to domain blocker container
     } else {

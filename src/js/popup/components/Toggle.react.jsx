@@ -2,6 +2,17 @@ import React from 'react';
 import $ from 'jquery';
 
 export default class Toggle extends React.Component {
+  constructor(props) {
+    super(props);
+    this.enableFokus = this.enableFokus.bind(this);
+    this.disableFokus = this.disableFokus.bind(this);
+
+    const toggle = localStorage.getItem('fokus-toggle');
+    const enable = (toggle !== 'disable') || false;
+    this.state = {
+      enable,
+    };
+  }
 
   /*
   *  Modify color of domain container items, domain title, and bottom border of form input.
@@ -42,18 +53,6 @@ export default class Toggle extends React.Component {
     Toggle.modifyCss('#000000');
     $('#input').prop('disabled', false);
     return { __html: 'Disable' };
-  }
-
-  constructor(props) {
-    super(props);
-    this.enableFokus = this.enableFokus.bind(this);
-    this.disableFokus = this.disableFokus.bind(this);
-
-    const toggle = localStorage.getItem('fokus-toggle');
-    const enable = (toggle !== 'disable') || false;
-    this.state = {
-      enable,
-    };
   }
 
   /*
