@@ -4,7 +4,7 @@ import DomainItem from './DomainItem';
 
 const DomainContainer = props => (
   props.container.length !== 0 ?
-    <ul id='domain-container'>
+    <ul className='domain-container'>
       {props.container.map((validDomain, id) => (
         <DomainItem
           {...validDomain}
@@ -14,7 +14,7 @@ const DomainContainer = props => (
       )}
     </ul>
     :
-    <ul id='domain-container'>
+    <ul className='domain-container'>
       <p>No domains currently blocked.</p>
     </ul>
 );

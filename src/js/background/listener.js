@@ -17,13 +17,13 @@
       domainsEnable = domains;
       domains.splice(request.index, 1);
     // Enable domain blocker
-    } else if (request.enable === true) {
+    } else if (request.enabled === true) {
       if (disabled) {
         domains = domainsEnable;
         disabled = false;
       }
     // Disable domain blocker
-    } else if (request.enable === false) {
+    } else if (request.enabled === false) {
       if (!disabled) {
         domainsEnable = domains;
         domains = [];

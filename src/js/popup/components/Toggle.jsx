@@ -7,9 +7,8 @@ export default class Toggle extends React.Component {
     this.enableFokus = this.enableFokus.bind(this);
     this.disableFokus = this.disableFokus.bind(this);
 
-    const enable = (localStorage.getItem('fokus-toggle') !== 'disable') || false;
     this.state = {
-      enable,
+      enabled: localStorage.getItem('fokus-toggle') !== 'disable' || false,
     };
   }
 
@@ -19,7 +18,7 @@ export default class Toggle extends React.Component {
   *  @param color: Modify color of domain container items.
   */
   static modifyCss(color) {
-    $('#domain-container').css('color', color);
+    $('.domain-container').css('color', color);
     $('.domains-title').css('color', color);
     $('input[type=text]').css('border-bottom-color', color);
   }
@@ -27,13 +26,13 @@ export default class Toggle extends React.Component {
   /*
   *  Update HTML for enable mode and modify CSS for enabled domain blocker.
   */
-  static onloadEnable() {
-    const toggle = localStorage.getItem('fokus-toggle');
-    if (toggle === 'disable') {
+  onloadEnable() {
+    if (this.state.enabled === false) {
       Toggle.modifyCss('#A1A1A1');
       $('#input').prop('disabled', true);
       return { __html: 'Enable' };
     }
+
     Toggle.modifyCss('#000000');
     $('#input').prop('disabled', false);
     return { __html: 'Enabled' };
@@ -42,13 +41,13 @@ export default class Toggle extends React.Component {
   /*
   *  Update HTML for disable mode and modify CSS for disabled domain blocker.
   */
-  static onloadDisable() {
-    const toggle = localStorage.getItem('fokus-toggle');
-    if (toggle === 'disable') {
+  onloadDisable() {
+    if (this.state.enabled === false) {
       Toggle.modifyCss('#A1A1A1');
       $('#input').prop('disabled', true);
       return { __html: 'Disabled' };
     }
+
     Toggle.modifyCss('#000000');
     $('#input').prop('disabled', false);
     return { __html: 'Disable' };
@@ -59,10 +58,10 @@ export default class Toggle extends React.Component {
   *  Update boolean value in localStorage and modify CSS for enabled visuals.
   */
   enableFokus() {
-    if (this.state.enable === false) {
-      this.setState({ enable: true }, () => {
+    if (this.state.enabled === false) {
+      this.setState({ enabled: true }, () => {
         chrome.runtime.sendMessage({
-          enable: this.state.enable,
+          enabled: this.state.enabled,
         });
       });
 
@@ -79,10 +78,10 @@ export default class Toggle extends React.Component {
   *  Update boolean value in localStorage and modify CSS for disabled visuals.
   */
   disableFokus() {
-    if (this.state.enable === true) {
-      this.setState({ enable: false }, () => {
+    if (this.state.enabled === true) {
+      this.setState({ enabled: false }, () => {
         chrome.runtime.sendMessage({
-          enable: this.state.enable,
+          enabled: this.state.enabled,
         });
       });
 
@@ -101,14 +100,14 @@ export default class Toggle extends React.Component {
           id='enable'
           className='toggle-button'
           onClick={this.enableFokus}
-          dangerouslySetInnerHTML={Toggle.onloadEnable()}
+          dangerouslySetInnerHTML={this.onloadEnable()}
         />
         <div className='divider' />
         <button
           id='disable'
           className='toggle-button'
           onClick={this.disableFokus}
-          dangerouslySetInnerHTML={Toggle.onloadDisable()}
+          dangerouslySetInnerHTML={this.onloadDisable()}
         />
       </div>
     );
