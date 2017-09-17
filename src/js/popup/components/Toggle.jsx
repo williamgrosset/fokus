@@ -7,8 +7,7 @@ export default class Toggle extends React.Component {
     this.enableFokus = this.enableFokus.bind(this);
     this.disableFokus = this.disableFokus.bind(this);
 
-    const toggle = localStorage.getItem('fokus-toggle');
-    const enable = (toggle !== 'disable') || false;
+    const enable = (localStorage.getItem('fokus-toggle') !== 'disable') || false;
     this.state = {
       enable,
     };
@@ -98,16 +97,16 @@ export default class Toggle extends React.Component {
   render() {
     return (
       <div className='toggle'>
-        <p
+        <button
           id='enable'
-          className='toggle-button1'
+          className='toggle-button'
           onClick={this.enableFokus}
           dangerouslySetInnerHTML={Toggle.onloadEnable()}
         />
         <div className='divider' />
-        <p
+        <button
           id='disable'
-          className='toggle-button2'
+          className='toggle-button'
           onClick={this.disableFokus}
           dangerouslySetInnerHTML={Toggle.onloadDisable()}
         />

@@ -47,20 +47,19 @@ div.front {
   width: auto;
 }
 
-p.toggle-button1 {
+.toggle-button {
   text-align: center;
   font-family: 'Lato', serif;
+  border: none;
+  margin-top: 20px;
+  background: none;
   font-size: 16.5px;
   display: inline-block;
   cursor: pointer;
 }
 
-p.toggle-button2 {
-  text-align: center;
-  font-family: 'Lato', serif;
-  font-size: 16.5px;
-  display: inline-block;
-  cursor: pointer;
+.toggle-button:focus {
+  outline: none;
 }
 
 p.domains-title {
@@ -79,10 +78,6 @@ p.domains-title {
   width: 90px;
   height:auto;
   display:inline-block;
-}
-
-.toggle-button1 {
-  padding-top: 7px;
 }
 
 .modal {
@@ -148,8 +143,8 @@ p.domains-title {
 }
 
 #form {
-  padding-top: 5px;
   text-align: center;
+  padding-top: 5px;
   padding-bottom: 15px;
 }
 

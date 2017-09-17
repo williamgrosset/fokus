@@ -27,6 +27,7 @@ module.exports = {
         { 
           "allowForLoopAfterthoughts": true
         },
-      ]
+      ],
+      "react/sort-comp": 0
     },
 };
