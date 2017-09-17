@@ -12,20 +12,20 @@
 
 ![](https://github.com/williamgrosset/fokus/blob/master/png/example.gif)
 
-## Development
-The [fokus](https://chrome.google.com/webstore/detail/fokus/kapnmpfkldbacoamceiggkcoaepfgiea?hl=en-US) chrome extension uses `eslint` to enfource conventions with the [AirBnB JavaScript style guide](https://github.com/airbnb/javascript). The following information outlines the step-by-step process on how other developers can contribute to the open source project.
+## How to contribute
+The fokus chrome extension uses `eslint` to enfource conventions with the [AirBnB JavaScript style guide](https://github.com/airbnb/javascript).
 
-### How to contribute
-1. Let me know about your idea (williamhgrosset@gmail.com) - I'd love to hear from you. :relaxed:
-2. Fork this repository and run `nvm install` to use the required Node version.
+1. Shoot me and email and let me know about your idea (williamhgrosset@gmail.com)!
+2. Fork and clone this repository and run `nvm install` to use the required Node version.
 3. Run `npm install` to install the required dependencies.
 4. Create a branch and complete any necessary changes or features. For bundling with watchify, run `npm run watch`.
-5. Make sure the linting/tests **all pass** by running `npm test`.
-6. Submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
+5. Create the build directory: `mkdir build`.
+6. Make sure the linting/tests **all pass** by running `npm test`.
+7. Submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
 
 *This is my first time using React, so any feedback is appreciated!*
 
-### Project layout
+## Project layout
 + Development scripts in `scripts/`
   * `build.sh/`: `npm run build`
   * `watch.sh/`: `npm run watch`

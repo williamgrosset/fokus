@@ -8,26 +8,22 @@
     if (request.validDomain) {
       domains.push(request.validDomain);
       domainsEnable = domains;
-    }
     // Remove domain from domain blocker container
-    if (request.index) {
+    } else if (request.index) {
       domains.splice(request.index, 1);
       domainsEnable = domains;
-    }
     // Remove domain from domain blocker container
-    if (request.index === 0) {
+    } else if (request.index === 0) {
       domainsEnable = domains;
       domains.splice(request.index, 1);
-    }
     // Enable domain blocker
-    if (request.enable === true) {
+    } else if (request.enable === true) {
       if (disabled) {
         domains = domainsEnable;
         disabled = false;
       }
-    }
     // Disable domain blocker
-    if (request.enable === false) {
+    } else if (request.enable === false) {
       if (!disabled) {
         domainsEnable = domains;
         domains = [];
