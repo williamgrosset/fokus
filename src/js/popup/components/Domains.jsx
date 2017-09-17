@@ -1,7 +1,7 @@
 import React from 'react';
 import shortid from 'shortid';
-import DomainNew from './DomainNew.react.jsx';
-import DomainContainer from './DomainContainer.react.jsx';
+import DomainNew from './DomainNew';
+import DomainContainer from './DomainContainer';
 
 export default class Domains extends React.Component {
   constructor(props) {

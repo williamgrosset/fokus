@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DomainItem from './DomainItem.react.jsx';
+import DomainItem from './DomainItem';
 
 const DomainContainer = props => (
   props.container.length !== 0 ?

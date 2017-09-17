@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Header from './components/Header.react.jsx';
-import Domains from './components/Domains.react.jsx';
-import Toggle from './components/Toggle.react.jsx';
+import Header from './components/Header';
+import Domains from './components/Domains';
+import Toggle from './components/Toggle';
 
 ReactDOM.render(
   <Header />,
