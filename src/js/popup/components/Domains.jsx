@@ -6,13 +6,11 @@ import DomainContainer from './DomainContainer';
 export default class Domains extends React.Component {
   constructor(props) {
     super(props);
-    this.getIndex = this.getIndex.bind(this);
     this.removeDomain = this.removeDomain.bind(this);
     this.addDomain = this.addDomain.bind(this);
 
-    const container = JSON.parse(localStorage.getItem('container')) || [];
     this.state = {
-      container,
+      container: JSON.parse(localStorage.getItem('container')) || [],
     };
   }
 
@@ -31,29 +29,13 @@ export default class Domains extends React.Component {
   }
 
   /*
-  *  Retrieve index value of domain to delete.
-  *
-  *  @param value:  Unique id to match.
-  *  @param key:    Attribute of object.
-  *  @return index: Index of domain to delete.
-  */
-  getIndex(value, key) {
-    for (let i = 0; i < this.state.container.length; i++) {
-      if (this.state.container[i][key] === value) {
-        return i;
-      }
-    }
-    return -1;
-  }
-
-  /*
   *  Search for index and filter matched item out of container and send index to background script for domain to
   *  be removed.
   *
   *  @param id: Unique id for domain to delete.
   */
   removeDomain(id) {
-    const index = this.getIndex(id, 'id');
+    const index = this.state.container.findIndex(domain => domain.id === id);
 
     if (index !== -1) {
       chrome.runtime.sendMessage({
