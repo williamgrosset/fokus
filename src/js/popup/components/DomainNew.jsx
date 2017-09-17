@@ -3,9 +3,19 @@ import PropTypes from 'prop-types';
 import $ from 'jquery';
 
 export default class DomainNew extends React.Component {
+  constructor(props) {
+    super(props);
+    this.inputChange = this.inputChange.bind(this);
+    this.domainValidation = this.domainValidation.bind(this);
+
+    this.state = {
+      value: '',
+    };
+  }
 
   /*
   *  Checks if domain is valid before being added into parent container.
+  *  TODO: Check domain validation with regex.
   *
   *  @param domain:    Domain from form input value.
   *  @returns boolean: False if domain is invalid, otherwise true.
@@ -34,16 +44,6 @@ export default class DomainNew extends React.Component {
       $(`#${id}`).css('display', 'none');
     };
     $('#input').val('');
-  }
-
-  constructor(props) {
-    super(props);
-    this.inputChange = this.inputChange.bind(this);
-    this.domainValidation = this.domainValidation.bind(this);
-
-    this.state = {
-      value: '',
-    };
   }
 
   /*
