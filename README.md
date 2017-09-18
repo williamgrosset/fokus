@@ -2,7 +2,7 @@
   
 *Google chrome extension to help you focus on the things that really matter.*
 
-**NOTICE**: The chrome extension is currently not available on the chrome store and is being redesigned. These changes are **required** due to Google's new policy of having to request permissions from the user each time before a page redirection occurs. However, you can install it locally and still use it!
+**NOTICE**: The chrome extension is currently not available on the chrome store and is being redesigned. These changes are **required** due to Google's new policy of having to require permissions from the user before a page redirection occurs. However, you can install it locally and still use it!
 
 ## How to use fokus
 1. ~~Download the chrome extension on the Google chrome store [here]()~~ *(see notice above)*.
@@ -38,6 +38,7 @@ The fokus chrome extension uses `eslint` to enfource conventions with the [AirBn
 
 ## Future additions
 Make a pull request to add your own idea below:
++ Refactor React `Toggle` button componenet
 + Allow users to configure meditation timer
 + Integrate [Circle CI](https://circleci.com/) with project
 + Add new design to home page

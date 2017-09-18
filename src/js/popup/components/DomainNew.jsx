@@ -56,6 +56,14 @@ export default class DomainNew extends React.Component {
   }
 
   /*
+  *  Successfully saves new domain to domain container and resets state.
+  */
+  saveDomain() {
+    this.props.addDomain(this.state.value);
+    this.setState({ value: '' });
+  }
+
+  /*
   *  Add valid domain to domain container or show appropriate modal if an error exists.
   *
   *  @param e: Event handler for form input value.
@@ -74,8 +82,7 @@ export default class DomainNew extends React.Component {
       DomainNew.showModal(e, 'myModalError', 1);
     // Successfully add domain to domain blocker container
     } else {
-      this.props.addDomain(this.state.value);
-      this.setState({ value: '' });
+      this.saveDomain();
     }
   }
 
