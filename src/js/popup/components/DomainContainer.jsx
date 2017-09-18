@@ -5,11 +5,11 @@ import DomainItem from './DomainItem';
 const DomainContainer = props => (
   props.container.length !== 0 ?
     <ul className='domain-container'>
-      {props.container.map((validDomain, id) => (
+      {props.container.map(domain => (
         <DomainItem
-          {...validDomain}
+          {...domain}
           {...props}
-          key={id}
+          key={domain.id}
         />),
       )}
     </ul>
