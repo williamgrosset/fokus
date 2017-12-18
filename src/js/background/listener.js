@@ -3,19 +3,14 @@
   let domainsEnable = [];
   let disabled = false;
 
+  chrome.runtime.onStartup.addListener(() => {
+    domains = JSON.parse(localStorage.getItem('container'));
+    // set enable/disable mode from localStorage here
+  });
+
   chrome.runtime.onMessage.addListener((request) => {
-    // Add domain to domain blocker container
-    if (request.validDomain) {
-      domains.push(request.validDomain);
-      domainsEnable = domains;
-    // Remove domain from domain blocker container
-    } else if (request.index) {
-      domains.splice(request.index, 1);
-      domainsEnable = domains;
-    // Remove domain from domain blocker container
-    } else if (request.index === 0) {
-      domainsEnable = domains;
-      domains.splice(request.index, 1);
+    if (request.container) {
+      domains = request.container;
     // Enable domain blocker
     } else if (request.enabled === true) {
       if (disabled) {
@@ -37,7 +32,7 @@
       // Check current tab for URL replacement
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
         for (let i = 0; i < domains.length; i++) {
-          const reDomain = new RegExp(domains[i], 'i');
+          const reDomain = new RegExp(domains[i].validDomain, 'i');
           if (reDomain.test(tabs[0].url)) {
             chrome.tabs.update(tabs[0].id, { url: 'src/html/home.html' });
             return;
@@ -49,7 +44,7 @@
       chrome.tabs.query({ currentWindow: true }, (tabs) => {
         for (let i = 0; i < domains.length; i++) {
           for (let k = 0; k < tabs.length; k++) {
-            const reDomain = new RegExp(domains[i], 'i');
+            const reDomain = new RegExp(domains[i].validDomain, 'i');
             if (reDomain.test(tabs[k].url)) {
               chrome.tabs.update(tabs[k].id, { url: 'src/html/home.html' });
               return;

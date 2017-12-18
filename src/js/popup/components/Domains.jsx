@@ -21,9 +21,9 @@ export default class Domains extends React.Component {
   *  @param validDomain: Domain with prefix and suffix for proper URL blocking.
   *  @param container:   Container with all of our domains.
   */
-  static storeDomain(validDomain, container) {
+  static storeDomain(container) {
     chrome.runtime.sendMessage({
-      validDomain,
+      container,
     });
     localStorage.setItem('container', JSON.stringify(container));
   }
@@ -38,12 +38,11 @@ export default class Domains extends React.Component {
     const index = this.state.container.findIndex(domain => domain.id === id);
 
     if (index !== -1) {
-      chrome.runtime.sendMessage({
-        index,
-      });
-
       this.setState(prevState => ({ container: prevState.container.filter((_, ind) => ind !== index) }), () => {
         localStorage.setItem('container', JSON.stringify(this.state.container));
+        chrome.runtime.sendMessage({
+          container: this.state.container,
+        });
       });
     }
   }
@@ -60,7 +59,7 @@ export default class Domains extends React.Component {
     };
 
     this.setState(prevState => ({ container: prevState.container.concat(newDomain) }), () => {
-      Domains.storeDomain(domain, this.state.container);
+      Domains.storeDomain(this.state.container);
     });
   }
 
