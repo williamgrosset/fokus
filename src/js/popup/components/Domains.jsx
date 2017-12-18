@@ -3,7 +3,7 @@ import shortid from 'shortid';
 import DomainNew from './DomainNew';
 import DomainContainer from './DomainContainer';
 
-export default class Domains extends React.Component {
+class Domains extends React.Component {
   constructor(props) {
     super(props);
     this.removeDomain = this.removeDomain.bind(this);
@@ -57,3 +57,5 @@ export default class Domains extends React.Component {
     );
   }
 }
+
+export default Domains;

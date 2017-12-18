@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
 
-export default class DomainNew extends React.Component {
+class DomainNew extends React.Component {
   constructor(props) {
     super(props);
     this.inputChange = this.inputChange.bind(this);
@@ -106,3 +106,5 @@ DomainNew.propTypes = {
   container: PropTypes.arrayOf(PropTypes.object).isRequired,
   addDomain: PropTypes.func.isRequired,
 };
+
+export default DomainNew;

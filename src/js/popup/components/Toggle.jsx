@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 
-export default class Toggle extends React.Component {
+class Toggle extends React.Component {
   constructor(props) {
     super(props);
     this.enableFokus = this.enableFokus.bind(this);
@@ -113,3 +113,5 @@ export default class Toggle extends React.Component {
     );
   }
 }
+
+export default Toggle;
