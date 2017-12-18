@@ -14,7 +14,7 @@ class Domains extends React.Component {
     };
   }
 
-  static storeDomain(container) {
+  static storeContainer(container) {
     chrome.runtime.sendMessage({
       container,
     });
@@ -28,7 +28,7 @@ class Domains extends React.Component {
     if (index !== -1) {
       this.setState(prevState => ({ container: prevState.container.filter((_, ind) => ind !== index) }), () => {
         const { container } = this.state;
-        Domains.storeDomain(container);
+        Domains.storeContainer(container);
       });
     }
   }
@@ -41,7 +41,7 @@ class Domains extends React.Component {
 
     this.setState(prevState => ({ container: prevState.container.concat(newDomain) }), () => {
       const { container } = this.state;
-      Domains.storeDomain(container);
+      Domains.storeContainer(container);
     });
   }
 
