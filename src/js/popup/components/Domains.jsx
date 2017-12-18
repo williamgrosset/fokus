@@ -14,13 +14,6 @@ export default class Domains extends React.Component {
     };
   }
 
-  /*
-  *  Send validDomain to the background script to be added to the collection of blocked domains and store the domains
-  *  container in HTML localStorage.
-  *
-  *  @param validDomain: Domain with prefix and suffix for proper URL blocking.
-  *  @param container:   Container with all of our domains.
-  */
   static storeDomain(container) {
     chrome.runtime.sendMessage({
       container,
@@ -28,12 +21,6 @@ export default class Domains extends React.Component {
     localStorage.setItem('container', JSON.stringify(container));
   }
 
-  /*
-  *  Search for index and filter matched item out of container and send index to background script for domain to
-  *  be removed.
-  *
-  *  @param id: Unique id for domain to delete.
-  */
   removeDomain(id) {
     const index = this.state.container.findIndex(domain => domain.id === id);
     if (index !== -1) {
@@ -43,11 +30,6 @@ export default class Domains extends React.Component {
     }
   }
 
-  /*
-  *  Adds valid domain from form input into the domain container.
-  *
-  *  @param domain: Domain from form input value.
-  */
   addDomain(domain) {
     const newDomain = {
       id: shortid.generate(),
