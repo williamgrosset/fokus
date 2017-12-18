@@ -153,6 +153,14 @@ p.domains-title {
   box-shadow: none;
 }
 
+.domain-name {
+  float: left;
+}
+
+.garbage-can {
+  float: right;
+}
+
 ul.domain-container {
   list-style: none;
   list-style-type: none;
