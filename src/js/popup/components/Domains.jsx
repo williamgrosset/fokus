@@ -36,13 +36,9 @@ export default class Domains extends React.Component {
   */
   removeDomain(id) {
     const index = this.state.container.findIndex(domain => domain.id === id);
-
     if (index !== -1) {
       this.setState(prevState => ({ container: prevState.container.filter((_, ind) => ind !== index) }), () => {
-        localStorage.setItem('container', JSON.stringify(this.state.container));
-        chrome.runtime.sendMessage({
-          container: this.state.container,
-        });
+        Domains.storeDomain(this.state.container);
       });
     }
   }
@@ -57,7 +53,6 @@ export default class Domains extends React.Component {
       id: shortid.generate(),
       validDomain: '.*://.*'.concat(domain).concat('/.*'),
     };
-
     this.setState(prevState => ({ container: prevState.container.concat(newDomain) }), () => {
       Domains.storeDomain(this.state.container);
     });
@@ -65,8 +60,8 @@ export default class Domains extends React.Component {
 
   render() {
     return (
-      <div className='domains'>
-        <p className='domains-title'>Blocked Domains</p>
+      <div className="domains">
+        <p className="domains-title">Blocked Domains</p>
         <DomainNew container={this.state.container} addDomain={this.addDomain} />
         <DomainContainer container={this.state.container} removeDomain={this.removeDomain} />
       </div>
