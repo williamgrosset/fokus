@@ -14,7 +14,6 @@ echo "****************************************************"
 echo "****************************************************"
 echo "*                      home/                       *"
 echo "****************************************************"
-./node_modules/.bin/eslint ./src/js/home/about.js
 ./node_modules/.bin/eslint ./src/js/home/quote.js
 ./node_modules/.bin/eslint ./src/js/home/stopwatch.js
 

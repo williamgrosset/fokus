@@ -115,13 +115,6 @@ button {
   animation-delay: 3s;
 }
 
-.bottom-right {
-  position: fixed;
-  bottom: 3px;
-  right: 3px;
-  animation: fadeIn 2s;
-}
-
 .bottom-left {
   position: fixed;
   bottom: 3px;
