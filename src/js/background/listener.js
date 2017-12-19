@@ -19,10 +19,9 @@
 
   chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
     if (toggle === true && changeInfo.status === 'complete') {
-      console.log(toggle);
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        for (let i = 0; i < domains.length; i++) {
-          const reDomain = new RegExp(domains[i].validDomain, 'i');
+        for (const domain of domains) {
+          const reDomain = new RegExp(domain.validDomain, 'i');
           if (reDomain.test(tabs[0].url)) {
             chrome.tabs.update(tabs[0].id, { url: 'src/html/home.html' });
             return;
