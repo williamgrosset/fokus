@@ -61,7 +61,7 @@ class Toggle extends React.Component {
     if (this.state.enabled === false) {
       this.setState({ enabled: true }, () => {
         chrome.runtime.sendMessage({
-          enabled: this.state.enabled,
+          toggle: true,
         });
       });
 
@@ -81,7 +81,7 @@ class Toggle extends React.Component {
     if (this.state.enabled === true) {
       this.setState({ enabled: false }, () => {
         chrome.runtime.sendMessage({
-          enabled: this.state.enabled,
+          toggle: false,
         });
       });
 
