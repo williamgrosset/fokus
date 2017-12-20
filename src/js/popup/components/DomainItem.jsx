@@ -14,9 +14,8 @@ const DomainItem = ({ id, validDomain, removeDomain }) => {
   };
 
   return (
-    <li id="domain-item">
+    <li>
       <div
-        id="domain-name"
         className="domain-name"
       >
         {getUiDomain(validDomain)}
@@ -24,10 +23,9 @@ const DomainItem = ({ id, validDomain, removeDomain }) => {
       <div>
         <input
           type="image"
-          id="domain-delete"
-          className="garbage-can"
           alt="Delete"
           src="/png/garbage_can_16.png"
+          className="garbage-can"
           onClick={deleteDomain}
         />
       </div>

@@ -149,17 +149,14 @@ p.domains-title {
   padding-bottom: 15px;
 }
 
-#domain-delete:focus {
-  outline: none;
-  box-shadow: none;
-}
-
 .domain-name {
   float: left;
 }
 
 .garbage-can {
   float: right;
+  outline: none;
+  box-shadow:none;
 }
 
 ul.domain-container {
