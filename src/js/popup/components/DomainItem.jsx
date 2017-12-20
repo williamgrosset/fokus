@@ -7,12 +7,11 @@ const DomainItem = ({ id, validDomain, removeDomain }) => {
     removeDomain(id);
   };
 
-  let uiDomain = validDomain;
-  uiDomain = uiDomain.replace('.*://.*', '').replace('/.*', '');
-  // Add "..." to end of the domain if length is too large
-  if (uiDomain.length >= 19) {
-    uiDomain = uiDomain.substring(0, 21).concat('...');
-  }
+  const getUiDomain = (domain) => {
+    let uiDomain = domain.replace('.*://.*', '').replace('/.*', '');
+    // Add "..." to end of the domain if length is too large
+    return uiDomain.length >= 19 ? uiDomain.substring(0, 21).concat('...') : uiDomain;
+  };
 
   return (
     <li id="domain-item">
@@ -20,7 +19,7 @@ const DomainItem = ({ id, validDomain, removeDomain }) => {
         id="domain-name"
         className="domain-name"
       >
-        {uiDomain}
+        {getUiDomain(validDomain)}
       </div>
       <div>
         <input
