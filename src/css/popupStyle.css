@@ -72,6 +72,7 @@ p.domains-title {
 
 .fokus-link {
   cursor: pointer;
+  outline: none;
 }
 
 .divider {
