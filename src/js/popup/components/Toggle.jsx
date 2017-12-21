@@ -22,11 +22,13 @@ class Toggle extends React.Component {
   toggleEnableOrDisableMode(e) {
     const enable = e.target.id === 'enable' ? true : false;
 
-    if (enable) localStorage.setItem('fokus-toggle', 'enable');
-    else localStorage.setItem('fokus-toggle', 'disable');
+    if (enable) {
+      localStorage.setItem('fokus-toggle', 'enable');
+    } else {
+      localStorage.setItem('fokus-toggle', 'disable');
+    }
 
     this.setState({ enabled: enable }, () => {
-      console.log('did we set state');
       chrome.runtime.sendMessage({
         toggle: enable,
       });
