@@ -21,8 +21,7 @@ class DomainNew extends React.Component {
   *  @returns boolean: False if domain is invalid, otherwise true.
   */
   static errorCheck(domain) {
-    if (domain.includes('http') || domain.includes(':') || domain.includes('/') || domain === ''
-        || !domain.includes('.') || domain.includes(' ')) {
+    if (!/^[a-z0-9]+\.[a-z0-9]+$/.test(domain)) {
       return true;
     }
     return false;
