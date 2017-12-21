@@ -4,15 +4,14 @@ import $ from 'jquery';
 class Toggle extends React.Component {
   constructor(props) {
     super(props);
-    this.enableFokus = this.enableFokus.bind(this);
-    this.disableFokus = this.disableFokus.bind(this);
+    this.toggleEnableOrDisableMode = this.toggleEnableOrDisableMode.bind(this);
 
     this.state = {
-      enabled: localStorage.getItem('fokus-toggle') === 'enable' || false,
+      enabled: localStorage.getItem('fokus-toggle') !== 'disable' || false,
     };
   }
 
-  static modifyCss(enabled) {
+  static loadEnableOrDisableContainerStyle(enabled) {
     const color = enabled ? '#000000' : '#A1A1A1';
     $('.domain-container').css('color', color);
     $('.domains-title').css('color', color);
@@ -20,42 +19,30 @@ class Toggle extends React.Component {
     $('#input').prop('disabled', !enabled);
   }
 
-  /*
-  *  Send message to background script and enable domain blocker.
-  *  Update boolean value in localStorage and modify CSS for enabled visuals.
-  */
-  enableFokus() {
-    localStorage.setItem('fokus-toggle', 'enable');
-    this.setState({ enabled: true }, () => {
-      chrome.runtime.sendMessage({
-        toggle: true,
-      });
-    });
-  }
+  toggleEnableOrDisableMode(e) {
+    const enable = e.target.id === 'enable' ? true : false;
 
-  /*
-  *  Send message to background script and disable domain blocker.
-  *  Update boolean value in localStorage and modify CSS for disabled visuals.
-  */
-  disableFokus() {
-    localStorage.setItem('fokus-toggle', 'disable');
-    this.setState({ enabled: false }, () => {
+    if (enable) localStorage.setItem('fokus-toggle', 'enable');
+    else localStorage.setItem('fokus-toggle', 'disable');
+
+    this.setState({ enabled: enable }, () => {
+      console.log('did we set state');
       chrome.runtime.sendMessage({
-        toggle: false,
+        toggle: enable,
       });
     });
   }
 
   render() {
     const { enabled } = this.state;
-    Toggle.modifyCss(enabled);
+    Toggle.loadEnableOrDisableContainerStyle(enabled);
 
     return (
       <div className='toggle'>
         <button
           id='enable'
           className='toggle-button'
-          onClick={this.enableFokus}
+          onClick={this.toggleEnableOrDisableMode}
         >
           {enabled ? 'Enabled' : 'Enable'}
         </button>
@@ -63,7 +50,7 @@ class Toggle extends React.Component {
         <button
           id='disable'
           className='toggle-button'
-          onClick={this.disableFokus}
+          onClick={this.toggleEnableOrDisableMode}
         >
           {enabled ? 'Disable' : 'Disabled'}
         </button>
