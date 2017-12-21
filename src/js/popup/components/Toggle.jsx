@@ -6,50 +6,32 @@ class Toggle extends React.Component {
     super(props);
     this.enableFokus = this.enableFokus.bind(this);
     this.disableFokus = this.disableFokus.bind(this);
+    this.loadEnableOrDisableMode = this.loadEnableOrDisableMode.bind(this);
 
     this.state = {
-      enabled: localStorage.getItem('fokus-toggle') !== 'disable' || false,
+      enabled: localStorage.getItem('fokus-toggle') === 'enable' || false,
     };
   }
 
-  /*
-  *  Modify color of domain container items, domain title, and bottom border of form input.
-  *
-  *  @param color: Modify color of domain container items.
-  */
   static modifyCss(color) {
     $('.domain-container').css('color', color);
     $('.domains-title').css('color', color);
     $('input[type=text]').css('border-bottom-color', color);
   }
 
-  /*
-  *  Update HTML for enable mode and modify CSS for enabled domain blocker.
-  */
-  onloadEnable() {
+  loadEnableOrDisableMode(enable) {
     if (this.state.enabled === false) {
       Toggle.modifyCss('#A1A1A1');
       $('#input').prop('disabled', true);
-      return { __html: 'Enable' };
-    }
 
-    Toggle.modifyCss('#000000');
-    $('#input').prop('disabled', false);
-    return { __html: 'Enabled' };
-  }
-
-  /*
-  *  Update HTML for disable mode and modify CSS for disabled domain blocker.
-  */
-  onloadDisable() {
-    if (this.state.enabled === false) {
-      Toggle.modifyCss('#A1A1A1');
-      $('#input').prop('disabled', true);
+      if (!enable) return { __html: 'Enable' };
       return { __html: 'Disabled' };
     }
 
     Toggle.modifyCss('#000000');
     $('#input').prop('disabled', false);
+
+    if (enable) return { __html: 'Enabled' };
     return { __html: 'Disable' };
   }
 
@@ -100,14 +82,14 @@ class Toggle extends React.Component {
           id='enable'
           className='toggle-button'
           onClick={this.enableFokus}
-          dangerouslySetInnerHTML={this.onloadEnable()}
+          dangerouslySetInnerHTML={this.loadEnableOrDisableMode(this.state.enabled)}
         />
         <div className='divider' />
         <button
           id='disable'
           className='toggle-button'
           onClick={this.disableFokus}
-          dangerouslySetInnerHTML={this.onloadDisable()}
+          dangerouslySetInnerHTML={this.loadEnableOrDisableMode(!this.state.enabled)}
         />
       </div>
     );
