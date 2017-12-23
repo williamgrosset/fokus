@@ -48,7 +48,7 @@ class DomainNew extends React.Component {
     // Check if domain is valid
     if (DomainNew.isDomainValid(domain)) {
       DomainNew.showModal(e, 'myModalError', 1);
-    // Successfully add domain to be blocked 
+      // Successfully add domain to be blocked
     } else {
       this.props.addDomain(this.state.value);
       this.setState({ value: '' });

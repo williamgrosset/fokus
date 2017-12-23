@@ -6,6 +6,7 @@ import DomainContainer from './DomainContainer';
 class Domains extends React.Component {
   constructor(props) {
     super(props);
+    this.getDomainIndex = this.getDomainIndex.bind(this);
     this.removeDomain = this.removeDomain.bind(this);
     this.addDomain = this.addDomain.bind(this);
 
@@ -21,9 +22,13 @@ class Domains extends React.Component {
     localStorage.setItem('container', JSON.stringify(container));
   }
 
-  removeDomain(id) {
+  getDomainIndex(id) {
     const { container } = this.state;
-    const index = container.findIndex(domain => domain.id === id);
+    return container.findIndex(domain => domain.id === id);
+  }
+
+  removeDomain(id) {
+    const index = this.getDomainIndex(id);
 
     if (index !== -1) {
       this.setState(prevState => ({ container: prevState.container.filter((_, ind) => ind !== index) }), () => {
