@@ -40,18 +40,18 @@ class Toggle extends React.Component {
     Toggle.loadEnableOrDisableContainerStyle(enabled);
 
     return (
-      <div className='toggle'>
+      <div className="toggle">
         <button
-          id='enable'
-          className='toggle-button'
+          id="enable"
+          className="toggle-button"
           onClick={this.toggleEnableOrDisableMode}
         >
           {enabled ? 'Enabled' : 'Enable'}
         </button>
-        <div className='divider' />
+        <div className="divider" />
         <button
-          id='disable'
-          className='toggle-button'
+          id="disable"
+          className="toggle-button"
           onClick={this.toggleEnableOrDisableMode}
         >
           {enabled ? 'Disable' : 'Disabled'}

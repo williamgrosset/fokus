@@ -6,7 +6,7 @@ const Header = () => (
     type="image"
     src="/png/fokus_title_128.png"
     alt="fokus"
-    onClick={() => window.open("/src/html/home.html").focus()}
+    onClick={() => window.open('/src/html/home.html').focus()}
   />
 );
 

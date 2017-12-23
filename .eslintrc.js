@@ -14,10 +14,6 @@ module.exports = {
       "chrome": false,
     },
     "rules": {
-      "jsx-quotes": [
-        "error", 
-        "prefer-single",
-      ],
       "max-len": [
         "error", 
         120,

@@ -8,7 +8,7 @@ const DomainItem = ({ id, validDomain, removeDomain }) => {
   };
 
   const getUiDomain = (domain) => {
-    let uiDomain = domain.replace('.*://.*', '').replace('/.*', '');
+    const uiDomain = domain.replace('.*://.*', '').replace('/.*', '');
     // Add "..." to end of the domain if length is too large
     return uiDomain.length >= 19 ? uiDomain.substring(0, 21).concat('...') : uiDomain;
   };
