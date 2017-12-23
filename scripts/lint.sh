@@ -23,7 +23,7 @@ echo "****************************************************"
 ./node_modules/.bin/eslint ./src/js/popup/*
 ./node_modules/.bin/eslint ./src/js/popup/components/*
 
-echo "If you saw no errors or warnings, you have done very well. 👍"
 echo "****************************************************"
 echo "*                      /LINT                       *"
 echo "****************************************************"
+echo "If you saw no errors or warnings, you have done very well."

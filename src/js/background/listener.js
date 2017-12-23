@@ -20,13 +20,10 @@
   chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
     if (toggle === true && changeInfo.status === 'complete') {
       chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        for (const domain of domains) {
+        domains.forEach((domain) => {
           const reDomain = new RegExp(domain.validDomain, 'i');
-          if (reDomain.test(tabs[0].url)) {
-            chrome.tabs.update(tabs[0].id, { url: 'src/html/home.html' });
-            return;
-          }
-        }
+          if (reDomain.test(tabs[0].url)) chrome.tabs.update(tabs[0].id, { url: 'src/html/home.html' });
+        });
       });
     }
   });
