@@ -20,7 +20,7 @@ class Toggle extends React.Component {
   }
 
   toggleEnableOrDisableMode(e) {
-    const enable = e.target.id === 'enable' ? true : false;
+    const enable = e.target.id === 'enable';
 
     if (enable) {
       localStorage.setItem('fokus-toggle', 'enable');
