@@ -41,19 +41,11 @@ class Toggle extends React.Component {
 
     return (
       <div className="toggle">
-        <button
-          id="enable"
-          className="toggle-button"
-          onClick={this.toggleEnableOrDisableMode}
-        >
+        <button id="enable" className="toggle-button" onClick={this.toggleEnableOrDisableMode}>
           {enabled ? 'Enabled' : 'Enable'}
         </button>
         <div className="divider" />
-        <button
-          id="disable"
-          className="toggle-button"
-          onClick={this.toggleEnableOrDisableMode}
-        >
+        <button id="disable" className="toggle-button" onClick={this.toggleEnableOrDisableMode}>
           {enabled ? 'Disable' : 'Disabled'}
         </button>
       </div>

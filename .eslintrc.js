@@ -29,7 +29,7 @@ module.exports = {
       "prettier/prettier": ["error", {
         "printWidth": 120,
         "singleQuote": true,
-        "trailingComma": "es5"
+        "trailingComma": "all",
       }],
     },
 };

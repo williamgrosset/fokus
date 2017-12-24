@@ -9,19 +9,19 @@ echo ""
 echo "****************************************************"
 echo "*                   background/                    *"
 echo "****************************************************"
-./node_modules/.bin/eslint ./src/js/background/listener.js
+./node_modules/.bin/eslint --fix ./src/js/background/listener.js
 
 echo "****************************************************"
 echo "*                      home/                       *"
 echo "****************************************************"
-./node_modules/.bin/eslint ./src/js/home/quote.js
-./node_modules/.bin/eslint ./src/js/home/stopwatch.js
+./node_modules/.bin/eslint --fix ./src/js/home/quote.js
+./node_modules/.bin/eslint --fix ./src/js/home/stopwatch.js
 
 echo "****************************************************"
 echo "*                      popup/                      *"
 echo "****************************************************"
-./node_modules/.bin/eslint ./src/js/popup/*
-./node_modules/.bin/eslint ./src/js/popup/components/*
+./node_modules/.bin/eslint --fix ./src/js/popup/*
+./node_modules/.bin/eslint --fix ./src/js/popup/components/*
 
 echo "****************************************************"
 echo "*                      /LINT                       *"

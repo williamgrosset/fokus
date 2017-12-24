@@ -31,10 +31,13 @@ class Domains extends React.Component {
     const index = this.getDomainIndex(id);
 
     if (index !== -1) {
-      this.setState(prevState => ({ container: prevState.container.filter((_, ind) => ind !== index) }), () => {
-        const { container } = this.state;
-        Domains.storeContainer(container);
-      });
+      this.setState(
+        prevState => ({ container: prevState.container.filter((_, ind) => ind !== index) }),
+        () => {
+          const { container } = this.state;
+          Domains.storeContainer(container);
+        },
+      );
     }
   }
 
@@ -44,10 +47,13 @@ class Domains extends React.Component {
       validDomain: '.*://.*'.concat(domain).concat('/.*'),
     };
 
-    this.setState(prevState => ({ container: prevState.container.concat(newDomain) }), () => {
-      const { container } = this.state;
-      Domains.storeContainer(container);
-    });
+    this.setState(
+      prevState => ({ container: prevState.container.concat(newDomain) }),
+      () => {
+        const { container } = this.state;
+        Domains.storeContainer(container);
+      },
+    );
   }
 
   render() {
