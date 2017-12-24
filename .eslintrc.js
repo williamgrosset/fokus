@@ -4,6 +4,7 @@ module.exports = {
         "react",
         "jsx-a11y",
         "import",
+        "prettier",
     ],
     "env": {
       "browser": true,
@@ -24,6 +25,11 @@ module.exports = {
           "allowForLoopAfterthoughts": true
         },
       ],
-      "react/sort-comp": 0
+      "react/sort-comp": 0,
+      "prettier/prettier": ["error", {
+        "printWidth": 120,
+        "singleQuote": true,
+        "trailingComma": "es5"
+      }],
     },
 };
