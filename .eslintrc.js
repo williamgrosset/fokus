@@ -31,5 +31,9 @@ module.exports = {
         "singleQuote": true,
         "trailingComma": "all",
       }],
+      "arrow-parens": [
+        "error",
+        "as-needed",
+      ],
     },
 };

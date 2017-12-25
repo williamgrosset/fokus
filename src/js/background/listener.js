@@ -7,7 +7,7 @@
     toggle = localStorage.getItem('fokus-toggle') === 'enable' || false;
   });
 
-  chrome.runtime.onMessage.addListener((request) => {
+  chrome.runtime.onMessage.addListener(request => {
     if (request.container) {
       domains = request.container;
     } else if (request.toggle === true) {
@@ -19,8 +19,8 @@
 
   chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
     if (toggle === true && changeInfo.status === 'complete') {
-      chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        domains.forEach((domain) => {
+      chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+        domains.forEach(domain => {
           const reDomain = new RegExp(domain.validDomain, 'i');
           if (reDomain.test(tabs[0].url)) chrome.tabs.update(tabs[0].id, { url: 'src/html/home.html' });
         });
