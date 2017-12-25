@@ -1,10 +1,10 @@
-![alt-text](https://github.com/williamgrosset/fokus/blob/master/png/fokus_title.png 'fokus') [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-  
+![alt-text](https://github.com/williamgrosset/fokus/blob/master/png/fokus_title.png 'fokus')
+
 *Google chrome extension to help you focus on the things that really matter.*
 
-**NOTICE**: The chrome extension is currently not available on the chrome store and is being redesigned. These changes are **required** due to Google's new policy of having to require permissions from the user before a page redirection occurs. However, you can install it locally and still use it!
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-## How to use fokus
+## How to use
 1. ~~Download the chrome extension on the Google chrome store [here]()~~ *(see notice above)*.
 2. Open the chrome popup and add new domains to be blocked, e.g: `domain.com` or `www.domain.com`.
 3. Toggle the chrome extension on/off by clicking on either **Enable** or **Disable** mode.
@@ -22,7 +22,7 @@
 7. Make sure the linting/tests **all pass** by running `npm test`.
 8. Submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
 
-## Project layout
+### Project layout
 + Development scripts in `scripts/`
   * `build.sh/`: `npm run build`
   * `watch.sh/`: `npm run watch`
