@@ -1,5 +1,4 @@
-![alt-text](https://github.com/williamgrosset/fokus/blob/master/png/fokus_title.png 'fokus')  
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+![alt-text](https://github.com/williamgrosset/fokus/blob/master/png/fokus_title.png 'fokus') [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
   
 *Google chrome extension to help you focus on the things that really matter.*
 

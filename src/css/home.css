@@ -24,9 +24,19 @@
   }
 }
 
+html {
+  height: 100%;
+}
+
 body {
   text-align: center;
   font-family: Helvetica;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 button {
@@ -45,36 +55,20 @@ button {
   box-shadow: 0 8.5px #444;
 }
 
-.widgets {
-  display: flex; 
-  flex-flow: column nowrap;
-  justify-content: space-between;
-  align-items: stretch;
-  height: 96%;
-}
-
-.front {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
-
 .header-container h1 {
   font-size: 3em;
   animation: fadeIn 2s;
-  padding-bottom: 0.7em;
+  padding-bottom: 0.5em;
 }
 
 .header-container p {
   font-size: 1.3em;
   animation: fadeIn 2s;
-  padding-bottom: 0.7em;
+  padding-bottom: 0.5em;
 }
 
 .quote-container {
-  padding-top: 7em;
+  padding-top: 5em;
 }
 
 .clock {
@@ -112,11 +106,4 @@ button {
 .bottom {
   font-style: italic;
   animation-delay: 3s;
-}
-
-.bottom-left {
-  position: fixed;
-  bottom: 3px;
-  left: 3px;
-  animation: fadeIn 2s;
 }
