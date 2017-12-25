@@ -45,7 +45,6 @@ button {
   box-shadow: 0 8.5px #444;
 }
 
-/* FLEXBOX */
 .widgets {
   display: flex; 
   flex-flow: column nowrap;

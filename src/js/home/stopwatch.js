@@ -2,9 +2,6 @@
   let timer;
   let seconds = 300;
 
-  /*
-  *  Reset counter and start button.
-  */
   function resetCounter() {
     clearInterval(timer);
     seconds = 300;
@@ -15,10 +12,6 @@
     $('#seconds').html('seconds');
   }
 
-  /*
-  *  Decrement counter and play audio file after full
-  *  300 second meditation.
-  */
   function countDown() {
     seconds -= 1;
     $('#clock').html(seconds);
@@ -31,10 +24,6 @@
     }
   }
 
-  /*
-  *  Begin decrementing counter and switch start button to
-  *  stop.
-  */
   function startCounter() {
     $('#stopwatchStart').hide();
     $('#stopwatchStop').show();
@@ -42,10 +31,6 @@
     timer = setInterval(countDown, 1000);
   }
 
-  /*
-  *  Stop decrementing counter and switch stop button to
-  *  start.
-  */
   function stopCounter() {
     clearInterval(timer);
     $('#stopwatchStop').hide();
