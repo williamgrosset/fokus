@@ -61,7 +61,7 @@ class DomainNew extends React.Component {
 
   render() {
     return (
-      <form id="form" autoComplete="off" onSubmit={this.saveDomain}>
+      <form autoComplete="off" onSubmit={this.saveDomain}>
         <input
           id="input"
           type="text"

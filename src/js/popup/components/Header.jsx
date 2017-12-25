@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => (
   <input
-    className="fokus-link"
+    className="header"
     type="image"
     src="/png/fokus_title_128.png"
     alt="fokus"
