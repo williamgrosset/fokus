@@ -1,4 +1,5 @@
-![alt-text](https://github.com/williamgrosset/fokus/blob/master/png/fokus_title.png 'fokus')  
+![alt-text](https://github.com/williamgrosset/fokus/blob/master/png/fokus_title.png 'fokus')
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
   
 *Google chrome extension to help you focus on the things that really matter.*
 
@@ -17,7 +18,7 @@
 2. Run `nvm install` to use the required Node version.
 3. Run `npm install` to install the required dependencies.
 4. Create the build directory: `mkdir build`.
-5. Create a branch: `git checkout -b initials-feature-name`.
+5. Create a branch: `git checkout -b feature-name`.
 6. Complete any necessary changes or features. For bundling with watchify: `npm run watch`.
 7. Make sure the linting/tests **all pass** by running `npm test`.
 8. Submit a [pull request](https://help.github.com/articles/creating-a-pull-request-from-a-fork/).
@@ -30,26 +31,5 @@
   * `test.sh/`: `npm run test`
 + Photo assests in `png/`
 + JavaScript bundle in `build/` (see [`.gitignore`](https://github.com/williamgrosset/fokus/blob/master/.gitignore#L5))
-+ React components in ```src/js/popup/components```
-+ React tests in ```test/``` ([Enzyme](https://github.com/airbnb/enzyme))
-
-## Future additions
-Make a pull request to add your own idea below:
-+ Refactor React `Toggle` button component
-+ Use regex for domain validation
-+ Allow users to configure meditation timer
-+ Integrate [Circle CI](https://circleci.com/) with project
-+ Add new design to meditation page
-+ Clean-up and remove anti-patterns in `src/`
-
-## F.A.Q.
-### Why am I making this?
-I have started to notice that I subconciously go to websites that I do not actually want to be on. Individuals seek stimulus, so we happen to distract our mind when we get bored. Whether it is Facebook, Twitch, Reddit, or any other domain - when I am working, I want to be completely focused on what is currently important. We are all guilty of this, but we can fix it. 
-
-I also really wanted to learn [React](https://facebook.github.io/react/).
-
-### "Domain blocking has already been solved."
-Not exactly - most extensions are a bit overkill with their design and functionality. I want to build something that I can easily use to increase my productivity and be able to practice meditation daily.
-
-### Do you realize you spelt "focus" wrong?
-Yes. Fokus is swedish for focus (I know, it's pretty original). :godmode:
++ React components in `src/js/popup/components`
++ [Enzyme](https://github.com/airbnb/enzyme) tests in `test/`
