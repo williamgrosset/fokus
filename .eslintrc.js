@@ -35,5 +35,6 @@ module.exports = {
         "error",
         "as-needed",
       ],
-    },
+      "no-confusing-arrow": 0,
+    }
 };

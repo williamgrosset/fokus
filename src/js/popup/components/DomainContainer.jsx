@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import DomainItem from './DomainItem';
 
 const DomainContainer = props =>
-  props.container.length !== 0 ? (
+  props.container.length ? (
     <ul className="domain-container">
       {props.container.map(domain => <DomainItem {...domain} {...props} key={domain.id} />)}
     </ul>
