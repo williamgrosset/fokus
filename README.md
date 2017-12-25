@@ -5,8 +5,8 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ## How to use
-1. ~~Download the chrome extension on the Google chrome store [here]()~~ *(see notice above)*.
-2. Open the chrome popup and add new domains to be blocked, e.g: `domain.com` or `www.domain.com`.
+1. Download the chrome extension on the Google chrome store [here](https://chrome.google.com/webstore/detail/fokus/kapnmpfkldbacoamceiggkcoaepfgiea).
+2. Open the chrome popup and add new domains to be blocked, e.g: `domain.com`.
 3. Toggle the chrome extension on/off by clicking on either **Enable** or **Disable** mode.
 4. Enjoy your meditation breaks for increased focus and productivity.  
 
