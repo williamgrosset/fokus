@@ -11,7 +11,7 @@ class Toggle extends React.Component {
     };
   }
 
-  static loadEnableOrDisableContainerStyle(enabled) {
+  static loadEnabledOrDisabledContainerStyle(enabled) {
     const color = enabled ? '#000000' : '#A1A1A1';
     $('.domain-container').css('color', color);
     $('.domains-title').css('color', color);
@@ -37,7 +37,7 @@ class Toggle extends React.Component {
 
   render() {
     const { enabled } = this.state;
-    Toggle.loadEnableOrDisableContainerStyle(enabled);
+    Toggle.loadEnabledOrDisabledContainerStyle(enabled);
 
     return (
       <div className="toggle">
