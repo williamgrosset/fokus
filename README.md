@@ -3,8 +3,8 @@
 *Google chrome extension to help you focus on the things that really matter.*
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/rating/kapnmpfkldbacoamceiggkcoaepfgiea.svg)](https://chrome.google.com/webstore/detail/fokus/kapnmpfkldbacoamceiggkcoaepfgiea)
-[![Chrome Web Store](https://img.shields.io/chrome-web-store/price/kapnmpfkldbacoamceiggkcoaepfgiea.svg)](https://chrome.google.com/webstore/detail/fokus/kapnmpfkldbacoamceiggkcoaepfgiea)
+[![Chrome Web Store: rating](https://img.shields.io/chrome-web-store/rating/kapnmpfkldbacoamceiggkcoaepfgiea.svg)](https://chrome.google.com/webstore/detail/fokus/kapnmpfkldbacoamceiggkcoaepfgiea)
+[![Chrome Web Store: price](https://img.shields.io/chrome-web-store/price/kapnmpfkldbacoamceiggkcoaepfgiea.svg)](https://chrome.google.com/webstore/detail/fokus/kapnmpfkldbacoamceiggkcoaepfgiea)
 
 ## How to use
 1. Download the chrome extension on the Google chrome store [here](https://chrome.google.com/webstore/detail/fokus/kapnmpfkldbacoamceiggkcoaepfgiea).
