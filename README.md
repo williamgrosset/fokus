@@ -1,6 +1,6 @@
 <p align="center">
   <img src="https://github.com/williamgrosset/fokus/blob/master/png/fokus_title.png" /><br />
-  *Google chrome extension to help you focus on the things that really matter.*<br /><br/>
+  <i>Google chrome extension to help you focus on the things that really matter.</i><br /><br />
   <img src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square" />
   <img src="https://img.shields.io/chrome-web-store/rating/kapnmpfkldbacoamceiggkcoaepfgiea.svg" />
   <img src="https://img.shields.io/chrome-web-store/price/kapnmpfkldbacoamceiggkcoaepfgiea.svg" /><br /><br/>
